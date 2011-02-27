@@ -138,10 +138,6 @@ Windows with
 
 * MSVC 10.0
 
-Cygwin 1.5 with
-
-* GCC 3.4.4
-
 Cygwin 1.7 with
 
 * GCC 4.3.4
@@ -240,28 +236,14 @@ Include all the enums public header files.
 
 [section:history Appendix A: History]
 
-[section [*Version 0.1.1, Febraury 18, 2011] ]
+[section [*Version 0.1.0, Feb 27, 2011] ]
 
-[*Tests:]
-
-* Test pass on Ubuntu 10.10 for
-
-* GCC 4.4.5
-* GCC 4.4.5 -std=c++0x
-* GCC 4.5.1
-* GCC 4.5.1 -std=c++0x
-* clang 2.8
-
-
-[endsect]
-
-[section [*Version 0.1.0, Mars 01, 2011] ]
-
-Initial version.
+Initial version committed on the sandbox
 
 [*Features:]
 
-* a
+* Some language-like macros helping to define scoped enum classes.
+* Some meta-functions and functions helping to write portable programs using scoped enum classes under comilers supporting them natively or by an emulation on the others.
 
 [endsect]
 [endsect]
@@ -282,7 +264,7 @@ Initial version.
 [endsect]
 [section:acknowledgements Appendix D: Acknowledgements]
 
-Thanks to .
+Thanks to Beman Dawes for opening the initial discussion. Daniel James for giving the idea of the alternative implementation and to Matt Calabrese for his inshighfull comments on the ML. This library will never be created without the exchanges they made on the ML (see [@http://boost.2283326.n4.nabble.com/Boost-Dev-f2600599.html here]).
 
 [endsect]
 [section  Appendix E: Tests]
