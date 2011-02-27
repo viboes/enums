@@ -15,7 +15,6 @@
 
 
 #include <boost/enums/underlying_type.hpp>
-#include <boost/enums/enum_value.hpp>
 #include <boost/enums/enum_type.hpp>
 #include <boost/enums/default_value.hpp>
 #include <boost/enums/get_value.hpp>
@@ -197,9 +196,9 @@ inline const char* c_str(EnumClass e)
 {
     switch (boost::enums::get_value(e))
     {
-    case BOOST_ENUM_VALUE(EnumClass::Default) : return("EnumClass::Default");
-    case BOOST_ENUM_VALUE(EnumClass::Enum1):    return("EnumClass::Enum1");
-    case BOOST_ENUM_VALUE(EnumClass::Enum2) :   return("EnumClass::Enum2");
+    case EnumClass::Default : return("EnumClass::Default");
+    case EnumClass::Enum1:    return("EnumClass::Enum1");
+    case EnumClass::Enum2 :   return("EnumClass::Enum2");
     default:
       return("EnumClass::???");
     }
