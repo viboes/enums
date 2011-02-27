@@ -1,0 +1,318 @@
+[/
+ / Copyright (c) 2010 Vicente J. Botet Escriba
+ /
+ / Distributed under the Boost Software License, Version 1.0. (See accompanying
+ / file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+ /]
+
+[article Toward Boost.Enums
+    [quickbook 1.5]
+    [version 0.1.1]
+    [authors [Botet Escriba, Vicente J.]]
+    [copyright 2010 Vicente J. Botet Escriba]
+    [id boost.enums]
+    [/dirname enums]
+    [license
+        Distributed under the Boost Software License, Version 1.0.
+        (See accompanying file LICENSE_1_0.txt or copy at
+        [@http://www.boost.org/LICENSE_1_0.txt])
+    ]
+]
+
+[:["Strong type checking is gold;
+            normal type checking is silver;
+                           and casting is brass]]
+[:[*['-- ]]]
+
+[warning Enums is not a part of the Boost libraries.]
+
+[/========================]
+[section Overview]
+[/========================]
+
+
+
+[/====================================]
+[heading How to Use This Documentation]
+[/====================================]
+
+
+This documentation makes use of the following naming and formatting conventions.
+
+* Code is in `fixed width font` and is syntax-highlighted.
+* Replaceable text that you will need to supply is in [~italics].
+* If a name refers to a free function, it is specified like this:
+  `free_function()`; that is, it is in code font and its name is followed by `()`   to indicate that it is a free function.
+* If a name refers to a class template, it is specified like this:   `class_template<>`; that is, it is in code font and its name is followed by `<>`   to indicate that it is a class template.
+* If a name refers to a function-like macro, it is specified like this: `MACRO()`;
+  that is, it is uppercase in code font and its name is followed by `()` to   indicate that it is a function-like macro. Object-like macros appear without the   trailing `()`.
+* Names that refer to /concepts/ in the generic programming sense are specified in CamelCase.
+
+[note In addition, notes such as this one specify non-essential information that provides additional background or rationale.]
+
+Finally, you can mentally add the following to any code fragments in this document:
+
+    // Include all of the core Enums files
+    #include <boost/enums.hpp>
+
+    using namespace boost;
+
+[section Motivation]
+
+The David E. Miller, Herb Sutter and Bjarne Stroustrup's proposal ([@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1891.pdf [*N1891: Strongly Typed Enums (revision 3)]  includes a clear motivation for "Strongly Typed Enums".
+
+On compilers not providing "Strongly Typed Enums" we can make a quite close emulation. This allows to write programs that are portable on comilers providing this feature natively and using the emulation on the others.
+
+[endsect]
+[/==================]
+[section Description]
+[/==================]
+
+
+[*Boost.Enums] intends to provide a library partial solution to this problem.
+
+[*Boost.Enums] provides:
+
+* Some language-like macros helping to define scoped enum classes.
+* Some meta-functions and functions helping to write portable programs using scoped enum classes under comilers supporting them natively or by an emulation on the others.
+
+[endsect]
+[endsect]
+
+[/==============================]
+[section:users_guide Users' Guide]
+[/==============================]
+
+[/======================================]
+[section:getting_started Getting Started]
+[/======================================]
+
+[/======================================]
+[section:install Installing Boost.Enums]
+[/======================================]
+
+[/=================================]
+[heading Getting Boost.Enums]
+[/=================================]
+
+You can get the last stable release of [*Boost.Enums] by downloading [^enums.zip] from the
+[@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=enums.zip&directory=Utilities& Boost Vault Utilities directory]
+
+You can also access the latest (unstable?) state from the [@https://svn.boost.org/svn/boost/sandbox/enums Boost Sandbox].
+
+[/=================================]
+[heading Building Boost.Enums]
+[/=================================]
+
+There is no need to compile [*Boost.Enums], since it's
+a header only library. Just include your Boost header directory in your
+compiler include path.
+
+[/=========================]
+[heading Requirements]
+[/=========================]
+
+[*Boost.Enums] depends only on Boost.Conversion and Boost.Config  (and all libraries they depends on).
+
+
+[/========================]
+[heading Exceptions safety]
+[/========================]
+
+All functions in the library are exception-neutral and provide strong guarantee of exception safety as long as the underlying parameters provide it.
+
+[/====================]
+[heading Thread safety]
+[/====================]
+
+All functions in the library are thread-unsafe except when noted explicitly.
+
+[/=======================]
+[heading Tested compilers]
+[/=======================]
+
+The implementation will eventually work with most C++03 conforming compilers.
+Current version has been tested on:
+
+Windows with
+
+* MSVC 10.0
+
+Cygwin 1.5 with
+
+* GCC 3.4.4
+
+Cygwin 1.7 with
+
+* GCC 4.3.4
+
+MinGW with
+
+* GCC 4.4.0
+* GCC 4.5.0
+* GCC 4.5.0 C++0x
+* GCC 4.6.0
+* GCC 4.6.0 C++0x
+
+Ubuntu 10.10
+
+* GCC 4.4.5
+* GCC 4.4.5 -std=c++0x
+* GCC 4.5.1
+* GCC 4.5.1 -std=c++0x
+* clang 2.8
+
+[note Please let us know how this works on other platforms/compilers.]
+
+[note Please send any questions, comments and bug reports to boost <at> lists <dot> boost <dot> org.]
+
+[endsect]
+[/=============================]
+[section Hello World! ]
+[/=============================]
+
+
+[endsect]
+
+[endsect]
+
+[section Tutorial]
+
+
+[endsect]
+
+[section Examples]
+[section Identifier]
+
+
+[endsect]
+[endsect]
+
+
+
+[section:ext_references External Resources]
+
+[variablelist
+[
+    [[@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf [*N2347: Strongly Typed Enums (revision 3)]]]
+    [Alisdair Meredith]
+]
+
+[
+    [[@http://www.gimpel.com/html/strong.htm [*PC-lint/FlexeLint Strong Type Checking]]]
+    [Gimpel Software]
+]
+
+
+
+]
+
+[endsect]
+
+[endsect]
+
+
+[section Reference]
+
+[/==========================================================================================]
+[section:opaque_hpp Header `<boost/enums.hpp>`]
+[/==========================================================================================]
+
+Include all the enums public header files.
+
+    #include <boost/enums/enums.hpp>
+
+[endsect]
+
+
+[/==========================================================================================]
+[section:new_class_hpp Header `<boost/enums/enums.hpp>`]
+[/==========================================================================================]
+
+
+[endsect]
+
+[endsect]
+
+[/=================]
+[section Appendices]
+[/=================]
+
+[section:history Appendix A: History]
+
+[section [*Version 0.1.1, Febraury 18, 2011] ]
+
+[*Tests:]
+
+* Test pass on Ubuntu 10.10 for
+
+* GCC 4.4.5
+* GCC 4.4.5 -std=c++0x
+* GCC 4.5.1
+* GCC 4.5.1 -std=c++0x
+* clang 2.8
+
+
+[endsect]
+
+[section [*Version 0.1.0, Mars 01, 2011] ]
+
+Initial version.
+
+[*Features:]
+
+* a
+
+[endsect]
+[endsect]
+
+[section:rationale Appendix B: Design Rationale]
+
+[heading lala]
+
+
+[endsect]
+
+[section:implementation Appendix C: Implementation Notes]
+
+
+[heading lala]
+
+
+[endsect]
+[section:acknowledgements Appendix D: Acknowledgements]
+
+Thanks to .
+
+[endsect]
+[section  Appendix E: Tests]
+
+[section new_class]
+
+[table Contructors and Assignement
+    [[Name]                             [kind]      [Description]                                   [Result]]
+]
+
+[endsect]
+
+[endsect]
+[section  Appendix F: Tickets]
+
+[endsect]
+
+[/=====================================]
+[section:todo  Appendix F: Future plans]
+[/=====================================]
+
+[heading Tasks to do before review]
+
+* Complete the doc and the tests
+
+[/heading For later releases]
+
+
+
+[endsect]
+[endsect]
+
+

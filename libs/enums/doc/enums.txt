@@ -1,0 +1,120 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// (C) Copyright Vicente J. Botet Escriba 2011.
+// Distributed under the Boost
+// Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or
+// copy at http://www.boost.org/LICENSE_1_0.txt)
+//
+// See http://www.boost.org/libs/enums for documentation.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+SCOPED  CLASS CONS  EMU   C++0X Feature
+NO-1	  YES	  YES   YES   YES   The type is named as such
+NO-1	  NO-2	NO-2  NO-2  YES   The enum type is named as such
+YES  	  NO-3	NO-3  NO-3  YES   is_enum<EC> is true_type
+NO-8    YES	  YES   YES   YES   The wrapper has the same size as the underlying enum
+YES		  NO-4 	YES   YES   YES   The wrapper defaults to the enum default
+YES		  YES	  YES   YES   YES   Construction of the wrapper from int compile fails
+YES		  YES	  YES   YES   YES   The wrapper can be constructed from enum literals
+YES		  YES	  YES   YES   YES   The wrapper can be compared to enum literals
+YES		  YES	  YES   YES   YES   The wrapper can be compared
+NO-7	  YES	  YES   YES   YES   The wrapper is not implicit convertible to underlying int
+YES		  NO-5  YES   YES   YES   The assignation of an enum class conversion from a valid int works
+YES		  NO-5 	YES   YES   YES   Construction of the wrapper with an enum class conversion from an valid int works
+YES		  YES	  NO-6  NO-6  YES   The wrapper can be used as member of a union as it is the case of the underlying enum.
+YES		  NO-9	NO-9  NO-9  YES   The wrapper can be used in switch
+YES		  NO-9	NO-9  YES   YES   The literals can be used in switch/case
+NO-7	  YES	  YES   YES   YES   The wrapper can not be used on a if (is not convertible to bool)
+NO-8	  YES	  YES   YES   YES   The wrapper can have an underlying type different of int.
+
+NO-1 Type name
+=============
+Scoped enums are portable only if the use of type is named BOOST_ENUM_CLASS(N)
+
+NO-2 Type name
+=============
+The access to the real enum type is portable only through the enum_type metafunction
+
+Use in templates
+================
+The wrapper can not be used in template meta-programming.
+We need to use the nested enum type and the enum class literals.
+Use enum_type<EC>::type and BOOST_ENUM_VALUE(EV)
+This meta-function will be equivalet to EC if enum class is supported
+
+NO-3 is_enum
+=======
+The wrapper is not an C++98/C++0x enum.
+We need to use the nested enum type.
+Use is_enum<enum_type<EC>::type>
+
+
+NO-4 Default value
+=============
+There is no portable way to manage with standard *implicit* default values if the enum class emmulation can not define constructors.
+I have found an explicit way that allows to assign the default value.
+Use default_value<EC>().
+This function will be equivalet to EC() if enum class is supported
+
+NO-5 Explicit conversion from int
+==========================
+There is no portable way to manage with standard *explicit* conversion of ints if the enum class emmulation can not define constructors.
+I have found an explicit way that allows to manage with explicit conversion using afunction instead of the Constructor
+Use convert_to<EC>(v)
+This function will be equivalet to EC(v) if enum class is supported
+
+NO-6 Use in union
+=================
+not possible if the compiler doesn't allos class with constructors in unions
+
+NO-7 Implicit conversion to int and bool
+=================
+As the type is a C++98 enum implicit converions to int and bool are possible
+
+NO-8 Use in union
+=================
+As the type is a C++98 enum there is no way to specify the underlying type.
+
+NO-9 Use in Switch
+=============
+As the wrapper is a class we can not use it directly in a switch.
+We need to extract the enum value, and  use the enum class literals.
+Use get_value(v) and BOOST_ENUM_VALUE(EV)
+This function will be equivalet to v if enum class is supported
+This macro will be equivalet to EV if enum class is supported
+
+
+//!  C++0x like extended enumeration class providing:
+//!  * scoped constatnts,
+//!  * conversion to the underlying int type and
+//!  * conversion to/from strings.
+
+//! Equivalet to
+//!   enum class EnumClass : Underlying {
+//!     Default = 0,
+//!     Enum1,
+//!     Enum2
+//!   };
+
+//!   ENUM_CLASS_BEGIN(EnumClass, Underlying)
+//!     Default = 0,
+//!     Enum1,
+//!     Enum2
+//!   ENUM_CLASS_END(EnumClass, Underlying)
+
+//! PP Sequence Syntax
+//!   ENUM_CLASS(EnumClass, Underlying,
+//!     ( (Default) (0) )
+//!     ( (Enum1)       )
+//!     ( (Enum2)       )
+//!   );
+
+//! PP Variadic Syntax
+//!   ENUM_CLASS(EnumClass, (Underlying),
+//!     (Default) (0),
+//!     Enum1,
+//!     Enum2
+//!   );

@@ -1,0 +1,56 @@
+# Boost Enums Library test Jamfile
+
+# Copyright Vicente Botet 2010-2011
+
+# Distributed under the Boost Software License, Version 1.0.
+# See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt
+
+# See library home page at http://www.boost.org/libs/opaque
+
+
+if ! $(BOOST_ROOT)
+{
+    BOOST_ROOT = [ modules.peek : BOOST_ROOT ] ;
+}
+
+project
+    : requirements
+
+        # uncomment the line above if you build outside a Boost release
+        #<include>$(BOOST_ROOT)
+
+        <define>BOOST_ENABLE_WARNINGS
+        <warnings>all
+        <toolset>gcc:<cxxflags>-Wextra
+        <toolset>gcc:<cxxflags>-pedantic
+        <toolset>gcc:<cxxflags>-Wno-long-long
+        <toolset>darwin:<cxxflags>-Wextra
+        <toolset>darwin:<cxxflags>-pedantic
+        <toolset>darwin:<cxxflags>-Wno-long-long
+        #<toolset>pathscale:<cxxflags>-Wextra
+        <toolset>pathscale:<cxxflags>-Wno-long-long
+        <toolset>pathscale:<cxxflags>-pedantic
+        <toolset>clang:<cxxflags>-Wextra
+        <toolset>clang:<cxxflags>-pedantic
+        <toolset>clang:<cxxflags>-Wno-long-long
+        <toolset>gcc-mingw-4.5.0:<cxxflags>-Wno-missing-field-initializers
+        <toolset>gcc-mingw-4.5.0:<cxxflags>-fdiagnostics-show-option
+        <toolset>msvc:<cxxflags>/wd4127
+    ;
+
+   test-suite "examples"
+        :
+        [ compile-fail construction_from_int_fails.cpp ]
+        [ compile-fail comparaision_fails.cpp ]
+        [ compile-fail implicit_conversion_to_ut_fails.cpp ]
+        [ compile-fail implicit_conversion_to_bool_fails.cpp ]
+
+        [ compile has_same_size_as_ut.cpp ]
+        [ run defaults_to_enum_default.cpp ]
+        [ run constructible_from_enum.cpp ]
+        [ run equal_comparable.cpp ]
+        [ run not_equal_comparable.cpp ]
+        #[ run EnumClass.cpp ]
+        #[ run EnumClass.cpp ]
+        [ run EnumClass.cpp odr.cpp ]
+        ;
