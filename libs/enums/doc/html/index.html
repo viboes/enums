@@ -1,0 +1,1090 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Chapter&#160;1.&#160;Toward Boost.Enums 0.1.0</title>
+<link rel="stylesheet" href="../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.1.0">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td>
+<td align="center"><a href="../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav"></div>
+<div class="chapter">
+<div class="titlepage"><div>
+<div><h2 class="title">
+<a name="boost.enums"></a>Chapter&#160;1.&#160;Toward Boost.Enums 0.1.0</h2></div>
+<div><div class="author"><h3 class="author">
+<span class="firstname">Vicente J.</span> <span class="surname">Botet Escriba</span>
+</h3></div></div>
+<div><p class="copyright">Copyright &#169; 2010 Vicente J. Botet Escriba</p></div>
+<div><div class="legalnotice">
+<a name="id2523307"></a><p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></div>
+</div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="section"><a href="index.html#boost.enums.overview">Overview</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.overview.motivation">Motivation</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.overview.description">Description</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide">Users' Guide</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.getting_started">Getting Started</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial">Tutorial</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.examples">Examples</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.ext_references">External Resources</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.reference">Reference</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.reference.enums_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.include_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">include</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.default_value_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">default_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.underlying_type_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">underlying_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.enum_type_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">enum_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.get_value_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">get_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.emulation_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">emulation</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.appendices">Appendices</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.history">Appendix A: History</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.rationale">Appendix B: Design
+      Rationale</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.implementation">Appendix C: Implementation
+      Notes</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.acknowledgements">Appendix D:
+      Acknowledgements</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests">Appendix E:
+      Tests</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_f__tickets">Appendix
+      F: Tickets</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.todo">Appendix F: Future plans</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+<div class="blockquote"><blockquote class="blockquote"><p>
+      [C enumerations constitute a curiously half-baked concept.
+    </p></blockquote></div>
+<p>
+    ]
+  </p>
+<div class="blockquote"><blockquote class="blockquote"><p>
+      <span class="bold"><strong><span class="emphasis"><em>-Stroustrup </em></span></strong></span>
+    </p></blockquote></div>
+<div class="warning"><table border="0" summary="Warning">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../doc/src/images/warning.png"></td>
+<th align="left">Warning</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+      Enums is not a part of the Boost libraries.
+    </p></td></tr>
+</table></div>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost.enums.overview"></a><a class="link" href="index.html#boost.enums.overview" title="Overview">Overview</a>
+</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.overview.motivation">Motivation</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.overview.description">Description</a></span></dt>
+</dl></div>
+<a name="boost.enums.overview.how_to_use_this_documentation"></a><h4>
+<a name="id3108256"></a>
+      <a class="link" href="index.html#boost.enums.overview.how_to_use_this_documentation">How to Use
+      This Documentation</a>
+    </h4>
+<p>
+      This documentation makes use of the following naming and formatting conventions.
+    </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Code is in <code class="computeroutput"><span class="identifier">fixed</span> <span class="identifier">width</span>
+          <span class="identifier">font</span></code> and is syntax-highlighted.
+        </li>
+<li class="listitem">
+          Replaceable text that you will need to supply is in <em class="replaceable"><code>italics</code></em>.
+        </li>
+<li class="listitem">
+          If a name refers to a free function, it is specified like this: <code class="computeroutput"><span class="identifier">free_function</span><span class="special">()</span></code>;
+          that is, it is in code font and its name is followed by <code class="computeroutput"><span class="special">()</span></code>
+          to indicate that it is a free function.
+        </li>
+<li class="listitem">
+          If a name refers to a class template, it is specified like this: <code class="computeroutput"><span class="identifier">class_template</span><span class="special">&lt;&gt;</span></code>;
+          that is, it is in code font and its name is followed by <code class="computeroutput"><span class="special">&lt;&gt;</span></code>
+          to indicate that it is a class template.
+        </li>
+<li class="listitem">
+          If a name refers to a function-like macro, it is specified like this:
+          <code class="computeroutput"><span class="identifier">MACRO</span><span class="special">()</span></code>;
+          that is, it is uppercase in code font and its name is followed by <code class="computeroutput"><span class="special">()</span></code> to indicate that it is a function-like
+          macro. Object-like macros appear without the trailing <code class="computeroutput"><span class="special">()</span></code>.
+        </li>
+<li class="listitem">
+          Names that refer to <span class="emphasis"><em>concepts</em></span> in the generic programming
+          sense are specified in CamelCase.
+        </li>
+</ul></div>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+        In addition, notes such as this one specify non-essential information that
+        provides additional background or rationale.
+      </p></td></tr>
+</table></div>
+<p>
+      Finally, you can mentally add the following to any code fragments in this document:
+    </p>
+<pre class="programlisting"><span class="comment">// Include all of the core Enums files
+</span><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">;</span>
+</pre>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.overview.motivation"></a><a class="link" href="index.html#boost.enums.overview.motivation" title="Motivation">Motivation</a>
+</h3></div></div></div>
+<p>
+        The David E. Miller, Herb Sutter and Bjarne Stroustrup's proposal (<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1891.pdf" target="_top"><span class="bold"><strong>N1891: Strongly Typed Enums (revision 3)</strong></span> includes
+        a clear motivation for "Strongly Typed Enums".</a>[@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1891.pdf
+        <span class="bold"><strong>N1891: Strongly Typed Enums (revision 3)</strong></span>
+        includes a clear motivation for "Strongly Typed Enums".
+      </p>
+<p>
+        On compilers not providing "Strongly Typed Enums" we can make a
+        quite close emulation. This allows to write programs that are portable on
+        comilers providing this feature natively and using the emulation on the others.
+      </p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.overview.description"></a><a class="link" href="index.html#boost.enums.overview.description" title="Description">Description</a>
+</h3></div></div></div>
+<p>
+        <span class="bold"><strong>Boost.Enums</strong></span> intends to provide a library
+        partial solution to this problem.
+      </p>
+<p>
+        <span class="bold"><strong>Boost.Enums</strong></span> provides:
+      </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+            Some language-like macros helping to define scoped enum classes.
+          </li>
+<li class="listitem">
+            Some meta-functions and functions helping to write portable programs
+            using scoped enum classes under comilers supporting them natively or
+            by an emulation on the others.
+          </li>
+</ul></div>
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost.enums.users_guide"></a><a class="link" href="index.html#boost.enums.users_guide" title="Users' Guide">Users' Guide</a>
+</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.getting_started">Getting Started</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.getting_started.install">Installing
+        Boost.Enums</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.getting_started.hello_world__">Hello
+        World! </a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial">Tutorial</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_class_">How
+        to define a scoped enum class?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enum_classes_and_the_associated_literals_">How
+        to use scoped enum classes and the associated literals?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.are_scoped_enum_classes_convertible_to_the_underlying_type_">Are
+        scoped enum classes convertible to the underlying type?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_type_">How
+        to define a scoped enum type?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_">Can
+        these scoped enums be used inside unions?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enums_in_siwtch_statements_">How
+        to use scoped enums in siwtch statements?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enums_as_non_type_template_parameters_">How
+        to use scoped enums as non type template parameters?</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.examples">Examples</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.examples.aligned">aligned</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.examples.cv_status">cv_status</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.ext_references">External Resources</a></span></dt>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.users_guide.getting_started"></a><a class="link" href="index.html#boost.enums.users_guide.getting_started" title="Getting Started">Getting Started</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.getting_started.install">Installing
+        Boost.Enums</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.getting_started.hello_world__">Hello
+        World! </a></span></dt>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.getting_started.install"></a><a class="link" href="index.html#boost.enums.users_guide.getting_started.install" title="Installing Boost.Enums">Installing
+        Boost.Enums</a>
+</h4></div></div></div>
+<a name="boost.enums.users_guide.getting_started.install.getting_boost_enums"></a><h6>
+<a name="id3067027"></a>
+          <a class="link" href="index.html#boost.enums.users_guide.getting_started.install.getting_boost_enums">Getting
+          Boost.Enums</a>
+        </h6>
+<p>
+          You can get the last stable release of <span class="bold"><strong>Boost.Enums</strong></span>
+          by downloading <code class="literal">enums.zip</code> from the <a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=enums.zip&amp;directory=Utilities&amp;" target="_top">Boost
+          Vault Utilities directory</a>
+        </p>
+<p>
+          You can also access the latest (unstable?) state from the <a href="https://svn.boost.org/svn/boost/sandbox/enums" target="_top">Boost
+          Sandbox</a>.
+        </p>
+<a name="boost.enums.users_guide.getting_started.install.building_boost_enums"></a><h6>
+<a name="id3067084"></a>
+          <a class="link" href="index.html#boost.enums.users_guide.getting_started.install.building_boost_enums">Building
+          Boost.Enums</a>
+        </h6>
+<p>
+          There is no need to compile <span class="bold"><strong>Boost.Enums</strong></span>,
+          since it's a header only library. Just include your Boost header directory
+          in your compiler include path.
+        </p>
+<a name="boost.enums.users_guide.getting_started.install.requirements"></a><h6>
+<a name="id3067117"></a>
+          <a class="link" href="index.html#boost.enums.users_guide.getting_started.install.requirements">Requirements</a>
+        </h6>
+<p>
+          <span class="bold"><strong>Boost.Enums</strong></span> depends only on Boost.Conversion
+          and Boost.Config (and all libraries they depends on).
+        </p>
+<a name="boost.enums.users_guide.getting_started.install.exceptions_safety"></a><h6>
+<a name="id3067150"></a>
+          <a class="link" href="index.html#boost.enums.users_guide.getting_started.install.exceptions_safety">Exceptions
+          safety</a>
+        </h6>
+<p>
+          All functions in the library are exception-neutral and provide strong guarantee
+          of exception safety as long as the underlying parameters provide it.
+        </p>
+<a name="boost.enums.users_guide.getting_started.install.thread_safety"></a><h6>
+<a name="id3067177"></a>
+          <a class="link" href="index.html#boost.enums.users_guide.getting_started.install.thread_safety">Thread
+          safety</a>
+        </h6>
+<p>
+          All functions in the library are thread-unsafe except when noted explicitly.
+        </p>
+<a name="boost.enums.users_guide.getting_started.install.tested_compilers"></a><h6>
+<a name="id3067203"></a>
+          <a class="link" href="index.html#boost.enums.users_guide.getting_started.install.tested_compilers">Tested
+          compilers</a>
+        </h6>
+<p>
+          The implementation will eventually work with most C++03 conforming compilers.
+          Current version has been tested on:
+        </p>
+<p>
+          Windows with
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+              MSVC 10.0
+            </li></ul></div>
+<p>
+          Cygwin 1.7 with
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+              GCC 4.3.4
+            </li></ul></div>
+<p>
+          MinGW with
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+              GCC 4.4.0
+            </li>
+<li class="listitem">
+              GCC 4.5.0
+            </li>
+<li class="listitem">
+              GCC 4.5.0 C++0x
+            </li>
+<li class="listitem">
+              GCC 4.6.0
+            </li>
+<li class="listitem">
+              GCC 4.6.0 C++0x
+            </li>
+</ul></div>
+<p>
+          Ubuntu 10.10
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+              GCC 4.4.5
+            </li>
+<li class="listitem">
+              GCC 4.4.5 -std=c++0x
+            </li>
+<li class="listitem">
+              GCC 4.5.1
+            </li>
+<li class="listitem">
+              GCC 4.5.1 -std=c++0x
+            </li>
+<li class="listitem">
+              clang 2.8
+            </li>
+</ul></div>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+            Please let us know how this works on other platforms/compilers.
+          </p></td></tr>
+</table></div>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+            Please send any questions, comments and bug reports to boost &lt;at&gt;
+            lists &lt;dot&gt; boost &lt;dot&gt; org.
+          </p></td></tr>
+</table></div>
+</div>
+<div class="section"><div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.getting_started.hello_world__"></a><a class="link" href="index.html#boost.enums.users_guide.getting_started.hello_world__" title="Hello World!">Hello
+        World! </a>
+</h4></div></div></div></div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.users_guide.tutorial"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial" title="Tutorial">Tutorial</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_class_">How
+        to define a scoped enum class?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enum_classes_and_the_associated_literals_">How
+        to use scoped enum classes and the associated literals?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.are_scoped_enum_classes_convertible_to_the_underlying_type_">Are
+        scoped enum classes convertible to the underlying type?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_type_">How
+        to define a scoped enum type?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_">Can
+        these scoped enums be used inside unions?</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_inhibit_the_constructors_generation_">How
+          to inhibit the constructors generation?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_default_constructor_">How
+          to replace the default constructor?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_copy_constructor_">How
+          to replace the copy constructor?</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enums_in_siwtch_statements_">How
+        to use scoped enums in siwtch statements?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enums_as_non_type_template_parameters_">How
+        to use scoped enums as non type template parameters?</a></span></dt>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_class_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_class_" title="How to define a scoped enum class?">How
+        to define a scoped enum class?</a>
+</h4></div></div></div>
+<p>
+          You can define the equivalent of
+        </p>
+<pre class="programlisting"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="identifier">EnumClass</span> <span class="special">:</span> <span class="keyword">unsigned</span> <span class="keyword">char</span><span class="special">)</span> <span class="special">{</span>
+  <span class="identifier">Enum0</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span>
+  <span class="identifier">Enum1</span><span class="special">,</span>
+  <span class="identifier">Enum2</span>
+<span class="special">};</span>
+</pre>
+<p>
+          using the provided macros as follows
+        </p>
+<pre class="programlisting"><span class="identifier">BOOST_ENUM_CLASS_START</span><span class="special">(</span><span class="identifier">EnumClass</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">char</span><span class="special">)</span> <span class="special">{</span>
+  <span class="identifier">Enum0</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span>
+  <span class="identifier">Enum1</span><span class="special">,</span>
+  <span class="identifier">Enum2</span>
+<span class="special">}</span> <span class="identifier">BOOST_ENUM_CLASS_END</span><span class="special">(</span><span class="identifier">EnumClass</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">char</span><span class="special">)</span>
+</pre>
+<p>
+          Simple, isn't it?
+        </p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.how_to_use_scoped_enum_classes_and_the_associated_literals_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enum_classes_and_the_associated_literals_" title="How to use scoped enum classes and the associated literals?">How
+        to use scoped enum classes and the associated literals?</a>
+</h4></div></div></div>
+<p>
+          Scoped enums classes and the associated literals can be used as the C++0x
+          counterparts in almost all the situations.
+        </p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.are_scoped_enum_classes_convertible_to_the_underlying_type_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.are_scoped_enum_classes_convertible_to_the_underlying_type_" title="Are scoped enum classes convertible to the underlying type?">Are
+        scoped enum classes convertible to the underlying type?</a>
+</h4></div></div></div>
+<p>
+          Scoped enums classes are strong types and the conversion to the underlying
+          type is not implicit. You will need to use the enums::get_value function
+          to get explicitly the value.
+        </p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_type_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.how_to_define_a_scoped_enum_type_" title="How to define a scoped enum type?">How
+        to define a scoped enum type?</a>
+</h4></div></div></div>
+<p>
+          scoped enum types add implicit conversion to the underlying type. They
+          can be defined as follows
+        </p>
+<pre class="programlisting"><span class="identifier">BOOST_ENUM_TYPE_START</span><span class="special">(</span><span class="identifier">EnumType</span><span class="special">,</span> <span class="keyword">int</span><span class="special">)</span> <span class="special">{</span>
+  <span class="identifier">Enum0</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span>
+  <span class="identifier">Enum1</span><span class="special">,</span>
+  <span class="identifier">Enum2</span>
+<span class="special">}</span> <span class="identifier">BOOST_ENUM_TYPE_END</span><span class="special">(</span><span class="identifier">EnumType</span><span class="special">,</span> <span class="keyword">int</span><span class="special">)</span>
+
+<span class="identifier">EnumType</span> <span class="identifier">e</span> <span class="special">=</span> <span class="identifier">EnumType</span><span class="special">::</span><span class="identifier">Enum2</span><span class="special">;</span>
+<span class="keyword">int</span> <span class="identifier">i</span> <span class="special">=</span> <span class="identifier">e</span><span class="special">;</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_" title="Can these scoped enums be used inside unions?">Can
+        these scoped enums be used inside unions?</a>
+</h4></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_inhibit_the_constructors_generation_">How
+          to inhibit the constructors generation?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_default_constructor_">How
+          to replace the default constructor?</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_copy_constructor_">How
+          to replace the copy constructor?</a></span></dt>
+</dl></div>
+<p>
+          All this depends on your compiler. If the compiler support user classes
+          with constructors, there is no problem. But in the oposite case, you will
+          need to inhibit the constructor.
+        </p>
+<div class="section">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_inhibit_the_constructors_generation_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_inhibit_the_constructors_generation_" title="How to inhibit the constructors generation?">How
+          to inhibit the constructors generation?</a>
+</h5></div></div></div>
+<p>
+            You will need to use the BOOST_ENUM_XXX_NO_CONS_END macros to inhibit
+            the constructor generation
+          </p>
+<p>
+            The problem with removing the constructors is that we are unable to have
+            default constructor and copy constructors syntax. So we will need to
+            use a different syntax to get portable programs.
+          </p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_default_constructor_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_default_constructor_" title="How to replace the default constructor?">How
+          to replace the default constructor?</a>
+</h5></div></div></div>
+<p>
+            The following compiles but the test can fails depending on the implementation
+          </p>
+<pre class="programlisting"><span class="special">{</span> <span class="comment">// defaults to the enum default
+</span>  <span class="identifier">EnumClass</span> <span class="identifier">e</span> <span class="special">;</span>
+  <span class="identifier">BOOST_TEST</span><span class="special">(</span><span class="identifier">e</span><span class="special">==</span><span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span><span class="special">);</span>
+<span class="special">}</span>
+</pre>
+<p>
+            You need to state explicitly that you want the defaul value
+          </p>
+<pre class="programlisting"><span class="special">{</span> <span class="comment">// defaults to the enum default
+</span>  <span class="identifier">EnumClass</span> <span class="identifier">e</span> <span class="special">=</span><span class="identifier">EnumClass</span><span class="special">();</span>
+  <span class="identifier">BOOST_TEST</span><span class="special">(</span><span class="identifier">e</span><span class="special">==</span><span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span><span class="special">);</span>
+<span class="special">}</span>
+</pre>
+<p>
+            If you have inhibited the constructors, the preceding code fail to compile.
+            The library provides a function that creates scoped enums instances initialized
+            with the default value.
+          </p>
+<pre class="programlisting"><span class="special">{</span> <span class="comment">// defaults to the enum default
+</span>  <span class="identifier">EnumClass</span> <span class="identifier">e</span> <span class="special">=</span> <span class="identifier">default_value</span><span class="special">&lt;</span><span class="identifier">EnumClass</span><span class="special">&gt;();</span>
+  <span class="identifier">BOOST_TEST</span><span class="special">(</span><span class="identifier">e</span><span class="special">==</span><span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span><span class="special">);</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_copy_constructor_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.can_these_scoped_enums_be_used_inside_unions_.how_to_replace_the_copy_constructor_" title="How to replace the copy constructor?">How
+          to replace the copy constructor?</a>
+</h5></div></div></div>
+<p>
+            The following fails to compile if constructors have been removed:
+          </p>
+<pre class="programlisting"><span class="special">{</span> <span class="comment">// copy constructor emulation
+</span>  <span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">(</span><span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum2</span><span class="special">);</span>  <span class="comment">// COMPILE ERROR HERE
+</span><span class="special">}</span>
+</pre>
+<p>
+            The library provides a function convert_to that creates scoped enums
+            instances
+          </p>
+<pre class="programlisting"><span class="special">{</span> <span class="comment">// copy constructor emulation
+</span>  <span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">=</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">convert_to</span><span class="special">&lt;</span><span class="identifier">EnumClass</span><span class="special">&gt;(</span><span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum2</span><span class="special">);</span>
+  <span class="identifier">BOOST_TEST</span><span class="special">(</span><span class="identifier">e</span><span class="special">==</span><span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum2</span><span class="special">);</span>
+<span class="special">}</span>
+</pre>
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.how_to_use_scoped_enums_in_siwtch_statements_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enums_in_siwtch_statements_" title="How to use scoped enums in siwtch statements?">How
+        to use scoped enums in siwtch statements?</a>
+</h4></div></div></div>
+<p>
+          The following fails to compile if constructors have been removed:
+        </p>
+<pre class="programlisting"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">c_str</span><span class="special">(</span><span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">)</span>
+<span class="special">{</span>
+    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">e</span><span class="special">)</span> <span class="comment">// COMPILE ERROR HERE
+</span>    <span class="special">{</span>
+    <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum0"</span><span class="special">);</span>
+    <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">:</span>    <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum1"</span><span class="special">);</span>
+    <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum2</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum2"</span><span class="special">);</span>
+    <span class="keyword">default</span><span class="special">:</span>
+      <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::???"</span><span class="special">);</span>
+    <span class="special">}</span>
+<span class="special">}</span>
+</pre>
+<p>
+          The library provides a function get_value that return the native enum in
+          a portable way.
+        </p>
+<pre class="programlisting"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">c_str</span><span class="special">(</span><span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">)</span>
+<span class="special">{</span>
+    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">get_value</span><span class="special">(</span><span class="identifier">e</span><span class="special">))</span>
+    <span class="special">{</span>
+    <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum0"</span><span class="special">);</span>
+    <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">:</span>    <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum1"</span><span class="special">);</span>
+    <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum2</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum2"</span><span class="special">);</span>
+    <span class="keyword">default</span><span class="special">:</span>
+      <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::???"</span><span class="special">);</span>
+    <span class="special">}</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.tutorial.how_to_use_scoped_enums_as_non_type_template_parameters_"></a><a class="link" href="index.html#boost.enums.users_guide.tutorial.how_to_use_scoped_enums_as_non_type_template_parameters_" title="How to use scoped enums as non type template parameters?">How
+        to use scoped enums as non type template parameters?</a>
+</h4></div></div></div>
+<p>
+          The following fails to compile if constructors have been removed:
+        </p>
+<pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span><span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">ex</span><span class="special">;</span>
+</pre>
+<p>
+          The library provides a meta-function enum_type that return the native enum
+          type in a portable way.
+        </p>
+<pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_type</span><span class="special">&lt;</span><span class="identifier">EnumClass</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">e</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">ex</span><span class="special">;</span>
+</pre>
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.users_guide.examples"></a><a class="link" href="index.html#boost.enums.users_guide.examples" title="Examples">Examples</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.examples.aligned">aligned</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.users_guide.examples.cv_status">cv_status</a></span></dt>
+</dl></div>
+<div class="section"><div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.examples.aligned"></a><a class="link" href="index.html#boost.enums.users_guide.examples.aligned" title="aligned">aligned</a>
+</h4></div></div></div></div>
+<div class="section"><div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.users_guide.examples.cv_status"></a><a class="link" href="index.html#boost.enums.users_guide.examples.cv_status" title="cv_status">cv_status</a>
+</h4></div></div></div></div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.users_guide.ext_references"></a><a class="link" href="index.html#boost.enums.users_guide.ext_references" title="External Resources">External Resources</a>
+</h3></div></div></div>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl>
+<dt><span class="term"><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf" target="_top"><span class="bold"><strong>N2347: Strongly Typed Enums (revision 3)</strong></span></a></span></dt>
+<dd><p>
+              Alisdair Meredith
+            </p></dd>
+<dt><span class="term"><a href="http://www.gimpel.com/html/strong.htm" target="_top"><span class="bold"><strong>PC-lint/FlexeLint
+          Strong Type Checking</strong></span></a></span></dt>
+<dd><p>
+              Gimpel Software
+            </p></dd>
+<dt><span class="term"><a href="http://www.drdobbs.com/article/printableArticle.jhtml;jsessionid=KPRMREL51P2LZQE1GHPCKH4ATMY32JVN?articleId=184401797&amp;dept_url=/" target="_top"><span class="bold"><strong>Enumerations</strong></span></a></span></dt>
+<dd><p>
+              Herb Sutter and Jim Hyslop
+            </p></dd>
+<dt><span class="term"><a href="http://www.eetimes.com/discussion/programming-pointers/4024556/Enumerations-Q--A" target="_top"><span class="bold"><strong>Enumerations Q &amp; A</strong></span></a></span></dt>
+<dd><p>
+              Dan Saks
+            </p></dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost.enums.reference"></a><a class="link" href="index.html#boost.enums.reference" title="Reference">Reference</a>
+</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.reference.enums_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.include_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">include</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.default_value_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">default_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.underlying_type_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">underlying_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.enum_type_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">enum_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.get_value_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">get_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.reference.emulation_hpp">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">emulation</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a></span></dt>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.enums_hpp"></a><a class="link" href="index.html#boost.enums.reference.enums_hpp" title="Header &lt;boost/enums.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Include all the enums public header files.
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">include</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.include_hpp"></a><a class="link" href="index.html#boost.enums.reference.include_hpp" title="Header &lt;boost/enums/include.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">include</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Include all the enums public header files.
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">default_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">underlying_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">enum_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">get_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">emmulation</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.default_value_hpp"></a><a class="link" href="index.html#boost.enums.reference.default_value_hpp" title="Header &lt;boost/enums/default_value.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">default_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Builds a enum class with the default value
+      </p>
+<pre class="programlisting"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+  <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
+
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">EC</span><span class="special">&gt;</span>
+    <span class="identifier">EC</span> <span class="identifier">default_value</span><span class="special">();</span>
+
+  <span class="special">}</span>
+<span class="special">}</span>    
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.underlying_type_hpp"></a><a class="link" href="index.html#boost.enums.reference.underlying_type_hpp" title="Header &lt;boost/enums/underlying_type.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">underlying_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Metafunction to retrieve the underlying type of a scoped enum.
+      </p>
+<pre class="programlisting"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+  <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">EC</span><span class="special">&gt;</span>
+    <span class="keyword">struct</span> <span class="identifier">underlying_type</span>
+    <span class="special">{</span>
+      <span class="keyword">typedef</span> <span class="special">&lt;</span><span class="identifier">see</span> <span class="identifier">below</span><span class="special">&gt;</span> <span class="identifier">type</span><span class="special">;</span>
+    <span class="special">};</span>
+
+  <span class="special">}</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.enum_type_hpp"></a><a class="link" href="index.html#boost.enums.reference.enum_type_hpp" title="Header &lt;boost/enums/enum_type.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">enum_type</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Metafunction to retrieve the native enumeration type of a scoped enum.
+      </p>
+<pre class="programlisting"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+  <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">EC</span><span class="special">&gt;</span>
+    <span class="keyword">struct</span> <span class="identifier">enum_type</span>
+    <span class="special">{</span>
+      <span class="keyword">typedef</span> <span class="special">&lt;</span><span class="identifier">see</span> <span class="identifier">below</span><span class="special">&gt;</span> <span class="identifier">type</span><span class="special">;</span>
+    <span class="special">};</span>
+
+  <span class="special">}</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.get_value_hpp"></a><a class="link" href="index.html#boost.enums.reference.get_value_hpp" title="Header &lt;boost/enums/get_value.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">get_value</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Returns the associated native enumeration type of an enum class.
+      </p>
+<pre class="programlisting"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+  <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
+
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">EC</span><span class="special">&gt;</span>
+    <span class="keyword">typename</span> <span class="identifier">enum_type</span><span class="special">&lt;</span><span class="identifier">EC</span><span class="special">&gt;::</span><span class="identifier">type</span>
+    <span class="identifier">get_value</span><span class="special">(</span><span class="identifier">EC</span> <span class="identifier">e</span><span class="special">);</span>
+    
+  <span class="special">}</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.reference.emulation_hpp"></a><a class="link" href="index.html#boost.enums.reference.emulation_hpp" title="Header &lt;boost/enums/emulation.hpp&gt;">Header <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">enums</span><span class="special">/</span><span class="identifier">emulation</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code></a>
+</h3></div></div></div>
+<p>
+        Macro language-like emulating scoped enum classes and types.
+      </p>
+<pre class="programlisting"><span class="preprocessor">#define</span> <span class="identifier">BOOST_ENUM_CLASS_START</span><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span>
+<span class="preprocessor">#define</span> <span class="identifier">BOOST_ENUM_CLASS_END</span><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span>
+<span class="preprocessor">#define</span> <span class="identifier">BOOST_ENUM_CLASS_NO_CONS_END</span><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span>
+
+<span class="preprocessor">#define</span> <span class="identifier">BOOST_ENUM_TYPE_START</span><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span> 
+<span class="preprocessor">#define</span> <span class="identifier">BOOST_ENUM_TYPE_END</span><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span>
+<span class="preprocessor">#define</span> <span class="identifier">BOOST_ENUM_TYPE_NO_CONS_END</span><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span>
+</pre>
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost.enums.appendices"></a><a class="link" href="index.html#boost.enums.appendices" title="Appendices">Appendices</a>
+</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.history">Appendix A: History</a></span></dt>
+<dd><dl><dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_1_0__feb_27__2011__"><span class="bold"><strong>Version 0.1.0, Feb 27, 2011</strong></span> </a></span></dt></dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.rationale">Appendix B: Design
+      Rationale</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.implementation">Appendix C: Implementation
+      Notes</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.acknowledgements">Appendix D:
+      Acknowledgements</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests">Appendix E:
+      Tests</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_class">scoped_enum_class</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_type">scoped_enum_type</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_class">scoped_enum_no_cons_class</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_type">scoped_enum_no_cons_type</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_f__tickets">Appendix
+      F: Tickets</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.todo">Appendix F: Future plans</a></span></dt>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.history"></a><a class="link" href="index.html#boost.enums.appendices.history" title="Appendix A: History">Appendix A: History</a>
+</h3></div></div></div>
+<div class="toc"><dl><dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_1_0__feb_27__2011__"><span class="bold"><strong>Version 0.1.0, Feb 27, 2011</strong></span> </a></span></dt></dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.appendices.history.__version_0_1_0__feb_27__2011__"></a><a class="link" href="index.html#boost.enums.appendices.history.__version_0_1_0__feb_27__2011__" title="Version 0.1.0, Feb 27, 2011"><span class="bold"><strong>Version 0.1.0, Feb 27, 2011</strong></span> </a>
+</h4></div></div></div>
+<p>
+          Initial version committed on the sandbox
+        </p>
+<p>
+          <span class="bold"><strong>Features:</strong></span>
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+              Some language-like macros helping to define scoped enum classes.
+            </li>
+<li class="listitem">
+              Some meta-functions and functions helping to write portable programs
+              using scoped enum classes under comilers supporting them natively or
+              by an emulation on the others.
+            </li>
+</ul></div>
+</div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.rationale"></a><a class="link" href="index.html#boost.enums.appendices.rationale" title="Appendix B: Design Rationale">Appendix B: Design
+      Rationale</a>
+</h3></div></div></div>
+<a name="boost.enums.appendices.rationale.lala"></a><h5>
+<a name="id3121148"></a>
+        <a class="link" href="index.html#boost.enums.appendices.rationale.lala">lala</a>
+      </h5>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.implementation"></a><a class="link" href="index.html#boost.enums.appendices.implementation" title="Appendix C: Implementation Notes">Appendix C: Implementation
+      Notes</a>
+</h3></div></div></div>
+<a name="boost.enums.appendices.implementation.lala"></a><h5>
+<a name="id3121181"></a>
+        <a class="link" href="index.html#boost.enums.appendices.implementation.lala">lala</a>
+      </h5>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.acknowledgements"></a><a class="link" href="index.html#boost.enums.appendices.acknowledgements" title="Appendix D: Acknowledgements">Appendix D:
+      Acknowledgements</a>
+</h3></div></div></div>
+<p>
+        Thanks to Beman Dawes for opening the initial discussion. Daniel James for
+        giving the idea of the alternative implementation and to Matt Calabrese for
+        his inshighfull comments on the ML. This library will never be created without
+        the exchanges they made on the ML (see <a href="http://boost.2283326.n4.nabble.com/Boost-Dev-f2600599.html" target="_top">here</a>).
+      </p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.appendix_e__tests"></a><a class="link" href="index.html#boost.enums.appendices.appendix_e__tests" title="Appendix E: Tests">Appendix E:
+      Tests</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_class">scoped_enum_class</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_type">scoped_enum_type</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_class">scoped_enum_no_cons_class</a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_type">scoped_enum_no_cons_type</a></span></dt>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_class"></a><a class="link" href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_class" title="scoped_enum_class">scoped_enum_class</a>
+</h4></div></div></div>
+<div class="table">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_class.contructors_and_assignement"></a><p class="title"><b>Table&#160;1.1.&#160;Contructors and Assignement</b></p>
+<div class="table-contents"><table class="table" summary="Contructors and Assignement">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody><tr>
+<td>
+                  <p>
+                    Name
+                  </p>
+                </td>
+<td>
+                  <p>
+                    kind
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Description
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Result
+                  </p>
+                </td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_type"></a><a class="link" href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_type" title="scoped_enum_type">scoped_enum_type</a>
+</h4></div></div></div>
+<div class="table">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_type.contructors_and_assignement"></a><p class="title"><b>Table&#160;1.2.&#160;Contructors and Assignement</b></p>
+<div class="table-contents"><table class="table" summary="Contructors and Assignement">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody><tr>
+<td>
+                  <p>
+                    Name
+                  </p>
+                </td>
+<td>
+                  <p>
+                    kind
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Description
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Result
+                  </p>
+                </td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_class"></a><a class="link" href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_class" title="scoped_enum_no_cons_class">scoped_enum_no_cons_class</a>
+</h4></div></div></div>
+<div class="table">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_class.contructors_and_assignement"></a><p class="title"><b>Table&#160;1.3.&#160;Contructors and Assignement</b></p>
+<div class="table-contents"><table class="table" summary="Contructors and Assignement">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody><tr>
+<td>
+                  <p>
+                    Name
+                  </p>
+                </td>
+<td>
+                  <p>
+                    kind
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Description
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Result
+                  </p>
+                </td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_type"></a><a class="link" href="index.html#boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_type" title="scoped_enum_no_cons_type">scoped_enum_no_cons_type</a>
+</h4></div></div></div>
+<div class="table">
+<a name="boost.enums.appendices.appendix_e__tests.scoped_enum_no_cons_type.contructors_and_assignement"></a><p class="title"><b>Table&#160;1.4.&#160;Contructors and Assignement</b></p>
+<div class="table-contents"><table class="table" summary="Contructors and Assignement">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody><tr>
+<td>
+                  <p>
+                    Name
+                  </p>
+                </td>
+<td>
+                  <p>
+                    kind
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Description
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Result
+                  </p>
+                </td>
+</tr></tbody>
+</table></div>
+</div>
+<br class="table-break">
+</div>
+</div>
+<div class="section"><div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.appendix_f__tickets"></a><a class="link" href="index.html#boost.enums.appendices.appendix_f__tickets" title="Appendix F: Tickets">Appendix
+      F: Tickets</a>
+</h3></div></div></div></div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost.enums.appendices.todo"></a><a class="link" href="index.html#boost.enums.appendices.todo" title="Appendix F: Future plans">Appendix F: Future plans</a>
+</h3></div></div></div>
+<a name="boost.enums.appendices.todo.tasks_to_do_before_review"></a><h5>
+<a name="id3121556"></a>
+        <a class="link" href="index.html#boost.enums.appendices.todo.tasks_to_do_before_review">Tasks
+        to do before review</a>
+      </h5>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+            Complete the doc and the tests
+          </li></ul></div>
+<a name="boost.enums.appendices.todo.for_later_releases"></a><h5>
+<a name="id3121586"></a>
+        <a class="link" href="index.html#boost.enums.appendices.todo.for_later_releases">For later
+        releases</a>
+      </h5>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+            Add first, last, next, prior, index functions.
+          </li>
+<li class="listitem">
+            Add enum_array.
+          </li>
+<li class="listitem">
+            Add enum_set.
+          </li>
+<li class="listitem">
+            Conversion to and from strings.
+          </li>
+</ul></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"><p><small>Last revised: February 28, 2011 at 00:13:21 GMT</small></p></td>
+<td align="right"><div class="copyright-footer"></div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav"></div>
+</body>
+</html>

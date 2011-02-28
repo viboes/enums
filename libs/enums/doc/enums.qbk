@@ -5,13 +5,15 @@
  / file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  /]
 
-[article Toward Boost.Enums
+[library Toward Boost.Enums
     [quickbook 1.5]
-    [version 0.1.1]
+    [version 0.1.0]
     [authors [Botet Escriba, Vicente J.]]
     [copyright 2010 Vicente J. Botet Escriba]
+    [category Utilities]
     [id boost.enums]
-    [/dirname enums]
+    [dirname enums]
+    [purpose C++0x scoped enums emulation]
     [license
         Distributed under the Boost Software License, Version 1.0.
         (See accompanying file LICENSE_1_0.txt or copy at
@@ -19,10 +21,9 @@
     ]
 ]
 
-[:["Strong type checking is gold;
-            normal type checking is silver;
-                           and casting is brass]]
-[:[*['-- ]]]
+[:[C enumerations constitute a curiously half-baked concept.
+]]
+[:[*['-Stroustrup ]]]
 
 [warning Enums is not a part of the Boost libraries.]
 
@@ -174,11 +175,158 @@ Ubuntu 10.10
 
 [section Tutorial]
 
+[section How to define a scoped enum class?]
+
+You can define the equivalent of 
+
+  enum class EnumClass : unsigned char) {
+    Enum0 = 0,
+    Enum1,
+    Enum2
+  };
+  
+using the provided macros as follows
+
+  BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
+    Enum0 = 0,
+    Enum1,
+    Enum2
+  } BOOST_ENUM_CLASS_END(EnumClass, unsigned char)
+  
+Simple, isn't it?
+
+[endsect]
+[section How to use scoped enum classes and the associated literals?]
+
+Scoped enums classes and the associated literals can be used as the C++0x counterparts in almost all the situations.
+
+[endsect]
+[section Are scoped enum classes convertible to the underlying type?]
+
+Scoped enums classes are strong types and the conversion to the underlying type is not implicit. You will need to use the enums::get_value function to get explicitly the value.
+
+[endsect]
+[section How to define a scoped enum type?]
+
+scoped enum types add implicit conversion to the underlying type. They can be defined as follows
+
+  BOOST_ENUM_TYPE_START(EnumType, int) {
+    Enum0 = 0,
+    Enum1,
+    Enum2
+  } BOOST_ENUM_TYPE_END(EnumType, int)
+
+  EnumType e = EnumType::Enum2;
+  int i = e;
 
 [endsect]
 
+[section Can these scoped enums be used inside unions?]
+
+All this depends on your compiler. If the compiler support user classes with constructors, there is no problem. But in the oposite case, you will need to  inhibit the constructor.
+
+[section How to inhibit the constructors generation?]
+
+You will need to use the BOOST_ENUM_XXX_NO_CONS_END macros to inhibit the constructor generation 
+
+The problem with removing the constructors is that we are unable to have default constructor and copy constructors syntax. So we will need to use a different syntax to get portable programs.
+
+[endsect]
+[section How to replace the default constructor?]
+
+The following compiles but the test can fails depending on the implementation
+
+  { // defaults to the enum default
+    EnumClass e ;
+    BOOST_TEST(e==EnumClass::Enum0);
+  }
+
+You need to state explicitly that you want the defaul value
+
+  { // defaults to the enum default
+    EnumClass e =EnumClass();
+    BOOST_TEST(e==EnumClass::Enum0);
+  }
+
+If you have inhibited the constructors, the preceding code fail to compile. The library provides a function that creates scoped enums instances initialized with the default value.
+
+  { // defaults to the enum default
+    EnumClass e = default_value<EnumClass>();
+    BOOST_TEST(e==EnumClass::Enum0);
+  }
+
+[endsect]
+[section How to replace the copy constructor?]
+
+The following fails to compile if constructors have been removed:
+
+  { // copy constructor emulation
+    EnumClass e(EnumClass::Enum2);  // COMPILE ERROR HERE
+  }
+
+The library provides a function convert_to that creates scoped enums instances
+
+  { // copy constructor emulation
+    EnumClass e=boost::convert_to<EnumClass>(EnumClass::Enum2);
+    BOOST_TEST(e==EnumClass::Enum2);
+  }
+
+
+[endsect]
+
+[endsect]
+[section How to use scoped enums in siwtch statements?]
+
+The following fails to compile if constructors have been removed:
+ 
+  const char* c_str(EnumClass e)
+  {
+      switch (e) // COMPILE ERROR HERE
+      {
+      case EnumClass::Enum0 :   return("EnumClass::Enum0");
+      case EnumClass::Enum1:    return("EnumClass::Enum1");
+      case EnumClass::Enum2 :   return("EnumClass::Enum2");
+      default:
+        return("EnumClass::???");
+      }
+  }
+
+The library provides a function get_value that return the native enum in a portable way.
+
+  const char* c_str(EnumClass e)
+  {
+      switch (boost::enums::get_value(e))
+      {
+      case EnumClass::Enum0 :   return("EnumClass::Enum0");
+      case EnumClass::Enum1:    return("EnumClass::Enum1");
+      case EnumClass::Enum2 :   return("EnumClass::Enum2");
+      default:
+        return("EnumClass::???");
+      }
+  }
+
+[endsect]
+[section How to use scoped enums as non type template parameters?]
+
+The following fails to compile if constructors have been removed:
+ 
+  template <EnumClass e>
+  struct ex;
+
+The library provides a meta-function enum_type that return the native enum type in a portable way.
+
+  template <enums::enum_type<EnumClass>::type e>
+  struct ex;
+
+[endsect]
+[endsect]
+
 [section Examples]
-[section Identifier]
+[section aligned]
+
+
+[endsect]
+[section cv_status]
 
 
 [endsect]
@@ -199,7 +347,15 @@ Ubuntu 10.10
     [Gimpel Software]
 ]
 
+[
+    [[@http://www.drdobbs.com/article/printableArticle.jhtml;jsessionid=KPRMREL51P2LZQE1GHPCKH4ATMY32JVN?articleId=184401797&dept_url=/ [*Enumerations]]]
+    [Herb Sutter and Jim Hyslop ]
+]
 
+[
+    [[@http://www.eetimes.com/discussion/programming-pointers/4024556/Enumerations-Q--A [*Enumerations Q & A]]]
+    [Dan Saks]
+]
 
 ]
 
@@ -211,23 +367,120 @@ Ubuntu 10.10
 [section Reference]
 
 [/==========================================================================================]
-[section:opaque_hpp Header `<boost/enums.hpp>`]
+[section:enums_hpp Header `<boost/enums.hpp>`]
 [/==========================================================================================]
 
 Include all the enums public header files.
 
-    #include <boost/enums/enums.hpp>
+    #include <boost/enums/include.hpp>
 
 [endsect]
 
 
 [/==========================================================================================]
-[section:new_class_hpp Header `<boost/enums/enums.hpp>`]
+[section:include_hpp Header `<boost/enums/include.hpp>`]
 [/==========================================================================================]
 
+Include all the enums public header files.
+
+    #include <boost/enums/default_value.hpp>
+    #include <boost/enums/underlying_type.hpp>
+    #include <boost/enums/enum_type.hpp>
+    #include <boost/enums/get_value.hpp>
+    #include <boost/enums/emmulation.hpp>
+    
+[endsect]
+
+[/==========================================================================================]
+[section:default_value_hpp Header `<boost/enums/default_value.hpp>`]
+[/==========================================================================================]
+
+Builds a enum class with the default value
+
+  namespace boost {
+    namespace enums {
+
+      template <typename EC>
+      EC default_value();
+
+    }
+  }    
+  
+[endsect]
+
+[/==========================================================================================]
+[section:underlying_type_hpp Header `<boost/enums/underlying_type.hpp>`]
+[/==========================================================================================]
+
+Metafunction to retrieve the underlying type of a scoped enum.
+
+  namespace boost {
+    namespace enums {
+      template <typename EC>
+      struct underlying_type
+      {
+        typedef <see below> type;
+      };
+
+    }
+  }
+  
+[endsect]
+
+[/==========================================================================================]
+[section:enum_type_hpp Header `<boost/enums/enum_type.hpp>`]
+[/==========================================================================================]
+
+Metafunction to retrieve the native enumeration type of a scoped enum.
+
+  namespace boost {
+    namespace enums {
+      template <typename EC>
+      struct enum_type
+      {
+        typedef <see below> type;
+      };
+
+    }
+  }
+  
+[endsect]
+
+[/==========================================================================================]
+[section:get_value_hpp Header `<boost/enums/get_value.hpp>`]
+[/==========================================================================================]
+
+Returns the associated native enumeration type of an enum class.
+
+  namespace boost {
+    namespace enums {
+
+      template <typename EC>
+      typename enum_type<EC>::type
+      get_value(EC e);
+      
+    }
+  }
 
 [endsect]
 
+
+[/==========================================================================================]
+[section:emulation_hpp Header `<boost/enums/emulation.hpp>`]
+[/==========================================================================================]
+
+Macro language-like emulating scoped enum classes and types.
+
+  #define BOOST_ENUM_CLASS_START(EC, UT)
+  #define BOOST_ENUM_CLASS_END(EC, UT)
+  #define BOOST_ENUM_CLASS_NO_CONS_END(EC, UT)
+
+  #define BOOST_ENUM_TYPE_START(EC, UT) 
+  #define BOOST_ENUM_TYPE_END(EC, UT)
+  #define BOOST_ENUM_TYPE_NO_CONS_END(EC, UT)
+    
+[endsect]
+    
 [endsect]
 
 [/=================]
@@ -269,7 +522,28 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 [endsect]
 [section  Appendix E: Tests]
 
-[section new_class]
+[section scoped_enum_class]
+
+[table Contructors and Assignement
+    [[Name]                             [kind]      [Description]                                   [Result]]
+]
+
+[endsect]
+[section scoped_enum_type]
+
+[table Contructors and Assignement
+    [[Name]                             [kind]      [Description]                                   [Result]]
+]
+
+[endsect]
+[section scoped_enum_no_cons_class]
+
+[table Contructors and Assignement
+    [[Name]                             [kind]      [Description]                                   [Result]]
+]
+
+[endsect]
+[section scoped_enum_no_cons_type]
 
 [table Contructors and Assignement
     [[Name]                             [kind]      [Description]                                   [Result]]
@@ -290,8 +564,12 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 
 * Complete the doc and the tests
 
-[/heading For later releases]
+[heading For later releases]
 
+* Add first, last, next, prior, index functions.
+* Add enum_array.
+* Add enum_set.
+* Conversion to and from strings.
 
 
 [endsect]
