@@ -19,6 +19,10 @@ int main() {
   { // Constructible from enum
     EnumClass e(EnumClass::Enum2);
   }
-
+  { // copy constructor emulation
+    EnumClass e1=boost::convert_to<EnumClass>(EnumClass::Enum2);
+    EnumClass e2=e1;
+    BOOST_TEST(e2==EnumClass::Enum2);
+  }
   return boost::report_errors();
 }
