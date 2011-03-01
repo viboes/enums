@@ -10,27 +10,23 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_GET_VALUE_HPP
-#define BOOST_ENUMS_GET_VALUE_HPP
+#ifndef BOOST_ENUMS_VALUE_HPP
+#define BOOST_ENUMS_VALUE_HPP
 
-#include <boost/config.hpp>
-#include <boost/enums/enum_type.hpp>
-#include <iostream>
+#include <boost/enums/enum_traits.hpp>
+
 namespace boost {
   namespace enums {
-
-    template <typename EC>
-    inline
-    typename enum_type<EC>::type
-    get_value(EC e)
-    {
-#ifdef BOOST_NO_SCOPED_ENUMS
-          std::cout << __LINE__ << std::endl;
-                return e.get();
-#else
-          std::cout << __LINE__ << std::endl;      return e;
-#endif
+    namespace meta {
+      template <typename EC, int I>
+      struct val; 
     }
+    template <typename EC>
+    EC val(int p)
+    {
+      return enum_traits<EC>::val(p);  
+    }
+
   }
 }
 

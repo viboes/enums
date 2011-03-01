@@ -10,22 +10,22 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_INCLUDE_HPP
-#define BOOST_ENUMS_INCLUDE_HPP
+#ifndef BOOST_ENUMS_FIRST_HPP
+#define BOOST_ENUMS_FIRST_HPP
 
-#include <boost/enums/default_value.hpp>
-#include <boost/enums/emmulation.hpp>
-#include <boost/enums/enum_range.hpp>
-#include <boost/enums/enum_traiter.hpp>
-#include <boost/enums/enum_traits.hpp>
 #include <boost/enums/enum_type.hpp>
-#include <boost/enums/get_value.hpp>
-#include <boost/enums/first.hpp>
-#include <boost/enums/last.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/underlying_type.hpp>
 #include <boost/enums/val.hpp>
 
-    
+namespace boost {
+  namespace enums {
+    namespace meta {
+      template <typename EC>
+      struct first 
+      {
+        static const typename enum_type<EC>::type value = enums::meta::val<EC,0>::value;
+      };
+    }
+  }
+}
+
 #endif
