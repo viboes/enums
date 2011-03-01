@@ -17,7 +17,8 @@ int main() {
   using namespace boost::enums;
 
   { // defaults to the enum default
-    EnumClass e =EnumClass() ;
+    BOOST_TEST(EnumClass::type()==EnumClass::Default);
+    EnumClass e = EnumClass() ;
     BOOST_TEST(e==EnumClass::Default);
   }
   { // defaults to the enum default
@@ -25,5 +26,5 @@ int main() {
     BOOST_TEST(e==EnumClass::Default);
   }
   return boost::report_errors();
-
 }
+

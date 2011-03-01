@@ -11,8 +11,9 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "./EnumClass.hpp"
+#include <boost/detail/lightweight_test.hpp>
 
-void fail() {
+int main() {
 
   { // The wrapper can be compared
     EnumClass e0;
@@ -26,5 +27,5 @@ void fail() {
     e1= EnumClass::Enum2;
     BOOST_TEST(e0 < e1);
   }
-
+  return boost::report_errors();
 }

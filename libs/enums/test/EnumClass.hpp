@@ -18,7 +18,13 @@
 #include <boost/enums/enum_type.hpp>
 #include <boost/enums/default_value.hpp>
 #include <boost/enums/get_value.hpp>
+#include <boost/enums/pos.hpp>
+#include <boost/enums/first.hpp>
+#include <boost/enums/last.hpp>
+#include <boost/enums/size.hpp>
+#include <boost/enums/enum_traits.hpp>
 #include <boost/conversion/convert_to.hpp>
+#include <boost/enums/enum_traiter.hpp>
 #include <boost/enums/emulation.hpp>
 #include <cassert>
 #include <cstring>
@@ -30,7 +36,7 @@
 //~ #if defined(BOOST_ENUM_CLASS_START)
 #if 1
   BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
-    Default = 0,
+    Default = 3,
     Enum1,
     Enum2
   } BOOST_ENUM_CLASS_CONS_END(EnumClass, unsigned char)
@@ -39,7 +45,7 @@
   #if !defined(BOOST_NO_SCOPED_ENUMS)
 enum class EnumClass : unsigned char
 {
-  Default = 0,
+  Default = 3,
   Enum1,
   Enum2
 }
@@ -60,7 +66,7 @@ public:
   //! nested C++98 enumeration class
   enum   type
   {
-    Default = 0,
+    Default = 3,
     Enum1,
     Enum2
   };
@@ -96,7 +102,7 @@ public:
 
 #ifdef CTOR
   //! default constructor :: Default
-  EnumClass()  : Val()
+  EnumClass()  : Val(type())
   {
   }
 
@@ -143,11 +149,8 @@ public:
 
 
 #endif // !defined(BOOST_NO_SCOPED_ENUMS)
-#endif // defined(BOOST_ENUM_CLASS_START)
-
 //!  conversion from the underlying int.
 inline EnumClass convert_to(boost::enums::underlying_type<EnumClass>::type v
-//~ inline EnumClass convert_to(unsigned int v
   , boost::dummy::type_tag<EnumClass> const&
 )
 {
@@ -158,7 +161,7 @@ inline EnumClass convert_to(boost::enums::underlying_type<EnumClass>::type v
 #endif
 }
 
-//!  conversion from the underlying int.
+//!  conversion from the native enum type.
 inline EnumClass convert_to(boost::enums::enum_type<EnumClass>::type  v
   , boost::dummy::type_tag<EnumClass> const&
 )
@@ -169,8 +172,7 @@ inline EnumClass convert_to(boost::enums::enum_type<EnumClass>::type  v
   return EnumClass(v);
 #endif
 }
-
-
+#endif // defined(BOOST_ENUM_CLASS_START)
 
 //!  conversion from c-string.
 inline EnumClass convert_to(const char* str
@@ -180,7 +182,7 @@ inline EnumClass convert_to(const char* str
     if (strcmp(str, "Default") ==0)  { return boost::convert_to<EnumClass>(EnumClass::Default); }
     if (strcmp(str, "Enum1") ==0)    { return  boost::convert_to<EnumClass>(EnumClass::Enum1); }
     if (strcmp(str, "Enum2") ==0)  { return  boost::convert_to<EnumClass>(EnumClass::Enum2); }
-    assert(false && "invalid string for ArqType");
+    assert(false && "invalid string for EnumClass");
 }
 
 //!  conversion from std::string.
@@ -191,7 +193,7 @@ inline EnumClass convert_to(const std::string& str
     return boost::convert_to<EnumClass>(str.c_str());
 }
 
-//! explicit conversion to c-string.
+//!explicit conversion to c-string.
 inline const char* c_str(EnumClass e)
 {
     switch (boost::enums::get_value(e))
@@ -204,10 +206,80 @@ inline const char* c_str(EnumClass e)
     }
 }
 
+namespace boost {
+  namespace enums {
+    namespace meta {
+
+    template <>
+    struct size<EnumClass>
+    {
+      static const int value = 3;
+    }; 
+    template <>
+    struct pos<EnumClass, EnumClass::Default>
+    {
+      static const int value = 0;
+    }; 
+    template <>
+    struct pos<EnumClass, EnumClass::Enum1>
+    {
+      static const int value = 1;
+    }; 
+    template <>
+    struct pos<EnumClass, EnumClass::Enum2>
+    {
+      static const int value = 2;
+    }; 
+
+    template <>
+    struct val<EnumClass, 0>
+    {
+      static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Default;
+    }; 
+    template <>
+    struct val<EnumClass, 1>
+    {
+      static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum1;
+    }; 
+    template <>
+    struct val<EnumClass, 2>
+    {
+      static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum2;
+    }; 
+    } // namespace meta
+    template <>
+    struct enum_traits<EnumClass> : enum_traiter<EnumClass> 
+    {
+      static int pos(EnumClass e) 
+      {
+        switch (boost::enums::get_value(e)) 
+        {
+          case EnumClass::Default: return 0;
+          case EnumClass::Enum1:   return 1;
+          case EnumClass::Enum2:   return 2;
+          default:                 return -1;
+        }
+      }
+      static EnumClass val(int p) 
+      {
+        switch (p) 
+        {
+          case 0: return boost::convert_to<EnumClass>(EnumClass::Default);
+          case 1: return boost::convert_to<EnumClass>(EnumClass::Enum1);
+          case 2: return boost::convert_to<EnumClass>(EnumClass::Enum2);
+          default: throw "bad_parameter";
+        }
+      }
+    }; 
+  }
+}
+
+
+
 //! OSTRREAM overloading
 template <typename OSTREAM>
 inline OSTREAM& operator <<(OSTREAM& os, EnumClass v) {
-  os << c_str(v);
+  os << int(boost::enums::get_value(v));
   return os;
 }
 

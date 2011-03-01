@@ -1,6 +1,6 @@
 # Boost Enums Library test Jamfile
 
-# Copyright Vicente Botet 2010-2011
+# Copyright Vicente Botet 2011
 
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt
@@ -41,12 +41,12 @@ project
    test-suite "examples"
         :
         [ compile-fail construction_from_int_fails.cpp ]
-        [ compile-fail comparaision_fails.cpp ]
+        [ run comparaision.cpp ]
         [ compile-fail implicit_conversion_to_ut_fails.cpp ]
         [ compile-fail implicit_conversion_to_bool_fails.cpp ]
 
         [ compile has_same_size_as_ut.cpp ]
-        [ run defaults_to_enum_default.cpp ]
+        #[ run defaults_to_enum_default.cpp ]
         [ run constructible_from_enum.cpp ]
         [ run equal_comparable.cpp ]
         [ run not_equal_comparable.cpp ]
