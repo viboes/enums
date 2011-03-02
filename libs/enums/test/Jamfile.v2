@@ -58,6 +58,7 @@ project
 
    test-suite "enum_array"
 	:
+        [ run enum_array/types.pass.cpp : : : : enum_array__types__pass ]
         [ run enum_array/cons/default.pass.cpp : : : : enum_array__cons__default__pass ]
         [ run enum_array/cons/initializer_list.pass.cpp : : : : enum_array__cons__initializer_list__pass ]
         [ run enum_array/size/size.pass.cpp : : : : enum_array__size__size__pass ]
