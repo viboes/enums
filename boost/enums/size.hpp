@@ -22,9 +22,6 @@ namespace boost {
       template <typename EC>
       struct size; 
     }
-    //{
-    //  typename int value = ...;
-    //};
 
   }
 }

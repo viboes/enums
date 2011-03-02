@@ -15,7 +15,7 @@
 
 #include <boost/config.hpp>
 #include <boost/enums/enum_type.hpp>
-#include <iostream>
+
 namespace boost {
   namespace enums {
 
@@ -25,10 +25,9 @@ namespace boost {
     get_value(EC e)
     {
 #ifdef BOOST_NO_SCOPED_ENUMS
-          std::cout << __LINE__ << std::endl;
-                return e.get();
+      return e.get();
 #else
-          std::cout << __LINE__ << std::endl;      return e;
+      return e;
 #endif
     }
   }

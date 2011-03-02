@@ -22,7 +22,7 @@ namespace boost {
       struct val; 
     }
     template <typename EC>
-    EC val(int p)
+    EC val(std::size_t p)
     {
       return enum_traits<EC>::val(p);  
     }

@@ -24,23 +24,23 @@
 namespace boost {
   namespace enums {
     template <typename EC, 
-        int Last=enums::meta::size<EC>::value-1,
-        int First=0
+        std::size_t Last=meta::size<EC>::value-1,
+        std::size_t First=0
         >
     struct enum_traiter
     {
       typedef EC enum_type;
-      static const int first_index = First;
-      static const int last_index = Last;
-      static const int size = Last-First+1;
+      static const std::size_t first_index = First;
+      static const std::size_t last_index = Last;
+      static const std::size_t size = Last-First+1;
 
       static EC first() 
       {
-        return boost::convert_to<EC>(enums::meta::val<EC,First>::value);
+        return boost::convert_to<EC>(meta::val<EC,First>::value);
       }
       static EC last() 
       {
-        return boost::convert_to<EC>(enums::meta::val<EC,Last>::value);
+        return boost::convert_to<EC>(meta::val<EC,Last>::value);
       }
       
     };     
@@ -48,13 +48,13 @@ namespace boost {
     struct linear_enum_traiter : enum_traiter<EC>
     {
     typedef enum_traiter<EC> base_type;
-      static int pos(EC e) 
+      static std::size_t pos(EC e) 
       {
-        return (enums::get_value(e)-base_type::first_index);
+        return (get_value(e)-base_type::first_index);
       } 
-      static EC val(int i) 
+      static EC val(std::size_t i) 
       {
-        typename enums::underlying_type<EC>::type ut = i+base_type::first_index;
+        typename underlying_type<EC>::type ut = i+base_type::first_index;
         return boost::convert_to<EC>(ut);
       }  
     };

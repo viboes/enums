@@ -39,7 +39,7 @@
 //#include <boost/tuples.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
-// FIXES for broken compilers
+// FIXES for broken compilers + CONSTEXPR
 #include <boost/config.hpp>
 
 
@@ -49,7 +49,7 @@ namespace enums {
     template<class T, typename EC>
     class enum_array {
       public:
-        T elems[enums::meta::size<EC>::value];    // fixed-size array of elements of type T
+        T elems[meta::size<EC>::value];    // fixed-size array of elements of type T
         
       public:
         // type definitions
@@ -63,7 +63,7 @@ namespace enums {
         typedef EC             key_type;        
         typedef std::size_t    size_type;
         typedef std::ptrdiff_t difference_type;
-        static const std::size_t N = enums::meta::size<EC>::value;
+        static const std::size_t N = meta::size<EC>::value;
 
         // iterator support
         iterator        begin()       { return elems; }
@@ -114,14 +114,14 @@ namespace enums {
         // operator[]
         reference operator[](key_type k) 
         { 
-            size_type i = enums::pos(k);
+            size_type i = pos(k);
             BOOST_ASSERT( i < N && "out of range" ); 
             return elems[i];
         }
         
         const_reference operator[](key_type k) const 
         {     
-            size_type i = enums::pos(k);
+            size_type i = pos(k);
             BOOST_ASSERT( i < N && "out of range" ); 
             return elems[i]; 
         }
@@ -160,9 +160,18 @@ namespace enums {
         }
 
         // size is constant
-        BOOST_STATIC_CONSTEXPR size_type size() { return N; }
-        static bool empty() { return false; }
-        BOOST_STATIC_CONSTEXPR size_type max_size() { return N; }
+        BOOST_CONSTEXPR size_type size() 
+        { 
+          return N; 
+        }
+        static bool empty() 
+        { 
+          return false; 
+        }
+        BOOST_CONSTEXPR size_type max_size() 
+        { 
+          return N; 
+        }
         enum { static_size = N };
 
         // swap (note: linear complexity)
@@ -195,7 +204,7 @@ namespace enums {
         // check range (may be private because it is static)
         static size_type rangecheck (key_type k) {
         size_type i = rangecheck(k); 
-            if (i >= size()) {
+            if (i >= N) {
                 std::out_of_range e("array<>: index out of range");
                 boost::throw_exception(e);
             }
@@ -253,28 +262,28 @@ namespace enums {
     
    // Specific for boost::enums::enum_array: simply returns its elems data member.
    template <typename T, typename EC>
-   typename detail::c_array<T,N>::type& get_c_array(boost::enums::enum_array<T,EC>& arg)
+   typename detail::c_array<T,N>::type& get_c_array(enum_array<T,EC>& arg)
    {
        return arg.elems;
    }
 
    // Specific for boost::enums::enum_array: simply returns its elems data member.
    template <typename T, typename EC>
-   typename const detail::c_array<T,N>::type& get_c_array(const boost::enums::enum_array<T,EC>& arg)
+   typename const detail::c_array<T,N>::type& get_c_array(const enum_array<T,EC>& arg)
    {
        return arg.elems;
    }
 #else
 // Specific for boost::enums::enum_array: simply returns its elems data member.
     template <typename T, typename EC>
-    T(&get_c_array(boost::enums::enum_array<T,EC>& arg))[enums::meta::size<EC>::value]
+    T(&get_c_array(enum_array<T,EC>& arg))[meta::size<EC>::value]
     {
         return arg.elems;
     }
     
     // Const version.
     template <typename T, typename EC>
-    const T(&get_c_array(const boost::enums::enum_array<T,EC>& arg))[enums::meta::size<EC>::value]
+    const T(&get_c_array(const enum_array<T,EC>& arg))[meta::size<EC>::value]
     {
         return arg.elems;
     }
@@ -284,27 +293,27 @@ namespace enums {
     
     template <class T, typename EC>
     class  tuple_size<enum_array<T, EC> >
-        : public integral_constant<size_t, enums::meta::size<EC>::value> {};
+        : public integral_constant<size_t, meta::size<EC>::value> {};
 
     template <class T, typename EC>
     class  tuple_size<const enum_array<T, EC> >
-        : public integral_constant<size_t, enums::meta::size<EC>::value> {};
+        : public integral_constant<size_t, meta::size<EC>::value> {};
 
-    template <class T, typename EC, enums::enum_type<EC>::type K>
+    template <class T, typename EC, enum_type<EC>::type K>
     class  tuple_element<enum_array<T, EC> >
     {
     public:
         typedef T type;
     };
 
-    template <class T, typename EC, enums::enum_type<EC>::type K>
+    template <class T, typename EC, enum_type<EC>::type K>
     class  tuple_element<const enum_array<T, EC> >
     {
     public:
         typedef const T type;
     };
 
-    template <class T, typename EC, enums::enum_type<EC>::type K>
+    template <class T, typename EC, enum_type<EC>::type K>
      inline
     T&
     get(enum_array<T, EC>& a)
@@ -312,8 +321,8 @@ namespace enums {
         return a[K];
     }
 
-    template <class T, typename EC, enums::enum_type<EC>::type K>
-    _LIBCPP_INLINE_VISIBILITY inline
+    template <class T, typename EC, enum_type<EC>::type K>
+    inline
     const T&
     get(const enum_array<T, EC>& a)
     {
@@ -322,9 +331,9 @@ namespace enums {
 
     #ifndef BOOST_NO_RVALUE_REFERENCES
 
-    template <class T, typename EC, enums::enum_type<EC>::type K>
+    template <class T, typename EC, enum_type<EC>::type K>
     T&&
-    get(array<T, enums::meta::size<EC>::value>&& a)
+    get(array<T, meta::size<EC>::value>&& a)
     {
         return boost::move(a[K]);
     }
