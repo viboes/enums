@@ -14,7 +14,7 @@
 #define BOOST_ENUMS_INCLUDE_HPP
 
 #include <boost/enums/default_value.hpp>
-#include <boost/enums/emmulation.hpp>
+#include <boost/enums/emulation.hpp>
 #include <boost/enums/enum_range.hpp>
 #include <boost/enums/enum_traiter.hpp>
 #include <boost/enums/enum_traits.hpp>
