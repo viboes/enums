@@ -20,14 +20,37 @@
 //
 //===----------------------------------------------------------------------===//
 
-// <boost/enums/enum_set.hpp>
+// test default ctor
 
+#include "./Ex.hpp"
 #include <boost/enums/enum_set.hpp>
+#include <boost/enums/size.hpp>
+#include <boost/enums/val.hpp>
+#include <boost/detail/lightweight_test.hpp>
 
-//~ #ifndef BOOST_ENUMS_VERSION
-//~ #error BOOST_ENUMS_VERSION not defined
-//~ #endif
+using namespace boost::enums;
+
+template <typename EC>
+void test_default_ctor()
+{
+    {
+    enum_set<EC> v1;
+    BOOST_TEST(v1.size() == meta::size<EC>::value);
+    for (std::size_t i = 0; i < meta::size<EC>::value; ++i)
+        BOOST_TEST(v1[val<EC>(i)] == false);
+    }
+}
 
 int main()
 {
+    test_default_ctor<EC3>();
+    //~ test_default_ctor<1>();
+    //~ test_default_ctor<31>();
+    //~ test_default_ctor<32>();
+    //~ test_default_ctor<33>();
+    //~ test_default_ctor<63>();
+    //~ test_default_ctor<64>();
+    //~ test_default_ctor<65>();
+    //~ test_default_ctor<1000>();
+    return boost::report_errors();
 }

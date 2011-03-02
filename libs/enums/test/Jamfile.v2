@@ -72,5 +72,7 @@ project
   test-suite "enum_set"
 	:
         [ run enum_set/version.pass.cpp : : : : enum_set__version__pass ]
+        #[ run enum_set/types.pass.cpp : : : : enum_set__types__pass ]
+        [ run enum_set/cons/default.pass.cpp : : : : enum_set__cons_default__pass ]
   ;
   
