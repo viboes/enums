@@ -161,7 +161,7 @@ namespace boost {
     };
 
     // enum_set operators:
-    template <typename enum_type, typename traits=enum_traits<enum_type> >
+    template <typename enum_type, typename traits> 
     enum_set<enum_type,traits> operator&(const enum_set<enum_type,traits>& x, const enum_set<enum_type,traits>& y)
     {
       enum_set<enum_type,traits> r = x;
@@ -170,7 +170,7 @@ namespace boost {
     } 
 
 
-    template <typename enum_type,  typename traits=enum_traits<enum_type> >
+    template <typename enum_type,  typename traits >
     enum_set<enum_type,traits> operator|(const enum_set<enum_type,traits>& x, const enum_set<enum_type,traits>& y)
     {
       enum_set<enum_type,traits> r = x;
@@ -178,7 +178,7 @@ namespace boost {
       return r;
     } 
 
-    template <typename enum_type,  typename traits=enum_traits<enum_type> >
+    template <typename enum_type,  typename traits >
     enum_set<enum_type,traits> operator^(const enum_set<enum_type,traits>& x, const enum_set<enum_type,traits>& y)
     {
       enum_set<enum_type,traits> r = x;
@@ -187,7 +187,7 @@ namespace boost {
     } 
     
 
-    template <class charT, class ch_traits, typename enum_type,  typename traits=enum_traits<enum_type> >
+    template <class charT, class ch_traits, typename enum_type,  typename traits >
     std::basic_istream<charT, ch_traits>&
     operator>>(std::basic_istream<charT, ch_traits>& is, enum_set<enum_type,traits>& x)
     {
@@ -195,7 +195,7 @@ namespace boost {
     }
     
 
-    template <class charT, class ch_traits, typename enum_type,  typename traits=enum_traits<enum_type> >
+    template <class charT, class ch_traits, typename enum_type,  typename traits >
     std::basic_ostream<charT, ch_traits>&
     operator<<(std::basic_ostream<charT, ch_traits>& os, const enum_set<enum_type,traits>& x) 
     {
