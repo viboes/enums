@@ -18,6 +18,7 @@ project
 
         # uncomment the line above if you build outside a Boost release
         #<include>$(BOOST_ROOT)
+        <include>.
 
         <define>BOOST_ENABLE_WARNINGS
         <warnings>all
@@ -54,3 +55,15 @@ project
         #[ run EnumClass.cpp ]
         [ run EnumClass.cpp odr.cpp ]
         ;
+
+   test-suite "enum_array"
+	:
+        [ run enum_array/cons/default.pass.cpp : : : : enum_array__cons__default__pass ]
+        [ run enum_array/cons/initializer_list.pass.cpp : : : : enum_array__cons__initializer_list__pass ]
+        [ run enum_array/size/size.pass.cpp : : : : enum_array__size__size__pass ]
+        [ run enum_array/data/data.pass.cpp : : : : enum_array__data__data__pass ]
+        [ run enum_array/data/data_const.pass.cpp : : : : enum_array__data__data_const__pass ]
+        [ run enum_array/swap/swap.pass.cpp : : : : enum_array__swap__swap__pass ]
+        [ run enum_array/special/swap.pass.cpp : : : : enum_array__special__swap__pass ]
+        [ run enum_array/fill/fill.pass.cpp : : : : enum_array__fill__fill__pass ]
+	;
