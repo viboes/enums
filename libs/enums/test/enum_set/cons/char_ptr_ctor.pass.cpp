@@ -20,39 +20,54 @@
 //
 //===----------------------------------------------------------------------===//
 
-// test bitset(unsigned long long val);
+// template <class charT>
+//     explicit bitset(const charT* str,
+//                     typename basic_string<charT>::size_type n = basic_string<charT>::npos,
+//                     charT zero = charT('0'), charT one = charT('1'));
 
 #include "./Ex.hpp"
 #include <boost/enums/enum_set.hpp>
+#include <boost/enums/size.hpp>
 #include <boost/enums/val.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
 using namespace boost::enums;
 
 template <typename EC>
-void test_val_ctor()
+void test_char_pointer_ctor()
 {
     {
-    enum_set<EC> v(0xAAAAAAAAAAAAAAAAULL);
-    BOOST_TEST(v.size() == meta::size<EC>::value);
-    unsigned M = std::min<std::size_t>(meta::size<EC>::value, 64);
+    try
+    {
+        enum_set<EC> v("xxx1010101010xxxx");
+        BOOST_TEST(false);
+    }
+    catch (std::invalid_argument&)
+    {
+    }
+    }
+
+    {
+    const char str[] ="1010101010";
+    enum_set<EC> v(str);
+    std::size_t M = std::min<std::size_t>(meta::size<EC>::value, 10);
     for (std::size_t i = 0; i < M; ++i)
-        BOOST_TEST(v[val<EC>(i)] == ((i & 1)));
-    for (std::size_t i = M; i < meta::size<EC>::value; ++i)
+        BOOST_TEST(v[val<EC>(i)] == (str[M - 1 - i] == '1'));
+    for (std::size_t i = 10; i < meta::size<EC>::value; ++i)
         BOOST_TEST(v[val<EC>(i)] == false);
     }
 }
 
 int main()
 {
-    test_val_ctor<EC3>();
-    //~ test_val_ctor<1>();
-    //~ test_val_ctor<31>();
-    //~ test_val_ctor<32>();
-    //~ test_val_ctor<33>();
-    //~ test_val_ctor<63>();
-    //~ test_val_ctor<64>();
-    //~ test_val_ctor<65>();
-    //~ test_val_ctor<1000>();
+    test_char_pointer_ctor<EC3>();
+    //~ test_char_pointer_ctor<1>();
+    //~ test_char_pointer_ctor<31>();
+    //~ test_char_pointer_ctor<32>();
+    //~ test_char_pointer_ctor<33>();
+    //~ test_char_pointer_ctor<63>();
+    //~ test_char_pointer_ctor<64>();
+    //~ test_char_pointer_ctor<65>();
+    //~ test_char_pointer_ctor<1000>();
     return boost::report_errors();
 }
