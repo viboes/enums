@@ -133,10 +133,10 @@ namespace enums {
           return elems[i]; 
         }
         const_reference at(key_type k) const 
-    { 
-      size_type i = rangecheck(k); 
-      return elems[i]; 
-    }
+        { 
+          size_type i = rangecheck(k); 
+          return elems[i]; 
+        }
     
         // front() and back()
         reference front() 
@@ -160,9 +160,9 @@ namespace enums {
         }
 
         // size is constant
-        static size_type size() { return N; }
+        BOOST_STATIC_CONSTEXPR size_type size() { return N; }
         static bool empty() { return false; }
-        static size_type max_size() { return N; }
+        BOOST_STATIC_CONSTEXPR size_type max_size() { return N; }
         enum { static_size = N };
 
         // swap (note: linear complexity)
