@@ -56,8 +56,8 @@ project
         [ run EnumClass.cpp odr.cpp ]
         ;
 
-   test-suite "enum_array"
-	:
+  test-suite "enum_array"
+  :
         [ run enum_array/types.pass.cpp : : : : enum_array__types__pass ]
         [ run enum_array/cons/default.pass.cpp : : : : enum_array__cons__default__pass ]
         [ run enum_array/cons/initializer_list.pass.cpp : : : : enum_array__cons__initializer_list__pass ]
@@ -68,3 +68,9 @@ project
         [ run enum_array/special/swap.pass.cpp : : : : enum_array__special__swap__pass ]
         [ run enum_array/fill/fill.pass.cpp : : : : enum_array__fill__fill__pass ]
 	;
+  
+  test-suite "enum_set"
+	:
+        [ run enum_set/version.pass.cpp : : : : enum_set__version__pass ]
+  ;
+  
