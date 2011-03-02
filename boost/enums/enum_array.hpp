@@ -95,7 +95,9 @@ namespace enums {
         typedef std::reverse_iterator<const_iterator,T> const_reverse_iterator;
 #endif
 
-        reverse_iterator rbegin() { return reverse_iterator(end()); }
+        reverse_iterator rbegin() { 
+          return reverse_iterator(end()); 
+        }
         const_reverse_iterator rbegin() const {
             return const_reverse_iterator(end());
         }
@@ -103,7 +105,9 @@ namespace enums {
             return const_reverse_iterator(end());
         }
 
-        reverse_iterator rend() { return reverse_iterator(begin()); }
+        reverse_iterator rend() { 
+          return reverse_iterator(begin()); 
+        }
         const_reverse_iterator rend() const {
             return const_reverse_iterator(begin());
         }
@@ -175,17 +179,24 @@ namespace enums {
         enum { static_size = N };
 
         // swap (note: linear complexity)
-        void swap (enum_array<T,EC>& y) {
+        void swap (enum_array<T,EC>& y) 
+        {
             for (size_type i = 0; i < N; ++i)
                 boost::swap(elems[i],y.elems[i]);
         }
 
         // direct access to data (read-only)
-        const T* data() const { return elems; }
-        T* data() { return elems; }
+        const T* data() const { 
+          return elems; 
+        }
+        T* data() { 
+          return elems; 
+        }
 
         // use enum_array as C array (direct read/write access to data)
-        T* c_array() { return elems; }
+        T* c_array() { 
+          return elems; 
+        }
 
         // assignment with type conversion
         template <typename T2>
@@ -194,8 +205,11 @@ namespace enums {
             return *this;
         }
 
+        // A synonym for fill
         // assign one value to all elements
-        void assign (const T& value) { fill ( value ); }    // A synonym for fill
+        void assign (const T& value) { 
+          fill ( value ); 
+        }    
         void fill   (const T& value)
         {
             std::fill_n(begin(),size(),value);
@@ -203,12 +217,12 @@ namespace enums {
 
         // check range (may be private because it is static)
         static size_type rangecheck (key_type k) {
-        size_type i = rangecheck(k); 
+            size_type i = enum_traits<key_type>::pos(k);
             if (i >= N) {
                 std::out_of_range e("array<>: index out of range");
                 boost::throw_exception(e);
             }
-        return i;
+            return i;
         }
 
     };
@@ -217,33 +231,40 @@ namespace enums {
 
     // comparisons
     template<class T, typename EC>
-    bool operator== (const enum_array<T,EC>& x, const enum_array<T,EC>& y) {
+    bool operator== (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
+    {
         return std::equal(x.begin(), x.end(), y.begin());
     }
     template<class T, typename EC>
-    bool operator< (const enum_array<T,EC>& x, const enum_array<T,EC>& y) {
+    bool operator< (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
+    {
         return std::lexicographical_compare(x.begin(),x.end(),y.begin(),y.end());
     }
     template<class T, typename EC>
-    bool operator!= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) {
+    bool operator!= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
+    {
         return !(x==y);
     }
     template<class T, typename EC>
-    bool operator> (const enum_array<T,EC>& x, const enum_array<T,EC>& y) {
+    bool operator> (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
+    {
         return y<x;
     }
     template<class T, typename EC>
-    bool operator<= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) {
+    bool operator<= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
+    {
         return !(y<x);
     }
     template<class T, typename EC>
-    bool operator>= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) {
+    bool operator>= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
+    {
         return !(x<y);
     }
 
     // global swap()
     template<class T, typename EC>
-    inline void swap (enum_array<T,EC>& x, enum_array<T,EC>& y) {
+    inline void swap (enum_array<T,EC>& x, enum_array<T,EC>& y) 
+    {
         x.swap(y);
     }
 
@@ -293,11 +314,13 @@ namespace enums {
     
     template <class T, typename EC>
     class  tuple_size<enum_array<T, EC> >
-        : public integral_constant<size_t, meta::size<EC>::value> {};
+        : public integral_constant<size_t, meta::size<EC>::value> 
+          {};
 
     template <class T, typename EC>
     class  tuple_size<const enum_array<T, EC> >
-        : public integral_constant<size_t, meta::size<EC>::value> {};
+        : public integral_constant<size_t, meta::size<EC>::value> 
+          {};
 
     template <class T, typename EC, enum_type<EC>::type K>
     class  tuple_element<enum_array<T, EC> >
@@ -314,7 +337,7 @@ namespace enums {
     };
 
     template <class T, typename EC, enum_type<EC>::type K>
-     inline
+    inline
     T&
     get(enum_array<T, EC>& a)
     {

@@ -39,6 +39,7 @@ namespace boost {
         set(setting);
       }
       BOOST_CONSTEXPR enum_set(unsigned long long val)
+      : bits(val)
       {
       }
       enum_set &operator&=(const enum_set &rhs)
