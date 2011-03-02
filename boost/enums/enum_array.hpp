@@ -36,7 +36,7 @@
 
 #include <boost/enums/size.hpp>
 #include <boost/enums/pos.hpp>
-#include <boost/tuple.hpp>
+//#include <boost/tuples.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
 // FIXES for broken compilers
@@ -58,10 +58,12 @@ namespace enums {
         typedef const T*       const_iterator;
         typedef T&             reference;
         typedef const T&       const_reference;
+        typedef value_type*                           pointer;
+        typedef const value_type*                     const_pointer;
         typedef EC             key_type;        
         typedef std::size_t    size_type;
         typedef std::ptrdiff_t difference_type;
-    static const std::size_t N = enums::meta::size<EC>::value;
+        static const std::size_t N = enums::meta::size<EC>::value;
 
         // iterator support
         iterator        begin()       { return elems; }
