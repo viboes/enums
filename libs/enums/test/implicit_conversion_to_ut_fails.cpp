@@ -21,6 +21,7 @@ void fail() {
     EnumClass e ;
     f(e); // error
     int i = e; // error
+    (void)i;
   }
 
 }

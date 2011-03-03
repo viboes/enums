@@ -16,5 +16,6 @@ void fail() {
 
   // Construction from int compile fails
   EnumClass e(0);
-
+  (void)e;
+  
 }

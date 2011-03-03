@@ -27,18 +27,21 @@
 #include <boost/enums/size.hpp>
 #include <boost/enums/val.hpp>
 #include <boost/detail/lightweight_test.hpp>
+#include <iostream>
 
 using namespace boost::enums;
 
 template <typename EC>
 void test_default_ctor()
 {
-    {
-    enum_set<EC> v1;
-    BOOST_TEST(v1.size() == meta::size<EC>::value);
-    for (std::size_t i = 0; i < meta::size<EC>::value; ++i)
-        BOOST_TEST(v1[val<EC>(i)] == false);
-    }
+    
+  enum_set<EC> v1;
+  BOOST_TEST(v1.size() == meta::size<EC>::value);
+  for (std::size_t i = 0; i < meta::size<EC>::value; ++i) 
+  {
+    BOOST_TEST(v1[val<EC>(i)] == false);
+  }
+    
 }
 
 int main()
