@@ -17,7 +17,11 @@
 
 #include <boost/enums/enum_traits.hpp>
 #include <bitset>
-#include <iostream>
+#include <stdexcept>
+#include <iosfwd>
+#include <string>
+#include <cstddef>
+#include <climits>
 #include <boost/functional/hash.hpp>
 
 #include <boost/config.hpp>
@@ -34,14 +38,33 @@ namespace boost {
       BOOST_CONSTEXPR enum_set()
       {
       }
-      BOOST_CONSTEXPR enum_set(enum_type setting)
+      BOOST_CONSTEXPR explicit enum_set(enum_type setting)
       {
         set(setting);
       }
-      BOOST_CONSTEXPR enum_set(unsigned long long val)
-      : bits(val)
+      BOOST_CONSTEXPR explicit enum_set(unsigned long long val)
+        : bits(val)
       {
       }
+      //#if defined(__GNUC__) &&  (__GNUC__ < 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ < 4 ))
+      #if 1
+      #else
+      template<class charT, class ch_traits, class TAllocator>
+        explicit enum_set(const std::basic_string<charT,ch_traits,TAllocator>& str,
+                          typename std::basic_string<charT,ch_traits,TAllocator>::size_type pos = 0,
+                          typename std::basic_string<charT,ch_traits,TAllocator>::size_type n =
+                                   std::basic_string<charT,ch_traits,TAllocator>::npos,
+                          charT zero = charT('0'), charT one = charT('1'))
+        : bits(str, pos, n, zero, one)
+      {}
+      template <class charT>
+        explicit enum_set(const charT* str,
+                          typename std::basic_string<charT>::size_type n = std::basic_string<charT>::npos,
+                          charT zero = charT('0'), charT one = charT('1'))
+        : bits(str,n, zero, one)
+      {}
+      #endif
+      
       enum_set &operator&=(const enum_set &rhs)
       {
         bits &= rhs.bits;
