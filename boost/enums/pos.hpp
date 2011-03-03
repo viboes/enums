@@ -15,6 +15,7 @@
 
 #include <boost/enums/enum_type.hpp>
 #include <boost/enums/enum_traits.hpp>
+#include <cstddef>
 
 
 namespace boost {
@@ -24,7 +25,7 @@ namespace boost {
       struct pos; 
     }
     template <typename EC>
-    int pos(EC e)
+    std::size_t pos(EC e)
     {
       return enum_traits<EC>::pos(e);  
     }

@@ -181,7 +181,7 @@ namespace boost {
       
     public:
       
-      std::bitset<traits::size> detail_bits() { return bits; }
+      std::bitset<traits::size+1> detail_bits() { return bits; }
     };
 
     // enum_set operators:

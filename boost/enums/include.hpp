@@ -15,7 +15,9 @@
 
 #include <boost/enums/default_value.hpp>
 #include <boost/enums/emulation.hpp>
+#include <boost/enums/enum_array.hpp>
 #include <boost/enums/enum_range.hpp>
+#include <boost/enums/enum_set.hpp>
 #include <boost/enums/enum_traiter.hpp>
 #include <boost/enums/enum_traits.hpp>
 #include <boost/enums/enum_type.hpp>
@@ -23,7 +25,9 @@
 #include <boost/enums/first.hpp>
 #include <boost/enums/last.hpp>
 #include <boost/enums/pos.hpp>
+#include <boost/enums/pred.hpp>
 #include <boost/enums/size.hpp>
+#include <boost/enums/succ.hpp>
 #include <boost/enums/underlying_type.hpp>
 #include <boost/enums/val.hpp>
 

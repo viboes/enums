@@ -25,6 +25,11 @@ namespace boost {
         static const typename enum_type<EC>::type value = enums::meta::val<EC,0>::value;
       };
     }
+    template <typename EC>
+    EC first() 
+    {
+        return meta::val<EC,0>::value;
+    }
   }
 }
 

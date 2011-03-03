@@ -14,16 +14,20 @@
 #define BOOST_ENUMS_VALUE_HPP
 
 #include <boost/enums/enum_traits.hpp>
+#include <boost/enums/size.hpp>
+#include <boost/assert.hpp>
+#include <cstddef>
 
 namespace boost {
   namespace enums {
     namespace meta {
-      template <typename EC, int I>
+      template <typename EC, std::size_t I>
       struct val; 
     }
     template <typename EC>
     EC val(std::size_t p)
     {
+      BOOST_ASSERT(p<(meta::size<EC>::value));
       return enum_traits<EC>::val(p);  
     }
 

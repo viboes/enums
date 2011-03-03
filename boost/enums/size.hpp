@@ -22,6 +22,11 @@ namespace boost {
       template <typename EC>
       struct size; 
     }
+    template <typename EC>
+    std::size_t size() 
+    {
+        return meta::size<EC>();
+    }
 
   }
 }
