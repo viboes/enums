@@ -213,22 +213,22 @@ namespace boost {
     template <>
     struct size<EnumClass>
     {
-      static const int value = 3;
+      static const std::size_t value = 3;
     }; 
     template <>
     struct pos<EnumClass, EnumClass::Default>
     {
-      static const int value = 0;
+      static const std::size_t value = 0;
     }; 
     template <>
     struct pos<EnumClass, EnumClass::Enum1>
     {
-      static const int value = 1;
+      static const std::size_t value = 1;
     }; 
     template <>
     struct pos<EnumClass, EnumClass::Enum2>
     {
-      static const int value = 2;
+      static const std::size_t value = 2;
     }; 
 
     template <>
@@ -250,17 +250,17 @@ namespace boost {
     template <>
     struct enum_traits<EnumClass> : enum_traiter<EnumClass> 
     {
-      static int pos(EnumClass e) 
+      static std::size_t pos(EnumClass e) 
       {
         switch (boost::enums::get_value(e)) 
         {
           case EnumClass::Default: return 0;
           case EnumClass::Enum1:   return 1;
           case EnumClass::Enum2:   return 2;
-          default:                 return -1;
+          default:                 throw "bad_parameterparameter";
         }
       }
-      static EnumClass val(int p) 
+      static EnumClass val(std::size_t p) 
       {
         switch (p) 
         {

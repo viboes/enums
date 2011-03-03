@@ -39,17 +39,17 @@ namespace boost {
     template <>
     struct pos<EC3, EC3::Enum0>
     {
-      static const int value = 0;
+      static const std::size_t value = 0;
     }; 
     template <>
     struct pos<EC3, EC3::Enum1>
     {
-      static const int value = 1;
+      static const std::size_t value = 1;
     }; 
     template <>
     struct pos<EC3, EC3::Enum2>
     {
-      static const int value = 2;
+      static const std::size_t value = 2;
     }; 
 
     template <>
@@ -71,17 +71,17 @@ namespace boost {
     template <>
     struct enum_traits<EC3> : enum_traiter<EC3> 
     {
-      static int pos(EC3 e) 
+      static std::size_t pos(EC3 e) 
       {
         switch (boost::enums::get_value(e)) 
         {
           case EC3::Enum0: return 0;
           case EC3::Enum1:   return 1;
           case EC3::Enum2:   return 2;
-          default:                 return -1;
+          default:                 throw "bad_parameter";
         }
       }
-      static EC3 val(int p) 
+      static EC3 val(std::size_t p) 
       {
         switch (p) 
         {
