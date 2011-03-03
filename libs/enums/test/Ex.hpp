@@ -20,6 +20,7 @@
 #include <boost/enums/val.hpp>
 #include <boost/enums/enum_traits.hpp>
 #include <boost/enums/enum_traiter.hpp>
+#include <cstddef>
 
   BOOST_ENUM_CLASS_START(EC3, int) {
     Enum0,
@@ -34,8 +35,9 @@ namespace boost {
     template <>
     struct size<EC3>
     {
-      static const int value = 3;
+      static const std::size_t value;
     }; 
+    const std::size_t size<EC3>::value = 3;
     template <>
     struct pos<EC3, EC3::Enum0>
     {
