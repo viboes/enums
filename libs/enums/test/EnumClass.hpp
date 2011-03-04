@@ -182,7 +182,7 @@ inline EnumClass convert_to(const char* str
     if (strcmp(str, "Default") ==0)  { return boost::convert_to<EnumClass>(EnumClass::Default); }
     if (strcmp(str, "Enum1") ==0)    { return  boost::convert_to<EnumClass>(EnumClass::Enum1); }
     if (strcmp(str, "Enum2") ==0)  { return  boost::convert_to<EnumClass>(EnumClass::Enum2); }
-    assert(false && "invalid string for EnumClass");
+    throw "invalid string for EnumClass";
 }
 
 //!  conversion from std::string.
@@ -214,45 +214,45 @@ namespace boost {
     struct size<EnumClass>
     {
       static const std::size_t value = 3;
-    }; 
+    };
     template <>
     struct pos<EnumClass, EnumClass::Default>
     {
       static const std::size_t value = 0;
-    }; 
+    };
     template <>
     struct pos<EnumClass, EnumClass::Enum1>
     {
       static const std::size_t value = 1;
-    }; 
+    };
     template <>
     struct pos<EnumClass, EnumClass::Enum2>
     {
       static const std::size_t value = 2;
-    }; 
+    };
 
     template <>
     struct val<EnumClass, 0>
     {
       static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Default;
-    }; 
+    };
     template <>
     struct val<EnumClass, 1>
     {
       static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum1;
-    }; 
+    };
     template <>
     struct val<EnumClass, 2>
     {
       static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum2;
-    }; 
+    };
     } // namespace meta
     template <>
-    struct enum_traits<EnumClass> : enum_traiter<EnumClass> 
+    struct enum_traits<EnumClass> : enum_traiter<EnumClass>
     {
-      static std::size_t pos(EnumClass e) 
+      static std::size_t pos(EnumClass e)
       {
-        switch (boost::enums::get_value(e)) 
+        switch (boost::enums::get_value(e))
         {
           case EnumClass::Default: return 0;
           case EnumClass::Enum1:   return 1;
@@ -260,9 +260,9 @@ namespace boost {
           default:                 throw "bad_parameterparameter";
         }
       }
-      static EnumClass val(std::size_t p) 
+      static EnumClass val(std::size_t p)
       {
-        switch (p) 
+        switch (p)
         {
           case 0: return boost::convert_to<EnumClass>(EnumClass::Default);
           case 1: return boost::convert_to<EnumClass>(EnumClass::Enum1);
@@ -270,7 +270,7 @@ namespace boost {
           default: throw "bad_parameter";
         }
       }
-    }; 
+    };
   }
 }
 

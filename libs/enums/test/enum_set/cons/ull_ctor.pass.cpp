@@ -37,7 +37,7 @@ void test_val_ctor()
     BOOST_TEST(v.size() == meta::size<EC>::value);
     unsigned M = std::min<std::size_t>(meta::size<EC>::value, 64);
     for (std::size_t i = 0; i < M; ++i)
-        BOOST_TEST(v[val<EC>(i)] == ((i & 1)));
+        BOOST_TEST(v[val<EC>(i)] == ((i & 1)!=0));
     for (std::size_t i = M; i < meta::size<EC>::value; ++i)
         BOOST_TEST(v[val<EC>(i)] == false);
     }
