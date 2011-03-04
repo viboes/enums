@@ -25,46 +25,25 @@
 #define BOOST_NO_UNDERLYING_TYPE
 #define BOOST_ENUMS_USE_CONSTRUCTORS 1
 
-
-#if 0
-      BOOST_PP_IF(CONS,                             \
-        BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT),    \
-        BOOST_PP_EMPTY                            \
-      )()                                             \
-      BOOST_PP_IF(CONV,                             \
-        BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT),     \
-        BOOST_PP_EMPTY                              \
-      )()                                             \
-
+#ifndef BOOST_NO_SCOPED_ENUMS
+  #if defined(__GNUC__) &&  (__GNUC__ < 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ < 5 ) || ( __GNUC__ == 4 && __GNUC_MINOR__ == 5 && __GNUC_PATCHLEVEL__ < 1))
+    #define BOOST_NO_SCOPED_ENUMS_COMPARE
+  #else
+  #endif
+#else
 #endif
 
 
+
 #ifndef BOOST_NO_SCOPED_ENUMS
-  #if defined(__GNUC__) &&  (__GNUC__ < 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ < 5 ))
-  
     #define BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, OP)        \
       inline bool operator OP(EC lhs, EC rhs) {                              \
         return (boost::enums::underlying_type<EC>::type)(lhs)         \
         OP                                                            \
         (boost::enums::underlying_type<EC>::type)(rhs);               \
-      }                                                               
-      #if 0
-      bool operator OP(boost::enums::enum_type<EC>::type lhs, EC rhs) {                            \
-        return lhs OP                                                 \
-        (boost::enums::underlying_type<EC>::type)(rhs);               \
-      }                                                               \
-      bool operator OP(EC lhs, type rhs) {                            \
-        return (boost::enums::underlying_type<EC>::type)(lhs) OP rhs; \
-      }    
-      #endif                       
-                        
-  #else
-  
-    #define BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, OP)
+      }
 
-  #endif
- 
-#else
+#else // BOOST_NO_SCOPED_ENUMS
 
   #define BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, OP)  \
       friend inline bool operator OP(EC lhs, EC rhs) {           \
@@ -75,9 +54,15 @@
       }                                                   \
       friend inline bool operator OP(EC lhs, type rhs) {         \
         return lhs.get() OP rhs;                          \
-      }                                             
-  
-#endif
+      }
+
+#endif // BOOST_NO_SCOPED_ENUMS
+
+#if !defined(BOOST_NO_SCOPED_ENUMS) && ! defined(BOOST_NO_SCOPED_ENUMS_COMPARE)
+
+#define BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)
+
+#else // !defined(BOOST_NO_SCOPED_ENUMS) && ! defined(BOOST_NO_SCOPED_ENUMS_COMPARE)
 
 #define BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)  \
       BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, ==)      \
@@ -87,7 +72,8 @@
       BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, >)       \
       BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, >=)
 
-      
+#endif // !defined(BOOST_NO_SCOPED_ENUMS) && ! defined(BOOST_NO_SCOPED_ENUMS_COMPARE)
+
 #ifndef BOOST_NO_SCOPED_ENUMS
 
   #ifdef BOOST_NO_UNDERLYING_TYPE
@@ -126,10 +112,8 @@
       , boost::dummy::type_tag<boost::enums::underlying_type<EC>::type> const& \
     )                                                                         \
     {                                                                         \
-      return (boost::enums::underlying_type<EC>::type)(boost::enums::get_value(v) );  \
-    }                                                                         
-      
-
+      return static_cast<boost::enums::underlying_type<EC>::type>(boost::enums::get_value(v) );  \
+    }
 
   #define BOOST_ENUM_CLASS_START(EC, UT)            \
     enum class EC : UT
@@ -164,8 +148,8 @@
 #else // BOOST_NO_SCOPED_ENUMS
 
   #define BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)   \
-    EC() : val_(type())  {  }                             \
-    EC(type v) : val_(v)  {  }
+    EC() : val_(static_cast<underlying_type>(type()))  {  }                             \
+    EC(type v) : val_(static_cast<underlying_type>(v))  {  }
 
   #define BOOST_ENUMS_DETAIL_CONSTRUCTORS_AUX()    \
     BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)
@@ -188,7 +172,7 @@
     public:                                         \
       enum type
 
-  #define BOOST_ENUMS_END_1(EC, UT)                 \
+  #define BOOST_ENUMS_DETAIL_END_1(EC, UT)                 \
       ;                                             \
       typedef UT underlying_type;                   \
     private:                                        \
@@ -221,18 +205,18 @@
     )                                                                         \
     {                                                                         \
       return boost::enums::get_value(v);                                              \
-    }     
-      
+    }
 
-  #define BOOST_ENUMS_END_2(EC, UT)                 \
+
+  #define BOOST_ENUMS_DETAIL_END_2(EC, UT)                 \
       EC& operator =(type rhs) {                    \
-        val_=rhs;                                   \
+        val_=static_cast<underlying_type>(rhs);                                   \
         return *this;                               \
       }                                             \
       static EC default_value()                     \
       {                                             \
         EC res;                                     \
-        res.val_=EC::type();                 \
+        res.val_=static_cast<underlying_type>(EC::type());                 \
         return res;                                 \
       }                                             \
       static EC convert_to(underlying_type v)       \
@@ -244,7 +228,7 @@
       static EC convert_to(type v)                  \
       {                                             \
         EC res;                                     \
-        res.val_=v;                                 \
+        res.val_=static_cast<underlying_type>(v);                                 \
         return res;                                 \
       }                                             \
       type get() const                              \
@@ -256,24 +240,24 @@
     BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)
 
   #define BOOST_ENUM_CLASS_END(EC, UT)              \
-    BOOST_ENUMS_END_1(EC, UT)                       \
-    BOOST_ENUMS_END_2(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_1(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_2(EC, UT)                       \
 
   #define BOOST_ENUM_TYPE_END(EC, UT)               \
-    BOOST_ENUMS_END_1(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_1(EC, UT)                       \
     BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT)          \
-    BOOST_ENUMS_END_2(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_2(EC, UT)                       \
 
   #define BOOST_ENUM_CLASS_CONS_END(EC, UT)         \
-    BOOST_ENUMS_END_1(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_1(EC, UT)                       \
     BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)         \
-    BOOST_ENUMS_END_2(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_2(EC, UT)                       \
 
   #define BOOST_ENUM_TYPE_CONS_END(EC, UT)          \
-    BOOST_ENUMS_END_1(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_1(EC, UT)                       \
     BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)         \
     BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT)          \
-    BOOST_ENUMS_END_2(EC, UT)                       \
+    BOOST_ENUMS_DETAIL_END_2(EC, UT)                       \
 
 #endif // BOOST_NO_SCOPED_ENUMS
 #endif

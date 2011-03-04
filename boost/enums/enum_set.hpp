@@ -30,7 +30,7 @@
 namespace boost {
   namespace enums {
 
-    template<typename enum_type, 
+    template<typename enum_type,
              typename traits=enum_traits<enum_type> >
     class enum_set
     {
@@ -38,7 +38,10 @@ namespace boost {
       BOOST_CONSTEXPR enum_set()
       {
       }
-      BOOST_CONSTEXPR explicit enum_set(enum_type setting)
+      //~ BOOST_CONSTEXPR
+      // Need to be refactored to be a constexpr
+      //~ error: constexpr constructor does not have empty body
+      explicit enum_set(enum_type setting)
       {
         set(setting);
       }
@@ -64,7 +67,7 @@ namespace boost {
         : bits(str,n, zero, one)
       {}
       #endif
-      
+
       enum_set &operator&=(const enum_set &rhs)
       {
         bits &= rhs.bits;
@@ -157,7 +160,7 @@ namespace boost {
       {
         return bits.none();
       }
-      enum_set operator<<(std::size_t pos) const 
+      enum_set operator<<(std::size_t pos) const
       {
         enum_set r = *this;
         r <<= pos;
@@ -171,27 +174,27 @@ namespace boost {
       }
 
     private:
-      
+
       static std::size_t to_bit(enum_type value)
       {
         return traits::pos(value);
       }
-      
+
       std::bitset<traits::size> bits;
-      
+
     public:
-      
+
       std::bitset<traits::size+1> detail_bits() { return bits; }
     };
 
     // enum_set operators:
-    template <typename enum_type, typename traits> 
+    template <typename enum_type, typename traits>
     enum_set<enum_type,traits> operator&(const enum_set<enum_type,traits>& x, const enum_set<enum_type,traits>& y)
     {
       enum_set<enum_type,traits> r = x;
       r &= y;
       return r;
-    } 
+    }
 
 
     template <typename enum_type,  typename traits >
@@ -200,7 +203,7 @@ namespace boost {
       enum_set<enum_type,traits> r = x;
       r |= y;
       return r;
-    } 
+    }
 
     template <typename enum_type,  typename traits >
     enum_set<enum_type,traits> operator^(const enum_set<enum_type,traits>& x, const enum_set<enum_type,traits>& y)
@@ -208,8 +211,8 @@ namespace boost {
       enum_set<enum_type,traits> r = x;
       r ^= y;
       return r;
-    } 
-    
+    }
+
 
     template <class charT, class ch_traits, typename enum_type,  typename traits >
     std::basic_istream<charT, ch_traits>&
@@ -217,19 +220,19 @@ namespace boost {
     {
       return is >> x.detail_bits();
     }
-    
+
 
     template <class charT, class ch_traits, typename enum_type,  typename traits >
     std::basic_ostream<charT, ch_traits>&
-    operator<<(std::basic_ostream<charT, ch_traits>& os, const enum_set<enum_type,traits>& x) 
+    operator<<(std::basic_ostream<charT, ch_traits>& os, const enum_set<enum_type,traits>& x)
     {
       return os << x.detail_bits();
     }
 
-    
+
   } /* namespace enums */
 
-  template <typename enum_type, typename traits > 
+  template <typename enum_type, typename traits >
   struct hash<enums::enum_set<enum_type,traits> >
   : public std::unary_function<enums::enum_set<enum_type,traits>, std::size_t>
   {
