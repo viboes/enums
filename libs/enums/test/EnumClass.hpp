@@ -213,38 +213,38 @@ namespace boost {
     template <>
     struct size<EnumClass>
     {
-      static const std::size_t value = 3;
+      BOOST_STATIC_CONSTEXPR std::size_t value = 3;
     };
     template <>
     struct pos<EnumClass, EnumClass::Default>
     {
-      static const std::size_t value = 0;
+      BOOST_STATIC_CONSTEXPR std::size_t value = 0;
     };
     template <>
     struct pos<EnumClass, EnumClass::Enum1>
     {
-      static const std::size_t value = 1;
+      BOOST_STATIC_CONSTEXPR std::size_t value = 1;
     };
     template <>
     struct pos<EnumClass, EnumClass::Enum2>
     {
-      static const std::size_t value = 2;
+      BOOST_STATIC_CONSTEXPR std::size_t value = 2;
     };
 
     template <>
     struct val<EnumClass, 0>
     {
-      static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Default;
+      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Default;
     };
     template <>
     struct val<EnumClass, 1>
     {
-      static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum1;
+      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum1;
     };
     template <>
     struct val<EnumClass, 2>
     {
-      static const boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum2;
+      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum2;
     };
     } // namespace meta
     template <>

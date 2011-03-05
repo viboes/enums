@@ -39,20 +39,33 @@ project
         <toolset>msvc:<cxxflags>/wd4127
     ;
 
-   test-suite "examples"
+   test-suite "enum_class"
         :
-        [ compile-fail construction_from_int_fails.cpp ]
-        [ run comparaision.cpp ]
-        [ compile-fail implicit_conversion_to_ut_fails.cpp ]
-        [ compile-fail implicit_conversion_to_bool_fails.cpp ]
+        [ compile enum_class/has_same_size_as_ut_pass.cpp ]
+        [ compile enum_class/underlying_type_pass.cpp ]
 
-        [ compile has_same_size_as_ut.cpp ]
-        #[ run defaults_to_enum_default.cpp ]
-        [ run constructible_from_enum.cpp ]
-        [ run equal_comparable.cpp ]
-        [ run not_equal_comparable.cpp ]
-        #[ run EnumClass.cpp ]
-        #[ run EnumClass.cpp ]
+        [ run enum_class/cons/default_to_0_pass.cpp ]
+        #[ run-fail enum_class/cons/default_to_0_fail.cpp ]
+        [ run enum_class/cons/from_enum_pass.cpp ]
+        [ compile-fail enum_class/cons/from_int_fails.cpp ]
+
+        [ run enum_class/comparison/less_pass.cpp ]
+        [ run enum_class/comparison/equal_pass.cpp ]
+        [ run enum_class/comparison/not_equal_pass.cpp ]
+
+        [ compile-fail enum_class/conversion/implicit_conversion_to_ut_fails.cpp ]
+        [ compile-fail enum_class/conversion/implicit_conversion_to_bool_fails.cpp ]
+
+        [ compile enum_class/meta/first_pass.cpp ]
+        [ compile enum_class/meta/last_pass.cpp ]
+        [ compile enum_class/meta/pos_pass.cpp ]
+        [ compile enum_class/meta/val_pass.cpp ]
+        [ compile enum_class/meta/pred_pass.cpp ]
+        [ compile enum_class/meta/succ_pass.cpp ]
+        [ compile-fail enum_class/meta/succ_of_last_fail.cpp ]
+        [ compile-fail enum_class/meta/pred_of_first_fail.cpp ]
+        [ compile-fail enum_class/meta/val_of_invalid_fail.cpp ]
+
         [ run EnumClass.cpp odr.cpp ]
         ;
 
@@ -68,7 +81,7 @@ project
         [ run enum_array/special/swap.pass.cpp : : : : enum_array__special__swap__pass ]
         [ run enum_array/fill/fill.pass.cpp : : : : enum_array__fill__fill__pass ]
 	;
-  
+
   test-suite "enum_set"
 	:
         [ run enum_set/version.pass.cpp : : : : enum_set__version__pass ]
@@ -78,4 +91,3 @@ project
         #[ run enum_set/cons/char_ptr_ctor.pass.cpp : : : : enum_set__char_ptr_ull_ctor__pass ]
         #[ run enum_set/cons/string_ctor.pass.cpp : : : : enum_set__cons_string_ctor__pass ]
   ;
-  
