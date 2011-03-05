@@ -37,7 +37,7 @@
 
 #ifndef BOOST_NO_SCOPED_ENUMS
     #define BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, OP)        \
-      inline bool operator OP(EC lhs, EC rhs) {                              \
+      inline BOOST_CONSTEXPR bool operator OP(EC lhs, EC rhs) {                              \
         return (boost::enums::underlying_type<EC>::type)(lhs)         \
         OP                                                            \
         (boost::enums::underlying_type<EC>::type)(rhs);               \
@@ -46,13 +46,13 @@
 #else // BOOST_NO_SCOPED_ENUMS
 
   #define BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, OP)  \
-      friend inline bool operator OP(EC lhs, EC rhs) {           \
+      friend inline BOOST_CONSTEXPR bool operator OP(EC lhs, EC rhs) {           \
         return lhs.get() OP rhs.get();                    \
       }                                                   \
-      friend inline bool operator OP(type lhs, EC rhs) {         \
+      friend inline BOOST_CONSTEXPR bool operator OP(type lhs, EC rhs) {         \
         return lhs OP rhs.get();                          \
       }                                                   \
-      friend inline bool operator OP(EC lhs, type rhs) {         \
+      friend inline BOOST_CONSTEXPR bool operator OP(EC lhs, type rhs) {         \
         return lhs.get() OP rhs;                          \
       }
 

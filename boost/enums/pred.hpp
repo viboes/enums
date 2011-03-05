@@ -22,16 +22,16 @@
 namespace boost {
   namespace enums {
     namespace meta {
-      template <typename EC>
-      struct pred 
+      template <typename EC, typename enum_type<EC>::type V>
+      struct pred
       {
-        BOOST_STATIC_ASSERT(pos<EC>::value!=0);
-        static const typename enum_type<EC>::type value = 
-          val<EC,pos<EC>::value-1>::value;
+        BOOST_STATIC_ASSERT((pos<EC,V>::value!=0));
+        BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value =
+          val<EC,pos<EC,V>::value-1>::value;
       };
     }
     template <typename EC>
-    EC pred(EC e) 
+    BOOST_CONSTEXPR EC pred(EC e)
     {
       BOOSt_ASSERT(pos(e)!=0);
       return val<EC>(pos(e)-1);

@@ -20,13 +20,13 @@ namespace boost {
   namespace enums {
     namespace meta {
       template <typename EC>
-      struct first 
+      struct first
       {
-        static const typename enum_type<EC>::type value = enums::meta::val<EC,0>::value;
+        BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value = enums::meta::val<EC,0>::value;
       };
     }
     template <typename EC>
-    EC first() 
+    BOOST_CONSTEXPR EC first()
     {
         return meta::val<EC,0>::value;
     }
