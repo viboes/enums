@@ -1,3 +1,4 @@
+
 //////////////////////////////////////////////////////////////////////////////
 //
 // (C) Copyright Vicente J. Botet Escriba 2011.
@@ -8,17 +9,24 @@
 //
 // See http://www.boost.org/libs/enums for documentation.
 //
+// Based on libs/mpl/test/range_c.hpp
+//
 //////////////////////////////////////////////////////////////////////////////
 
-#include "./EnumClass.hpp"
-#include <boost/enums/pred.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/enums/mpl/enum_range_c.hpp>
+#include <boost/mpl/begin.hpp>
+#include <boost/mpl/end.hpp>
+#include <boost/mpl/distance.hpp>
+#include <boost/mpl/aux_/test.hpp>
+#include "./Ex.hpp"
 
-void fail() {
-  using namespace boost::enums;
 
-  {
-    enum_type<EnumClass>::type e = meta::pred<EnumClass, EnumClass::Default>::value;
-  }
+MPL_TEST_CASE()
+{
+    typedef enum_range_c<EC3> r;
+    typedef begin<r>::type first;
+    typedef end<r>::type last;
+
+    MPL_ASSERT_RELATION( ( mpl::distance<first,last>::value ), ==, 3 );
 
 }

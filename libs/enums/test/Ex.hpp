@@ -28,6 +28,8 @@
     Enum2
   } BOOST_ENUM_CLASS_CONS_END(EC3, int)
 
+BOOST_ENUMS_SPECIALIZATIONS(EC3, int)
+
 namespace boost {
   namespace enums {
     namespace meta {
@@ -71,31 +73,11 @@ namespace boost {
     {
       BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EC3>::type value = EC3::Enum2;
     };
-    } // namespace meta
     template <>
-    struct enum_traits<EC3> : enum_traiter<EC3>
+    struct enum_traits<EC3> : linear_enum_traiter<EC3>
     {
-      static std::size_t pos(EC3 e)
-      {
-        switch (boost::enums::get_value(e))
-        {
-          case EC3::Enum0: return 0;
-          case EC3::Enum1:   return 1;
-          case EC3::Enum2:   return 2;
-          default:                 throw "bad_parameter";
-        }
-      }
-      static EC3 val(std::size_t p)
-      {
-        switch (p)
-        {
-          case 0: return boost::convert_to<EC3>(EC3::Enum0);
-          case 1: return boost::convert_to<EC3>(EC3::Enum1);
-          case 2: return boost::convert_to<EC3>(EC3::Enum2);
-          default: throw "bad_parameter";
-        }
-      }
     };
+    } // namespace meta
   }
 }
 

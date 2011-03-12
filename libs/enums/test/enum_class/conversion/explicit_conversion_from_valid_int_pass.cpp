@@ -11,14 +11,15 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "./EnumClass.hpp"
-#include <boost/enums/pred.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/detail/lightweight_test.hpp>
 
-void fail() {
+int main() {
   using namespace boost::enums;
 
-  {
-    enum_type<EnumClass>::type e = meta::pred<EnumClass, EnumClass::Default>::value;
+  { // Explicit conversion from valid int works
+    EnumClass e(boost::convert_to<EnumClass>((unsigned char)(4)));
+    BOOST_TEST(e==EnumClass::Enum1);
   }
 
+  return boost::report_errors();
 }

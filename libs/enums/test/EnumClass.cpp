@@ -17,17 +17,10 @@
 #include "./EnumClass.hpp"
 #include "./f.hpp"
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/enums/enum_range.hpp>
-#include <boost/range/algorithm/for_each.hpp> 
+#include <boost/enums/enum_subrange_traiter.hpp>
 
 #define RUN_TIME
 #define COMPILE_TIME
-
-void p(EnumClass ) 
-{
-
-}
-
 
 int main() {
 
@@ -36,7 +29,7 @@ int main() {
 
   std::cout << __LINE__ << std::endl;
 
-  { // The wrapper can be constructed from a valid const char* repressentation
+  { // The wrapper can be constructed from a valid const char* representation
     EnumClass e = convert_to<EnumClass>("Enum2");
     BOOST_TEST(e==EnumClass::Enum2);
   }
@@ -47,12 +40,12 @@ int main() {
   }
 #endif
 #ifdef RUN_TIME2
-  { // The wrapper can not be constructed from an invalid const char* repressentation
+  { // The wrapper can not be constructed from an invalid const char* representation
     EnumClass e = convert_to<EnumClass>("CHASSE");
     // ... fail
   }
 #endif
-  { // The wrapper can be constructed from a valid std::string repressentation
+  { // The wrapper can be constructed from a valid std::string representation
     std::string str = "Enum2";
     EnumClass e = convert_to<EnumClass>(str);
     BOOST_TEST(e==EnumClass::Enum2);
@@ -66,7 +59,7 @@ int main() {
   }
 #endif
 #ifdef RUN_TIME2
-  { // The wrapper can not be constructed from an invalid std::string repressentation
+  { // The wrapper can not be constructed from an invalid std::string representation
     std::string str = "CHASSE";
     EnumClass e = convert_to<EnumClass>(str);
     // ... fail
@@ -74,60 +67,25 @@ int main() {
     BOOST_TEST(strcmp(c_str(e), "EnumClass::CHASSE")==0);
   }
 #endif
-  std::cout << __LINE__ << std::endl;
-  { // Explicit conversion from valid int works
-    EnumClass e(convert_to<EnumClass>((unsigned char)(4)));
-    BOOST_TEST(e==EnumClass::Enum1);
-  }
-  std::cout << __LINE__ << std::endl;
-  { // Explicit conversion from invalid int results in run-time error (undefined behavior)
-//    EnumClass e(convert_to<EnumClass>((unsigned char)(6))); 
-//    BOOST_TEST(get_value(e)==(unsigned char)(6));
-  }
-  std::cout << __LINE__ << std::endl;
-  { // Construction of the wrapper with a valid int works
-    EnumClass e(convert_to<EnumClass>((unsigned char)(5)));
-    BOOST_TEST(e==EnumClass::Enum2);
-  }
-  std::cout << __LINE__ << std::endl;  { // Construction of the wrapper with an invalid ints results in run-time error (undefined behavior)
+  { // Construction of the wrapper with an invalid ints results in run-time error (undefined behavior)
 //    EnumClass e(convert_to<EnumClass>((unsigned char)(6)));
-//    BOOST_TEST((unsigned char)(enums::enum_type<EnumClass>::type(6))==(unsigned char)(6));
+    BOOST_TEST((unsigned char)(enums::enum_type<EnumClass>::type(6))==(unsigned char)(6));
 //    BOOST_TEST(get_value(e)==(unsigned char)(6));
   }
-#if !defined(CTOR) &&  (BOOST_ENUMS_USE_CONSTRUCTORS==0)
-  { // The wrapper can be used as member of a union as it is the case of the underlying enum (When constructors are not defined).
-    union U {
-      EnumClass e;
-      int i;
-    };
-    U u;
-    u.e = EnumClass::Enum1;
-  }
-#endif
-  std::cout << __LINE__ << std::endl;
     { // The wrapper can be used in switch through the function get only :(
     EnumClass e = EnumClass::Default;
-  std::cout << __LINE__ << std::endl;    //EnumClass e ;
-  enums::enum_type<EnumClass>::type c=get_value(e);
-          std::cout << __LINE__ << std::endl;
+    enums::enum_type<EnumClass>::type c=get_value(e);
           std::cout << int(c) << std::endl;
     switch (get_value(e)) { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       case EnumClass::Enum1:
       case EnumClass::Enum2:
       case EnumClass::Default:
-          std::cout << __LINE__ << std::endl;
           std::cout << e << std::endl;
         break;
       default:
         //std::cout << e << ":"<< get_value(e) << std::endl;
         ;
     }
-  }
-  std::cout << __LINE__ << std::endl;
-    {
-    for_each(enum_range<EnumClass>(),p);
-    enum_range<EnumClass> er;
-    //EnumClass e = *boost::begin(er);
   }
   return boost::report_errors();
 }

@@ -32,147 +32,13 @@
 
 #define CTOR
 
-//! This macro will be expanded to
-//~ #if defined(BOOST_ENUM_CLASS_START)
-#if 1
   BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
     Default = 3,
     Enum1,
     Enum2
   } BOOST_ENUM_CLASS_CONS_END(EnumClass, unsigned char)
 
-#else // defined(BOOST_ENUM_CLASS_START)
-  #if !defined(BOOST_NO_SCOPED_ENUMS)
-enum class EnumClass : unsigned char
-{
-  Default = 3,
-  Enum1,
-  Enum2
-}
-;
-
-namespace boost {
-  namespace enums {
-    template <>
-    struct underlying_type<EnumClass>
-    {
-      typedef unsigned char type;
-    };
-  }}
-#else // !defined(BOOST_NO_SCOPED_ENUMS)
-
-class EnumClass {
-public:
-  //! nested C++98 enumeration class
-  enum   type
-  {
-    Default = 3,
-    Enum1,
-    Enum2
-  };
-  typedef unsigned char underlying_type;
-private:
-  //! stored value with underlying type
-  underlying_type Val;
-
-public:
-  //!  static helper conversion from the default enum.
-  static EnumClass default_value()
-  {
-    EnumClass res;
-    res.Val=EnumClass::type();
-    return res;
-  }
-
-  //!  static helper conversion from the underlying enum. Used when constructors can not be used.
-  static EnumClass convert_to(type v)
-  {
-    EnumClass res;
-    res.Val=v;
-    return res;
-  }
-
-  //!  static helper conversion from the underlying int.
-  static EnumClass convert_to(underlying_type v)
-  {
-    EnumClass res;
-    res.Val=v;
-    return res;
-  }
-
-#ifdef CTOR
-  //! default constructor :: Default
-  EnumClass()  : Val(type())
-  {
-  }
-
-  EnumClass(type v) : Val(v)
-  {
-  }
-#endif // CTOR
-
-  EnumClass& operator =(type rhs) {
-    Val=rhs;
-    return *this;
-  }
-
-  type get() const
-  {
-    return type(Val);
-  }
-
-  friend bool operator ==(EnumClass lhs, EnumClass rhs) {
-    return lhs.get()==rhs.get();
-  }
-
-  friend bool operator ==(type lhs, EnumClass rhs) {
-    return lhs==rhs.get();
-  }
-
-  friend bool operator ==(EnumClass lhs, type rhs) {
-    return lhs.get()==rhs;
-  }
-
-  friend bool operator !=(EnumClass lhs, EnumClass rhs) {
-    return lhs.get()!=rhs.get();
-  }
-
-  friend bool operator !=(EnumClass lhs, type rhs) {
-    return lhs.get()!=rhs;
-  }
-
-  friend bool operator !=(type lhs, EnumClass rhs) {
-    return lhs!=rhs.get();
-  }
-
-};
-
-
-#endif // !defined(BOOST_NO_SCOPED_ENUMS)
-//!  conversion from the underlying int.
-inline EnumClass convert_to(boost::enums::underlying_type<EnumClass>::type v
-  , boost::dummy::type_tag<EnumClass> const&
-)
-{
-#ifdef BOOST_NO_SCOPED_ENUMS
-  return EnumClass::convert_to(v);
-#else
-  return EnumClass(v);
-#endif
-}
-
-//!  conversion from the native enum type.
-inline EnumClass convert_to(boost::enums::enum_type<EnumClass>::type  v
-  , boost::dummy::type_tag<EnumClass> const&
-)
-{
-#ifdef BOOST_NO_SCOPED_ENUMS
-  return EnumClass::convert_to(v);
-#else
-  return EnumClass(v);
-#endif
-}
-#endif // defined(BOOST_ENUM_CLASS_START)
+BOOST_ENUMS_SPECIALIZATIONS(EnumClass, unsigned char)
 
 //!  conversion from c-string.
 inline EnumClass convert_to(const char* str
@@ -246,31 +112,12 @@ namespace boost {
     {
       BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum2;
     };
-    } // namespace meta
     template <>
-    struct enum_traits<EnumClass> : enum_traiter<EnumClass>
+    struct enum_traits<EnumClass>
+    : linear_enum_traiter<EnumClass>
     {
-      static std::size_t pos(EnumClass e)
-      {
-        switch (boost::enums::get_value(e))
-        {
-          case EnumClass::Default: return 0;
-          case EnumClass::Enum1:   return 1;
-          case EnumClass::Enum2:   return 2;
-          default:                 throw "bad_parameterparameter";
-        }
-      }
-      static EnumClass val(std::size_t p)
-      {
-        switch (p)
-        {
-          case 0: return boost::convert_to<EnumClass>(EnumClass::Default);
-          case 1: return boost::convert_to<EnumClass>(EnumClass::Enum1);
-          case 2: return boost::convert_to<EnumClass>(EnumClass::Enum2);
-          default: throw "bad_parameter";
-        }
-      }
     };
+    } // namespace meta
   }
 }
 

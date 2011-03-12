@@ -11,14 +11,26 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "./EnumClass.hpp"
-#include <boost/enums/pred.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/detail/lightweight_test.hpp>
+#include <boost/enums/enum_range.hpp>
+#include <boost/range/algorithm/for_each.hpp> 
+#include <cstddef>
 
-void fail() {
+static std::size_t cnt=0;
+void p(EnumClass ) 
+{
+  cnt++;
+}
+
+int main() {
+
+  using namespace boost;
   using namespace boost::enums;
 
-  {
-    enum_type<EnumClass>::type e = meta::pred<EnumClass, EnumClass::Default>::value;
-  }
 
+  {
+    for_each(enum_range<EnumClass>(),p);
+    BOOST_TEST(cnt==enums::meta::size<EnumClass>::value);
+  }
+  return boost::report_errors();
 }

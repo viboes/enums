@@ -9,16 +9,21 @@
 // See http://www.boost.org/libs/enums for documentation.
 //
 //////////////////////////////////////////////////////////////////////////////
+#include <boost/enums/emulation.hpp>
 
-#include "./EnumClass.hpp"
-#include <boost/enums/pred.hpp>
-#include <boost/enums/enum_type.hpp>
+struct C
+{
+  int i;
+  C() : i(){};
+};
 
-void fail() {
-  using namespace boost::enums;
+#if defined(BOOST_NO_UNRESTRICTED_UNION)
+//#warning "not applicable as unrestricted union not available"
+#else
+// The ENUM can NOT be used as member of a union as it is the case of the underlying enum.
+union U {
+  C c;
+  int i;
+};
+#endif
 
-  {
-    enum_type<EnumClass>::type e = meta::pred<EnumClass, EnumClass::Default>::value;
-  }
-
-}

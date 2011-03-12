@@ -10,15 +10,24 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#include "./EnumClass.hpp"
-#include <boost/enums/pred.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/enums/emulation.hpp>
 
-void fail() {
-  using namespace boost::enums;
+BOOST_ENUM_CLASS_START(EC_NoCons, int) {
+    E0 = 3,
+    E1,
+    E2
+} BOOST_ENUM_CLASS_NO_CONS_END(EC_NoCons, int)
+BOOST_ENUMS_SPECIALIZATIONS(EC_NoCons, int)
 
-  {
-    enum_type<EnumClass>::type e = meta::pred<EnumClass, EnumClass::Default>::value;
-  }
+// The wrapper can be used as member of a union as it is the case of the underlying enum (When constructors are not defined).
+union U {
+  EC_NoCons e;
+  int i;
+};
+
+void pass() {
+
+  U u;
+  u.e = EC_NoCons::E1;
 
 }
