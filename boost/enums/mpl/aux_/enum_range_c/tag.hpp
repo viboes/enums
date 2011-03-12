@@ -1,3 +1,7 @@
+
+#ifndef BOOST_ENUMS_MPL_AUX_ENUM_RANGE_C_TAG_HPP_INCLUDED
+#define BOOST_ENUMS_MPL_AUX_ENUM_RANGE_C_TAG_HPP_INCLUDED
+
 //////////////////////////////////////////////////////////////////////////////
 //
 // (C) Copyright Vicente J. Botet Escriba 2011.
@@ -8,19 +12,15 @@
 //
 // See http://www.boost.org/libs/enums for documentation.
 //
+// Based on boost/mpl/aux_/tag.hpp
+//
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_ENUM_TRAITS_HPP
-#define BOOST_ENUMS_ENUM_TRAITS_HPP
+namespace boost { namespace mpl { namespace aux {
 
-namespace boost {
-namespace enums {
-namespace meta {
-    template <typename EC>
-    struct enum_traits; 
+struct half_open_enum_range_tag;
+struct enum_r_iter_tag;
 
-}
-}
-}
+}}}
 
-#endif
+#endif // BOOST_ENUMS_MPL_AUX_ENUM_RANGE_C_TAG_HPP_INCLUDED

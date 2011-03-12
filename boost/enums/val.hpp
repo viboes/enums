@@ -18,17 +18,25 @@
 #include <boost/assert.hpp>
 #include <cstddef>
 
-namespace boost {
-  namespace enums {
-    namespace meta {
+namespace boost
+{
+  namespace enums
+  {
+    namespace meta
+    {
+      //! meta-function used to associate the position to an element of an enumeration.
+      //! This meta-function must be specialized for each position of the enumeration,
+      //! starting from 0 to the predecessor of the size of the enumeration .
       template <typename EC, std::size_t I>
       struct val; 
     }
+    //! Returns: The enum class element associated to the position
+    //! Throws: Invalid parameter if the position is out of range
     template <typename EC>
     EC val(std::size_t p)
     {
       BOOST_ASSERT(p<(meta::size<EC>::value));
-      return enum_traits<EC>::val(p);  
+      return meta::enum_traits<EC>::val(p);
     }
 
   }

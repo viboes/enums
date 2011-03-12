@@ -10,8 +10,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_ENUM_TYPE_HPP
-#define BOOST_ENUMS_ENUM_TYPE_HPP
+#ifndef BOOST_ENUMS_EMULATOR_TYPE_HPP
+#define BOOST_ENUMS_EMULATOR_TYPE_HPP
 
 #include <boost/config.hpp>
 
@@ -19,18 +19,12 @@ namespace boost
 {
   namespace enums
   {
-    //! meta-function to get the native enum type associated to an enum class
-    //! or its emulation
-    template <typename EC>
-    struct enum_type
-    {
-#ifdef BOOST_NO_SCOPED_ENUMS
-      typedef typename EC::type type;
-#else
-      typedef EC type;
-#endif
-    };
+    //! meta-function used to get the wrapping class of an enum when emulation
+    //! is used or the enum class itself when available.
+    //! This meta-function must be specialized for each enum class.
+    template <typename EC_type>
+    struct emulator_type;
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_EMULATOR_TYPE_HPP

@@ -18,16 +18,27 @@
 #include <cstddef>
 
 
-namespace boost {
-  namespace enums {
-    namespace meta {
+namespace boost
+{
+  namespace enums
+  {
+    namespace meta
+    {
+      //! meta-function used to associate the an element of an enumeration to
+      //! its relative position.
+      //! This meta-function must be specialized for each element of the enumeration.
       template <typename EC, typename enum_type<EC>::type V>
       struct pos; 
     }
+
+    //! Returns: the associated position
+    //! The enum_traits class must be specialized and contain a pos function
+    //! that returns the relative position.
+    //! Throws: Nothing
     template <typename EC>
     std::size_t pos(EC e)
     {
-      return enum_traits<EC>::pos(e);  
+      return meta::enum_traits<EC>::pos(e);
     }
 
   }

@@ -16,19 +16,25 @@
 #include <boost/enums/enum_type.hpp>
 #include <boost/enums/val.hpp>
 
-namespace boost {
-  namespace enums {
-    namespace meta {
+namespace boost
+{
+  namespace enums
+  {
+    namespace meta
+    {
+      //! meta-function: first element of an enumeration
       template <typename EC>
       struct first
       {
         BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value = enums::meta::val<EC,0>::value;
       };
     }
+    //! Returns the the first element of an enumeration
+    //! Throws: Nothing
     template <typename EC>
     BOOST_CONSTEXPR EC first()
     {
-        return meta::val<EC,0>::value;
+        return meta::first<EC>::value;
     }
   }
 }

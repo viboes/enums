@@ -17,15 +17,21 @@
 #include <boost/enums/val.hpp>
 #include <boost/enums/size.hpp>
 
-namespace boost {
-  namespace enums {
-    namespace meta {
+namespace boost
+{
+  namespace enums
+  {
+    namespace meta
+    {
+      //! meta-function: first element of an enumeration
       template <typename EC>
       struct last
       {
         BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value = val<EC,size<EC>::value-1>::value;
       };
     }
+    //! Returns the the last element of an enumeration
+    //! Throws: Nothing
     template <typename EC>
     BOOST_CONSTEXPR EC last()
     {

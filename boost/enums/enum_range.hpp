@@ -14,7 +14,10 @@
 #define BOOST_ENUMS_ENUM_RANGE_HPP
 
 #include <boost/enums/enum_type.hpp>
-#include <boost/enums/enum_traits.hpp>
+//#include <boost/enums/enum_range_traits.hpp>
+#include <boost/enums/val.hpp>
+#include <boost/enums/pos.hpp>
+#include <boost/enums/size.hpp>
 
 
 #include <boost/iterator/iterator_facade.hpp>
@@ -33,7 +36,9 @@ namespace boost {
         // This use of this iterator and enum_range<E>() is appreciably less
         // performant than the corresponding hand-written integer
         // loop on many compilers.
-        template<typename EC, typename Traits=enum_traits<EC> >
+
+        //! enum_iterator is a model of RandomAccessIterator
+        template<typename EC /* , typename Traits=enum_range_traits<EC> */ >
         class enum_iterator
             : public boost::iterator_facade<
                         enum_iterator<EC>,
@@ -86,7 +91,7 @@ namespace boost {
 
             reference dereference() const
             {
-                return Traits::val(index_);
+                return enums::val<EC>(index_);
             }
 
             friend class ::boost::iterator_core_access;
@@ -94,35 +99,42 @@ namespace boost {
         };  
     } // namespace enums_detail
     
-    template<typename EC, typename Traits=enum_traits<EC> >
+    template<typename EC/* , typename Traits=enum_range_traits<EC> */ >
     class enum_range
-        : public iterator_range< enums_detail::enum_iterator<EC, Traits> >
+        : public iterator_range< enums_detail::enum_iterator<EC/*, Traits*/> >
     {
-        typedef enums_detail::enum_iterator<EC, Traits> iterator_t;
+        typedef enums_detail::enum_iterator<EC/*, Traits*/> iterator_t;
         typedef iterator_range<iterator_t> base_t;
     public:
         enum_range()
-            : base_t(iterator_t(Traits::first_index), iterator_t(Traits::last_index+1))
+            : base_t(iterator_t(0), iterator_t(enums::meta::size<EC>::value))
         {
         }
         enum_range(EC first, EC last)
-            : base_t(iterator_t(Traits::pos(first)), 
-                     iterator_t(Traits::pos(last)+1))
+            : base_t(iterator_t(enums::pos(first)),
+                     iterator_t(enums::pos(last)+1))
         {
         }
     };
             
-    template<typename EC, typename Traits >
+    //! function to generate an enum Range.
+
+    //! make_range allows treating enums as a model of the Random Access Range Concept.
+    //! It should be noted that the first and last parameters denoted a half-open range.
+    //! Requirements
+    //! - EC is a model of the Enumeration Concept.
+
+    template<typename EC /*, typename Traits*/ >
     enum_range<EC>
     make_range()
     {
-        return enum_range<EC,Traits>();
+        return enum_range<EC/*,Traits*/>();
     }
-    template<typename EC, typename Traits >
+    template<typename EC /*, typename Traits */ >
     enum_range<EC>
     make_range(EC first, EC last)
     {
-        return enum_range<EC,Traits>(first,last);
+        return enum_range<EC /*,Traits*/ >(first,last);
     }
 
   } // namespace enums

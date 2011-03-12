@@ -19,9 +19,14 @@
 #include <boost/static_assert.hpp>
 #include <boost/assert.hpp>
 
-namespace boost {
-  namespace enums {
-    namespace meta {
+namespace boost
+{
+  namespace enums
+  {
+    namespace meta
+    {
+      //! meta-function that gets the successor of an enumeration element
+      //! Pre-condition: the position must not be the last one
       template <typename EC, typename enum_type<EC>::type V>
       struct succ
       {
@@ -30,6 +35,9 @@ namespace boost {
           val<EC,pos<EC,V>::value+1>::value;
       };
     }
+
+    //! Returns: the successor of the enumeration element
+    //! Throws: Invalid parameter if the position is the last one
     template <typename EC>
     EC succ(EC e)
     {
