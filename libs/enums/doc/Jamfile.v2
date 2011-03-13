@@ -7,7 +7,86 @@
 #
 #  See http://www.boost.org for updates, documentation, and revision history.
 
-import quickbook ;
+#import quickbook ;
+path-constant nav_images :  html/images/ ; # png and svg images for home, next, note, tip...
+path-constant images_location : html ; # location of SVG and PNG images referenced by Quickbook.
+
+echo "images_location" $(images_location) ; # \guild\enums\libs\enums\doc\html
+echo "nav_images" $(nav_images) ; # \guild\enums\libs\enums\doc\html\images
+
+import modules ;
+
+if --enable-index in  [ modules.peek : ARGV ]
+{
+   ECHO "Building the Enums docs with automatic index generation enabled." ;
+   using auto-index ;
+   project : requirements
+         # <auto-index>on turns on index (or off).
+        <auto-index>on
+                
+        # Choose indexing method (separately for html and pdf):
+        <format>html:<auto-index-internal>on  # on (or off) to use internally generated indexes.
+        # <format>html:<xsl:param>generate.index=0 # Don't let the XSL stylesheets generate indexes.
+        
+        <format>pdf:<auto-index-internal>off # on (or off) to use internally generated indexes.
+        # <auto-index-type>index  # Use <index>...</index> as the XML wrapper.
+        
+        <format>pdf:<xsl:param>index.on.type=1 # For the native stylesheets to generate the different indexes.
+        # PDF native index support is probably better for PDFs as then you actually get page numbers.
+
+        <auto-index-script>index.idx # Specifies the name of the script to load. 
+        # <auto-index-prefix>../../../ # Path to /enums so index.idx !scan-path can use boost/ and libs/doc.
+        <auto-index-prefix>../../.. 
+        
+        <quickbook-define>enable_index
+        
+        # <auto-index-verbose>on
+        
+        ;
+}
+else
+{
+   ECHO "Building the Enums docs with automatic index generation disabled. To get an auto-index, try building with --enable-index." ;
+}
+
+using doxygen ;  # Required if you want to use Doxygen.
+using quickbook ;
+
+doxygen autodoc
+   :
+      [ glob ../../../boost/enums/*.hpp ]
+      [ glob ../../../boost/enums/mpl/*.hpp ]
+      #[ glob ../../../boost/enums/detail/*.hpp ]
+      #[ glob ../../../boost/enums/detail/*.ipp ] 
+    
+      #[ glob ../../../boost/enums/examples/*.*pp ] # Example source files.
+   :
+        <doxygen:param>"PREDEFINED=\"BOOST_ENUMS_DOXYGEN_INVOKED=1\" \\
+				   \"BOOST_STATIC_CONSTEXPR=constexpr\" \\
+                                   \"BOOST_DEDUCED_TYPENAME=typename\" \\
+                                   \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
+                                   \"BOOST_STATIC_ASSERT(cnd)=\" \\
+                                   \"BOOST_CONSTEXPR=constexpr\""
+
+			<doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
+			# It is also wise to to set a warnings logfile like this:
+			<doxygen:param>WARN_LOGFILE=AutoDoxywarnings.log # This may not be empty (usually not a good sign!), depending on options chosen.
+			# Much better to send message to a logfile than the default stderr.
+			# and make sure that there are no Doxygen errors or significant warnings in the log file.
+			<doxygen:param>RECURSIVE=NO # Search recursively down subdirectories.
+                        <doxygen:param>EXTRACT_ALL=YES
+        <doxygen:param>ENABLE_PREPROCESSING=YES
+        <doxygen:param>MACRO_EXPANSION=YES
+
+			<doxygen:param>HIDE_UNDOC_MEMBERS=NO
+			<doxygen:param>EXTRACT_PRIVATE=NO
+			<doxygen:param>EXPAND_ONLY_PREDEF=YES
+			<doxygen:param>EXPAND_STATIC=YES
+        <doxygen:param>SEARCH_INCLUDES=YES
+        <doxygen:param>INCLUDE_PATH=$(BOOST)
+			<xsl:param>"boost.doxygen.reftitle=Boost.Enums C++ Reference"
+   ;
+
 
 xml enums : enums.qbk ;
 
@@ -56,7 +135,23 @@ boostbook standalone
         <format>pdf:<xsl:param>admon.graphics.extension=".svg"
         <format>pdf:<xsl:param>admon.graphics.path=$(boost-images)/
         <format>pdf:<xsl:param>boost.url.prefix=http://www.boost.org/doc/libs/release/libs/enums/doc/html
+		<dependency>autodoc #
+    <dependency>css-install
+    <dependency>png-install
+    <dependency>svg-install
+    <dependency>enums-png-install
+    <dependency>enums-svg-install
    ;
 
-install pdf-install : standalone : <location>. <install-type>PDF ;
+path-constant boost-root : [ modules.peek : BOOST ] ;
+install css-install : $(boost-root)/doc/src/boostbook.css : <location>html ;
+
+install png-install : [ glob $(boost-root)/doc/src/images/*.png $(boost-root)/boost.png ] : <location>html/images ;
+install svg-install : [ glob $(boost-root)/doc/src/images/*.svg ] : <location>html/images ;
+
+install pdf-install : standalone : <install-type>PDF <location>. <name>enums.pdf ;
+
+install enums-png-install : [ glob images/*.png ] : <location>html/images ;
+install enums-svg-install : [ glob images/*.svg ] : <location>html/images ;
+
 

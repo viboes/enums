@@ -483,6 +483,8 @@ Macro language-like emulating scoped enum classes and types.
     
 [endsect]
 
+[xinclude autodoc.xml]
+
 [/=================]
 [section Appendices]
 [/=================]
@@ -574,5 +576,26 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 
 [endsect]
 [endsect]
+
+[section:indexes Indexes]
+
+[? enable_index
+'''
+  <index/>
+
+  <index type="function_name">
+  <title>Function Index</title>
+  </index>
+  
+  <index type="class_name">
+  <title>Class Index</title>
+  </index>
+  
+  <index type="typedef_name">
+  <title>Typedef Index</title>
+  </index>
+'''
+]
+[endsect] [/section:indexes Indexes]
 
 
