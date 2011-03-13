@@ -18,7 +18,9 @@
 namespace boost {
   namespace enums {
 
-    //!  build a enum class with the default value
+    //!  builds a enum class with the default value.
+	  
+	//! \return the default value
     template <typename EC>
     inline EC default_value()
     {

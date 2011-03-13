@@ -22,21 +22,23 @@
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/greater_equal.hpp>
 
-namespace boost {
-namespace mpl {
-
-template<>
-struct greater_equal_impl< enum_c_tag,enum_c_tag >
+namespace boost 
 {
-    template< typename R1, typename R2 > struct apply
+  namespace mpl 
+  {
+	//! \c greater_equal_impl specialization for \c enum_c_tag
+    template<>
+    struct greater_equal_impl< enum_c_tag,enum_c_tag >
+    {
+      template< typename R1, typename R2 > struct apply
         : greater_equal<
             integral_c<typename E1::underlying_type, (typename E1::underlying_type)(E1::value)>,
             integral_c<typename E2::underlying_type, (typename E2::underlying_type)(E2::value)>
         >
-    {
-    };
-};
-}
+      {
+      };
+    }; 
+  }
 }
 
 #endif  // BOOST_ENUMS_MPL_GREATER_EQUAL_HPP

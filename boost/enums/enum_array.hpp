@@ -13,9 +13,12 @@
 //////////////////////////////////////////////////////////////////////////////
 
 /*!
-The header <boost/enums/enum_array> defines a class template for storing
-sequences of objects fixed by the size of the enumeration. We can say that
-enum_array is the counterpart of std::array when the index are enums.
+\file
+\brief  
+The header \c <boost/enums/enum_array.hpp> defines a class template for storing
+sequences of objects fixed by the size of the enumeration. 
+We can say that
+\c enum_array is the counterpart of \c std::array when the index are enums.
 */
 
 #ifndef BOOST_ENUMS_ENUM_ARRAY_HPP
@@ -53,33 +56,46 @@ namespace boost
   {
 
     /*!
-    An enum_array supports random access iterators. An instance of enum_array<T, EC>
-    stores as many elements of type T as enum literals are on the enum class EC,
-    so that size() == meta::size<EC>::value is an invariant.
+    An \c enum_array supports random access iterators. An instance of \c enum_array<T, EC>
+    stores as many elements of type \c T as enum literals are on the enum class \c EC,
+    so that <tt>size() == meta::size<EC>::value</tt> is an invariant.
 
-    The elements of an enum_array are stored contiguously, meaning that if a is an
-    enum_array<T, EC>, then it obeys the identity
+    The elements of an \c enum_array are stored contiguously, meaning that if \c a is an
+    \c enum_array<T, EC>, then it obeys the identity
 
-      &a[n] == &a[0] + n for all 0 <= n <  meta::size<EC>::value.
+     \code
+	 &a[n] == &a[0] + n for all 0 <= n <  meta::size<EC>::value.
+	 \endcode
+	 
+    An \c enum_array is an aggregate that can (????) be initialized with the syntax
 
-    An enum_array is an aggregate that can (????) be initialized with the syntax
+     \code
+      enum_array<T, EC> a = { initializer-list };
+	 \endcode
 
-      enum_array a<T, EC> = { initializer-list };
+    where \e initializer-list is a comma separated list of up to \c meta::size<EC>::value
+    elements whose types are convertible to \c T.
 
-    where initializer-list is a comma separated list of up to meta::size<EC>::value
-    elements whose types are convertible to T.
-
-    An enum_array satisfies all of the requirements of a container and of a
+    An \c enum_array satisfies all of the requirements of a container and of a
     reversible container, except that a default constructed array object is not
-    empty and that swap does not have constant complexity. An enum_array satisfies
+    empty and that swap does not have constant complexity. An \c enum_array satisfies
     some of the requirements of a sequence container. Descriptions are provided
     here only for operations on enum_array that are not described in one of these
     tables and for operations where there is additional semantic information.
+	 
+	 The conditions for an aggregate are met. Class enum_array relies on
+	 the implicitly-declared special member functions to conform to the
+	 container requirements
+	
+	  
 
-    Note: The member variable elems is shown for exposition only, to emphasize
+    \note The member variable elems is shown for exposition only, to emphasize
     that enum_array is a class aggregate. The name elems is not part of
-    enum_array’s interface
-    */
+    enum_array's interface
+	 
+	 \param T array's element type
+	 \param EC array's index enumeration class
+  */
 
     template<class T, typename EC>
     class enum_array {
@@ -100,29 +116,24 @@ namespace boost
         typedef std::size_t    size_type;
         typedef std::ptrdiff_t difference_type;
         static const std::size_t static_size = meta::size<EC>::value;
-//        enum { static_size = static_size };
-        /*!
-         The conditions for an aggregate are met. Class enum_array relies on
-         the implicitly-declared special member functions to conform to the
-         container requirements
-         */
-
+		//enum_array() {}
+			
         // iterator support
-        //! Returns: iterator for the first element
-        //! Throws: will not throw
+        //! \returns iterator for the first element
+        //! \throws Nothing
         iterator        begin()       { return elems; }
 
-        //! Returns: const iterator for the first element
-        //! Throws: will not throw
+        //! \returns const iterator for the first element
+        //! \throws Nothing
         const_iterator  begin() const { return elems; }
         const_iterator cbegin() const { return elems; }
         
-        //! Returns: iterator for position after the last element
-        //! Throws: will not throw
+        //! \returns iterator for position after the last element
+        //! \throws Nothing
         iterator        end()       { return elems+static_size; }
 
-        //! Returns: const iterator for position after the last element
-        //! Throws: will not throw
+        //! \returns const iterator for position after the last element
+        //! \throws Nothing
         const_iterator  end() const { return elems+static_size; }
         const_iterator cend() const { return elems+static_size; }
 
@@ -147,7 +158,7 @@ namespace boost
         typedef std::reverse_iterator<const_iterator,T> const_reverse_iterator;
 #endif
 
-        //! Returns: reverse iterator for the first element of reverse iteration
+        //! \returns reverse iterator for the first element of reverse iteration
         reverse_iterator rbegin() { 
           return reverse_iterator(end()); 
         }
@@ -158,7 +169,7 @@ namespace boost
             return const_reverse_iterator(end());
         }
 
-        //! Returns: reverse iterator for position after the last element in reverse iteration
+        //! \returns reverse iterator for position after the last element in reverse iteration
         reverse_iterator rend() { 
           return reverse_iterator(begin()); 
         }
@@ -171,8 +182,8 @@ namespace boost
 
         // operator[]
         //! Requires: k'pos < static_size
-        //! Returns: reference to the element with key k
-        //! Throws: will not throw.
+        //! \returns reference to the element with key k
+        //! \throws Nothing.
         reference operator[](key_type k) 
         { 
             size_type i = pos(k);
@@ -181,8 +192,8 @@ namespace boost
         }
         
         //! Requires: k'pos < static_size
-        //! Returns: constant reference to the element with key k
-        //! Throws: will not throw.
+        //! \returns constant reference to the element with key k
+        //! \throws Nothing.
         const_reference operator[](key_type k) const 
         {     
             size_type i = pos(k);
@@ -191,8 +202,8 @@ namespace boost
         }
 
         // at() with range check
-        //! Returns: element with key k
-        //! Throws: std::range_error if i >= static_size
+        //! \returns element with key k
+        //! \throws std::range_error if i >= static_size
         reference at(key_type k) 
         {             
           size_type i = rangecheck(k); 
@@ -205,47 +216,48 @@ namespace boost
         }
     
         // front() and back()
-        //! Returns: reference to the first element
-        //! Throws: will not throw
+        //! \returns reference to the first element
+        //! \throws Nothing
         reference front() 
         { 
             return elems[0]; 
         }
         
-        //! Returns: const reference to the first element
-        //! Throws: will not throw
+        //! \returns const reference to the first element
+        //! \throws Nothing
         const_reference front() const 
         {
             return elems[0];
         }
         
-        //! Returns: reference to the last element
-        //! Throws: will not throw
+        //! \returns reference to the last element
+        //! \throws Nothing
         reference back() 
         { 
             return elems[static_size-1];
         }
         
-        //! Returns: const reference to the last element
-        //! Throws: will not throw
+        //! \returns const reference to the last element
+        //! \throws Nothing
         const_reference back() const 
         { 
             return elems[static_size-1];
         }
 
         // size is constant
+		//! \returns linear in meta::size<EC>::value.
         BOOST_CONSTEXPR size_type size() 
         { 
           return static_size;
         }
-        //! Returns: false
-        //! Throws: will not throw
+        //! \returns false
+        //! \throws Nothing
         static bool empty() 
         { 
           return false; 
         }
 
-        //! Returns: linear in meta::size<EC>::value.
+        //! \returns linear in meta::size<EC>::value.
         BOOST_CONSTEXPR size_type max_size() 
         { 
           return static_size;
@@ -253,7 +265,7 @@ namespace boost
 
 
         /*! Effects: swap_ranges(begin(), end(), y.begin())
-            Throws: Nothing unless one of the element-wise swap calls throws an exception.
+            \throws Nothing unless one of the element-wise swap calls throws an exception.
             Note: Unlike the swap function for other containers, enum_array::swap
             takes linear time, may exit via an exception, and does not cause
             iterators to become associated with the other container.
@@ -266,11 +278,11 @@ namespace boost
 
         // direct access to data (read-only)
 
-        //! Returns: elems.
+        //! \returns elems.
         const T* data() const { 
           return elems; 
         }
-        //! Returns: elems.
+        //! \returns elems.
         T* data() { 
           return elems; 
         }
@@ -315,50 +327,53 @@ namespace boost
 
 
     // comparisons
-    //! Returns: std::equal(x.begin(), x.end(), y.begin())
+    //! \returns std::equal(x.begin(), x.end(), y.begin())
     template<class T, typename EC>
     bool operator== (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return std::equal(x.begin(), x.end(), y.begin());
     }
 
-    //! Returns: std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end())
+    //! \returns std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end())
     template<class T, typename EC>
     bool operator< (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return std::lexicographical_compare(x.begin(),x.end(),y.begin(),y.end());
     }
 
-    //! Returns : !(x == y)
+    //! \returns !(x == y)
     template<class T, typename EC>
     bool operator!= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return !(x==y);
     }
 
-    //! Returns : y < x
+    //! \returns y < x
     template<class T, typename EC>
     bool operator> (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return y<x;
     }
-    //! Returns : !(y<x)
+    //! \returns !(y<x)
     template<class T, typename EC>
     bool operator<= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return !(y<x);
     }
-    //! Returns : !(x<y)
+    //! \returns !(x<y)
     template<class T, typename EC>
     bool operator>= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return !(x<y);
     }
 
-    // global swap()
-    //! Effects:
-    //! x.swap(y);
-    //! Complexity: linear in meta::size<EC>::value.
+    //! enum_array's swap
+	  
+    //! <b>Effects:</b> As
+    //! \code 
+	//!  x.swap(y);
+	//! \endcode 
+    //! <b>Complexity:</b> linear in \c meta::size<EC>::value.
 
     template<class T, typename EC>
     inline void swap (enum_array<T,EC>& x, enum_array<T,EC>& y) 
@@ -393,17 +408,17 @@ namespace boost
        return arg.elems;
    }
 #else
-// Specific for boost::enums::enum_array: simply returns its elems data member.
     template <typename T, typename EC>
     T(&get_c_array(enum_array<T,EC>& arg))[meta::size<EC>::value]
     {
+		//! c_array conversion.
         return arg.elems;
     }
     
-    // Const version.
     template <typename T, typename EC>
     const T(&get_c_array(const enum_array<T,EC>& arg))[meta::size<EC>::value]
     {
+		//! c_array const conversion.
         return arg.elems;
     }
 #endif

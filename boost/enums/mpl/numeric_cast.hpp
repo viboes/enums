@@ -23,18 +23,19 @@
 #include <boost/enums/mpl/enum_c_tag.hpp>
 #include <boost/mpl/numeric_cast.hpp>
 
-namespace boost {
-namespace mpl {
-
-template<> struct numeric_cast< integral_c_tag,enum_c_tag >
+namespace boost 
 {
-    template< typename N > struct apply
-        : integral_c< typename N::underlying_type, N::value >
+  namespace mpl 
+  {
+	//! \c numeric_cast specialization for \c integral_c_tag and \c enum_c_tag
+    template<> struct numeric_cast< integral_c_tag,enum_c_tag >
     {
+      template< typename N > struct apply
+        : integral_c< typename N::underlying_type, N::value >
+      {
+      };
     };
-};
-
-}
+  }
 }
 
 #endif  // BOOST_ENUMS_MPL_NUMERIC_CAST_HPP

@@ -21,15 +21,23 @@
 #include <boost/enums/last.hpp>
 #include <boost/conversion/convert_to.hpp>
 
+/*!
+ \file
+ \brief  
+ The header \c <boost/enums/linear_enum_traiter.hpp> declares a class template 
+ \c meta::linear_enum_traiter<> which can be used as \c enum_trait<> helper for enumerations having a linear progression.
+ */
+
 namespace boost {
   namespace enums {
 
+	  //! Helper class used as \c enum_trait<> for enumerations having a linear progression.
     template <
       typename EC
     >
     struct linear_enum_traiter
     {
-    protected:
+    private:
       BOOST_STATIC_CONSTEXPR typename underlying_type<EC>::type first_value =
           static_cast<typename underlying_type<EC>::type>(
               enums::meta::val<EC,0>::value
@@ -40,15 +48,23 @@ namespace boost {
           );
       BOOST_STATIC_CONSTEXPR std::size_t step = (last_value-first_value)/(meta::size<EC>::value-1);
     public:
+	  //! pos specialization.
+		
+	  //! \returns the returned value is calculated from the underlying value, 
+	  //! the \c first_value and the \c step, following this formula \c (ut-first_value)/step
       static std::size_t pos(EC e)
       {
-        typename underlying_type<EC>::type ut = static_cast<typename underlying_type<EC>::type>(get_value(e));
-        return (ut-first_value)/step;
+        typename underlying_type<EC>::type uv = static_cast<typename underlying_type<EC>::type>(get_value(e));
+        return (uv-first_value)/step;
       }
-      static EC val(std::size_t i)
+		//! val specialization.
+		
+		//! \returns the returned value is calculated from the position \c p, 
+		//! the first value and the step, following this formula \c p*step+first_value
+	  static EC val(std::size_t p)
       {
-        typename underlying_type<EC>::type ut = i*step+first_value;
-        return boost::convert_to<EC>(ut);
+        typename underlying_type<EC>::type uv = p*step+first_value;
+        return boost::convert_to<EC>(uv);
       }
     };
 

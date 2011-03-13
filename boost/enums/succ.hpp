@@ -10,6 +10,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+/*!
+ \file
+ \brief  
+ The header \c <boost/enums/succ.hpp> declares a class template \c meta::succ<> and 
+ a function \c succ() returning the predecessor of the enumeration element.
+ */
+
 #ifndef BOOST_ENUMS_SUCC_HPP
 #define BOOST_ENUMS_SUCC_HPP
 
@@ -36,8 +43,12 @@ namespace boost
       };
     }
 
-    //! Returns: the successor of the enumeration element
-    //! Throws: Invalid parameter if the position is the last one
+	
+	//! enum succesor.
+	  
+    //! param e the enum literal.
+    //! \returns the successor of the enumeration element.
+    //! \throws Invalid parameter if the position is the last one.
     template <typename EC>
     EC succ(EC e)
     {

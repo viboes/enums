@@ -22,21 +22,24 @@
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/equal_to.hpp>
 
-namespace boost {
-namespace mpl {
-
-template<>
-struct equal_to_impl< enum_c_tag,enum_c_tag >
+namespace boost 
 {
-    template< typename E1, typename E2 > struct apply
+  namespace mpl 
+  {
+
+    //! \c equal_to_impl specialization for \c enum_c_tag
+    template<>
+    struct equal_to_impl< enum_c_tag,enum_c_tag >
+    {
+      template< typename E1, typename E2 > struct apply
         : equal_to<
             integral_c<typename E1::underlying_type, (typename E1::underlying_type)(E1::value)>,
             integral_c<typename E2::underlying_type, (typename E2::underlying_type)(E2::value)>
         >
-    {
+      {
+      };
     };
-};
-}
+  }
 }
 
 #endif  // BOOST_ENUMS_MPL_EQUAL_TO_HPP

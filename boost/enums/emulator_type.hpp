@@ -10,6 +10,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+/*!
+ \file
+ \brief  
+ The header \c <boost/enums/emulator!type.hpp> defines the declaration of emulator_type<> meta-function.
+ */
+
 #ifndef BOOST_ENUMS_EMULATOR_TYPE_HPP
 #define BOOST_ENUMS_EMULATOR_TYPE_HPP
 
@@ -19,9 +25,10 @@ namespace boost
 {
   namespace enums
   {
-    //! meta-function used to get the wrapping class of an enum when emulation
-    //! is used or the enum class itself when available.
-    //! This meta-function must be specialized for each enum class.
+    /*! meta-function used to get the wrapping class of an enum when emulation
+     is used or the enum class itself when available.
+	 This meta-function must be specialized for each enum class.
+	 */
     template <typename EC_type>
     struct emulator_type;
   }

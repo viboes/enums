@@ -10,6 +10,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+/*!
+ \file
+ \brief  
+ The header \c <boost/enums/pred.hpp> declares a class template \c meta::pred<> and 
+ a function \c pred() returning the predecessor of the enumeration element.
+ */
+
 #ifndef BOOST_ENUMS_PRED_HPP
 #define BOOST_ENUMS_PRED_HPP
 

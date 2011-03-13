@@ -10,6 +10,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+/*!
+ \file
+ \brief  
+ The header \c <boost/enums/last.hpp> declares a class template \c meta::last<> and 
+ a function \c last() returning the last element of an enumeration.
+ */
+
 #ifndef BOOST_ENUMS_LAST_HPP
 #define BOOST_ENUMS_LAST_HPP
 

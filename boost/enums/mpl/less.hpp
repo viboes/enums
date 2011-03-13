@@ -22,21 +22,25 @@
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/less.hpp>
 
-namespace boost {
-namespace mpl {
-
-template<>
-struct less_impl< enum_c_tag,enum_c_tag >
+namespace boost 
 {
-    template< typename R1, typename R2 > struct apply
+  namespace mpl 
+  {
+
+	//! \c less_impl specialization for \c enum_c_tag
+
+    template<>
+    struct less_impl< enum_c_tag,enum_c_tag >
+    {
+      template< typename R1, typename R2 > struct apply
         : less<
             integral_c<typename E1::underlying_type, (typename E1::underlying_type)(E1::value)>,
             integral_c<typename E2::underlying_type, (typename E2::underlying_type)(E2::value)>
         >
-    {
+      {
+      };
     };
-};
-}
+  }
 }
 
 #endif  // BOOST_ENUMS_MPL_LESS_HPP

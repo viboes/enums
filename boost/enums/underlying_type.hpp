@@ -22,14 +22,21 @@ namespace boost
 {
   namespace enums
   {
+    //! underlying type metafunction
+	  
+	//! \c EC must be an enum type or the emulation of a scoped enum.\n\n
 
-  //! T must be an enumeration type or the emulation of a enum class.
-  //! The member typedef type name the underlying type of T.
-  //! This meta-function must be specialized for the compilers providing enum
-  //! class but don't providing the std::underlying_type meta-function.
+	//! The member typedef \c type name the underlying type of \c T. 
+	//! When scoped enums are emulated it is defined as \c typename \c EC::underlying_type. 
+	//! Otherwise is defined as \c std::underlying_type<EC>::type.
+    //! This meta-function must be specialized for the compilers providing scoped enums
+    //! but don't providing the \c std::underlying_type meta-function.
     template <typename EC>
     struct underlying_type
     {
+#ifdef BOOST_ENUMS_DOXYGEN_INVOKED
+		typedef <see below> type;
+#else
       #ifdef BOOST_NO_SCOPED_ENUMS
         typedef typename EC::underlying_type type;
       #else
@@ -37,6 +44,7 @@ namespace boost
           typedef std::underlying_type<EC>::type type;
         #endif
       #endif
+#endif
     };
   }
 }

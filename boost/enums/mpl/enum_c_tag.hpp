@@ -19,12 +19,14 @@
 
 #include <boost/mpl/int.hpp>
 
-namespace boost {
-namespace mpl {
+namespace boost 
+{
+  namespace mpl 
+  {
+    //! Tag for the enum constants
+    struct enum_c_tag : int_<11> {};
 
-struct enum_c_tag : int_<11> {};
-
-}
+  }
 }
 
 #endif  // BOOST_ENUMS_MPL_ENUM_C_TAG_HPP

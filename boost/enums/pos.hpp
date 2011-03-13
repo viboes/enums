@@ -10,6 +10,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+/*!
+ \file
+ \brief  
+ The header \c <boost/enums/pos.hpp> declares a class template \c meta::pos<> and 
+ a function \c pos() associating the an element of an enumeration to
+ its relative position.
+ */
+
 #ifndef BOOST_ENUMS_POS_HPP
 #define BOOST_ENUMS_POS_HPP
 
@@ -26,15 +34,28 @@ namespace boost
     {
       //! meta-function used to associate the an element of an enumeration to
       //! its relative position.
-      //! This meta-function must be specialized for each element of the enumeration.
+		
+      //! \note This meta-function must be specialized for each element of the enumeration.
       template <typename EC, typename enum_type<EC>::type V>
-      struct pos; 
+#ifndef BOOST_ENUMS_DOXYGEN_INVOKED
+		struct pos; 
+#else
+		struct pos
+		{
+			constexpr std::size_t value=<to be defined for each specialization>;
+		};	
+#endif
     }
 
-    //! Returns: the associated position
-    //! The enum_traits class must be specialized and contain a pos function
-    //! that returns the relative position.
-    //! Throws: Nothing
+	  
+	//! position of an enum literal \c e on the extension of the enumeration type \c EC.
+	  
+    //! The \c enum_traits class must be specialized and contain a \c pos function
+    //! that returns the relative position of its argument \c e.
+	  
+	//! \param e the enum literal
+    //! \returns the associated position
+    //! \throws Nothing
     template <typename EC>
     std::size_t pos(EC e)
     {
