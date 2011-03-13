@@ -1,0 +1,42 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// (C) Copyright Vicente J. Botet Escriba 2011.
+// Distributed under the Boost
+// Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or
+// copy at http://www.boost.org/LICENSE_1_0.txt)
+//
+// See http://www.boost.org/libs/enums for documentation.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+#include "./EnumClass.hpp"
+#include <boost/detail/lightweight_test.hpp>
+#include <boost/enums/enum_range.hpp>
+#include <boost/foreach.hpp> 
+#include <cstddef>
+
+static std::size_t cnt=0;
+void p(EnumClass ) 
+{
+  cnt++;
+}
+
+#define BOOST_ENUMS_FOREACH(EC, V) BOOST_FOREACH(EC V, boost::enums::enum_range<EC>())
+
+int main() {
+
+  using namespace boost;
+  using namespace boost::enums;
+
+
+  {
+	//BOOST_FOREACH(EnumClass e, enum_range<EnumClass>()) 
+	BOOST_ENUMS_FOREACH(EnumClass, e) 
+	{
+		cnt++;
+	}	
+    BOOST_TEST(cnt==enums::meta::size<EnumClass>::value);
+  }
+  return boost::report_errors();
+}
