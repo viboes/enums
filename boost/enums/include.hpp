@@ -21,7 +21,7 @@
 #include <boost/enums/enum_traiter.hpp>
 #include <boost/enums/enum_traits.hpp>
 #include <boost/enums/enum_type.hpp>
-#include <boost/enums/get_value.hpp>
+#include <boost/enums/enum_value.hpp>
 #include <boost/enums/first.hpp>
 #include <boost/enums/last.hpp>
 #include <boost/enums/pos.hpp>

@@ -64,14 +64,14 @@ namespace boost
     \c enum_array<T, EC>, then it obeys the identity
 
      \code
-	 &a[n] == &a[0] + n for all 0 <= n <  meta::size<EC>::value.
-	 \endcode
-	 
+     &a[n] == &a[0] + n for all 0 <= n <  meta::size<EC>::value.
+     \endcode
+     
     An \c enum_array is an aggregate that can (????) be initialized with the syntax
 
      \code
       enum_array<T, EC> a = { initializer-list };
-	 \endcode
+     \endcode
 
     where \e initializer-list is a comma separated list of up to \c meta::size<EC>::value
     elements whose types are convertible to \c T.
@@ -82,19 +82,19 @@ namespace boost
     some of the requirements of a sequence container. Descriptions are provided
     here only for operations on enum_array that are not described in one of these
     tables and for operations where there is additional semantic information.
-	 
-	 The conditions for an aggregate are met. Class enum_array relies on
-	 the implicitly-declared special member functions to conform to the
-	 container requirements
-	
-	  
+     
+     The conditions for an aggregate are met. Class enum_array relies on
+     the implicitly-declared special member functions to conform to the
+     container requirements
+    
+      
 
     \note The member variable elems is shown for exposition only, to emphasize
     that enum_array is a class aggregate. The name elems is not part of
     enum_array's interface
-	 
-	 \param T array's element type
-	 \param EC array's index enumeration class
+     
+     \param T array's element type
+     \param EC array's index enumeration class
   */
 
     template<class T, typename EC>
@@ -116,8 +116,8 @@ namespace boost
         typedef std::size_t    size_type;
         typedef std::ptrdiff_t difference_type;
         static const std::size_t static_size = meta::size<EC>::value;
-		//enum_array() {}
-			
+        //enum_array() {}
+            
         // iterator support
         //! \returns iterator for the first element
         //! \throws Nothing
@@ -245,7 +245,7 @@ namespace boost
         }
 
         // size is constant
-		//! \returns linear in meta::size<EC>::value.
+        //! \returns linear in meta::size<EC>::value.
         BOOST_CONSTEXPR size_type size() 
         { 
           return static_size;
@@ -368,11 +368,11 @@ namespace boost
     }
 
     //! enum_array's swap
-	  
+      
     //! <b>Effects:</b> As
     //! \code 
-	//!  x.swap(y);
-	//! \endcode 
+    //!  x.swap(y);
+    //! \endcode 
     //! <b>Complexity:</b> linear in \c meta::size<EC>::value.
 
     template<class T, typename EC>
@@ -411,14 +411,14 @@ namespace boost
     template <typename T, typename EC>
     T(&get_c_array(enum_array<T,EC>& arg))[meta::size<EC>::value]
     {
-		//! c_array conversion.
+        //! c_array conversion.
         return arg.elems;
     }
     
     template <typename T, typename EC>
     const T(&get_c_array(const enum_array<T,EC>& arg))[meta::size<EC>::value]
     {
-		//! c_array const conversion.
+        //! c_array const conversion.
         return arg.elems;
     }
 #endif

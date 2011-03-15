@@ -10,31 +10,27 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_ENUM_TYPE_HPP
-#define BOOST_ENUMS_ENUM_TYPE_HPP
+#ifndef BOOST_ENUMS_UNDERLYING_VALUE_HPP
+#define BOOST_ENUMS_UNDERLYING_VALUE_HPP
 
 #include <boost/config.hpp>
+#include <boost/enums/enum_type.hpp>
 
-namespace boost
-{
-  namespace enums
-  {
-    //! meta-function to get the native enum type associated to an enum class
-    //! or its emulation
+namespace boost {
+  namespace enums {
+
     template <typename EC>
-    struct enum_type
+    inline
+    typename underlying_type<EC>::type
+    underlying_value(EC e)
     {
-#ifndef BOOST_ENUMS_DOXYGEN_INVOKED
-  #ifdef BOOST_NO_SCOPED_ENUMS
-		typedef typename EC::type type;
-  #else
-		typedef EC type;
-  #endif
+#ifdef BOOST_NO_SCOPED_ENUMS
+      return e.underlying_value();
 #else
-		typedef <see below> type;
+      return static_cast<typename underlying_type<EC>::type>(e);
 #endif
-    };
+    }
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_UNDERLYING_VALUE_HPP

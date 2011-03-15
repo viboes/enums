@@ -31,7 +31,7 @@
 namespace boost {
   namespace enums {
 
-	  //! Helper class used as \c enum_trait<> for enumerations having a linear progression.
+      //! Helper class used as \c enum_trait<> for enumerations having a linear progression.
     template <
       typename EC
     >
@@ -48,20 +48,20 @@ namespace boost {
           );
       BOOST_STATIC_CONSTEXPR std::size_t step = (last_value-first_value)/(meta::size<EC>::value-1);
     public:
-	  //! pos specialization.
-		
-	  //! \returns the returned value is calculated from the underlying value, 
-	  //! the \c first_value and the \c step, following this formula \c (ut-first_value)/step
+      //! pos specialization.
+        
+      //! \returns the returned value is calculated from the underlying value, 
+      //! the \c first_value and the \c step, following this formula \c (ut-first_value)/step
       static std::size_t pos(EC e)
       {
-        typename underlying_type<EC>::type uv = static_cast<typename underlying_type<EC>::type>(get_value(e));
+        typename underlying_type<EC>::type uv = underlying_value(e);
         return (uv-first_value)/step;
       }
-		//! val specialization.
-		
-		//! \returns the returned value is calculated from the position \c p, 
-		//! the first value and the step, following this formula \c p*step+first_value
-	  static EC val(std::size_t p)
+        //! val specialization.
+        
+        //! \returns the returned value is calculated from the position \c p, 
+        //! the first value and the step, following this formula \c p*step+first_value
+      static EC val(std::size_t p)
       {
         typename underlying_type<EC>::type uv = p*step+first_value;
         return boost::convert_to<EC>(uv);
@@ -76,7 +76,7 @@ namespace boost {
 //    public:
 //      static std::size_t pos(EC e)
 //      {
-//        return (get_value(e));
+//        return (enum_value(e));
 //      }
 //      static EC val(std::size_t i)
 //      {

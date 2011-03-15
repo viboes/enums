@@ -27,7 +27,7 @@ namespace boost
   namespace mpl 
   {
 
-	//! \c less_impl specialization for \c enum_c_tag
+    //! \c less_impl specialization for \c enum_c_tag
 
     template<>
     struct less_impl< enum_c_tag,enum_c_tag >

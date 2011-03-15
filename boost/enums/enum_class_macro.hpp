@@ -16,7 +16,7 @@
 #include <boost/enums/underlying_type.hpp>
 #include <boost/enums/enum_type.hpp>
 #include <boost/enums/default_value.hpp>
-#include <boost/enums/get_value.hpp>
+#include <boost/enums/enum_value.hpp>
 #include <boost/conversion/convert_to.hpp>
 #include <boost/config.hpp>
 #include <boost/preprocessor/join.hpp>

@@ -106,9 +106,9 @@ namespace boost {
         };  
     } // namespace enums_detail
     #endif
-	  //! \c enum_range is a model of the \e RandomAccessRange Concept associated to the enumeration \c EC.
-	  
-	  
+      //! \c enum_range is a model of the \e RandomAccessRange Concept associated to the enumeration \c EC.
+      
+      
     template<typename EC/* , typename Traits=enum_range_traits<EC> */ >
     class enum_range
         : public iterator_range< enums_detail::enum_iterator<EC/*, Traits*/> >
@@ -116,13 +116,13 @@ namespace boost {
         typedef enums_detail::enum_iterator<EC/*, Traits*/> iterator_t;
         typedef iterator_range<iterator_t> base_t;
     public:
-		//! builds a enum range 
+        //! builds a enum range 
         enum_range()
             : base_t(iterator_t(0), iterator_t(enums::meta::size<EC>::value))
         {
         }
-		
-		//! builds a enum sub-range 
+        
+        //! builds a enum sub-range 
         enum_range(EC first, EC last)
             : base_t(iterator_t(enums::pos(first)),
                      iterator_t(enums::pos(last)+1))
@@ -133,7 +133,7 @@ namespace boost {
     //! function to generate an enum range.
 
     //! \c make_range allows treating enums as a model of the \e RandomAccessRange Concept.
-	  
+      
     //! \pre \c EC is a model of the \e Enumeration Concept.
 
     template<typename EC /*, typename Traits*/ >
@@ -142,14 +142,14 @@ namespace boost {
     {
         return enum_range<EC/*,Traits*/>();
     }
-	
-	  //! function to generate an enum sub-range.
-	  
-	  //! \c make_range allows treating enums as a model of the \e RandomAccessRange Concept.	  
-	  //! It should be noted that the first and last parameters denoted a closed range.
-	  //! \pre \c EC is a model of the \e Enumeration Concept.
-	  //! \param first first element of the range
-	  //! \param last last element of the range
+    
+      //! function to generate an enum sub-range.
+      
+      //! \c make_range allows treating enums as a model of the \e RandomAccessRange Concept.      
+      //! It should be noted that the first and last parameters denoted a closed range.
+      //! \pre \c EC is a model of the \e Enumeration Concept.
+      //! \param first first element of the range
+      //! \param last last element of the range
     template<typename EC /*, typename Traits */ >
     enum_range<EC>
     make_range(EC first, EC last)

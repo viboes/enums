@@ -46,8 +46,8 @@ namespace boost {
     class enum_set
     {
     public:
-	  struct reference {
-	  };
+      struct reference {
+      };
       //! <b> Effects:</b> Constructs an object of class \c enum_set<>, initializing all
       //! enumerations to zero.
       BOOST_CONSTEXPR enum_set()
@@ -245,7 +245,7 @@ namespace boost {
         return *this;
       }
 
-	  //! \c <tt>unsigned long</tt> conversion
+      //! \c <tt>unsigned long</tt> conversion
       //! \throws overflow_error if the integral value \c x corresponding to the
       //! bits in \c *this cannot be represented as type <<tt>unsigned long</tt>.
       //! \returns \c x.
@@ -255,7 +255,7 @@ namespace boost {
         return bits.to_ulong();
       }
 
-	  //! \c <tt>unsigned long long</tt> conversion
+      //! \c <tt>unsigned long long</tt> conversion
       //! \throws overflow_error if the integral value \c x corresponding to the
       //!  bits in \c *this cannot be represented as type <tt>unsigned long long</tt>.
       //! \returns \c x.
@@ -347,8 +347,8 @@ namespace boost {
 
     // enum_set operators:
 
-	//! Intersection
-	  
+    //! Intersection
+      
     //! \returns enum_set<EC>(lhs) &= rhs.
     template <typename EC/*, typename Traits*/>
     enum_set<EC/*,Traits*/> operator&(const enum_set<EC/*,Traits*/>& x, const enum_set<EC/*,Traits*/>& y)
@@ -358,8 +358,8 @@ namespace boost {
       return r;
     }
 
-	//! Union
-	  
+    //! Union
+      
     //! \returns enum_set<EC>>(lhs) |= rhs.
     template <typename EC/*, typename Traits*/ >
     enum_set<EC/*,Traits*/> operator|(const enum_set<EC/*,Traits*/>& x, const enum_set<EC/*,Traits*/>& y)
@@ -369,7 +369,7 @@ namespace boost {
       return r;
     }
 
-	//! Exclusive union
+    //! Exclusive union
 
     //! \returns enum_set<EC>(lhs) ^= rhs.
     template <typename EC/*, typename Traits*/ >
@@ -381,8 +381,8 @@ namespace boost {
     }
 
     //! A formatted input function.
-	  
-	  //! \details <b> Effects:</b> Extracts up to \c N characters from is. Stores these characters
+      
+      //! \details <b> Effects:</b> Extracts up to \c N characters from is. Stores these characters
     //! in a temporary object \c str of type <tt>basic_string<charT, traits></tt>, then
     //! evaluates the expression <tt>x = enum_set<EC>(str)</tt>. Characters are extracted
     //! and stored until any of the following occurs:
@@ -392,10 +392,10 @@ namespace boost {
     //! (in which case the input character is not extracted).\n
     //! If no characters are stored in \c str, calls \c is.setstate(ios_base::failbit)
     //! (which may throw <tt>ios_- base::failure</tt>).
-	  //! \param is the input stream.
-	  //! \param x the \c enum_set.
-	  //! \returns \c is.
-	  
+      //! \param is the input stream.
+      //! \param x the \c enum_set.
+      //! \returns \c is.
+      
     template <class charT, class ch_traits, typename EC/*, typename Traits*/ >
     std::basic_istream<charT, ch_traits>&
     operator>>(std::basic_istream<charT, ch_traits>& is, enum_set<EC/*,Traits*/>& x)
@@ -403,10 +403,10 @@ namespace boost {
       return is >> x.detail_bits();
     }
 
-	  //! A formatted output function.
+      //! A formatted output function.
 
-	  //! \param os the output stream.
-	  //! \param x the \c enum_set.
+      //! \param os the output stream.
+      //! \param x the \c enum_set.
     //! \returns <tt>os << x.template to_string<charT,traits,allocator<charT> >(
     //! use_facet<ctype<charT> >(os.getloc()).widen('0'),
     //! use_facet<ctype<charT> >(os.getloc()).widen('1'))</tt>
@@ -421,12 +421,12 @@ namespace boost {
   } /* namespace enums */
 
   //! hash template specialization
-	
+    
   template <typename EC/*, typename Traits*/ >
   struct hash<enums::enum_set<EC/*,Traits*/> >
   : public std::unary_function<enums::enum_set<EC/*,Traits*/>, std::size_t>
   {
-	//! \details the template specialization meets the requirements of class template \c hash.
+    //! \details the template specialization meets the requirements of class template \c hash.
     std::size_t operator()(const enums::enum_set<EC/*,Traits*/>& bs) const
     {
       return hash<std::bitset<enums::meta::size<EC>::size> >(bs.detail_bits());

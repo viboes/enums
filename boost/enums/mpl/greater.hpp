@@ -27,11 +27,11 @@ namespace boost
   namespace mpl 
   {
 
-	//! \c greater_impl specialization for \c enum_c_tag
+    //! \c greater_impl specialization for \c enum_c_tag
     template<>
     struct greater_impl< enum_c_tag,enum_c_tag >
     {
-	  template< typename R1, typename R2 > struct apply
+      template< typename R1, typename R2 > struct apply
         : greater<
             integral_c<typename E1::underlying_type, (typename E1::underlying_type)(E1::value)>,
             integral_c<typename E2::underlying_type, (typename E2::underlying_type)(E2::value)>

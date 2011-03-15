@@ -43,9 +43,9 @@ namespace boost
       };
     }
 
-	
-	//! enum succesor.
-	  
+    
+    //! enum succesor.
+      
     //! param e the enum literal.
     //! \returns the successor of the enumeration element.
     //! \throws Invalid parameter if the position is the last one.

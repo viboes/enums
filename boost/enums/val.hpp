@@ -32,23 +32,23 @@ namespace boost
     namespace meta
     {
       //! meta-function used to associate the position to an element of an enumeration.
-		
+        
       //! \note This meta-function must be specialized for each position of the enumeration,
       //! starting from 0 to the predecessor of the size of the enumeration .
       template <typename EC, std::size_t I>
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
-		struct val; 
+        struct val; 
 #else
-		struct val
-		{
-			constexpr typename enum_type<EC>::type value=<to be defined for each specialization>;
-		};	
+        struct val
+        {
+            constexpr typename enum_type<EC>::type value=<to be defined for each specialization>;
+        };    
 #endif
-		
+        
     }
-	//! Value  
-	  
-	//! \param p the position
+    //! Value  
+      
+    //! \param p the position
     //! \returns The enum class element associated to the position \c p.
     //! \throws std::out_of_range if the position is out of range.
     template <typename EC>

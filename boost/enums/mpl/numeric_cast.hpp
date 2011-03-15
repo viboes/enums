@@ -27,7 +27,7 @@ namespace boost
 {
   namespace mpl 
   {
-	//! \c numeric_cast specialization for \c integral_c_tag and \c enum_c_tag
+    //! \c numeric_cast specialization for \c integral_c_tag and \c enum_c_tag
     template<> struct numeric_cast< integral_c_tag,enum_c_tag >
     {
       template< typename N > struct apply

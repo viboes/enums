@@ -26,7 +26,7 @@ namespace boost
 {
   namespace mpl 
   {
-	//! \c greater_equal_impl specialization for \c enum_c_tag
+    //! \c greater_equal_impl specialization for \c enum_c_tag
     template<>
     struct greater_equal_impl< enum_c_tag,enum_c_tag >
     {
