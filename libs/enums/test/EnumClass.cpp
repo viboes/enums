@@ -70,20 +70,20 @@ int main() {
   { // Construction of the wrapper with an invalid ints results in run-time error (undefined behavior)
 //    EnumClass e(convert_to<EnumClass>((unsigned char)(6)));
     BOOST_TEST((unsigned char)(enums::enum_type<EnumClass>::type(6))==(unsigned char)(6));
-//    BOOST_TEST(get_value(e)==(unsigned char)(6));
+//    BOOST_TEST(enum_value(e)==(unsigned char)(6));
   }
     { // The wrapper can be used in switch through the function get only :(
     EnumClass e = EnumClass::Default;
-    enums::enum_type<EnumClass>::type c=get_value(e);
+    enums::enum_type<EnumClass>::type c=enum_value(e);
           std::cout << int(c) << std::endl;
-    switch (get_value(e)) { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    switch (enum_value(e)) { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       case EnumClass::Enum1:
       case EnumClass::Enum2:
       case EnumClass::Default:
           std::cout << e << std::endl;
         break;
       default:
-        //std::cout << e << ":"<< get_value(e) << std::endl;
+        //std::cout << e << ":"<< enum_value(e) << std::endl;
         ;
     }
   }

@@ -21,13 +21,25 @@
 #include <boost/enums/enum_traits.hpp>
 #include <boost/enums/enum_traiter.hpp>
 #include <cstddef>
+#include <boost/enums/enum_class_cons.hpp>
 
+#if 0
   BOOST_ENUM_CLASS_START(EC3, int) {
     Enum0,
     Enum1,
     Enum2
   } BOOST_ENUM_CLASS_CONS_END(EC3, int)
+#else
 
+struct EC3NS {
+  enum type {
+    Enum0,
+    Enum1,
+    Enum2
+  };
+}; 
+typedef  boost::enums::enum_class_cons<EC3NS, unsigned char> EC3;
+#endif
 BOOST_ENUMS_SPECIALIZATIONS(EC3, int)
 
 namespace boost {

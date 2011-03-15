@@ -31,11 +31,11 @@ int main() {
 
 
   {
-	//BOOST_FOREACH(EnumClass e, enum_range<EnumClass>()) 
-	BOOST_ENUMS_FOREACH(EnumClass, e) 
-	{
-		cnt++;
-	}	
+    //BOOST_FOREACH(EnumClass e, enum_range<EnumClass>()) 
+    BOOST_ENUMS_FOREACH(EnumClass, e) 
+    {
+        cnt++;
+    }    
     BOOST_TEST(cnt==enums::meta::size<EnumClass>::value);
   }
   return boost::report_errors();

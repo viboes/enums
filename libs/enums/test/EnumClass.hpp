@@ -17,7 +17,7 @@
 #include <boost/enums/underlying_type.hpp>
 #include <boost/enums/enum_type.hpp>
 #include <boost/enums/default_value.hpp>
-#include <boost/enums/get_value.hpp>
+#include <boost/enums/enum_value.hpp>
 #include <boost/enums/pos.hpp>
 #include <boost/enums/first.hpp>
 #include <boost/enums/last.hpp>
@@ -29,15 +29,31 @@
 #include <cassert>
 #include <cstring>
 #include <string>
+#include <boost/enums/enum_class_cons.hpp>
+#include <boost/enums/enum_class_no_cons.hpp>
+#include <boost/enums/enum_type_cons.hpp>
+#include <boost/enums/enum_type_no_cons.hpp>
 
 #define CTOR
+#if 0
 
-  BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
+BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
+  Default = 3,
+  Enum1,
+  Enum2
+} BOOST_ENUM_CLASS_CONS_END(EnumClass, unsigned char)
+#else
+
+struct EnumClassNS {
+  enum type {
     Default = 3,
     Enum1,
     Enum2
-  } BOOST_ENUM_CLASS_CONS_END(EnumClass, unsigned char)
+  };
+}; 
+typedef  boost::enums::enum_class_cons<EnumClassNS, unsigned char> EnumClass;
 
+#endif
 BOOST_ENUMS_SPECIALIZATIONS(EnumClass, unsigned char)
 
 //!  conversion from c-string.
@@ -62,7 +78,7 @@ inline EnumClass convert_to(const std::string& str
 //!explicit conversion to c-string.
 inline const char* c_str(EnumClass e)
 {
-    switch (boost::enums::get_value(e))
+    switch (boost::enums::enum_value(e))
     {
     case EnumClass::Default : return("EnumClass::Default");
     case EnumClass::Enum1:    return("EnumClass::Enum1");
@@ -126,7 +142,7 @@ namespace boost {
 //! OSTRREAM overloading
 template <typename OSTREAM>
 inline OSTREAM& operator <<(OSTREAM& os, EnumClass v) {
-  os << int(boost::enums::get_value(v));
+  os << int(boost::enums::enum_value(v));
   return os;
 }
 

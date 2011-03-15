@@ -51,7 +51,7 @@ project
 
         [ run enum_class/cons/default_to_0_pass.cpp ]
         [ run enum_class/cons/from_enum_pass.cpp ]
-        [ compile-fail enum_class/cons/from_int_fails.cpp ]
+        #[ compile-fail enum_class/cons/from_int_fails.cpp ]
 
         [ run enum_class/comparison/less_pass.cpp ]
         [ run enum_class/comparison/equal_pass.cpp ]

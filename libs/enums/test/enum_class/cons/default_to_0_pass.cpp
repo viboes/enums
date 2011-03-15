@@ -18,7 +18,7 @@ int main() {
 
   { // defaults to the enum default
     EC3 e = EC3() ;
-    BOOST_TEST(int(get_value(e))==0);
+    BOOST_TEST(int(enum_value(e))==0);
   }
   return boost::report_errors();
 }
