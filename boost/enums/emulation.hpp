@@ -15,7 +15,7 @@
 
 #include <boost/enums/underlying_type.hpp>
 #include <boost/enums/enum_type.hpp>
-#include <boost/enums/emulator_type.hpp>
+#include <boost/enums/scoping_type.hpp>
 #include <boost/enums/default_value.hpp>
 #include <boost/enums/enum_value.hpp>
 #include <boost/enums/underlying_value.hpp>
@@ -65,11 +65,11 @@
 
 #endif // !defined(BOOST_NO_SCOPED_ENUMS) && ! defined(BOOST_NO_SCOPED_ENUMS_COMPARE)
 
-  #define BOOST_ENUMS_DETAIL_EMULATOR_TYPE_SPEC(EC)   \
+  #define BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)   \
       namespace boost {                               \
         namespace enums {                             \
           template <>                                 \
-          struct emulator_type<enum_type<EC>::type>   \
+          struct scoping_type<enum_type<EC>::type>   \
           {                                           \
             typedef EC type;                          \
           };                                          \
@@ -126,7 +126,6 @@
 
 
 #define BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT)    \
-  operator underlying_type() { return val_; }     \
   operator type() { return type(val_); }
 
 
@@ -197,9 +196,7 @@
   {                                                     \
     return val_;                                        \
   }                                                     \
-  BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)      \
-  BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)         \
-};                                                      
+  BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)
 
 
 #endif
@@ -264,35 +261,44 @@
   #define BOOST_ENUM_CLASS_END(EC, UT)                      \
     BOOST_ENUMS_DETAIL_END_1(EC, UT)                        \
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
+    BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)        \
+  };                                                      
+
 
   #define BOOST_ENUM_TYPE_END(EC, UT)                       \
     BOOST_ENUMS_DETAIL_END_1(EC, UT)                        \
     BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT)                  \
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
+  };                                                      
 
   #define BOOST_ENUM_CLASS_NO_CONS_END(EC, UT)              \
     BOOST_ENUMS_DETAIL_END_1(EC, UT)                        \
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
+    BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)        \
+  };                                                      
 
   #define BOOST_ENUM_TYPE_NO_CONS_END(EC, UT)               \
     BOOST_ENUMS_DETAIL_END_1(EC, UT)                        \
     BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT)                  \
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
+  };
 
   #define BOOST_ENUM_CLASS_CONS_END(EC, UT)                 \
     BOOST_ENUMS_DETAIL_END_1(EC, UT)                        \
     BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)                 \
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
+    BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)        \
+  };                                                      
 
   #define BOOST_ENUM_TYPE_CONS_END(EC, UT)                  \
     BOOST_ENUMS_DETAIL_END_1(EC, UT)                        \
     BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)                 \
     BOOST_ENUMS_DETAIL_CONVERSIONS(EC, UT)                  \
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
-
+  };                                                      
 
 #define BOOST_ENUMS_SPECIALIZATIONS(EC, UT) \
-    BOOST_ENUMS_DETAIL_EMULATOR_TYPE_SPEC(EC)
+    BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)
 
 
 #endif // BOOST_NO_SCOPED_ENUMS

@@ -25,34 +25,44 @@ namespace boost
 {
   namespace enums
   {
-    template <typename ScopedEnum, typename UT=typename ScopedEnum::type>
+    //! scoped enum class without constructors
+    
+    //! param @c ScopedEnum : Struct scoping the enum.\n
+    //! param @c UT : the underlaying storage type.\n
+    //! pre @c ScopedEnum must have a nested C++98 enum @c type.\n
+    template <typename ScopedEnum, typename UT=int>
     class enum_class_no_cons : public ScopedEnum 
     {                    
-    public:                                         
-      typedef typename ScopedEnum::type type;                                   
+    public:                                   
+      //! c++98 enum type
+      typedef typename ScopedEnum::type type;
+      //! underlying type
       typedef UT underlying_type;                   
     private:                                        
       underlying_type val_;                         
     public:
-      // assignment
+      //! assignment
       enum_class_no_cons& operator=(enum_class_no_cons rhs)
       {
         val_=rhs.val_;
         return *this;
       }
-      // assignment from enum literals
+      
+      //! assignment from enum literals
       enum_class_no_cons& operator=(type rhs)
       {
         val_=static_cast<underlying_type>(rhs);
         return *this;
       }
-      // workaround when there are no constructors       
+      
+      //! workaround when there are no constructors       
       static enum_class_no_cons default_value()
       {
         enum_class_no_cons res;
         res.val_=static_cast<underlying_type>(type());
         return res;  
       }
+      
       static enum_class_no_cons convert_to(underlying_type v)
       {
         enum_class_no_cons res;
@@ -60,22 +70,26 @@ namespace boost
         return res;
         
       }
+      
       static enum_class_no_cons convert_to(type v)
       {
         enum_class_no_cons res;
         res.val_=static_cast<underlying_type>(v);
         return res;
       }
-      // explicit conversion function to enum type        
+      
+      //! explicit conversion function to enum type        
       type enum_value() const
       {
         return type(val_);
       }
-      // explicit conversion function to underlying_type        
+      
+      //! explicit conversion function to underlying_type        
       underlying_type underlying_value() const
       {
         return val_;
       }
+      
       //! equal operator
       friend bool operator==(enum_class_no_cons lhs, enum_class_no_cons rhs)
       {
@@ -167,15 +181,16 @@ namespace boost
         return lhs.val_ > rhs;
       }
       
-      // friend conversions to follow the Boost.Conversion protocol
+      //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
       friend enum_class_no_cons convert_to(underlying_type v, 
                                        boost::dummy::type_tag<enum_class_no_cons> const&)
       {
         enum_class_no_cons res;
         res.val_=v;
         return res;
-        
       }
+      
+      //! friend conversions from type to enum_type_cons following the Boost.Conversion protocol
       friend enum_class_no_cons convert_to(type v, 
                                        boost::dummy::type_tag<enum_class_no_cons> const&)
       {
@@ -183,11 +198,15 @@ namespace boost
         res.val_=static_cast<underlying_type>(v);
         return res;
       }
+      
+      //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
       friend underlying_type convert_to(enum_class_no_cons v, 
                                         boost::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
+      
+      //! conversions from enum_type_cons to type following the Boost.Conversion protocol
       friend type convert_to(enum_class_no_cons v, 
                              boost::dummy::type_tag<type> const&)
       {

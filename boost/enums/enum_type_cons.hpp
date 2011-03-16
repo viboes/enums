@@ -25,59 +25,73 @@ namespace boost
 {
   namespace enums
   {
-    template <typename ScopedEnum, typename UT=typename ScopedEnum::type>
+    //! scoped enum type with constructors
+    
+    //! param @c ScopedEnum : Struct scoping the enum.\n
+    //! param @c UT : the underlaying storage type.\n
+    //! pre @c ScopedEnum must have a nested C++98 enum @c type.\n
+    template <typename ScopedEnum, typename UT=int>
     class enum_type_cons : public ScopedEnum 
     {                    
-    public:                                         
-      typedef typename ScopedEnum::type type;                                   
+    public:
+      //! c++98 enum type
+      typedef typename ScopedEnum::type type;
+      //! underlying type
       typedef UT underlying_type;                   
     private:                                        
       underlying_type val_;                         
     public:
-        // default constructor
+      //! default constructor
       enum_type_cons()
       : val_(static_cast<underlying_type>(type()))
       {
       }
-        // explicit constructor from underlying type
+      
+      //! explicit constructor from underlying type
       explicit enum_type_cons(underlying_type v)
       : val_(v)
       {
       }
-        // constructor from enum type
+      
+      //! constructor from enum type
       enum_type_cons(type v)
       : val_(static_cast<underlying_type>(v))
       {
       }
-      // implicit conversion to underlying_type
+      
+#if 0
+      //! implicit conversion to underlying_type
       operator underlying_type()
       {
         return val_;
       }
-      // implicit conversion to enum type
+#endif      
+      //! implicit conversion to enum type
       operator type()
       {
         return type(val_);
       }
-      // assignment
+      
+      //! assignment
       enum_type_cons& operator=(enum_type_cons rhs)
       {
         val_=rhs.val_;
         return *this;
       }
-      // assignment from enum literals
+      //! assignment from enum literals
       enum_type_cons& operator=(type rhs)
       {
         val_=static_cast<underlying_type>(rhs);
         return *this;
       }
-      // workaround in case there are no constructors       
+      //! workaround in case there are no constructors       
       static enum_type_cons default_value()
       {
         enum_type_cons res;
         res.val_=static_cast<underlying_type>(type());
         return res;  
       }
+      
       static enum_type_cons convert_to(underlying_type v)
       {
         enum_type_cons res;
@@ -85,21 +99,26 @@ namespace boost
         return res;
         
       }
+      
       static enum_type_cons convert_to(type v)
       {
         enum_type_cons res;
         res.val_=static_cast<underlying_type>(v);
         return res;
       }
-      // explicit conversion in case explicit conversions are not available        
+      
+      //! explicit conversion function to enum type        
       type enum_value() const
       {
         return type(val_);
       }
+      
+      //! explicit conversion function to underlying_type        
       underlying_type underlying_value() const
       {
         return val_;
       }
+#if 0      
       //! equal operator
       friend bool operator==(enum_type_cons lhs, enum_type_cons rhs)
       {
@@ -110,6 +129,7 @@ namespace boost
       {
         return lhs == rhs.val_;
       }
+      
       //! equal operator
       friend bool operator==(enum_type_cons lhs, type rhs)
       {
@@ -190,7 +210,7 @@ namespace boost
       {
         return lhs.val_ > rhs;
       }
-      
+#endif      
 #if 0
       //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
       friend enum_type_cons convert_to(underlying_type v, 

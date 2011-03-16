@@ -13,11 +13,11 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/emulator_type.hpp> defines the declaration of emulator_type<> meta-function.
+ The header \c <boost/enums/scoping_type.hpp> defines the declaration of scoping_type<> meta-function.
  */
 
-#ifndef BOOST_ENUMS_EMULATOR_TYPE_HPP
-#define BOOST_ENUMS_EMULATOR_TYPE_HPP
+#ifndef BOOST_ENUMS_SCOPING_TYPE_HPP
+#define BOOST_ENUMS_SCOPING_TYPE_HPP
 
 #include <boost/config.hpp>
 
@@ -30,7 +30,7 @@ namespace boost
      This meta-function must be specialized for each enum class.
      */
     template <typename EC_type>
-	struct emulator_type
+	struct scoping_type
 	{
 	  //!  Depending on whethere the compiler supports scoped enums or nor the nested type must be the same type or the emulated one. 
 	  //! By default this metafunction defines it as if scoped enums where supported so the specialization will be needed only when emulation is needed.
@@ -39,4 +39,4 @@ namespace boost
   }
 }
 
-#endif // BOOST_ENUMS_EMULATOR_TYPE_HPP
+#endif // BOOST_ENUMS_SCOPING_TYPE_HPP

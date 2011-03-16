@@ -13,7 +13,7 @@
 #ifndef BOOST_ENUMS_DEFAULT_VALUE_HPP
 #define BOOST_ENUMS_DEFAULT_VALUE_HPP
 
-#include <boost/config.hpp>
+#include <boost/enums/config.hpp>
 
 namespace boost {
   namespace enums {

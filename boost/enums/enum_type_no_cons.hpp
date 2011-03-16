@@ -25,43 +25,56 @@ namespace boost
 {
   namespace enums
   {
-    template <typename ScopedEnum, typename UT=typename ScopedEnum::type>
+    //! scoped enum type without constructors
+    
+    //! param @c ScopedEnum : Struct scoping the enum.\n
+    //! param @c UT : the underlaying storage type.\n
+    //! pre @c ScopedEnum must have a nested C++98 enum @c type.\n
+    template <typename ScopedEnum, typename UT=int>
     class enum_type_no_cons : public ScopedEnum 
     {                    
-    public:                                         
-      typedef typename ScopedEnum::type type;                                   
+    public:
+      //! c++98 enum type
+      typedef typename ScopedEnum::type type;     
+      //! underlying type
       typedef UT underlying_type;                   
     private:                                        
       underlying_type val_;                         
     public:
-        // implicit conversion for scoped enum type only
+      //! implicit conversion to underlying_type
       operator underlying_type()
       {
         return val_;
       }
+      
+      //! implicit conversion to enum type
       operator type()
       {
         return type(val_);
       }
-      // assignment
+      
+      //! assignment
       enum_type_no_cons& operator=(enum_type_no_cons rhs)
       {
         val_=rhs.val_;
         return *this;
       }
-      // assignment from enum literals
+      
+      //! assignment from enum literals
       enum_type_no_cons& operator=(type rhs)
       {
         val_=static_cast<underlying_type>(rhs);
         return *this;
       }
-      // workaround in case there are no constructors       
+      
+      //! workaround in case there are no constructors       
       static enum_type_no_cons default_value()
       {
         enum_type_no_cons res;
         res.val_=static_cast<underlying_type>(type());
         return res;  
       }
+      
       static enum_type_no_cons convert_to(underlying_type v)
       {
         enum_type_no_cons res;
@@ -69,17 +82,19 @@ namespace boost
         return res;
         
       }
+      
       static enum_type_no_cons convert_to(type v)
       {
         enum_type_no_cons res;
         res.val_=static_cast<underlying_type>(v);
         return res;
       }
-      // explicit conversion in case explicit conversions are not available        
+      //! explicit conversion function to enum type        
       type enum_value() const
       {
         return type(val_);
       }
+      //! explicit conversion function to underlying_type        
       underlying_type underlying_value() const
       {
         return val_;
@@ -175,15 +190,16 @@ namespace boost
         return lhs.val_ > rhs;
       }
       
-      // friend conversions to follow the Boost.Conversion protocol
+      //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
       friend enum_type_no_cons convert_to(underlying_type v, 
                                        boost::dummy::type_tag<enum_type_no_cons> const&)
       {
         enum_type_no_cons res;
         res.val_=v;
         return res;
-        
       }
+      
+      //! friend conversions from type to enum_type_cons following the Boost.Conversion protocol
       friend enum_type_no_cons convert_to(type v, 
                                        boost::dummy::type_tag<enum_type_no_cons> const&)
       {
@@ -191,11 +207,15 @@ namespace boost
         res.val_=static_cast<underlying_type>(v);
         return res;
       }
+      
+      //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
       friend underlying_type convert_to(enum_type_no_cons v, 
                                         boost::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
+      
+      //! conversions from enum_type_cons to type following the Boost.Conversion protocol
       friend type convert_to(enum_type_no_cons v, 
                              boost::dummy::type_tag<type> const&)
       {

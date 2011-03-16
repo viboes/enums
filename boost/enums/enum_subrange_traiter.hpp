@@ -16,18 +16,18 @@
 #include <boost/enums/pos.hpp>
 #include <boost/enums/first.hpp>
 #include <boost/enums/last.hpp>
-#include <boost/enums/emulator_type.hpp>
+#include <boost/enums/scoping_type.hpp>
 
 namespace boost {
   namespace enums {
     template <
         typename EC_type,
-        EC_type First=enums::meta::first<typename emulator_type<EC_type>::type >::value,
-        EC_type Last=enums::meta::last<typename emulator_type<EC_type>::type >::value
+        EC_type First=enums::meta::first<typename scoping_type<EC_type>::type >::value,
+        EC_type Last=enums::meta::last<typename scoping_type<EC_type>::type >::value
     >
     struct enum_subrange
     {
-      typedef typename emulator_type<EC_type>::type EC;
+      typedef typename scoping_type<EC_type>::type EC;
       static const std::size_t first_index = enums::meta::pos<EC,First>::value;
       static const std::size_t last_index = enums::meta::pos<EC,Last>::value;
 
