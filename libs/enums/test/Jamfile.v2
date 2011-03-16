@@ -86,10 +86,10 @@ project
         [ run enum_array/swap/swap.pass.cpp : : : : enum_array__swap__swap__pass ]
         [ run enum_array/special/swap.pass.cpp : : : : enum_array__special__swap__pass ]
         [ run enum_array/fill/fill.pass.cpp : : : : enum_array__fill__fill__pass ]
-	;
+        ;
 
   test-suite "enum_set"
-	:
+        :
         [ run enum_set/version.pass.cpp : : : : enum_set__version__pass ]
         #[ run enum_set/types.pass.cpp : : : : enum_set__types__pass ]
         [ run enum_set/cons/default.pass.cpp : : : : enum_set__cons_default__pass ]
@@ -99,7 +99,7 @@ project
   ;
 
   test-suite "enum_range"
-	:
+        :
         [ run enum_range/for_each.pass.cpp : : : : enum_range__for_each__pass ]
         [ run enum_range/foreach.pass.cpp : : : : enum_range__foreach__pass ]
         [ run enum_range/begin.pass.cpp : : : : enum_range__begin__pass ]
@@ -107,7 +107,7 @@ project
   ;
 
   test-suite "enum_range_c"
-	:
+        :
         [ run enum_range_c.pass.cpp : : : : enum_range_c__pass ]
         [ compile enum_range_c/empty.pass.cpp  : : enum_range_c__empty__pass ]
         [ compile enum_range_c/size.pass.cpp : : enum_range_c__size__pass ]
@@ -117,3 +117,11 @@ project
         [ compile enum_range_c/front.pass.cpp : : enum_range_c__front__pass ]
         [ compile enum_range_c/back.pass.cpp : : enum_range_c__back__pass ]
   ;
+
+  test-suite "examples"
+        :
+        [ run ../example/unsigned.cpp ]
+        [ compile ../example/version.cpp ]
+        [ compile-fail ../example/color_alert.cpp ]
+        ;
+
