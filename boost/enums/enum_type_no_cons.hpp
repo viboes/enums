@@ -41,11 +41,14 @@ namespace boost
     private:                                        
       underlying_type val_;                         
     public:
+      
+#if 0
       //! implicit conversion to underlying_type
       operator underlying_type()
       {
         return val_;
       }
+#endif
       
       //! implicit conversion to enum type
       operator type()
@@ -99,6 +102,8 @@ namespace boost
       {
         return val_;
       }
+#if 0
+
       //! equal operator
       friend bool operator==(enum_type_no_cons lhs, enum_type_no_cons rhs)
       {
@@ -189,6 +194,7 @@ namespace boost
       {
         return lhs.val_ > rhs;
       }
+#endif
       
       //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
       friend enum_type_no_cons convert_to(underlying_type v, 
