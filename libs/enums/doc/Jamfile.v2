@@ -62,7 +62,7 @@ doxygen scoped_enums_ref
       [ glob ../../../boost/enums/default_value.hpp ]
       [ glob ../../../boost/enums/emulation.hpp ]
       [ glob ../../../boost/enums/enum_subrange.hpp ]
-      [ glob ../../../boost/enums/emulator_type.hpp ]
+      [ glob ../../../boost/enums/scoping_type.hpp ]
       [ glob ../../../boost/enums/enum_type_cons.hpp ]
       [ glob ../../../boost/enums/enum_type_no_cons.hpp ]
       [ glob ../../../boost/enums/enum_class_cons.hpp ]
@@ -79,7 +79,7 @@ doxygen scoped_enums_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
-
+        <doxygen:param>SORT_MEMBER_DOCS=NO
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
         <doxygen:param>WARN_LOGFILE=AutoDoxywarnings.log # This may not be empty (usually not a good sign!), depending on options chosen.
@@ -121,6 +121,7 @@ doxygen ordinal_enums_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+        <doxygen:param>SORT_MEMBER_DOCS=NO
 
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
@@ -154,6 +155,7 @@ doxygen enums_containers_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+        <doxygen:param>SORT_MEMBER_DOCS=NO
 
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
@@ -184,6 +186,7 @@ doxygen mpl_enums_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+        <doxygen:param>SORT_MEMBER_DOCS=NO
 
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
