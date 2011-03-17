@@ -17,12 +17,12 @@
  a function \c pred() returning the predecessor of the enumeration element.
  */
 
-#ifndef BOOST_ENUMS_PRED_HPP
-#define BOOST_ENUMS_PRED_HPP
+#ifndef BOOST_ENUMS_ORDINAL_PRED_HPP
+#define BOOST_ENUMS_ORDINAL_PRED_HPP
 
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/val.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/ordinal/pos.hpp>
+#include <boost/enums/ordinal/val.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/assert.hpp>
 
@@ -54,4 +54,4 @@ namespace boost
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_PRED_HPP

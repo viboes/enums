@@ -25,8 +25,8 @@
 #include <boost/mpl/minus.hpp>
 #include <boost/mpl/aux_/value_wknd.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/val.hpp>
+#include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/ordinal/val.hpp>
 #include <boost/enums/mpl/aux_/enum_range_c/tag.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/eval_if.hpp>

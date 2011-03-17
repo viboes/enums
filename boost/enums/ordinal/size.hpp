@@ -17,10 +17,10 @@
  a function \c size() returning the number of elements in the enumeration.
  */
 
-#ifndef BOOST_ENUMS_SIZE_HPP
-#define BOOST_ENUMS_SIZE_HPP
+#ifndef BOOST_ENUMS_ORDINAL_SIZE_HPP
+#define BOOST_ENUMS_ORDINAL_SIZE_HPP
 
-#include <boost/enums/enum_type.hpp>
+#include <boost/enums/scoped/native_type.hpp>
 
 
 namespace boost {
@@ -48,4 +48,4 @@ namespace boost {
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_SIZE_HPP

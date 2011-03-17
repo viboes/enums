@@ -24,8 +24,8 @@
 #include <boost/enums/mpl/aux_/enum_range_c/empty.hpp>
 #include <boost/enums/mpl/aux_/enum_range_c/iterator.hpp>
 #include <boost/enums/mpl/aux_/enum_range_c/tag.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/val.hpp>
+#include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/ordinal/val.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <cstddef>
 

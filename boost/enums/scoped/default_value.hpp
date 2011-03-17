@@ -10,27 +10,28 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_UNDERLYING_VALUE_HPP
-#define BOOST_ENUMS_UNDERLYING_VALUE_HPP
+#ifndef BOOST_ENUMS_SCOPED_DEFAULT_VALUE_HPP
+#define BOOST_ENUMS_SCOPED_DEFAULT_VALUE_HPP
 
 #include <boost/config.hpp>
-#include <boost/enums/enum_type.hpp>
 
 namespace boost {
   namespace enums {
 
+    //!  builds a enum class with the default value.
+      
+    //! \return the default value
     template <typename EC>
-    inline
-    typename underlying_type<EC>::type
-    underlying_value(EC e)
+    inline EC default_value()
     {
 #ifdef BOOST_NO_SCOPED_ENUMS
-      return e.underlying_value();
+      return EC::default_value();
 #else
-      return static_cast<typename underlying_type<EC>::type>(e);
+      return EC();
 #endif
     }
+
   }
 }
 
-#endif // BOOST_ENUMS_UNDERLYING_VALUE_HPP
+#endif // BOOST_ENUMS_SCOPED_DEFAULT_VALUE_HPP

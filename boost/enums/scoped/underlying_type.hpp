@@ -10,8 +10,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_UNDERLYING_TYPE_HPP
-#define BOOST_ENUMS_UNDERLYING_TYPE_HPP
+#ifndef BOOST_ENUMS_SCOPED_UNDERLYING_TYPE_HPP
+#define BOOST_ENUMS_SCOPED_UNDERLYING_TYPE_HPP
 
 #include <boost/enums/config.hpp>
 #ifndef BOOST_NO_UNDERLYING_TYPE
@@ -49,4 +49,4 @@ namespace boost
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_SCOPED_UNDERLYING_TYPE_HPP

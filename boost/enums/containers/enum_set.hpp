@@ -15,18 +15,16 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/enum_set.hpp> defines a class template \c enum_set<EC> for managing sets of enumeration and several
+ The header \c <boost/enums/containers/enum_set.hpp> defines a class template \c enum_set<EC> for managing sets of enumeration and several
  //! related functions for representing and manipulating sets of enums. We can say that
  \c enum_set is the counterpart of \c std::bitset when the index are enums.
  */
 
-#ifndef BOOST_ENUMS_ENUM_SET_HPP
-#define BOOST_ENUMS_ENUM_SET_HPP
+#ifndef BOOST_ENUMS_CONTAINERS_ENUM_SET_HPP
+#define BOOST_ENUMS_CONTAINERS_ENUM_SET_HPP
 
-//#include <boost/enums/enum_traits.hpp>
-//#include <boost/enums/val.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/size.hpp>
+#include <boost/enums/ordinal/pos.hpp>
+#include <boost/enums/ordinal/size.hpp>
 #include <bitset>
 #include <stdexcept>
 #include <iosfwd>

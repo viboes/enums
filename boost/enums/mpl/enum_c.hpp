@@ -14,8 +14,8 @@
 #define BOOST_ENUMS_ENUM_C_HPP
 
 #include <boost/enums/mpl/enum_c_tag.hpp>
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/underlying_type.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/scoped/underlying_type.hpp>
 #include <cstddef>
 
 namespace boost {

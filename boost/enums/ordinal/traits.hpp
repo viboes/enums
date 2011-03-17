@@ -13,12 +13,12 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/enum_traits.hpp> declares a class template 
+ The header \c <boost/enums/ordinal/traits.hpp> declares a class template 
  \c meta::enum_traits<> which must be specialized for each enumeration including two static functions \c pos() and \c val().
  */
 
-#ifndef BOOST_ENUMS_ENUM_TRAITS_HPP
-#define BOOST_ENUMS_ENUM_TRAITS_HPP
+#ifndef BOOST_ENUMS_ORDINAL_TRAITS_HPP
+#define BOOST_ENUMS_ORDINAL_TRAITS_HPP
 
 namespace boost 
 {
@@ -43,4 +43,4 @@ namespace boost
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_TRAITS_HPP

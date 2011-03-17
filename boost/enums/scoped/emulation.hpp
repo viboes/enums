@@ -10,15 +10,15 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_EMULATION_HPP
-#define BOOST_ENUMS_EMULATION_HPP
+#ifndef BOOST_ENUMS_SCOPED_EMULATION_HPP
+#define BOOST_ENUMS_SCOPED_EMULATION_HPP
 
-#include <boost/enums/underlying_type.hpp>
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/scoping_type.hpp>
-#include <boost/enums/default_value.hpp>
-#include <boost/enums/enum_value.hpp>
-#include <boost/enums/underlying_value.hpp>
+#include <boost/enums/scoped/underlying_type.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/scoped/scoping_type.hpp>
+#include <boost/enums/scoped/default_value.hpp>
+#include <boost/enums/scoped/native_value.hpp>
+#include <boost/enums/scoped/underlying_value.hpp>
 #include <boost/conversion/convert_to.hpp>
 #include <boost/preprocessor/if.hpp>
 #include <boost/preprocessor/empty.hpp>
@@ -301,5 +301,5 @@
     BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)
 
 
-#endif // BOOST_NO_SCOPED_ENUMS
+#endif // BOOST_ENUMS_SCOPED_EMULATION_HPP
 #endif

@@ -13,11 +13,11 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/enum_type_cons.hpp> defines the declaration of enum_type_cons<> template class.
+ The header \c <boost/enums/scoped/enum_type_cons.hpp> defines the declaration of enum_type_cons<> template class.
  */
 
-#ifndef BOOST_ENUMS_ENUM_TYPE_CONS_HPP
-#define BOOST_ENUMS_ENUM_TYPE_CONS_HPP
+#ifndef BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP
+#define BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP
 
 #include <boost/config.hpp>
 
@@ -247,4 +247,4 @@ namespace boost
   }
 }
 
-#endif // BOOST_ENUMS_ENUM_TYPE_MIXIN_HPP
+#endif // BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP

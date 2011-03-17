@@ -10,27 +10,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_GET_VALUE_HPP
-#define BOOST_ENUMS_GET_VALUE_HPP
+#ifndef BOOST_ENUMS_CONTAINERS_HPP
+#define BOOST_ENUMS_CONTAINERS_HPP
 
-#include <boost/config.hpp>
-#include <boost/enums/enum_type.hpp>
-
-namespace boost {
-  namespace enums {
-
-    template <typename EC>
-    inline
-    typename enum_type<EC>::type
-    get_value(EC e)
-    {
-#ifdef BOOST_NO_SCOPED_ENUMS
-      return e.get();
-#else
-      return e;
-#endif
-    }
-  }
-}
-
-#endif
+#include <boost/enums/containers/range.hpp>
+#include <boost/enums/containers/set.hpp>
+#include <boost/enums/containers/array.hpp>
+   
+#endif // BOOST_ENUMS_CONTAINERS_HPP

@@ -10,26 +10,27 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_ENUM_VALUE_HPP
-#define BOOST_ENUMS_ENUM_VALUE_HPP
+#ifndef BOOST_ENUMS_SCOPED_UNDERLYING_VALUE_HPP
+#define BOOST_ENUMS_SCOPED_UNDERLYING_VALUE_HPP
 
 #include <boost/config.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/enums/scoped/native_type.hpp>
 
 namespace boost {
   namespace enums {
 
     template <typename EC>
     inline
-    typename enum_type<EC>::type enum_value(EC e)
+    typename underlying_type<EC>::type
+    underlying_value(EC e)
     {
 #ifdef BOOST_NO_SCOPED_ENUMS
-      return e.enum_value();
+      return e.underlying_value();
 #else
-      return e;
+      return static_cast<typename underlying_type<EC>::type>(e);
 #endif
     }
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_SCOPED_UNDERLYING_VALUE_HPP

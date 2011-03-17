@@ -13,10 +13,10 @@
 #ifndef BOOST_ENUMS_ENUM_SUBRANGE_HPP
 #define BOOST_ENUMS_ENUM_SUBRANGE_HPP
 
-#include <boost/enums/pos.hpp>
-#include <boost/enums/first.hpp>
-#include <boost/enums/last.hpp>
-#include <boost/enums/scoping_type.hpp>
+#include <boost/enums/ordinal/pos.hpp>
+#include <boost/enums/ordinal/first.hpp>
+#include <boost/enums/ordinal/last.hpp>
+#include <boost/enums/scoped/scoping_type.hpp>
 
 namespace boost {
   namespace enums {

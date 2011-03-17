@@ -10,15 +10,15 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef BOOST_ENUMS_ENUM_TRAITER_HPP
-#define BOOST_ENUMS_ENUM_TRAITER_HPP
+#ifndef BOOST_ENUMS_ORDINAL_LINEAR_TRAITER_HPP
+#define BOOST_ENUMS_ORDINAL_LINEAR_TRAITER_HPP
 
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/val.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/first.hpp>
-#include <boost/enums/last.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/ordinal/val.hpp>
+#include <boost/enums/ordinal/pos.hpp>
+#include <boost/enums/ordinal/first.hpp>
+#include <boost/enums/ordinal/last.hpp>
 #include <boost/conversion/convert_to.hpp>
 
 /*!
@@ -87,4 +87,4 @@ namespace boost {
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_LINEAR_TRAITER_HPP

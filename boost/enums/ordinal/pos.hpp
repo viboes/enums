@@ -18,11 +18,11 @@
  its relative position.
  */
 
-#ifndef BOOST_ENUMS_POS_HPP
-#define BOOST_ENUMS_POS_HPP
+#ifndef BOOST_ENUMS_ORDINAL_POS_HPP
+#define BOOST_ENUMS_ORDINAL_POS_HPP
 
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/enum_traits.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/ordinal/traits.hpp>
 #include <cstddef>
 
 
@@ -65,4 +65,4 @@ namespace boost
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_POS_HPP

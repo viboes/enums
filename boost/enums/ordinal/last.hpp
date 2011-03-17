@@ -17,12 +17,12 @@
  a function \c last() returning the last element of an enumeration.
  */
 
-#ifndef BOOST_ENUMS_LAST_HPP
-#define BOOST_ENUMS_LAST_HPP
+#ifndef BOOST_ENUMS_ORDINAL_LAST_HPP
+#define BOOST_ENUMS_ORDINAL_LAST_HPP
 
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/val.hpp>
-#include <boost/enums/size.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/ordinal/val.hpp>
+#include <boost/enums/ordinal/size.hpp>
 
 namespace boost
 {
@@ -47,4 +47,4 @@ namespace boost
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_LAST_HPP

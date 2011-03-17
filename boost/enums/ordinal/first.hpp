@@ -11,11 +11,11 @@
 //////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef BOOST_ENUMS_FIRST_HPP
-#define BOOST_ENUMS_FIRST_HPP
+#ifndef BOOST_ENUMS_ORDINAL_FIRST_HPP
+#define BOOST_ENUMS_ORDINAL_FIRST_HPP
 
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/val.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/ordinal/val.hpp>
 
 namespace boost
 {
@@ -40,4 +40,4 @@ namespace boost
   }
 }
 
-#endif
+#endif // BOOST_ENUMS_ORDINAL_FIRST_HPP

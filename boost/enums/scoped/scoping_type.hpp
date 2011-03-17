@@ -13,11 +13,11 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/scoping_type.hpp> defines the declaration of scoping_type<> meta-function.
+ The header \c <boost/enums/scoped/scoping_type.hpp> defines the declaration of scoping_type<> meta-function.
  */
 
-#ifndef BOOST_ENUMS_SCOPING_TYPE_HPP
-#define BOOST_ENUMS_SCOPING_TYPE_HPP
+#ifndef BOOST_ENUMS_SCOPED_SCOPING_TYPE_HPP
+#define BOOST_ENUMS_SCOPED_SCOPING_TYPE_HPP
 
 #include <boost/config.hpp>
 
@@ -39,4 +39,4 @@ namespace boost
   }
 }
 
-#endif // BOOST_ENUMS_SCOPING_TYPE_HPP
+#endif // BOOST_ENUMS_SCOPED_SCOPING_TYPE_HPP

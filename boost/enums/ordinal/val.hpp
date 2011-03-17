@@ -20,8 +20,8 @@
 #ifndef BOOST_ENUMS_VALUE_HPP
 #define BOOST_ENUMS_VALUE_HPP
 
-#include <boost/enums/enum_traits.hpp>
-#include <boost/enums/size.hpp>
+#include <boost/enums/ordinal/traits.hpp>
+#include <boost/enums/ordinal/size.hpp>
 #include <boost/assert.hpp>
 #include <cstddef>
 

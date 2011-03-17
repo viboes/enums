@@ -15,14 +15,14 @@
 /*!
 \file
 \brief  
-The header \c <boost/enums/enum_array.hpp> defines a class template for storing
+The header \c <boost/enums/containers/enum_array.hpp> defines a class template for storing
 sequences of objects fixed by the size of the enumeration. 
 We can say that
 \c enum_array is the counterpart of \c std::array when the index are enums.
 */
 
-#ifndef BOOST_ENUMS_ENUM_ARRAY_HPP
-#define BOOST_ENUMS_ENUM_ARRAY_HPP
+#ifndef BOOST_ENUMS_CONTAINER_ENUM_ARRAY_HPP
+#define BOOST_ENUMS_CONTAINER_ENUM_ARRAY_HPP
 
 #include <boost/detail/workaround.hpp>
 
@@ -43,8 +43,8 @@ We can say that
 #include <boost/throw_exception.hpp>
 #include <algorithm>
 
-#include <boost/enums/size.hpp>
-#include <boost/enums/pos.hpp>
+#include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/ordinal/pos.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
 // FIXES for broken compilers + CONSTEXPR
@@ -485,4 +485,4 @@ namespace boost
 # pragma warning(pop)  
 #endif 
 
-#endif /*BOOST_ENUMS_ENUM_ARRAY_HPP*/
+#endif // BOOST_ENUMS_CONTAINER_ENUM_ARRAY_HPP

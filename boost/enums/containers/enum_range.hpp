@@ -13,17 +13,16 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/enum_range.hpp> defines a class template \c enum_range for viewing an enumerations as a range.
+ The header \c <boost/enums/©enum_range.hpp> defines a class template \c enum_range for viewing an enumerations as a range.
  */
 
-#ifndef BOOST_ENUMS_ENUM_RANGE_HPP
-#define BOOST_ENUMS_ENUM_RANGE_HPP
+#ifndef BOOST_ENUMS_CONTAINERS_ENUM_RANGE_HPP
+#define BOOST_ENUMS_CONTAINERS_ENUM_RANGE_HPP
 
-#include <boost/enums/enum_type.hpp>
-//#include <boost/enums/enum_range_traits.hpp>
-#include <boost/enums/val.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/size.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/ordinal/val.hpp>
+#include <boost/enums/ordinal/pos.hpp>
+#include <boost/enums/ordinal/size.hpp>
 
 
 #include <boost/iterator/iterator_facade.hpp>
@@ -160,4 +159,4 @@ namespace boost {
   } // namespace enums
 } // namespace boost
 
-#endif
+#endif // BOOST_ENUMS_CONTAINERS_ENUM_RANGE_HPP
