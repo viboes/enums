@@ -23,7 +23,7 @@
 
 // T *data();
 
-#include <boost/enums/enum_array.hpp>
+#include <boost/enums/containers/enum_array.hpp>
 #include "./Ex.hpp"
 #include <boost/detail/lightweight_test.hpp>
 

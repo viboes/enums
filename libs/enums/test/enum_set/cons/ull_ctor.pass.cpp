@@ -23,8 +23,8 @@
 // test bitset(unsigned long long val);
 
 #include "./Ex.hpp"
-#include <boost/enums/enum_set.hpp>
-#include <boost/enums/val.hpp>
+#include <boost/enums/containers/enum_set.hpp>
+#include <boost/enums/ordinal/val.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
 using namespace boost::enums;

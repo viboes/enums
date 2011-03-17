@@ -12,7 +12,7 @@
 
 #include "./EnumClass.hpp"
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/enums/enum_range.hpp>
+#include <boost/enums/containers/enum_range.hpp>
 #include <boost/range/algorithm/for_each.hpp> 
 #include <cstddef>
 

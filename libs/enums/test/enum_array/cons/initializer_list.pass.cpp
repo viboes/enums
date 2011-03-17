@@ -25,7 +25,7 @@
 // Construct with initizializer list
 
 #include "./Ex.hpp"
-#include <boost/enums/enum_array.hpp>
+#include <boost/enums/containers/enum_array.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
 int main()

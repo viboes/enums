@@ -10,7 +10,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#include <boost/enums/emulation.hpp>
+#include <boost/enums/scoped.hpp>
 
 BOOST_ENUM_CLASS_START(EC_NoCons, int) {
     E0 = 3,

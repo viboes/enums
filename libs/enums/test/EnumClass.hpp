@@ -14,25 +14,25 @@
 #define ENUMCLASS_HPP
 
 
-#include <boost/enums/underlying_type.hpp>
-#include <boost/enums/enum_type.hpp>
-#include <boost/enums/default_value.hpp>
-#include <boost/enums/enum_value.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/first.hpp>
-#include <boost/enums/last.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/enum_traits.hpp>
+#include <boost/enums/scoped/underlying_type.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/scoped/default_value.hpp>
+#include <boost/enums/scoped/native_value.hpp>
+#include <boost/enums/ordinal/pos.hpp>
+#include <boost/enums/ordinal/first.hpp>
+#include <boost/enums/ordinal/last.hpp>
+#include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/ordinal/traits.hpp>
 #include <boost/conversion/convert_to.hpp>
-#include <boost/enums/enum_traiter.hpp>
-#include <boost/enums/emulation.hpp>
+#include <boost/enums/ordinal/linear_traiter.hpp>
+#include <boost/enums/scoped/emulation.hpp>
 #include <cassert>
 #include <cstring>
 #include <string>
-#include <boost/enums/enum_class_cons.hpp>
-#include <boost/enums/enum_class_no_cons.hpp>
-#include <boost/enums/enum_type_cons.hpp>
-#include <boost/enums/enum_type_no_cons.hpp>
+#include <boost/enums/scoped/enum_class_cons.hpp>
+#include <boost/enums/scoped/enum_class_no_cons.hpp>
+#include <boost/enums/scoped/enum_type_cons.hpp>
+#include <boost/enums/scoped/enum_type_no_cons.hpp>
 
 #define CTOR
 #if 0

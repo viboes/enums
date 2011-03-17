@@ -23,9 +23,9 @@
 // test default ctor
 
 #include "./Ex.hpp"
-#include <boost/enums/enum_set.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/val.hpp>
+#include <boost/enums/containers/enum_set.hpp>
+#include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/ordinal/val.hpp>
 #include <boost/detail/lightweight_test.hpp>
 #include <iostream>
 

@@ -10,7 +10,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#include <boost/enums/emulation.hpp>
+#include <boost/enums/scoped.hpp>
 
 namespace Ex {
   BOOST_ENUM_CLASS_START(EC_Cons, int) {

@@ -11,8 +11,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "./EnumClass.hpp"
-#include <boost/enums/pred.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/enums/ordinal/pred.hpp>
+#include <boost/enums/scoped/native_type.hpp>
 
 void fail() {
   using namespace boost::enums;

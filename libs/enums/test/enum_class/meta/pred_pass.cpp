@@ -12,7 +12,7 @@
 
 #include "./EnumClass.hpp"
 #include <boost/static_assert.hpp>
-#include <boost/enums/pred.hpp>
+#include <boost/enums/ordinal/pred.hpp>
 #include <boost/enums/mpl/enum_c.hpp>
 #include <boost/enums/mpl/equal_to.hpp>
 

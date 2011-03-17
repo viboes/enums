@@ -14,14 +14,9 @@
 #define EX_HPP
 
 
-#include <boost/enums/emulation.hpp>
-#include <boost/enums/size.hpp>
-#include <boost/enums/pos.hpp>
-#include <boost/enums/val.hpp>
-#include <boost/enums/enum_traits.hpp>
-#include <boost/enums/enum_traiter.hpp>
+#include <boost/enums/scoped.hpp>
+#include <boost/enums/ordinal.hpp>
 #include <cstddef>
-#include <boost/enums/enum_class_cons.hpp>
 
 #if 0
   BOOST_ENUM_CLASS_START(EC3, int) {

@@ -11,8 +11,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "./EnumClass.hpp"
-#include <boost/enums/succ.hpp>
-#include <boost/enums/enum_type.hpp>
+#include <boost/enums/ordinal/succ.hpp>
+#include <boost/enums/scoped/native_type.hpp>
 
 void fail() {
   using namespace boost::enums;

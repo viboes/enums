@@ -22,7 +22,7 @@
 
 // <enum_array>
 
-#include <boost/enums/enum_array.hpp>
+#include <boost/enums/containers/enum_array.hpp>
 
 #ifndef BOOST_ENUMS_VERSION
 #error BOOST_ENUMS_VERSION not defined

@@ -9,7 +9,7 @@
 // See http://www.boost.org/libs/enums for documentation.
 //
 //////////////////////////////////////////////////////////////////////////////
-#include <boost/enums/emulation.hpp>
+#include <boost/enums/scoped.hpp>
 
 struct C
 {

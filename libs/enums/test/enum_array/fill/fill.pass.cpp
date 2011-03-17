@@ -24,7 +24,7 @@
 
 // void fill(const T& u);
 
-#include <boost/enums/enum_array.hpp>
+#include <boost/enums/containers/enum_array.hpp>
 #include "./Ex.hpp"
 #include <boost/detail/lightweight_test.hpp>
 
