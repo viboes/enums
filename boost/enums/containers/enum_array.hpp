@@ -435,21 +435,21 @@ namespace boost
         : public integral_constant<size_t, meta::size<EC>::value> 
           {};
 
-    template <class T, typename EC, enum_type<EC>::type K>
+    template <class T, typename EC, native_type<EC>::type K>
     class  tuple_element<enum_array<T, EC> >
     {
     public:
         typedef T type;
     };
 
-    template <class T, typename EC, enum_type<EC>::type K>
+    template <class T, typename EC, native_type<EC>::type K>
     class  tuple_element<const enum_array<T, EC> >
     {
     public:
         typedef const T type;
     };
 
-    template <class T, typename EC, enum_type<EC>::type K>
+    template <class T, typename EC, native_type<EC>::type K>
     inline
     T&
     get(enum_array<T, EC>& a)
@@ -457,7 +457,7 @@ namespace boost
         return a[K];
     }
 
-    template <class T, typename EC, enum_type<EC>::type K>
+    template <class T, typename EC, native_type<EC>::type K>
     inline
     const T&
     get(const enum_array<T, EC>& a)
@@ -467,7 +467,7 @@ namespace boost
 
     #ifndef BOOST_NO_RVALUE_REFERENCES
 
-    template <class T, typename EC, enum_type<EC>::type K>
+    template <class T, typename EC, native_type<EC>::type K>
     T&&
     get(array<T, meta::size<EC>::value>&& a)
     {

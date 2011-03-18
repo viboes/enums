@@ -21,10 +21,10 @@ namespace boost {
 
     template <typename EC>
     inline
-    typename enum_type<EC>::type enum_value(EC e)
+    typename native_type<EC>::type native_value(EC e)
     {
 #ifdef BOOST_NO_SCOPED_ENUMS
-      return e.enum_value();
+      return e.native_value();
 #else
       return e;
 #endif

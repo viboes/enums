@@ -34,11 +34,11 @@ namespace boost
     {
       //! meta-function that gets the predecessor of an enumeration element
       //! Pre-condition: the position must be not 0
-      template <typename EC, typename enum_type<EC>::type V>
+      template <typename EC, typename native_type<EC>::type V>
       struct pred
       {
         BOOST_STATIC_ASSERT((pos<EC,V>::value!=0));
-        BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value =
+        BOOST_STATIC_CONSTEXPR typename native_type<EC>::type value =
           val<EC,pos<EC,V>::value-1>::value;
       };
     }

@@ -34,11 +34,11 @@ namespace boost
     {
       //! meta-function that gets the successor of an enumeration element
       //! Pre-condition: the position must not be the last one
-      template <typename EC, typename enum_type<EC>::type V>
+      template <typename EC, typename native_type<EC>::type V>
       struct succ
       {
         BOOST_STATIC_ASSERT((pos<EC,V>::value!=(size<EC>::value-1)));
-        static const typename enum_type<EC>::type value =
+        static const typename native_type<EC>::type value =
           val<EC,pos<EC,V>::value+1>::value;
       };
     }

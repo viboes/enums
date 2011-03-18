@@ -76,7 +76,7 @@ namespace boost {
 //    public:
 //      static std::size_t pos(EC e)
 //      {
-//        return (enum_value(e));
+//        return (native_value(e));
 //      }
 //      static EC val(std::size_t i)
 //      {

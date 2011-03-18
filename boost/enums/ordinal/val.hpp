@@ -41,7 +41,7 @@ namespace boost
 #else
         struct val
         {
-            constexpr typename enum_type<EC>::type value=<to be defined for each specialization>;
+            constexpr typename native_type<EC>::type value=<to be defined for each specialization>;
         };    
 #endif
         

@@ -34,7 +34,7 @@ namespace boost
       template <typename EC>
       struct last
       {
-        BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value = val<EC,size<EC>::value-1>::value;
+        BOOST_STATIC_CONSTEXPR typename native_type<EC>::type value = val<EC,size<EC>::value-1>::value;
       };
     }
     //! Returns the the last element of an enumeration

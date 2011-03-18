@@ -27,7 +27,7 @@ namespace boost
       template <typename EC>
       struct first
       {
-        BOOST_STATIC_CONSTEXPR typename enum_type<EC>::type value = enums::meta::val<EC,0>::value;
+        BOOST_STATIC_CONSTEXPR typename native_type<EC>::type value = enums::meta::val<EC,0>::value;
       };
     }
     //! Returns the the first element of an enumeration

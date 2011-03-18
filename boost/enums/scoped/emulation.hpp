@@ -38,13 +38,13 @@
 
   #define BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, OP)                    \
       friend inline BOOST_CONSTEXPR bool operator OP(EC lhs, EC rhs) {      \
-        return lhs.enum_value() OP rhs.enum_value();                        \
+        return lhs.native_value() OP rhs.native_value();                        \
       }                                                                     \
       friend inline BOOST_CONSTEXPR bool operator OP(type lhs, EC rhs) {    \
-        return lhs OP rhs.enum_value();                                     \
+        return lhs OP rhs.native_value();                                     \
       }                                                                     \
       friend inline BOOST_CONSTEXPR bool operator OP(EC lhs, type rhs) {    \
-        return lhs.enum_value() OP rhs;                                     \
+        return lhs.native_value() OP rhs;                                     \
       }
 
 #endif // BOOST_NO_SCOPED_ENUMS
@@ -69,7 +69,7 @@
       namespace boost {                               \
         namespace enums {                             \
           template <>                                 \
-          struct scoping_type<enum_type<EC>::type>   \
+          struct scoping_type<native_type<EC>::type>   \
           {                                           \
             typedef EC type;                          \
           };                                          \
@@ -105,7 +105,7 @@
     {                                                                         \
       return EC(v);                                                           \
     }                                                                         \
-    inline EC convert_to(boost::enums::enum_type<EC>::type  v                 \
+    inline EC convert_to(boost::enums::native_type<EC>::type  v                 \
       , boost::dummy::type_tag<EC> const&                                     \
     )                                                                         \
     {                                                                         \
@@ -145,7 +145,7 @@
   {                                                                         \
     return EC::convert_to(v);                                               \
   }                                                                         \
-  inline friend EC convert_to(boost::enums::enum_type<EC>::type  v          \
+  inline friend EC convert_to(boost::enums::native_type<EC>::type  v          \
     , boost::dummy::type_tag<EC> const&                                     \
   )                                                                         \
   {                                                                         \
@@ -157,11 +157,11 @@
   {                                                                         \
     return boost::enums::underlying_value(v);                               \
   }                                                                         \
-  inline friend boost::enums::enum_type<EC>::type convert_to(EC v           \
-    , boost::dummy::type_tag<boost::enums::enum_type<EC>::type> const&      \
+  inline friend boost::enums::native_type<EC>::type convert_to(EC v           \
+    , boost::dummy::type_tag<boost::enums::native_type<EC>::type> const&      \
   )                                                                         \
   {                                                                         \
-    return boost::enums::enum_value(v);                                     \
+    return boost::enums::native_value(v);                                     \
   }
 
 
@@ -188,7 +188,7 @@
     res.val_=static_cast<underlying_type>(v);           \
     return res;                                         \
   }                                                     \
-  type enum_value() const                               \
+  type native_value() const                               \
   {                                                     \
     return type(val_);                                  \
   }                                                     \

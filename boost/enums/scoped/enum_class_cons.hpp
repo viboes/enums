@@ -91,7 +91,7 @@ namespace boost
         return res;
       }
       //! explicit conversion function to enum type        
-      type enum_value() const
+      type native_value() const
       {
         return type(val_);
       }
@@ -222,7 +222,7 @@ namespace boost
       friend type convert_to(enum_class_cons v, 
                              boost::dummy::type_tag<type> const&)
       {
-        return boost::enums::enum_value(v);
+        return boost::enums::native_value(v);
       }
     };    
   }

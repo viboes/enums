@@ -22,7 +22,7 @@ namespace boost
     //! meta-function to get the native enum type associated to an enum class
     //! or its emulation
     template <typename EC>
-    struct enum_type
+    struct native_type
     {
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
   #ifdef BOOST_NO_SCOPED_ENUMS
