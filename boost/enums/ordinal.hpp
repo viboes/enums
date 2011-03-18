@@ -10,6 +10,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+/*!
+ \file
+ \brief  
+ Include all the files of the Ordinal Enum Framework.
+ */
+
 #ifndef BOOST_ENUMS_ORDINAL_HPP
 #define BOOST_ENUMS_ORDINAL_HPP
 

@@ -9,6 +9,12 @@
 // See http://www.boost.org/libs/enums for documentation.
 //
 //////////////////////////////////////////////////////////////////////////////
+/*!
+ \file
+ \brief  
+ Include all the files of the Scoped Enum Framework.
+ */
+
 
 #ifndef BOOST_ENUMS_SCOPED_HPP
 #define BOOST_ENUMS_SCOPED_HPP

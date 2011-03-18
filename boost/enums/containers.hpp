@@ -9,6 +9,11 @@
 // See http://www.boost.org/libs/enums for documentation.
 //
 //////////////////////////////////////////////////////////////////////////////
+/*!
+ \file
+ \brief  
+ Include all the enum eontainers.
+ */
 
 #ifndef BOOST_ENUMS_CONTAINERS_HPP
 #define BOOST_ENUMS_CONTAINERS_HPP
