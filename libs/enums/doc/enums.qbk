@@ -369,7 +369,7 @@ The following fails to compile as implicit conversion to the enum type is not de
  
   const char* c_str(EnumType e)
   {
-      switch (e) // conversion from EnumType to enum_type<EnumType>::type
+      switch (e) // conversion from EnumType to native_type<EnumType>::type
       {
       case EnumType::Enum0 :   return("EnumType::Enum0");
       case EnumType::Enum1:    return("EnumType::Enum1");
@@ -393,11 +393,11 @@ However, with scoped enum classes the following fails to compile as implicit con
       }
   }
 
-The library provides a function `enum_value()` that makes this conversion explicitly, i.e., return the native enum in a portable way.
+The library provides a function `native_value()` that makes this conversion explicitly, i.e., return the native enum in a portable way.
 
   const char* c_str(EnumClass e)
   {
-      switch (boost::enums::enum_value(e))
+      switch (boost::enums::native_value(e))
       {
       case EnumClass::Enum0 :   return("EnumClass::Enum0");
       case EnumClass::Enum1:    return("EnumClass::Enum1");
@@ -415,9 +415,9 @@ The following fails to compile as the emulation is not a built-in type:
   template <EnumClass e>
   struct ex;
 
-The library provides a meta-function `enum_type<>` that return the native enum type in a portable way.
+The library provides a meta-function `native_type<>` that return the native enum type in a portable way.
 
-  template <enums::enum_type<EnumClass>::type e>
+  template <enums::native_type<EnumClass>::type e>
   struct ex;
 
 [endsect]
@@ -553,17 +553,17 @@ An example of specialization follows:
         template <>
         struct val<EC3, 0>
         {
-          BOOST_STATIC_CONSTEXPR enum_type<EC3>::type value = EC3::Enum0;
+          BOOST_STATIC_CONSTEXPR native_type<EC3>::type value = EC3::Enum0;
         };
         template <>
         struct val<EC3, 1>
         {
-          BOOST_STATIC_CONSTEXPR enum_type<EC3>::type value = EC3::Enum1;
+          BOOST_STATIC_CONSTEXPR native_type<EC3>::type value = EC3::Enum1;
         };
         template <>
         struct val<EC3, 2>
         {
-          BOOST_STATIC_CONSTEXPR enum_type<EC3>::type value = EC3::Enum2;
+          BOOST_STATIC_CONSTEXPR native_type<EC3>::type value = EC3::Enum2;
         };
         template <>
         struct enum_traits<EC3> : linear_enum_traiter<EC3>
@@ -713,7 +713,7 @@ We can define explicitly this conversion as done previously:
 
   const char* c_str(EnumClass e)
   {
-      switch (boost::enums::enum_value(e))
+      switch (boost::enums::native_value(e))
       {
       case EnumClass::Enum0 :   return("Enum0");
       case EnumClass::Enum1:    return("Enum1");
@@ -888,13 +888,14 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 
 [section:history Appendix A: History]
 
-[section [*Version 0.2.0, Mars 16, 2011] ]
+[section [*Version 0.2.0, Mars 17, 2011] ]
 
 [*New Features:]
 
 * Make more coherent the meta-functions and functions.
   * Added underlying_value.
   * Added scoping_type.
+  * enum_type renamed native_type
 * Added ordinal enums: first, last, red, succ, pos, val, size functions and meta-functions.
 * Added enum containers:
   * enum_type_cons/no_cons and enum_class_cons/no_cons classes.
@@ -948,7 +949,7 @@ Nest follows the skeleton of the emulation class
       static EC convert_to(underlying_type v);               
       static EC convert_to(type v);
       // explicit conversion in case explicit conversions are not available        
-      type enum_value() const;                                      
+      type native_value() const;                                      
       underlying_type underlying_value() const;                                      
       // comparison operators
       friend bool operator==(EC lhs, EC rhs);

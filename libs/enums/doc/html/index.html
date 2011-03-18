@@ -760,7 +760,7 @@
           </p>
 <pre class="programlisting"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">c_str</span><span class="special">(</span><span class="identifier">EnumType</span> <span class="identifier">e</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">e</span><span class="special">)</span> <span class="comment">// conversion from EnumType to enum_type&lt;EnumType&gt;::type
+    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">e</span><span class="special">)</span> <span class="comment">// conversion from EnumType to native_type&lt;EnumType&gt;::type
 </span>    <span class="special">{</span>
     <span class="keyword">case</span> <span class="identifier">EnumType</span><span class="special">::</span><span class="identifier">Enum0</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumType::Enum0"</span><span class="special">);</span>
     <span class="keyword">case</span> <span class="identifier">EnumType</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">:</span>    <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumType::Enum1"</span><span class="special">);</span>
@@ -787,12 +787,12 @@
 <span class="special">}</span>
 </pre>
 <p>
-            The library provides a function <code class="computeroutput"><span class="identifier">enum_value</span><span class="special">()</span></code> that makes this conversion explicitly,
+            The library provides a function <code class="computeroutput"><span class="identifier">native_value</span><span class="special">()</span></code> that makes this conversion explicitly,
             i.e., return the native enum in a portable way.
           </p>
 <pre class="programlisting"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">c_str</span><span class="special">(</span><span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_value</span><span class="special">(</span><span class="identifier">e</span><span class="special">))</span>
+    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">native_value</span><span class="special">(</span><span class="identifier">e</span><span class="special">))</span>
     <span class="special">{</span>
     <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum0"</span><span class="special">);</span>
     <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">:</span>    <span class="keyword">return</span><span class="special">(</span><span class="string">"EnumClass::Enum1"</span><span class="special">);</span>
@@ -815,10 +815,10 @@
 <span class="keyword">struct</span> <span class="identifier">ex</span><span class="special">;</span>
 </pre>
 <p>
-            The library provides a meta-function <code class="computeroutput"><span class="identifier">enum_type</span><span class="special">&lt;&gt;</span></code> that return the native enum type
+            The library provides a meta-function <code class="computeroutput"><span class="identifier">native_type</span><span class="special">&lt;&gt;</span></code> that return the native enum type
             in a portable way.
           </p>
-<pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_type</span><span class="special">&lt;</span><span class="identifier">EnumClass</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">e</span><span class="special">&gt;</span>
+<pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">native_type</span><span class="special">&lt;</span><span class="identifier">EnumClass</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">e</span><span class="special">&gt;</span>
 <span class="keyword">struct</span> <span class="identifier">ex</span><span class="special">;</span>
 </pre>
 </div>
@@ -1010,17 +1010,17 @@
       <span class="keyword">template</span> <span class="special">&lt;&gt;</span>
       <span class="keyword">struct</span> <span class="identifier">val</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">,</span> <span class="number">0</span><span class="special">&gt;</span>
       <span class="special">{</span>
-        <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">enum_type</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">EC3</span><span class="special">::</span><span class="identifier">Enum0</span><span class="special">;</span>
+        <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">native_type</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">EC3</span><span class="special">::</span><span class="identifier">Enum0</span><span class="special">;</span>
       <span class="special">};</span>
       <span class="keyword">template</span> <span class="special">&lt;&gt;</span>
       <span class="keyword">struct</span> <span class="identifier">val</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">,</span> <span class="number">1</span><span class="special">&gt;</span>
       <span class="special">{</span>
-        <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">enum_type</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">EC3</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">;</span>
+        <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">native_type</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">EC3</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">;</span>
       <span class="special">};</span>
       <span class="keyword">template</span> <span class="special">&lt;&gt;</span>
       <span class="keyword">struct</span> <span class="identifier">val</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">,</span> <span class="number">2</span><span class="special">&gt;</span>
       <span class="special">{</span>
-        <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">enum_type</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">EC3</span><span class="special">::</span><span class="identifier">Enum2</span><span class="special">;</span>
+        <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">native_type</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">EC3</span><span class="special">::</span><span class="identifier">Enum2</span><span class="special">;</span>
       <span class="special">};</span>
       <span class="keyword">template</span> <span class="special">&lt;&gt;</span>
       <span class="keyword">struct</span> <span class="identifier">enum_traits</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;</span> <span class="special">:</span> <span class="identifier">linear_enum_traiter</span><span class="special">&lt;</span><span class="identifier">EC3</span><span class="special">&gt;</span>
@@ -1261,7 +1261,7 @@
         </p>
 <pre class="programlisting"><span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">c_str</span><span class="special">(</span><span class="identifier">EnumClass</span> <span class="identifier">e</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_value</span><span class="special">(</span><span class="identifier">e</span><span class="special">))</span>
+    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">native_value</span><span class="special">(</span><span class="identifier">e</span><span class="special">))</span>
     <span class="special">{</span>
     <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum0</span> <span class="special">:</span>   <span class="keyword">return</span><span class="special">(</span><span class="string">"Enum0"</span><span class="special">);</span>
     <span class="keyword">case</span> <span class="identifier">EnumClass</span><span class="special">::</span><span class="identifier">Enum1</span><span class="special">:</span>    <span class="keyword">return</span><span class="special">(</span><span class="string">"Enum1"</span><span class="special">);</span>
@@ -1602,7 +1602,7 @@
 <a name="header.boost.enums.scoped.native_type_hpp"></a>Header &lt;<a href="../../../../boost/enums/scoped/native_type.hpp" target="_top">boost/enums/scoped/native_type.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/enum_type.html" title="Struct template enum_type">enum_type</a><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/native_type.html" title="Struct template native_type">native_type</a><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1611,7 +1611,7 @@
 <a name="header.boost.enums.scoped.native_value_hpp"></a>Header &lt;<a href="../../../../boost/enums/scoped/native_value.hpp" target="_top">boost/enums/scoped/native_value.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <a class="link" href="boost/enums/enum_type.html" title="Struct template enum_type">enum_type</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> <a name="boost.enums.enum_value"></a><span class="identifier">enum_value</span><span class="special">(</span><span class="identifier">EC</span> e<span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <a class="link" href="boost/enums/native_type.html" title="Struct template native_type">native_type</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> <a name="boost.enums.native_value"></a><span class="identifier">native_value</span><span class="special">(</span><span class="identifier">EC</span> e<span class="special">)</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1678,7 +1678,7 @@
 <a name="header.boost.enums.ordinal.first_hpp"></a>Header &lt;<a href="../../../../boost/enums/ordinal/first.hpp" target="_top">boost/enums/ordinal/first.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">constexpr</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/first_id35963699.html" title="Function template first"><span class="identifier">first</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">constexpr</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/first_id35963707.html" title="Function template first"><span class="identifier">first</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
       <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/first.html" title="Struct template first">first</a><span class="special">;</span>
     <span class="special">}</span>
@@ -1691,7 +1691,7 @@
 <p>The header <code class="computeroutput">&lt;boost/enums/last.hpp&gt;</code> declares a class template <code class="computeroutput">meta::last&lt;&gt;</code> and a function <code class="computeroutput">last()</code> returning the last element of an enumeration. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">constexpr</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/last_id35963753.html" title="Function template last"><span class="identifier">last</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">constexpr</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/last_id35963762.html" title="Function template last"><span class="identifier">last</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
       <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/last.html" title="Struct template last">last</a><span class="special">;</span>
     <span class="special">}</span>
@@ -1714,9 +1714,9 @@
 <p>The header <code class="computeroutput">&lt;boost/enums/pos.hpp&gt;</code> declares a class template <code class="computeroutput">meta::pos&lt;&gt;</code> and a function <code class="computeroutput">pos()</code> associating the an element of an enumeration to its relative position. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="boost/enums/pos_id35963911.html" title="Function template pos"><span class="identifier">pos</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="boost/enums/pos_id35963919.html" title="Function template pos"><span class="identifier">pos</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
-      <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">enum_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/pos.html" title="Struct template pos">pos</a><span class="special">;</span>
+      <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">native_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/pos.html" title="Struct template pos">pos</a><span class="special">;</span>
     <span class="special">}</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
@@ -1727,9 +1727,9 @@
 <p>The header <code class="computeroutput">&lt;boost/enums/pred.hpp&gt;</code> declares a class template <code class="computeroutput">meta::pred&lt;&gt;</code> and a function <code class="computeroutput">pred()</code> returning the predecessor of the enumeration element. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">constexpr</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/pred_id35964008.html" title="Function template pred"><span class="identifier">pred</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">constexpr</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/pred_id35964016.html" title="Function template pred"><span class="identifier">pred</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
-      <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">enum_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/pred.html" title="Struct template pred">pred</a><span class="special">;</span>
+      <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">native_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/pred.html" title="Struct template pred">pred</a><span class="special">;</span>
     <span class="special">}</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
@@ -1740,7 +1740,7 @@
 <p>The header <code class="computeroutput">&lt;boost/enums/size.hpp&gt;</code> declares a class template <code class="computeroutput">meta::size&lt;&gt;</code> and a function <code class="computeroutput">size()</code> returning the number of elements in the enumeration. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="boost.enums.size_id35964073"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="boost.enums.size_id35964081"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
       <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/size.html" title="Struct template size">size</a><span class="special">;</span>
     <span class="special">}</span>
@@ -1753,9 +1753,9 @@
 <p>The header <code class="computeroutput">&lt;boost/enums/succ.hpp&gt;</code> declares a class template <code class="computeroutput">meta::succ&lt;&gt;</code> and a function <code class="computeroutput">succ()</code> returning the predecessor of the enumeration element. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/succ_id35964135.html" title="Function template succ"><span class="identifier">succ</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/succ_id35964142.html" title="Function template succ"><span class="identifier">succ</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
-      <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">enum_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/succ.html" title="Struct template succ">succ</a><span class="special">;</span>
+      <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">native_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/succ.html" title="Struct template succ">succ</a><span class="special">;</span>
     <span class="special">}</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
@@ -1778,7 +1778,7 @@
 <p>The header <code class="computeroutput">&lt;boost/enums/val.hpp&gt;</code> declares a class template <code class="computeroutput">meta::val&lt;&gt;</code> and a function <code class="computeroutput">val()</code> associating a position to an element of an enumeration. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/val_id35964284.html" title="Function template val"><span class="identifier">val</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">EC</span> <a class="link" href="boost/enums/val_id35964291.html" title="Function template val"><span class="identifier">val</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
       <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> I<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/enums/meta/val.html" title="Struct template val">val</a><span class="special">;</span>
     <span class="special">}</span>
@@ -1816,23 +1816,23 @@
       <span class="keyword">bool</span> <a class="link" href="boost/enums/operator__.html" title="Function template operator=="><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
                       <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
-      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator_id35968945.html" title="Function template operator&lt;"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator_id35968953.html" title="Function template operator&lt;"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
       <span class="keyword">bool</span> <a class="link" href="boost/enums/operator__.html" title="Function template operator!="><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
                       <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
-      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator_id35969022.html" title="Function template operator&gt;"><span class="keyword">operator</span><span class="special">&gt;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator_id35969030.html" title="Function template operator&gt;"><span class="keyword">operator</span><span class="special">&gt;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
-      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator___id35969060.html" title="Function template operator&lt;="><span class="keyword">operator</span><span class="special">&lt;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
+      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator___id35969068.html" title="Function template operator&lt;="><span class="keyword">operator</span><span class="special">&lt;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
                       <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
-      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator___id35969098.html" title="Function template operator&gt;="><span class="keyword">operator</span><span class="special">&gt;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
+      <span class="keyword">bool</span> <a class="link" href="boost/enums/operator___id35969106.html" title="Function template operator&gt;="><span class="keyword">operator</span><span class="special">&gt;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
                       <span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
       <span class="keyword">void</span> <a class="link" href="boost/enums/swap.html" title="Function template swap"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">T</span><span class="special">(</span><span class="special">&amp;</span> <a class="link" href="boost/enums/get_c_array_id35969186.html" title="Function template get_c_array"><span class="identifier">get_c_array</span></a><span class="special">(</span><a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="identifier">T</span><span class="special">(</span><span class="special">&amp;</span> <a class="link" href="boost/enums/get_c_array_id35969194.html" title="Function template get_c_array"><span class="identifier">get_c_array</span></a><span class="special">(</span><a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
-      <span class="keyword">const</span> <span class="identifier">T</span><span class="special">(</span><span class="special">&amp;</span> <a class="link" href="boost/enums/get_c_array_id35969212.html" title="Function template get_c_array"><span class="identifier">get_c_array</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+      <span class="keyword">const</span> <span class="identifier">T</span><span class="special">(</span><span class="special">&amp;</span> <a class="link" href="boost/enums/get_c_array_id35969220.html" title="Function template get_c_array"><span class="identifier">get_c_array</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1843,8 +1843,8 @@
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">class</span> <a class="link" href="boost/enums/enum_range.html" title="Class template enum_range">enum_range</a><span class="special">;</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <a class="link" href="boost/enums/enum_range.html" title="Class template enum_range">enum_range</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/make_range_id35969295.html" title="Function template make_range"><span class="identifier">make_range</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <a class="link" href="boost/enums/enum_range.html" title="Class template enum_range">enum_range</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/make_range_id35969328.html" title="Function template make_range"><span class="identifier">make_range</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <a class="link" href="boost/enums/enum_range.html" title="Class template enum_range">enum_range</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/make_range_id35969303.html" title="Function template make_range"><span class="identifier">make_range</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <a class="link" href="boost/enums/enum_range.html" title="Class template enum_range">enum_range</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/make_range_id35969336.html" title="Function template make_range"><span class="identifier">make_range</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1853,21 +1853,21 @@
 <a name="header.boost.enums.containers.enum_set_hpp"></a>Header &lt;<a href="../../../../boost/enums/containers/enum_set.hpp" target="_top">boost/enums/containers/enum_set.hpp</a>&gt;</h4></div></div></div>
 <p>The header <code class="computeroutput">&lt;boost/enums/containers/enum_set.hpp&gt;</code> defines a class template <code class="computeroutput">enum_set&lt;EC&gt;</code> for managing sets of enumeration and several ! related functions for representing and manipulating sets of enums. We can say that <code class="computeroutput">enum_set</code> is the counterpart of <code class="computeroutput">std::bitset</code> when the index are enums. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/hash_enums_enum_set_EC_id35969400.html" title="Struct template hash&lt;enums::enum_set&lt; EC &gt;&gt;">hash</a><span class="special">&lt;</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_set</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">&gt;</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/hash_enums_enum_set_EC_id35969408.html" title="Struct template hash&lt;enums::enum_set&lt; EC &gt;&gt;">hash</a><span class="special">&lt;</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_set</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> <span class="keyword">class</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> 
       <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/operator_.html" title="Function template operator&amp;"><span class="keyword">operator</span><span class="special">&amp;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> 
-      <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/operator_id35970412.html" title="Function template operator|"><span class="keyword">operator</span><span class="special">|</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+      <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/operator_id35970420.html" title="Function template operator|"><span class="keyword">operator</span><span class="special">|</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> 
       <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <a class="link" href="boost/enums/operator%5E.html" title="Function template operator^"><span class="keyword">operator</span><span class="special">^</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT<span class="special">,</span> <span class="keyword">typename</span> ch_traits<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
       <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_istream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">ch_traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> 
-      <a class="link" href="boost/enums/operator_id35970490.html" title="Function template operator&gt;&gt;"><span class="keyword">operator</span><span class="special">&gt;&gt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_istream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">ch_traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+      <a class="link" href="boost/enums/operator_id35970498.html" title="Function template operator&gt;&gt;"><span class="keyword">operator</span><span class="special">&gt;&gt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_istream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">ch_traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
     <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT<span class="special">,</span> <span class="keyword">typename</span> ch_traits<span class="special">,</span> <span class="keyword">typename</span> EC<span class="special">&gt;</span> 
       <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">ch_traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> 
-      <a class="link" href="boost/enums/operator_id35970597.html" title="Function template operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">ch_traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
+      <a class="link" href="boost/enums/operator_id35970605.html" title="Function template operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">ch_traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> 
                  <span class="keyword">const</span> <a class="link" href="boost/enums/enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
@@ -1921,7 +1921,7 @@
 <a name="header.boost.enums.mpl.enum_c_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/enum_c.hpp" target="_top">boost/enums/mpl/enum_c.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">enums</span><span class="special">::</span><span class="identifier">enum_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> 
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">enums</span><span class="special">::</span><span class="identifier">native_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> V<span class="special">&gt;</span> 
       <span class="keyword">struct</span> <a class="link" href="boost/mpl/enum_c.html" title="Struct template enum_c">enum_c</a><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
@@ -1951,7 +1951,7 @@
 <a name="header.boost.enums.mpl.equal_to_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/equal_to.hpp" target="_top">boost/enums/mpl/equal_to.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/equal_to_impl_enum_c_ta_id35967729.html" title="Struct equal_to_impl&lt;enum_c_tag, enum_c_tag&gt;">equal_to_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/equal_to_impl_enum_c_ta_id35967736.html" title="Struct equal_to_impl&lt;enum_c_tag, enum_c_tag&gt;">equal_to_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1960,7 +1960,7 @@
 <a name="header.boost.enums.mpl.greater_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/greater.hpp" target="_top">boost/enums/mpl/greater.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/greater_impl_enum_c_tag_id35967769.html" title="Struct greater_impl&lt;enum_c_tag, enum_c_tag&gt;">greater_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/greater_impl_enum_c_tag_id35967776.html" title="Struct greater_impl&lt;enum_c_tag, enum_c_tag&gt;">greater_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1969,7 +1969,7 @@
 <a name="header.boost.enums.mpl.greater_equal_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/greater_equal.hpp" target="_top">boost/enums/mpl/greater_equal.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/greater_equal_impl_enum_id35967808.html" title="Struct greater_equal_impl&lt;enum_c_tag, enum_c_tag&gt;">greater_equal_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/greater_equal_impl_enum_id35967816.html" title="Struct greater_equal_impl&lt;enum_c_tag, enum_c_tag&gt;">greater_equal_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1978,7 +1978,7 @@
 <a name="header.boost.enums.mpl.less_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/less.hpp" target="_top">boost/enums/mpl/less.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/less_impl_enum_c_tag__e_id35967848.html" title="Struct less_impl&lt;enum_c_tag, enum_c_tag&gt;">less_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/less_impl_enum_c_tag__e_id35967856.html" title="Struct less_impl&lt;enum_c_tag, enum_c_tag&gt;">less_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1987,7 +1987,7 @@
 <a name="header.boost.enums.mpl.less_equal_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/less_equal.hpp" target="_top">boost/enums/mpl/less_equal.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/less_equal_impl_enum_c__id35967888.html" title="Struct less_equal_impl&lt;enum_c_tag, enum_c_tag&gt;">less_equal_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/less_equal_impl_enum_c__id35967895.html" title="Struct less_equal_impl&lt;enum_c_tag, enum_c_tag&gt;">less_equal_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -1996,7 +1996,7 @@
 <a name="header.boost.enums.mpl.not_equal_to_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/not_equal_to.hpp" target="_top">boost/enums/mpl/not_equal_to.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/not_equal_to_impl_enum__id35967928.html" title="Struct not_equal_to_impl&lt;enum_c_tag, enum_c_tag&gt;">not_equal_to_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/not_equal_to_impl_enum__id35967935.html" title="Struct not_equal_to_impl&lt;enum_c_tag, enum_c_tag&gt;">not_equal_to_impl</a><span class="special">&lt;</span><span class="identifier">enum_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -2005,7 +2005,7 @@
 <a name="header.boost.enums.mpl.numeric_cast_hpp"></a>Header &lt;<a href="../../../../boost/enums/mpl/numeric_cast.hpp" target="_top">boost/enums/mpl/numeric_cast.hpp</a>&gt;</h4></div></div></div>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">mpl</span> <span class="special">{</span>
-    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/numeric_cast_integral_c_id35967967.html" title="Struct numeric_cast&lt;integral_c_tag, enum_c_tag&gt;">numeric_cast</a><span class="special">&lt;</span><span class="identifier">integral_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">struct</span> <a class="link" href="boost/mpl/numeric_cast_integral_c_id35967975.html" title="Struct numeric_cast&lt;integral_c_tag, enum_c_tag&gt;">numeric_cast</a><span class="special">&lt;</span><span class="identifier">integral_c_tag</span><span class="special">,</span> <span class="identifier">enum_c_tag</span><span class="special">&gt;</span><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
@@ -2018,7 +2018,7 @@
 <div class="toc"><dl>
 <dt><span class="section"><a href="index.html#boost.enums.appendices.history">Appendix A: History</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_2_0__mars_16__2011__"><span class="bold"><strong>Version 0.2.0, Mars 16, 2011</strong></span> </a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_2_0__mars_17__2011__"><span class="bold"><strong>Version 0.2.0, Mars 17, 2011</strong></span> </a></span></dt>
 <dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_1_0__feb_27__2011__"><span class="bold"><strong>Version 0.1.0, Feb 27, 2011</strong></span> </a></span></dt>
 </dl></dd>
 <dt><span class="section"><a href="index.html#boost.enums.appendices.rationale">Appendix B: Design
@@ -2041,12 +2041,12 @@
 <a name="boost.enums.appendices.history"></a><a class="link" href="index.html#boost.enums.appendices.history" title="Appendix A: History">Appendix A: History</a>
 </h3></div></div></div>
 <div class="toc"><dl>
-<dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_2_0__mars_16__2011__"><span class="bold"><strong>Version 0.2.0, Mars 16, 2011</strong></span> </a></span></dt>
+<dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_2_0__mars_17__2011__"><span class="bold"><strong>Version 0.2.0, Mars 17, 2011</strong></span> </a></span></dt>
 <dt><span class="section"><a href="index.html#boost.enums.appendices.history.__version_0_1_0__feb_27__2011__"><span class="bold"><strong>Version 0.1.0, Feb 27, 2011</strong></span> </a></span></dt>
 </dl></div>
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
-<a name="boost.enums.appendices.history.__version_0_2_0__mars_16__2011__"></a><a class="link" href="index.html#boost.enums.appendices.history.__version_0_2_0__mars_16__2011__" title="Version 0.2.0, Mars 16, 2011"><span class="bold"><strong>Version 0.2.0, Mars 16, 2011</strong></span> </a>
+<a name="boost.enums.appendices.history.__version_0_2_0__mars_17__2011__"></a><a class="link" href="index.html#boost.enums.appendices.history.__version_0_2_0__mars_17__2011__" title="Version 0.2.0, Mars 17, 2011"><span class="bold"><strong>Version 0.2.0, Mars 17, 2011</strong></span> </a>
 </h4></div></div></div>
 <p>
           <span class="bold"><strong>New Features:</strong></span>
@@ -2062,6 +2062,9 @@
                 </li>
 <li class="listitem">
                   Added scoping_type.
+                </li>
+<li class="listitem">
+                  enum_type renamed native_type
                 </li>
 </ul></div>
 </li>
@@ -2121,7 +2124,7 @@
       Rationale</a>
 </h3></div></div></div>
 <a name="boost.enums.appendices.rationale.how_the_macros_generated_code_looks_like_"></a><h5>
-<a name="id36384047"></a>
+<a name="id36384057"></a>
         <a class="link" href="index.html#boost.enums.appendices.rationale.how_the_macros_generated_code_looks_like_">How
         the macros generated code looks like?</a>
       </h5>
@@ -2153,7 +2156,7 @@
   <span class="keyword">static</span> <span class="identifier">EC</span> <span class="identifier">convert_to</span><span class="special">(</span><span class="identifier">underlying_type</span> <span class="identifier">v</span><span class="special">);</span>               
   <span class="keyword">static</span> <span class="identifier">EC</span> <span class="identifier">convert_to</span><span class="special">(</span><span class="identifier">type</span> <span class="identifier">v</span><span class="special">);</span>
   <span class="comment">// explicit conversion in case explicit conversions are not available        
-</span>  <span class="identifier">type</span> <span class="identifier">enum_value</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>                                      
+</span>  <span class="identifier">type</span> <span class="identifier">native_value</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>                                      
   <span class="identifier">underlying_type</span> <span class="identifier">underlying_value</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>                                      
   <span class="comment">// comparison operators
 </span>  <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">==(</span><span class="identifier">EC</span> <span class="identifier">lhs</span><span class="special">,</span> <span class="identifier">EC</span> <span class="identifier">rhs</span><span class="special">);</span>
@@ -2168,12 +2171,12 @@
 <span class="special">};</span>                                                      
 </pre>
 <a name="boost.enums.appendices.rationale.what_about_using_nested_static_constants_instead_of_enum_literals_"></a><h5>
-<a name="id36385016"></a>
+<a name="id36385025"></a>
         <a class="link" href="index.html#boost.enums.appendices.rationale.what_about_using_nested_static_constants_instead_of_enum_literals_">What
         about using nested static constants instead of enum literals?</a>
       </h5>
 <a name="boost.enums.appendices.rationale.why_an_alternative_design_for_the_scoped_enum_macros_"></a><h5>
-<a name="id36385038"></a>
+<a name="id36385047"></a>
         <a class="link" href="index.html#boost.enums.appendices.rationale.why_an_alternative_design_for_the_scoped_enum_macros_">Why
         an alternative design for the SCOPED ENUM macros?</a>
       </h5>
@@ -2222,7 +2225,7 @@
         So I would say that both designs can be used depending on the context.
       </p>
 <a name="boost.enums.appendices.rationale.using_adl_to_specialize_the_meta_information_functions"></a><h5>
-<a name="id36385133"></a>
+<a name="id36385142"></a>
         <a class="link" href="index.html#boost.enums.appendices.rationale.using_adl_to_specialize_the_meta_information_functions">Using
         ADL to specialize the meta-information functions</a>
       </h5>
@@ -2258,7 +2261,7 @@
         ADL the free function.
       </p>
 <a name="boost.enums.appendices.rationale.does_the_enum_c_class_need_the_additional_enum_emulation_class_as_parameter_"></a><h5>
-<a name="id36385198"></a>
+<a name="id36385206"></a>
         <a class="link" href="index.html#boost.enums.appendices.rationale.does_the_enum_c_class_need_the_additional_enum_emulation_class_as_parameter_">Does
         the enum_c class need the additional enum emulation class as parameter?</a>
       </h5>
@@ -2280,7 +2283,7 @@
       Notes</a>
 </h3></div></div></div>
 <a name="boost.enums.appendices.implementation.performance_comparison_between_the_use_of_the_emulated_enums_and_direct_use_of_ints"></a><h5>
-<a name="id36385245"></a>
+<a name="id36385254"></a>
         <a class="link" href="index.html#boost.enums.appendices.implementation.performance_comparison_between_the_use_of_the_emulated_enums_and_direct_use_of_ints">Performance
         comparison between the use of the emulated enums and direct use of ints</a>
       </h5>
@@ -2469,7 +2472,7 @@
 <a name="boost.enums.appendices.todo"></a><a class="link" href="index.html#boost.enums.appendices.todo" title="Appendix F: Future plans">Appendix F: Future plans</a>
 </h3></div></div></div>
 <a name="boost.enums.appendices.todo.tasks_to_do_before_review"></a><h5>
-<a name="id36385729"></a>
+<a name="id36385736"></a>
         <a class="link" href="index.html#boost.enums.appendices.todo.tasks_to_do_before_review">Tasks
         to do before review</a>
       </h5>
@@ -2505,7 +2508,7 @@
           </li>
 </ul></div>
 <a name="boost.enums.appendices.todo.for_later_releases"></a><h5>
-<a name="id36385811"></a>
+<a name="id36385818"></a>
         <a class="link" href="index.html#boost.enums.appendices.todo.for_later_releases">For later
         releases</a>
       </h5>
@@ -2525,7 +2528,7 @@
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"><p><small>Last revised: March 17, 2011 at 23:58:47 GMT</small></p></td>
+<td align="left"><p><small>Last revised: March 18, 2011 at 22:03:32 GMT</small></p></td>
 <td align="right"><div class="copyright-footer"></div></td>
 </tr></table>
 <hr>
