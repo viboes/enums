@@ -10,7 +10,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#include <boost/enums/emulation.hpp>
+#include <boost/enums/scoped/emulation.hpp>
 #include <stdint.h>
 
 BOOST_ENUM_CLASS_START(Version, uint8_t)

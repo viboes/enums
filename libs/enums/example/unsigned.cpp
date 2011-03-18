@@ -10,7 +10,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#include <boost/enums/emulation.hpp>
+#include <boost/enums/scoped/emulation.hpp>
 #include <iostream>
 
 BOOST_ENUM_TYPE_START(E, unsigned long) 
