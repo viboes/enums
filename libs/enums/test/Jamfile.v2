@@ -51,7 +51,7 @@ project
 
         [ run enum_class/cons/default_to_0_pass.cpp ]
         [ run enum_class/cons/from_enum_pass.cpp ]
-        #[ compile-fail enum_class/cons/from_int_fails.cpp ]
+        #[ compile-fail enum_class/cons/from_int_fail.cpp ]
 
         [ run enum_class/comparison/less_pass.cpp ]
         [ run enum_class/comparison/equal_pass.cpp ]
@@ -73,6 +73,41 @@ project
         [ compile-fail enum_class/meta/val_of_invalid_fail.cpp ]
 
         [ run EnumClass.cpp odr.cpp ]
+        ;
+
+   test-suite "enum_type"
+        :
+        [ compile enum_type/has_same_size_as_ut_pass.cpp : : enum_type__has_same_size_as_ut_pass ]
+        [ compile enum_type/underlying_type_pass.cpp : : enum_type__underlying_type_fail ]
+        [ compile enum_type/inside_union_no_cons_pass.cpp : : enum_type__inside_union_no_cons_pass ]
+        [ compile-fail enum_type/inside_union_cons.fail.cpp : : enum_type__inside_union_cons_fail ]
+        [ compile enum_type/inside_union_cons.pass.cpp : : enum_type__inside_union_cons_pass ]
+        [ compile-fail enum_type/enum_inside_union_cons.fail.cpp : : enum_type__enum_inside_union_cons_fail ]
+        [ compile enum_type/enum_inside_union_cons.pass.cpp : : enum_type__enum_inside_union_cons_pass ]
+
+        [ run enum_type/cons/default_to_0_pass.cpp : : : : enum_type__cons__default_to_0_pass ]
+        [ run enum_type/cons/from_enum_pass.cpp : : : : enum_type__cons__from_enum_pass ]
+        #[ compile-fail enum_type/cons/from_int_fails.cpp : : enum_type__cons__from_int_fails ]
+
+        [ run enum_type/comparison/less_pass.cpp : : : : enum_type__comparison__less_pass ]
+        [ run enum_type/comparison/equal_pass.cpp : : : : enum_type__comparison__equal_pass ]
+        [ run enum_type/comparison/not_equal_pass.cpp : : : : enum_type__comparison__not_equal_pass ]
+
+        [ compile enum_type/conversion/implicit_conversion_to_ut_pass.cpp : : enum_type__conversion__implicit_conversion_to_ut_pass ]
+        [ compile enum_type/conversion/implicit_conversion_to_bool_pass.cpp : : enum_type__conversion__implicit_conversion_to_bool_pass ]
+        [ run enum_type/conversion/explicit_conversion_from_valid_int_pass.cpp : : : : enum_type__conversion__explicit_conversion_from_valid_int_pass ]
+        [ run enum_type/conversion/explicit_conversion_from_invalid_int_fail.cpp : : : : enum_type__conversion__explicit_conversion_from_invalid_int_fail ]
+
+        [ compile enum_type/meta/first_pass.cpp : : enum_type__meta__first_pass ]
+        [ compile enum_type/meta/last_pass.cpp : : enum_type__meta__last_pass ]
+        [ compile enum_type/meta/pos_pass.cpp : : enum_type__meta__pos_pass ]
+        [ compile enum_type/meta/val_pass.cpp : : enum_type__meta__val_pass ]
+        [ compile enum_type/meta/pred_pass.cpp : : enum_type__meta__pred_pass ]
+        [ compile enum_type/meta/succ_pass.cpp : : enum_type__meta__succ_pass ]
+        [ compile-fail enum_type/meta/succ_of_last_fail.cpp : : enum_type__meta__succ_of_last_fail ]
+        [ compile-fail enum_type/meta/pred_of_first_fail.cpp : : enum_type__meta__pred_of_first_fail ]
+        [ compile-fail enum_type/meta/val_of_invalid_fail.cpp : : enum_type__meta__val_of_invalid_fail ]
+
         ;
 
   test-suite "enum_array"
