@@ -271,7 +271,7 @@ If the compiler support Scoped Enums you can do it using explicit conversion.
 
   unsigned char c = (unsigned char)(e);
 
-When the compiler doesn't support scoped enums you will need to use the enums::underlying_value() function to get explicitly the value. Of course the same function works as well when the compiler support Scoped Enums, for portability reasons you should use this function
+When the compiler doesn't support scoped enums you will need to use the `enums::underlying_value()` function to get explicitly the value. Of course the same function works as well when the compiler support Scoped Enums, for portability reasons you should use this function
 
   EnumClass e = EnumClass::Enum2;
   unsigned char c = enums::underlying_value(e);
@@ -308,7 +308,7 @@ All this depends on your compiler. If the compiler support unrestricted unions, 
 
 [section How to inhibit the constructors generation?]
 
-You will need to use the BOOST_ENUM_XXX_NO_CONS_END macros to inhibit the constructor generation 
+You will need to use the `BOOST_ENUM_XXX_NO_CONS_END` macros to inhibit the constructor generation 
 
   BOOST_ENUM_TYPE_START(EnumType, int) {
     Enum0 = 0,
@@ -393,7 +393,7 @@ However, with scoped enum classes the following fails to compile as implicit con
       }
   }
 
-The library provides a function enum_value that makes this conversion explicitly, i.e., return the native enum in a portable way.
+The library provides a function `enum_value()` that makes this conversion explicitly, i.e., return the native enum in a portable way.
 
   const char* c_str(EnumClass e)
   {
@@ -415,7 +415,7 @@ The following fails to compile as the emulation is not a built-in type:
   template <EnumClass e>
   struct ex;
 
-The library provides a meta-function enum_type that return the native enum type in a portable way.
+The library provides a meta-function `enum_type<>` that return the native enum type in a portable way.
 
   template <enums::enum_type<EnumClass>::type e>
   struct ex;
@@ -454,9 +454,9 @@ The macro need to define the scoped enum type on the user namespace, so it seems
     } BOOST_ENUM_TYPE_END(EnumType, int)
   }
 
-The problem is that the macro needs to generate some specializations on the boost::enums namespace. There are two solutions to this problem:
+The problem is that the macro needs to generate some specializations on the `boost::enums` namespace. There are two solutions to this problem:
 
-* use a different macro BOOST_ENUMS_SPECIALIZATIONS() to make the specializations
+* use a different macro `BOOST_ENUMS_SPECIALIZATIONS()` to make the specializations
 
   namespace UNS
   {
@@ -494,15 +494,15 @@ works as well.
 
 [section:ordinal Ordinal Enums]
 
-While C++0x provides scoped enums, the standard doesn't see an enum as an ordinal type. Language as Pascal and Ada had defined since the beginning attributes that allows to map an enumeration to a continuous range 0..N-1, so it can be used in for statements and as index of an array.
+While C++0x provides scoped enums, the standard doesn't see an enum as an ordinal type. Language as Pascal and Ada had defined since the beginning attributes that allows to map an enumeration to a continuous range `0..N-1`, so it can be used in for statements and as index of an array.
 
 [section:meta Size, Position and Value]
 
 The needed informations are 
 
-* size: the number of elements in the enum type.
-* pos: the position relative of an element in the enum type.
-* val: the element in the enum type at a given position.
+* `size`: the number of elements in the enum type.
+* `pos`: the position relative of an element in the enum type.
+* `val`: the element in the enum type at a given position.
 
 The compiler could have these informations, but in the absence the user will need to add them explicitly.
 
@@ -594,7 +594,7 @@ The same example with variadic macros results in
     Enum2,
   )
 
-The preceding macros are applied to C/C++98 enums. As we can be interested in mixing scoped and ordinal enums the library provides the respective macros. To be brief only the PP sequence version is given here. For scoped enum classes use BOOST_ENUM_CLASS
+The preceding macros are applied to C/C++98 enums. As we can be interested in mixing scoped and ordinal enums the library provides the respective macros. To be brief only the PP sequence version is given here. For scoped enum classes use `BOOST_ENUM_CLASS()`
 
   BOOST_ENUM_CLASS(EnumClass, int, 
     ( (Enum0) (0) )
@@ -602,7 +602,7 @@ The preceding macros are applied to C/C++98 enums. As we can be interested in mi
     (Enum2)
   )
 
-For scoped enum types use BOOST_ENUM_TYPE
+For scoped enum types use `BOOST_ENUM_TYPE()`
 
   BOOST_ENUM_TYPE(EnumType, int, 
     ( (Enum0) (0) )
@@ -615,7 +615,7 @@ As you can see these macros have the advantage to avoid the duplication of the e
 [endsect]
 [section:aux First, Last, Succ and Pred]
 
-Once these meta-informations are given, the user can retrieve in a uniform way the first, last successor and predecessor.
+Once these meta-informations are given, the user can retrieve in a uniform way the first, last, successor and predecessor.
 
   boost::enums::meta::first<EC>::value
   boost::enums::meta::last<EC>::value
@@ -631,45 +631,46 @@ and a uniform run-time interface.
 
 
 [endsect]
+[endsect]
+[section:cont Enum Containers]
 [section:set Enum Set]
 
 One of the major motivations for the preceding functions and metafiction was to be able to define a generic enum set class based on the work of Kevlin Henney.
 
-The enum_set<EC> class has as parameter an enum, enum class or enum type and provides the same interface as std::bitset<N> but replacing the index by the enum. As Kevlin showed this give to the user a more safer interface than using bit mask directly.
+The `enum_set<EC>` class has as parameter an enum, enum class or enum type and provides the same interface as `std::bitset<N>` but replacing the index by the enum. As Kevlin showed this give to the user a more safer interface than using bit mask directly.
 
 
 [endsect]
 
 [section:array Enum Arrays]
 
-As we are able to map the enum to a range 0..N-1 we can define an enum array class based on the std::array<T,N> class that use instead an enum as index, enum_array<T,E>.
+As we are able to map the enum to a range `0..N-1` we can define an enum array class based on the `std::array<T,N>` class that use instead an enum as index, `enum_array<T,E>`.
 
 [endsect]
 
 
 [section:range Enum Range]
 
-We will not stop here. We can view the enumeration as a range, so we can iterate over all the elements of an enumeration. The class enum_range<E> provides this view, so for example we can do
+We will not stop here. We can view the enumeration as a range, so we can iterate over all the elements of an enumeration. The class `enum_range<E>` provides this view, so for example we can do
 
   std::for_each(enum_range<E>(), p);
 
 
 [endsect]
+[endsect]
 
+[section:mpl MPL Enums]
 [section:enum_c MPL constants]
 
 Boost.MPL provides integral constants, but we cannot use them with enums as the successor and predecessor have different semantics.
 
 We have created a new MPL tag enum_tag_c and an enumeration constant enum_c so we can specialize the specific behavior of MPL sequences for static enumerations.
 
-
-
-
 [endsect]
 
 [section:range_c MPL Enum sequences]
 
-We can view an enumeration as an MPL sequence. Based on the integer_range_c class, the enum_range_c<EC> allows to visit at compile time all the elements of an enumeration.
+We can view an enumeration as an MPL sequence. Based on the `integer_range_c<>` class, the `enum_range_c<EC>` allows to visit at compile time all the elements of an enumeration.
 
 [endsect]
 
@@ -681,21 +682,21 @@ The typical example of enumeration sub-typing is the days of the week and the wo
  
   subtype Working_Day is range Monday .. Friday;
 
-Given the following definition of Day_Of_Week 
+Given the following definition of `Day_Of_Week` 
 
   BOOST_ENUMS_CLASS(Day_Of_Week, int, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday);
  
-we can define the sub-type Working_Day using the sub_range template class
+we can define the sub-type `Working_Day` using the `sub_range<>` template class
 
   typedef enums::sub_range<Day_Of_Week, Monday, Friday> Working_Day;
 
-Working_Day is implicitly convertible to Day_Of_Week and is explicitly constructible from Day_Of_Week with a run-time checking of course.
+`Working_Day` is implicitly convertible to `Day_Of_Week` and is explicitly constructible from vDay_Of_Week` with a run-time checking of course.
 
 When the sub-type enumeration literals are not consecutive we need a generic way to state whether it belongs or not. A predicate seems to be the good compromise. Note that this is quite related to the constraint library.
 
   typedef enums::sub_type<Day_Of_Week, P> Working_Day;
 
-These enumeration sub-types sub_range and sub_type can be used as well as index of enum_array and as type of enum_set enum_range.
+These enumeration sub-types `sub_range<>` and `sub_type<>` can be used as well as index of `enum_array<>` and as type of `enum_set<>` and `enum_range<>`.
 
  
 
@@ -730,9 +731,9 @@ The advantage of the explicit conversion is that we can choose the string litera
         (Blue)  () (Azul)
   );
 
-We need a second empty () token to signal the macros that the numeration must be done implicitly.
+We need a second empty `()` token to signal the macros that the numeration must be done implicitly.
 
-With this definition for RGB the following
+With this definition for `RGB` the following
 
   RGB c = RGB::Blue;
   std::cout << enums::c_str(e) << " = " << enums::underlying_value(e) << std::endl;
@@ -756,15 +757,33 @@ When the 3rd token is empty or missing, the macro use the enum literal as string
 
 [section:examples Examples]
 
-[section:color ]
-This show the example in section 2.2.1.Predictable and specifiable space.
+[section:color Implicit conversion to an integer]
+
+This show the example in [@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf [*N2347: Strongly Typed Enums (revision 3)]] section 2.1. Implicit conversion to an integer.
+
+  #include <boost/enums/emulation.hpp>
+
+  BOOST_ENUM_CLASS_START(Color, int) 
+  { Red, Orange, Yellow, Green, Blue, Violet };
+  BOOST_ENUM_CLASS_END(Color, int)
+  BOOST_ENUMS_SPECIALIZATIONS(Color, int)
+
+  BOOST_ENUM_CLASS_START(Alert, int) 
+  { Green, Yellow, Red };
+  BOOST_ENUM_CLASS_END(Alert, int)
+  BOOST_ENUMS_SPECIALIZATIONS(Alert, int)
+
+  void compile_fail() { 
+    Alert a = Alert::Green; 
+    bool armWeapons = ( a >= Color::Yellow ); // error: cannot compare and Alert to a Color
+  }
 
 
 [endsect]
 [section:version Predictable and specifiable space]
 
 
-This show the example in section 2.2.1.Predictable and specifiable space.
+This show the example in [@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf [*N2347: Strongly Typed Enums (revision 3)]] section 2.2.1.Predictable and specifiable space.
 
   #include <boost/enums/emulation.hpp>
   #include <stdint.h>
@@ -782,7 +801,7 @@ This show the example in section 2.2.1.Predictable and specifiable space.
 [endsect]
 [section:unsigned Predictable/specifiable type (notably signedness)]
 
-Unfortunately the emulation can not take care of issue with the enumerators signed in section 2.2.2. Predictable/specifiable type (notably signedness)
+Unfortunately the emulation can not take care of issue with the enumerators signed in [@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf [*N2347: Strongly Typed Enums (revision 3)]] section 2.2.2. Predictable/specifiable type (notably signedness)
 
   #include <boost/enums/emulation.hpp>
   #include <iostream>
@@ -847,6 +866,7 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 
 [section Reference]
 
+[xinclude top_ref.xml]
 [xinclude scoped_enums_ref.xml]
 
 [xinclude ordinal_enums_ref.xml]

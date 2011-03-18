@@ -52,21 +52,56 @@ else
 using doxygen ;  # Required if you want to use Doxygen.
 using quickbook ;
 
+doxygen top_ref
+   :
+      [ glob ../../../boost/enums.hpp ]
+      [ glob ../../../boost/enums/config.hop ]
+      [ glob ../../../boost/enums/scoped.hop ]
+      [ glob ../../../boost/enums/ordinal.hop ]
+      [ glob ../../../boost/enums/containers.hop ]
+      [ glob ../../../boost/enums/mpl.hop ]
+   :
+        <doxygen:param>"PREDEFINED=\"BOOST_ENUMS_DOXYGEN_INVOKED=1\" \\
+                                   \"BOOST_STATIC_CONSTEXPR=constexpr\" \\
+                                   \"BOOST_DEDUCED_TYPENAME=typename\" \\
+                                   \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
+                                   \"BOOST_STATIC_ASSERT(cnd)=\" \\
+                                   \"BOOST_CONSTEXPR=constexpr\""
+        <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_INCLUDE_FILES=YES
+        <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
+        # It is also wise to to set a warnings logfile like this:
+        <doxygen:param>WARN_LOGFILE=AutoDoxywarnings.log # This may not be empty (usually not a good sign!), depending on options chosen.
+        # Much better to send message to a logfile than the default stderr.
+        # and make sure that there are no Doxygen errors or significant warnings in the log file.
+        <doxygen:param>RECURSIVE=NO # Search recursively down subdirectories.
+        <doxygen:param>EXTRACT_ALL=YES
+        <doxygen:param>ENABLE_PREPROCESSING=YES
+        <doxygen:param>MACRO_EXPANSION=YES
+
+        <doxygen:param>HIDE_UNDOC_MEMBERS=NO
+        <doxygen:param>EXTRACT_PRIVATE=NO
+        <doxygen:param>EXPAND_ONLY_PREDEF=YES
+        #<doxygen:param>EXPAND_STATIC=YES
+        <doxygen:param>SEARCH_INCLUDES=YES
+        <doxygen:param>INCLUDE_PATH=$(BOOST)
+        <xsl:param>"boost.doxygen.reftitle=Top Level Reference"
+   ;
+
 doxygen scoped_enums_ref
    :
-      [ glob ../../../boost/enums/config.hop ]
-      [ glob ../../../boost/enums/enum_type.hpp ]
-      [ glob ../../../boost/enums/enum_value.hpp ]
-      [ glob ../../../boost/enums/underlying_type.hpp ]
-      [ glob ../../../boost/enums/underlying_value.hpp ]
-      [ glob ../../../boost/enums/default_value.hpp ]
-      [ glob ../../../boost/enums/emulation.hpp ]
-      [ glob ../../../boost/enums/enum_subrange.hpp ]
-      [ glob ../../../boost/enums/scoping_type.hpp ]
-      [ glob ../../../boost/enums/enum_type_cons.hpp ]
-      [ glob ../../../boost/enums/enum_type_no_cons.hpp ]
-      [ glob ../../../boost/enums/enum_class_cons.hpp ]
-      [ glob ../../../boost/enums/enum_class_no_cons.hpp ]
+      [ glob ../../../boost/enums/scoped.hpp ]
+      [ glob ../../../boost/enums/scoped/native_type.hpp ]
+      [ glob ../../../boost/enums/scoped/native_value.hpp ]
+      [ glob ../../../boost/enums/scoped/underlying_type.hpp ]
+      [ glob ../../../boost/enums/scoped/underlying_value.hpp ]
+      [ glob ../../../boost/enums/scoped/default_value.hpp ]
+      [ glob ../../../boost/enums/scoped/emulation.hpp ]
+      [ glob ../../../boost/enums/scoped/scoping_type.hpp ]
+      [ glob ../../../boost/enums/scoped/enum_type_cons.hpp ]
+      [ glob ../../../boost/enums/scoped/enum_type_no_cons.hpp ]
+      [ glob ../../../boost/enums/scoped/enum_class_cons.hpp ]
+      [ glob ../../../boost/enums/scoped/enum_class_no_cons.hpp ]
 
       #[ glob ../../../boost/enums/detail/*.hpp ]
       #[ glob ../../../boost/enums/detail/*.ipp ] 
@@ -101,15 +136,16 @@ doxygen scoped_enums_ref
 
 doxygen ordinal_enums_ref
    :
-      [ glob ../../../boost/enums/enum_traits.hpp ]
-      [ glob ../../../boost/enums/enum_traiter.hpp ]
-      [ glob ../../../boost/enums/size.hpp ]
-      [ glob ../../../boost/enums/pos.hpp ]
-      [ glob ../../../boost/enums/val.hpp ]
-      [ glob ../../../boost/enums/first.hpp ]
-      [ glob ../../../boost/enums/last.hpp ]
-      [ glob ../../../boost/enums/pred.hpp ]
-      [ glob ../../../boost/enums/succ.hpp ]
+      [ glob ../../../boost/enums/ordinal.hpp ]
+      [ glob ../../../boost/enums/ordinal/traits.hpp ]
+      [ glob ../../../boost/enums/ordinal/linear_traiter.hpp ]
+      [ glob ../../../boost/enums/ordinal/size.hpp ]
+      [ glob ../../../boost/enums/ordinal/pos.hpp ]
+      [ glob ../../../boost/enums/ordinal/val.hpp ]
+      [ glob ../../../boost/enums/ordinal/first.hpp ]
+      [ glob ../../../boost/enums/ordinal/last.hpp ]
+      [ glob ../../../boost/enums/ordinal/pred.hpp ]
+      [ glob ../../../boost/enums/ordinal/succ.hpp ]
       #[ glob ../../../boost/enums/detail/*.hpp ]
       #[ glob ../../../boost/enums/detail/*.ipp ] 
     
@@ -145,9 +181,11 @@ doxygen ordinal_enums_ref
 
 doxygen enums_containers_ref
    :
-      [ glob ../../../boost/enums/enum_array.hpp ]
-      [ glob ../../../boost/enums/enum_set.hpp ]
-      [ glob ../../../boost/enums/enum_range.hpp ]
+      [ glob ../../../boost/enums/containers.hpp ]
+      [ glob ../../../boost/enums/containers/enum_array.hpp ]
+      [ glob ../../../boost/enums/containers/enum_set.hpp ]
+      [ glob ../../../boost/enums/containers/enum_range.hpp ]
+      [ glob ../../../boost/enums/containers/enum_subrange.hpp ]
    :
         <doxygen:param>"PREDEFINED=\"BOOST_ENUMS_DOXYGEN_INVOKED=1\" \\
                                    \"BOOST_STATIC_CONSTEXPR=constexpr\" \\
@@ -178,6 +216,7 @@ doxygen enums_containers_ref
 
 doxygen mpl_enums_ref
    :
+      [ glob ../../../boost/enums/mpl.hpp ]
       [ glob ../../../boost/enums/mpl/*.hpp ]
    :
         <doxygen:param>"PREDEFINED=\"BOOST_ENUMS_DOXYGEN_INVOKED=1\" \\
@@ -257,6 +296,7 @@ boostbook standalone
         <format>pdf:<xsl:param>admon.graphics.extension=".svg"
         <format>pdf:<xsl:param>admon.graphics.path=$(boost-images)/
         <format>pdf:<xsl:param>boost.url.prefix=http://www.boost.org/doc/libs/release/libs/enums/doc/html
+        <dependency>top_ref #
         <dependency>scoped_enums_ref #
         <dependency>ordinal_enums_ref #
         <dependency>enums_containers_ref #

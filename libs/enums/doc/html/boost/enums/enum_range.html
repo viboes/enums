@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="../.././boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
 <link rel="home" href="../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.2.0">
-<link rel="up" href="../../index.html#header.boost.enums.enum_range_hpp" title="Header &lt;boost/enums/enum_range.hpp&gt;">
-<link rel="prev" href="get_c_array_id35968714.html" title="Function template get_c_array">
-<link rel="next" href="make_range_id35968797.html" title="Function template make_range">
+<link rel="up" href="../../index.html#header.boost.enums.containers.enum_range_hpp" title="Header &lt;boost/enums/containers/enum_range.hpp&gt;">
+<link rel="prev" href="get_c_array_id35969212.html" title="Function template get_c_array">
+<link rel="next" href="make_range_id35969295.html" title="Function template make_range">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr>
@@ -20,7 +20,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="get_c_array_id35968714.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.enum_range_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="make_range_id35968797.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="get_c_array_id35969212.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_range_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="make_range_id35969295.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.enums.enum_range"></a><div class="titlepage"></div>
@@ -29,27 +29,27 @@
 <p>boost::enums::enum_range &#8212; <code class="computeroutput">enum_range</code> is a model of the <span class="emphasis"><em>RandomAccessRange</em></span> Concept associated to the enumeration <code class="computeroutput">EC</code>. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../index.html#header.boost.enums.enum_range_hpp" title="Header &lt;boost/enums/enum_range.hpp&gt;">boost/enums/enum_range.hpp</a>&gt;
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../index.html#header.boost.enums.containers.enum_range_hpp" title="Header &lt;boost/enums/containers/enum_range.hpp&gt;">boost/enums/containers/enum_range.hpp</a>&gt;
 
 </span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> 
 <span class="keyword">class</span> <a class="link" href="enum_range.html" title="Class template enum_range">enum_range</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="enum_range.html#boost.enums.enum_rangeconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="enum_range.html#id35968781-bb"><span class="identifier">enum_range</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="enum_range.html#id35968784-bb"><span class="identifier">enum_range</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_range.html#id35969279-bb"><span class="identifier">enum_range</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_range.html#id35969282-bb"><span class="identifier">enum_range</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">,</span> <span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id36373338"></a><h2>Description</h2>
+<a name="id36371656"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="id36373341"></a><h3>
+<a name="id36371660"></a><h3>
 <a name="boost.enums.enum_rangeconstruct-copy-destruct"></a><code class="computeroutput">enum_range</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id35968781-bb"></a><span class="identifier">enum_range</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>builds a enum range </li>
+<pre class="literallayout"><a name="id35969279-bb"></a><span class="identifier">enum_range</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>builds a enum range </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id35968784-bb"></a><span class="identifier">enum_range</span><span class="special">(</span><span class="identifier">EC</span> first<span class="special">,</span> <span class="identifier">EC</span> last<span class="special">)</span><span class="special">;</span></pre>builds a enum sub-range </li>
+<pre class="literallayout"><a name="id35969282-bb"></a><span class="identifier">enum_range</span><span class="special">(</span><span class="identifier">EC</span> first<span class="special">,</span> <span class="identifier">EC</span> last<span class="special">)</span><span class="special">;</span></pre>builds a enum sub-range </li>
 </ol></div>
 </div>
 </div>
@@ -64,7 +64,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="get_c_array_id35968714.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.enum_range_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="make_range_id35968797.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="get_c_array_id35969212.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_range_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="make_range_id35969295.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>
