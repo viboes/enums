@@ -68,17 +68,17 @@ namespace boost {
     template <>
     struct val<EC3, 0>
     {
-      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EC3>::type value = EC3::Enum0;
+      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EC3>::type value = EC3::Enum0;
     };
     template <>
     struct val<EC3, 1>
     {
-      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EC3>::type value = EC3::Enum1;
+      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EC3>::type value = EC3::Enum1;
     };
     template <>
     struct val<EC3, 2>
     {
-      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EC3>::type value = EC3::Enum2;
+      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EC3>::type value = EC3::Enum2;
     };
     template <>
     struct enum_traits<EC3> : linear_enum_traiter<EC3>

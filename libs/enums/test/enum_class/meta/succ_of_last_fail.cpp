@@ -18,7 +18,7 @@ void fail() {
   using namespace boost::enums;
 
   {
-    enum_type<EnumClass>::type e = meta::succ<EnumClass, EnumClass::Enum2>::value ;
+    native_type<EnumClass>::type e = meta::succ<EnumClass, EnumClass::Enum2>::value ;
   }
 
 }

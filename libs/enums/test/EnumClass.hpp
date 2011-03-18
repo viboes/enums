@@ -78,7 +78,7 @@ inline EnumClass convert_to(const std::string& str
 //!explicit conversion to c-string.
 inline const char* c_str(EnumClass e)
 {
-    switch (boost::enums::enum_value(e))
+    switch (boost::enums::native_value(e))
     {
     case EnumClass::Default : return("EnumClass::Default");
     case EnumClass::Enum1:    return("EnumClass::Enum1");
@@ -116,17 +116,17 @@ namespace boost {
     template <>
     struct val<EnumClass, 0>
     {
-      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Default;
+      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EnumClass>::type value = EnumClass::Default;
     };
     template <>
     struct val<EnumClass, 1>
     {
-      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum1;
+      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EnumClass>::type value = EnumClass::Enum1;
     };
     template <>
     struct val<EnumClass, 2>
     {
-      BOOST_STATIC_CONSTEXPR boost::enums::enum_type<EnumClass>::type value = EnumClass::Enum2;
+      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EnumClass>::type value = EnumClass::Enum2;
     };
     template <>
     struct enum_traits<EnumClass>
@@ -142,7 +142,7 @@ namespace boost {
 //! OSTRREAM overloading
 template <typename OSTREAM>
 inline OSTREAM& operator <<(OSTREAM& os, EnumClass v) {
-  os << int(boost::enums::enum_value(v));
+  os << int(boost::enums::native_value(v));
   return os;
 }
 

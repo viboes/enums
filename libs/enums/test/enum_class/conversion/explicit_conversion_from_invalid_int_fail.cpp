@@ -18,7 +18,7 @@ int main() {
 
   { // Explicit conversion from invalid int results in run-time error (undefined behavior)
     EnumClass e(boost::convert_to<EnumClass>((unsigned char)(6)));
-    BOOST_TEST((unsigned char)(enum_value(e))==(unsigned char)(6));
+    BOOST_TEST((unsigned char)(native_value(e))==(unsigned char)(6));
   }
 
   return boost::report_errors();
