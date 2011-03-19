@@ -48,6 +48,7 @@ project
         [ compile enum_class/inside_union_cons.pass.cpp ]
         [ compile-fail enum_class/enum_inside_union_cons.fail.cpp ]
         [ compile enum_class/enum_inside_union_cons.pass.cpp ]
+        [ compile enum_class/is_enum_pass.cpp ]
 
         [ run enum_class/cons/default_to_0_pass.cpp ]
         [ run enum_class/cons/from_enum_pass.cpp ]
@@ -84,6 +85,7 @@ project
         [ compile enum_type/inside_union_cons.pass.cpp : : enum_type__inside_union_cons_pass ]
         [ compile-fail enum_type/enum_inside_union_cons.fail.cpp : : enum_type__enum_inside_union_cons_fail ]
         [ compile enum_type/enum_inside_union_cons.pass.cpp : : enum_type__enum_inside_union_cons_pass ]
+        [ compile enum_class/is_enum_pass.cpp : : enum_type__is_enum_pass ]
 
         [ run enum_type/cons/default_to_0_pass.cpp : : : : enum_type__cons__default_to_0_pass ]
         [ run enum_type/cons/from_enum_pass.cpp : : : : enum_type__cons__from_enum_pass ]
