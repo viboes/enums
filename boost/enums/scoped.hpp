@@ -30,6 +30,7 @@
 #include <boost/enums/scoped/default_value.hpp>
 #include <boost/enums/scoped/native_value.hpp>
 #include <boost/enums/scoped/underlying_value.hpp>
+#include <boost/enums/scoped/is_enum.hpp>
 
     
 #endif // BOOST_ENUMS_SCOPED_HPP

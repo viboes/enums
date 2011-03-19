@@ -30,12 +30,12 @@ namespace boost
      This meta-function must be specialized for each enum class.
      */
     template <typename EC_type>
-	struct scoping_type
-	{
-	  //!  Depending on whethere the compiler supports scoped enums or nor the nested type must be the same type or the emulated one. 
-	  //! By default this metafunction defines it as if scoped enums where supported so the specialization will be needed only when emulation is needed.
-	  typedef EC_type type;
-	};    
+	  struct scoping_type
+	  {
+	    //!  Depending on whethere the compiler supports scoped enums or nor the nested type must be the same type or the emulated one. 
+	    //! By default this metafunction defines it as if scoped enums where supported so the specialization will be needed only when emulation is needed.
+	    typedef EC_type type;
+	  };    
   }
 }
 

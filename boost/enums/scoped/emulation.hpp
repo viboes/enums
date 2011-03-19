@@ -19,6 +19,7 @@
 #include <boost/enums/scoped/default_value.hpp>
 #include <boost/enums/scoped/native_value.hpp>
 #include <boost/enums/scoped/underlying_value.hpp>
+#include <boost/enums/scoped/is_enum.hpp>
 #include <boost/conversion/convert_to.hpp>
 #include <boost/preprocessor/if.hpp>
 #include <boost/preprocessor/empty.hpp>
@@ -55,25 +56,35 @@
 
 #else // !defined(BOOST_NO_SCOPED_ENUMS) && ! defined(BOOST_NO_SCOPED_ENUMS_COMPARE)
 
- #define BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)  \
-      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, ==)      \
-      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, !=)      \
-      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, <)       \
-      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, <=)      \
-      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, >)       \
+ #define BOOST_ENUMS_DETAIL_COMPARAISON_OPERATORS(EC, UT)   \
+      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, ==)        \
+      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, !=)        \
+      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, <)         \
+      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, <=)        \
+      BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, >)         \
       BOOST_ENUMS_DETAIL_BINARY_OPERATOR(EC, UT, >=)
 
 #endif // !defined(BOOST_NO_SCOPED_ENUMS) && ! defined(BOOST_NO_SCOPED_ENUMS_COMPARE)
 
-  #define BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)   \
-      namespace boost {                               \
-        namespace enums {                             \
-          template <>                                 \
-          struct scoping_type<native_type<EC>::type>   \
-          {                                           \
-            typedef EC type;                          \
-          };                                          \
-        }                                             \
+  #define BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)            \
+      namespace boost {                                       \
+        namespace enums {                                     \
+          template <>                                         \
+          struct scoping_type<native_type<EC>::type>          \
+          {                                                   \
+            typedef EC type;                                  \
+          };                                                  \
+        }                                                     \
+      }
+
+  #define BOOST_ENUMS_DETAIL_IS_ENUM_TYPE_SPEC(EC)            \
+      namespace boost {                                       \
+        namespace enums {                                     \
+          template <>                                         \
+          struct is_enum<EC> : mpl::true_                     \
+          {                                                   \
+          };                                                  \
+        }                                                     \
       }
 
 #ifndef BOOST_NO_SCOPED_ENUMS
@@ -297,8 +308,9 @@
     BOOST_ENUMS_DETAIL_END_2(EC, UT)                        \
   };                                                      
 
-#define BOOST_ENUMS_SPECIALIZATIONS(EC, UT) \
-    BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)
+#define BOOST_ENUMS_SPECIALIZATIONS(EC, UT)   \
+    BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)  \
+    BOOST_ENUMS_DETAIL_IS_ENUM_TYPE_SPEC(EC)
 
 
 #endif // BOOST_ENUMS_SCOPED_EMULATION_HPP
