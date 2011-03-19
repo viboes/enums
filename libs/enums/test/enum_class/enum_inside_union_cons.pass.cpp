@@ -12,6 +12,8 @@
 
 #include <boost/enums/scoped.hpp>
 
+#if 0
+
 namespace Ex {
   BOOST_ENUM_CLASS_START(EC_Cons, int) {
     E0 = 3,
@@ -20,6 +22,17 @@ namespace Ex {
   } BOOST_ENUM_CLASS_CONS_END(EC_Cons, int)
 }
 BOOST_ENUMS_SPECIALIZATIONS(Ex::EC_Cons, int)
+
+#else
+
+BOOST_ENUM_NS_CLASS_START((Ex)(EC_Cons), int) {
+  E0 = 3,
+  E1,
+  E2
+}
+BOOST_ENUM_NS_CLASS_CONS_END( (Ex)(EC_Cons), int)
+
+#endif
 
 #if defined(BOOST_NO_ENUM_UNRESTRICTED_UNION)
 //#warning "not applicable as unrestricted union not available"
