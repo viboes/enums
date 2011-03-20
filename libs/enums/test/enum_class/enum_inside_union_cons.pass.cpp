@@ -73,6 +73,18 @@ BOOST_ENUM_NS_CLASS_START((Ex)(EC_Cons), int) {
 BOOST_ENUM_NS_CLASS_CONS_END( (Ex)(EC_Cons), int)
 
 
+
+
+#define MyNS_EC (Ex)(EC_Cons)
+#define MyENUMS ( (E0)(3) ) ( (E1)    ) ( (E2)    )
+
+
+BOOST_ENUM_NS_CLASS_START(MyNS_EC, int)                              
+{                                                                 
+  BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(MyENUMS)                        
+}                                                                 
+BOOST_ENUM_NS_CLASS_CONS_END(MyNS_EC, int)                           
+BOOST_ENUMS_ENUM_DCL_SPE(MyNS_EC, MyENUMS, linear_enum_traiter)
 namespace boost {                                                 
   namespace enums {                                               
     namespace meta {                                              
@@ -86,18 +98,6 @@ namespace boost {
     }                                                             
   }                                                               
 }
-
-#define MyNS_EC (Ex)(EC_Cons)
-#define MyENUMS ( (E0)(3) ) ( (E1)    ) ( (E2)    )
-
-
-BOOST_ENUM_NS_CLASS_START(MyNS_EC, int)                              
-{                                                                 
-  BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(MyENUMS)                        
-}                                                                 
-BOOST_ENUM_NS_CLASS_CONS_END(MyNS_EC, int)                           
-BOOST_ENUMS_ENUM_DCL_SPE(MyNS_EC, MyENUMS, linear_enum_traiter)
-
 #else
 
 

@@ -33,8 +33,10 @@
 #include <boost/enums/scoped/enum_class_no_cons.hpp>
 #include <boost/enums/scoped/enum_type_cons.hpp>
 #include <boost/enums/scoped/enum_type_no_cons.hpp>
+#include <boost/enums/pp/enum_declaration.hpp>
 
 #define CTOR
+#if 0
 #if 0
 
 BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
@@ -136,7 +138,19 @@ namespace boost {
     } // namespace meta
   }
 }
+#else
 
+
+BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EnumClass), unsigned char,                  
+                                ( (Default)(3) )
+                                ( (Enum1)    )
+                                ( (Enum2)    )
+                                , linear_enum_traiter)
+
+
+
+
+#endif
 
 
 //! OSTRREAM overloading
@@ -146,4 +160,96 @@ inline OSTREAM& operator <<(OSTREAM& os, EnumClass v) {
   return os;
 }
 
+#endif
+#if 0
+class EnumClass { 
+public: 
+  enum type { Default = 3 , Enum1 , Enum2 }; 
+  inline friend EnumClass convert_to( const char* str, boost::dummy::type_tag<EnumClass> const& ) 
+  { 
+    if (strcmp( str, "Default" ) == 0) { return boost::convert_to<EnumClass>( EnumClass::Default ); } 
+    if (strcmp( str, "Enum1" ) == 0) { return boost::convert_to<EnumClass>( EnumClass::Enum1 ); } 
+    if (strcmp( str, "Enum2" ) == 0) { return boost::convert_to<EnumClass>( EnumClass::Enum2 ); } 
+    throw "invalid string for " "EnumClass"; 
+  } 
+  inline friend EnumClass convert_to( const std::string& str, boost::dummy::type_tag<EnumClass> const& ) 
+  { 
+    return boost::convert_to<EnumClass>( str.c_str() ); 
+  } 
+  inline friend const char* c_str(EnumClass e) 
+  { 
+    switch (boost::enums::native_value(e)) 
+    { 
+      case EnumClass::EnumClass::Default : return("Default"); 
+      case EnumClass::EnumClass::Enum1 : return("Enum1"); 
+      case EnumClass::EnumClass::Enum2 : return("Enum2"); 
+      default: throw "invalid value for " "EnumClass"; 
+    } 
+  } 
+  typedef EnumClass this_type ; 
+  typedef int underlying_type; 
+private: 
+  underlying_type val_; 
+public: 
+  EnumClass() : val_(static_cast<underlying_type>(type())) { } 
+  EnumClass(type v) : val_(static_cast<underlying_type>(v)) { } 
+  explicit EnumClass(underlying_type v) : val_(v) { } 
+  EnumClass& operator =(type rhs) { val_=static_cast<underlying_type>(rhs); return *this; } 
+  static EnumClass default_value() { EnumClass res; res.val_=static_cast<underlying_type>(EnumClass::type()); return res; } 
+  static EnumClass convert_to(underlying_type v) { EnumClass res; res.val_=v; return res; } 
+  static EnumClass convert_to(type v) { EnumClass res; res.val_=static_cast<underlying_type>(v); return res; } 
+  type native_value() const { return type(val_); } 
+  underlying_type underlying_value() const { return val_; } 
+  inline friend EnumClass convert_to(int v , boost::dummy::type_tag<EnumClass> const& ) { return EnumClass::convert_to(v); } 
+  inline friend EnumClass convert_to(boost::enums::native_type<EnumClass>::type v , boost::dummy::type_tag<EnumClass> const& ) { return EnumClass::convert_to(v); } 
+  inline friend int convert_to(EnumClass v , boost::dummy::type_tag<int> const& ) { return boost::enums::underlying_value(v); } 
+  inline friend boost::enums::native_type<EnumClass>::type convert_to(EnumClass v , boost::dummy::type_tag<boost::enums::native_type<EnumClass>::type> const& ) { 
+    return boost::enums::native_value(v); 
+  } 
+  friend inline bool operator ==(EnumClass lhs, EnumClass rhs) { return lhs.native_value() == rhs.native_value(); } 
+  friend inline bool operator ==(type lhs, EnumClass rhs) { return lhs == rhs.native_value(); } 
+  friend inline bool operator ==(EnumClass lhs, type rhs) { return lhs.native_value() == rhs; } 
+  friend inline bool operator !=(EnumClass lhs, EnumClass rhs) { return lhs.native_value() != rhs.native_value(); } 
+  friend inline bool operator !=(type lhs, EnumClass rhs) { return lhs != rhs.native_value(); } 
+  friend inline bool operator !=(EnumClass lhs, type rhs) { return lhs.native_value() != rhs; } 
+  friend inline bool operator <(EnumClass lhs, EnumClass rhs) { return lhs.native_value() < rhs.native_value(); } 
+  friend inline bool operator <(type lhs, EnumClass rhs) { return lhs < rhs.native_value(); } 
+  friend inline bool operator <(EnumClass lhs, type rhs) { return lhs.native_value() < rhs; } 
+  friend inline bool operator <=(EnumClass lhs, EnumClass rhs) { return lhs.native_value() <= rhs.native_value(); } 
+  friend inline bool operator <=(type lhs, EnumClass rhs) { return lhs <= rhs.native_value(); } 
+  friend inline bool operator <=(EnumClass lhs, type rhs) { return lhs.native_value() <= rhs; } 
+  friend inline bool operator >(EnumClass lhs, EnumClass rhs) { return lhs.native_value() > rhs.native_value(); } 
+  friend inline bool operator >(type lhs, EnumClass rhs) { return lhs > rhs.native_value(); } 
+  friend inline bool operator >(EnumClass lhs, type rhs) { return lhs.native_value() > rhs; } 
+  friend inline bool operator >=(EnumClass lhs, EnumClass rhs) { return lhs.native_value() >= rhs.native_value(); } 
+  friend inline bool operator >=(type lhs, EnumClass rhs) { return lhs >= rhs.native_value(); } 
+  friend inline bool operator >=(EnumClass lhs, type rhs) { return lhs.native_value() >= rhs; } 
+}; 
+namespace boost { 
+  namespace enums { 
+    template <> struct scoping_type<native_type<EnumClass>::type> { typedef EnumClass type; }; 
+  } 
+} 
+namespace boost { 
+  namespace enums { 
+    template <> struct is_enum<EnumClass> : mpl::true_ { }; 
+  } 
+} 
+namespace boost { 
+  namespace enums { 
+    namespace meta { 
+      template <> struct size< EnumClass> { 
+        static const std::size_t value; 
+      }; 
+      const std::size_t size< EnumClass>::value = 3; 
+      template <> struct pos<EnumClass, EnumClass :: Default> { static const std::size_t value = 2; }; 
+      template <> struct val<EnumClass, 2> { static const boost::enums::native_type<EnumClass>::type value = EnumClass::Default; }; 
+      template <> struct pos<EnumClass, EnumClass :: Enum1> { static const std::size_t value = 3; }; 
+      template <> struct val<EnumClass, 3> { static const boost::enums::native_type<EnumClass>::type value = EnumClass::Enum1; }; 
+      template <> struct pos<EnumClass, EnumClass :: Enum2> { static const std::size_t value = 4; }; 
+      template <> struct val<EnumClass, 4> { static const boost::enums::native_type<EnumClass>::type value = EnumClass::Enum2; }; 
+      template <> struct enum_traits< EnumClass> : linear_enum_traiter< EnumClass> {}; 
+    } 
+  } 
+}
 #endif

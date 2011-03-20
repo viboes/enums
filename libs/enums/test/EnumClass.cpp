@@ -49,7 +49,7 @@ int main() {
     std::string str = "Enum2";
     EnumClass e = convert_to<EnumClass>(str);
     BOOST_TEST(e==EnumClass::Enum2);
-    BOOST_TEST(strcmp(c_str(e),"EnumClass::Enum2")==0);
+    BOOST_TEST(strcmp(c_str(e),"Enum2")==0);
   }
   std::cout << __LINE__ << std::endl;
 #ifdef COMPILE_TIME2
@@ -64,7 +64,7 @@ int main() {
     EnumClass e = convert_to<EnumClass>(str);
     // ... fail
     BOOST_TEST(e==EnumClass::Enum2);
-    BOOST_TEST(strcmp(c_str(e), "EnumClass::CHASSE")==0);
+    BOOST_TEST(strcmp(c_str(e), "CHASSE")==0);
   }
 #endif
   { // Construction of the wrapper with an invalid ints results in run-time error (undefined behavior)
