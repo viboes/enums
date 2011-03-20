@@ -20,6 +20,11 @@
 #define BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP
 
 #include <boost/config.hpp>
+#include <boost/conversion/convert_to.hpp>
+#include <boost/enums/scoped/underlying_type.hpp>
+#include <boost/enums/scoped/underlying_value.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/scoped/native_value.hpp>
 
 namespace boost
 {
@@ -191,26 +196,6 @@ namespace boost
       {
         return lhs.val_ > rhs;
       }
-#if 0
-        //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
-      friend enum_class_cons convert_to(underlying_type v, 
-                                       boost::dummy::type_tag<enum_class_cons> const&)
-      {
-        enum_class_cons res;
-        res.val_=v;
-        return res;
-        
-      }
-
-      //! friend conversions from type to enum_type_cons following the Boost.Conversion protocol
-      friend enum_class_cons convert_to(type v, 
-                                       boost::dummy::type_tag<enum_class_cons> const&)
-      {
-        enum_class_cons res;
-        res.val_=static_cast<underlying_type>(v);
-        return res;
-      }
-#endif
       //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
       friend underlying_type convert_to(enum_class_cons v, 
                                         boost::dummy::type_tag<underlying_type> const&)

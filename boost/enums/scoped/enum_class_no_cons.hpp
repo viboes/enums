@@ -20,6 +20,11 @@
 #define BOOST_ENUMS_SCOPED_ENUM_TYPE_NO_CONS_HPP
 
 #include <boost/config.hpp>
+#include <boost/conversion/convert_to.hpp>
+#include <boost/enums/scoped/underlying_type.hpp>
+#include <boost/enums/scoped/underlying_value.hpp>
+#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/scoped/native_value.hpp>
 
 namespace boost
 {
