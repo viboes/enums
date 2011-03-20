@@ -13,12 +13,13 @@
 #ifndef EXTYPE_HPP
 #define EXTYPE_HPP
 
+#include <boost/enums/scoped/enum_type_cons.hpp>
 
 #include <boost/enums/scoped.hpp>
 #include <boost/enums/ordinal.hpp>
 #include <cstddef>
 
-#if 1
+#if 0
   BOOST_ENUM_TYPE_START(EC3, int) {
     Enum0,
     Enum1,

@@ -155,6 +155,12 @@ project
         [ compile enum_range_c/back.pass.cpp : : enum_range_c__back__pass ]
   ;
 
+  test-suite "pp"
+        :
+        [ compile pp/enumerator_definition.pass.cpp ]
+        [ compile pp/enumerator_list.pass.cpp ]
+	;
+
   test-suite "examples"
         :
         [ run ../example/unsigned.cpp ]
