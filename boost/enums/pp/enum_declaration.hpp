@@ -28,6 +28,65 @@
  
  */ 
 
+#define BOOST_ENUMS_ENUM_DCL_STR_TO_ID(P, ENUM, ED)                   \
+  if (strcmp(                                                         \
+        str,                                                          \
+        BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
+     ) == 0)                                                          \
+  {                                                                   \
+    return boost::convert_to<ENUM>(                                   \
+              ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
+            );                                                        \
+  }
+
+#define BOOST_ENUMS_ENUM_DCL_ID_TO_STR(P, ENUM, ED)                   \
+  case ENUM::ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED) :         \
+    return(BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED));
+
+
+#define BOOST_ENUMS_DCL_STRING_CONVERSIONS(ENUM, EL)                        \
+  inline friend                                                             \
+  ENUM convert_to(                                                          \
+      const char* str,                                                      \
+      boost::dummy::type_tag<ENUM> const&                                   \
+    )                                                                       \
+  {                                                                         \
+    BOOST_PP_SEQ_FOR_EACH(                                                  \
+                        BOOST_ENUMS_ENUM_DCL_STR_TO_ID,                     \
+                        ENUM,                                               \
+                        EL                                                  \
+                        )                                                   \
+    throw "invalid string for "                                             \
+      BOOST_PP_STRINGIZE(ENUM);                                             \
+  }                                                                         \
+                                                                            \
+  inline friend                                                             \
+  ENUM convert_to(                                                          \
+    const std::string& str,                                                 \
+    boost::dummy::type_tag<ENUM> const&                                     \
+  )                                                                         \
+  {                                                                         \
+    return boost::convert_to<ENUM>(                                         \
+      str.c_str()                                                           \
+    );                                                                      \
+  }                                                                         \
+                                                                            \
+  inline friend                                                             \
+  const char* c_str(ENUM e)                                                 \
+  {                                                                         \
+    switch (boost::enums::native_value(e))                                  \
+    {                                                                       \
+      BOOST_PP_SEQ_FOR_EACH(                                                \
+        BOOST_ENUMS_ENUM_DCL_ID_TO_STR,                                     \
+        ENUM,                                                               \
+        EL                                                                  \
+      )                                                                     \
+      default:                                                              \
+        throw "invalid value for "                                          \
+          BOOST_PP_STRINGIZE(ENUM);                                         \
+    }                                                                       \
+  }                                                                         \
+
 /**
  
  @brief Generates a @c boost::enums::meta::size specialization.
@@ -53,8 +112,11 @@
   template <>                                                   \
   struct size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>        \
   {                                                             \
-    static const std::size_t value;                             \
+    static const std::size_t value=BOOST_PP_SEQ_SIZE(EL);       \
   };                                                            \
+
+
+#define BOOST_ENUMS_ENUM_DCL_SIZE_SPE2(NS_EC, EL)                \
   const std::size_t                                             \
   size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>::value =      \
     BOOST_PP_SEQ_SIZE(EL);
@@ -66,8 +128,9 @@
  <b>Warning</b>: This macro is presented here for exposition only reasons and is not part of the interface.
  
  <b>Parameters</b>:
- - P: the position in the ENUMERATOR_LIST sequence
+ - P: NOT USED
  - QNAME, the @p NAMESPACES_CLASS qualified name
+ - P: the position in the ENUMERATOR_LIST sequence
  - ED, the ENUMERATOR_DEFINITION sequence
  
  <b>Result</b>: 
@@ -89,7 +152,7 @@
  
  */
 
-#define BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE(P, QNAME, ED)     \
+#define BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE(R, QNAME, P, ED)     \
   template <>                                               \
   struct pos<QNAME, QNAME :: BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)> \
   {                                                         \
@@ -143,7 +206,7 @@
     namespace enums {                                               
       namespace meta {                                              
         BOOST_ENUMS_ENUM_DCL_SIZE_SPE(NS_EC, EL)                    
-        BOOST_PP_SEQ_FOR_EACH(                                      
+        BOOST_PP_SEQ_FOR_EACH_I(                                      
           BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE,                         
           BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC),                
           EL                                                        
@@ -161,7 +224,7 @@
     namespace enums {                                               \
       namespace meta {                                              \
         BOOST_ENUMS_ENUM_DCL_SIZE_SPE(NS_EC, EL)                    \
-        BOOST_PP_SEQ_FOR_EACH(                                      \
+        BOOST_PP_SEQ_FOR_EACH_I(                                      \
           BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE,                         \
           BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC),                \
           EL                                                        \
@@ -197,7 +260,9 @@
   BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  }                                                                 \
+  };                                                                \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
   BOOST_ENUM_NS_TYPE_CONS_END(NS_EC, UT)                            \
   BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
 
@@ -226,7 +291,9 @@
   BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  }                                                                 \
+  };                                                                \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
   BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)                         \
   BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
 
@@ -256,7 +323,9 @@
   BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                              \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  }                                                                 \
+  };                                                                \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
   BOOST_ENUM_NS_CLASS_CONS_END(NS_EC, UT)                           \
   BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
 
@@ -286,7 +355,9 @@
   BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                              \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  }                                                                 \
+  };                                                                \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
   BOOST_ENUM_NS_CLASS_NO_CONS_END(NS_EC, UT)                        \
   BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
 

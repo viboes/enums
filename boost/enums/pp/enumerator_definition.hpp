@@ -111,8 +111,8 @@
 #define BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
   BOOST_PP_IIF(                                                       \
     BOOST_PP_GREATER(BOOST_PP_SEQ_SIZE(ED),2)                         \
-    , BOOST_ENUMS_DETAIL_ENUMERATOR_DEFINITION_VAL_OK                 \
-    , BOOST_ENUMS_DETAIL_ENUMERATOR_DEFINITION_VAL_KO                 \
+    , BOOST_ENUMS_DETAIL_ENUMERATOR_DEFINITION_STR_OK                 \
+    , BOOST_ENUMS_DETAIL_ENUMERATOR_DEFINITION_STR_KO                 \
   )(ED)
 
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
