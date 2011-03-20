@@ -55,11 +55,11 @@ using quickbook ;
 doxygen top_ref
    :
       [ glob ../../../boost/enums.hpp ]
-      [ glob ../../../boost/enums/config.hop ]
-      [ glob ../../../boost/enums/scoped.hop ]
-      [ glob ../../../boost/enums/ordinal.hop ]
-      [ glob ../../../boost/enums/containers.hop ]
-      [ glob ../../../boost/enums/mpl.hop ]
+      [ glob ../../../boost/enums/config.hpp ]
+      #[ glob ../../../boost/enums/scoped.hpp ]
+      #[ glob ../../../boost/enums/ordinal.hpp ]
+      #[ glob ../../../boost/enums/containers.hpp ]
+      #[ glob ../../../boost/enums/mpl.hpp ]
    :
         <doxygen:param>"PREDEFINED=\"BOOST_ENUMS_DOXYGEN_INVOKED=1\" \\
                                    \"BOOST_STATIC_CONSTEXPR=constexpr\" \\
@@ -68,6 +68,8 @@ doxygen top_ref
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
         <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
+
         <doxygen:param>SHOW_INCLUDE_FILES=YES
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
@@ -97,7 +99,9 @@ doxygen scoped_enums_ref
       [ glob ../../../boost/enums/scoped/underlying_value.hpp ]
       [ glob ../../../boost/enums/scoped/default_value.hpp ]
       [ glob ../../../boost/enums/scoped/emulation.hpp ]
+      [ glob ../../../boost/enums/pp/*.hpp ]
       [ glob ../../../boost/enums/scoped/scoping_type.hpp ]
+      [ glob ../../../boost/enums/scoped/is_enum.hpp ]
       [ glob ../../../boost/enums/scoped/enum_type_cons.hpp ]
       [ glob ../../../boost/enums/scoped/enum_type_no_cons.hpp ]
       [ glob ../../../boost/enums/scoped/enum_class_cons.hpp ]
@@ -115,6 +119,7 @@ doxygen scoped_enums_ref
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
         <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
         <doxygen:param>WARN_LOGFILE=AutoDoxywarnings.log # This may not be empty (usually not a good sign!), depending on options chosen.
@@ -158,6 +163,7 @@ doxygen ordinal_enums_ref
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
         <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
 
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
@@ -194,6 +200,7 @@ doxygen enums_containers_ref
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
         <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
 
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:
@@ -226,6 +233,7 @@ doxygen mpl_enums_ref
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
         <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
 
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
         # It is also wise to to set a warnings logfile like this:

@@ -61,16 +61,31 @@ Finally, you can mentally add the following to any code fragments in this docume
 
 The David E. Miller, Herb Sutter and Bjarne Stroustrup's proposal ([@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1891.pdf [*N1891: Strongly Typed Enums (revision 3)]] includes a clear motivation for "Strongly Typed Enums". On compilers not providing "Strongly Typed Enums" we can make a quite close emulation. This allows to write programs that are portable on compilers providing this feature natively and using the emulation on the others.
 
-Kevlin Henney presents in [@http://www.two-sdg.demon.co.uk/curbralan/papers/FlagWaiving.pdf [*Flag Waiving]] a safe design for enum sets which is based on some the association of an enumeration element and its position on the enumeration itself. This is found also in language as [@http://en.wikipedia.org/wiki/Enumerated_type#Ada Ada], which defines attributes on enumerations like `first`, `last`, `succ`, `value`, `pos`, ... The same mapping can be used to implement arrays having an enumeration as index type and viewing enumerations as a range. This association has constant time complexity most of the times, as usual enumerations follows linear or logarithmic progressions.
+Kevlin Henney presents in [@http://www.two-sdg.demon.co.uk/curbralan/papers/FlagWaiving.pdf [*Flag Waiving]] a safe design for enum sets which is based on some the association of an enumeration element and its position on the enumeration itself. This is found also in language as [@http://en.wikipedia.org/wiki/Enumerated_type#Ada [*Ada]], which defines attributes on enumerations like `first`, `last`, `succ`, `value`, `pos`, ... The same mapping can be used to implement arrays having an enumeration as index type and viewing enumerations as a range. This association has constant time complexity most of the times, as usual enumerations follows linear or logarithmic progressions.
 
-A third feature that has been requested for a long time is the ability to convert an enum so an string and vice versa.
+A third feature that has been requested for a long time is the ability to convert an enum to an string and vice versa.
 
 Examples of libraries that have tried to cope with some of these aspects are:
 
-* Enums has complex design to take care of iteration.
-* SmartEnums that take care mainly of string conversions.
 
-There are also a lot of literature about this simple problem. 
+* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=enum_rev4.6.zip&directory=& [@Boost.Enum]] by Frank Laub, takes care of scoping, underlying type, iteration and string conversions, but doesn't take care of avoiding implicit conversion and portability to C++0x scoped enums.
+* This thread [@http://boost.2283326.n4.nabble.com/Smart-enum-td2604736.html Smart enums] and this one [@http://boost.2283326.n4.nabble.com/safe-assign-of-int-to-enum-td2556392.html#a2556400 safe assign of int to enum] are quite interesting. Unfortunately there were no concrete proposal.
+* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=benum_v1.zip&directory=&  [@Boost.SmartEnums]] has complex design to take care of iteration.
+* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=benum_v1.zip&directory=&  [@BEnum]].
+
+
+There is also a lot of papers about these simple problems, well, not so simple to get it right. Just type on your preferred search engine a combination of the following words: C++, enum, strong, scoped, smart and safe and you will see. Next follows some I have read:
+
+* [@http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Type_Safe_Enum [*Type Safe Enum]] by Sumant Tambe defines a safe_enum mixing class which is similar to the enum_class class.
+* [@http://www.eetimes.com/discussion/programming-pointers/4024556/Enumerations-Q--A [*Enumerations Q & A]]
+    by Dan Saks.
+* [@http://drdobbs.com/cpp/184401797 [*Enumerations]] by Herb Sutter and Jim Hyslop. 
+
+
+There are also some lint tools that help in this concern.
+
+* [@http://www.gimpel.com/html/strong.htm [*PC-lint/FlexeLint Strong Type Checking]] from Gimpel Software.
+
 
 [endsect]
 [/==================]
@@ -78,40 +93,47 @@ There are also a lot of literature about this simple problem.
 [/==================]
 
 
-[*Boost.Enums] intends to provide a partial solution to the scoped enums problem, and provides the framework to view enumerations as ordinal types so we can define some specific and efficient enum containers.
+[*Boost.Enums] intends to provide a partial solution to the scoped enums problem ensuring a portable solution compatible with compilers supporting natively scoped enums or not. In addition provides a framework to view enumerations as ordinal types so we can define some specific and efficient enum containers.
 
-[*Boost.Enums] is composed of 
+[*Boost.Enums] is composed of the following parts:
+
 * Scoped enums
 * Ordinal enums
-* Enums containers
+* Enum containers
 * MPL enums
 * String <-> Enum conversions
 
-Scoped enums
+[heading Scoped enums]
 
+The main features of scoped enums are 
 * enumerators are in the scope of their enum
 * enums have a defined underlying type
 
 In addition scoped enum classes satisfies:
+
 * enumerators and enums do not implicitly convert to int
 
 The library includes:
+
 * Some meta-functions and functions helping to write portable programs using scoped enum classes under compilers supporting them natively or by an emulation on the others.
 * scoped enum classes with/without implicit conversion to the underlying type and with/without constructors.
 * Some language-like macros helping to define scoped enums.
 
-Ordinal enums
+
+[heading Ordinal enums]
 
 Ordinal enums are discrete types for which the enumerators have an associated position.
 
 The library includes some functions and meta-functions: `first`, `last`, `pred`, `succ`, `pos`, `val`, `size`.
 
-Enum containers
+[heading Enum containers]
+
 * `enum_array` indexed by an enumeration.
 * `enum_set` using a bit for each element of an enumeration. 
 * `enum_range` a run-time range view of an enumeration
 
-MPL enums
+[heading MPL enums]
+
 * `enum_c`, a MPL type constant associated to an enumeration.
 * `enum_range_c`, a MPL sequence associated to an enumeration.
 
@@ -433,7 +455,7 @@ The C++ scoped enums can be used in bitfields declarations
     int j : 6;
   };
 
-As the emulation is not a built-in type this cannot compile in a portable way. Boost.Enums has no workaround to this problem, but fortunately we could use Boost.Bitfield library (when available) to emulate the whole structure cottoning scoped enums bitfields as follows
+As the emulation is not a built-in type this cannot compile in a portable way. [*Boost.Enums] has no workaround to this problem, but fortunately we could use Boost.Bitfield library (when available) to emulate the whole structure cottoning scoped enums bitfields as follows
 
   typedef bitfields<
     member<EnumClass,2>,
@@ -506,7 +528,7 @@ The needed informations are
 
 The compiler could have these informations, but in the absence the user will need to add them explicitly.
 
-Boost.Enums provides a framework that allows to add these meta-information and use them in a uniform way at compile-time and run-time.
+[*Boost.Enums] provides a framework that allows to add these meta-information and use them in a uniform way at compile-time and run-time.
 
 The library provides the declaration of the meta-function that will need to be specialized for each enumeration,
 
@@ -574,7 +596,7 @@ An example of specialization follows:
   }
 
 
-As this is quite cumbersome, the library provides macros that will generate all this stuff for you. Unfortunately there is no way to preserve the syntax of the scoped enums. and in addition the generated code must be in different namespaces.
+As this is quite cumbersome, the library provides macros that will generate all this stuff for you. Unfortunately there is no way to preserve the syntax of the scoped enums and in addition the generated code must be in different namespaces.
 
 There are two macro forms: one using PP sequences and other with variadic macros.
 
@@ -635,7 +657,7 @@ and a uniform run-time interface.
 [section:cont Enum Containers]
 [section:set Enum Set]
 
-One of the major motivations for the preceding functions and metafiction was to be able to define a generic enum set class based on the work of Kevlin Henney.
+One of the major motivations for the preceding functions and meta-fuction was to be able to define a generic enum set class based on the work of Kevlin Henney.
 
 The `enum_set<EC>` class has as parameter an enum, enum class or enum type and provides the same interface as `std::bitset<N>` but replacing the index by the enum. As Kevlin showed this give to the user a more safer interface than using bit mask directly.
 
@@ -686,17 +708,17 @@ Given the following definition of `Day_Of_Week`
 
   BOOST_ENUMS_CLASS(Day_Of_Week, int, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday);
  
-we can define the sub-type `Working_Day` using the `sub_range<>` template class
+we can define the sub-type `Working_Day` using the `enum_sub_range<>` template class
 
-  typedef enums::sub_range<Day_Of_Week, Monday, Friday> Working_Day;
+  typedef enums::enum_sub_range<Day_Of_Week, Monday, Friday> Working_Day;
 
 `Working_Day` is implicitly convertible to `Day_Of_Week` and is explicitly constructible from vDay_Of_Week` with a run-time checking of course.
 
 When the sub-type enumeration literals are not consecutive we need a generic way to state whether it belongs or not. A predicate seems to be the good compromise. Note that this is quite related to the constraint library.
 
-  typedef enums::sub_type<Day_Of_Week, P> Working_Day;
+  typedef enums::enum_sub_type<Day_Of_Week, P> Working_Day;
 
-These enumeration sub-types `sub_range<>` and `sub_type<>` can be used as well as index of `enum_array<>` and as type of `enum_set<>` and `enum_range<>`.
+These enumeration sub-types `enum_sub_range<>` and `enum_sub_type<>` can be used as well as index of `enum_array<>` and as type of `enum_set<>` and `enum_range<>`.
 
  
 
@@ -880,15 +902,13 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 
 [endsect]
 
-[/xinclude autodoc.xml]
-
 [/=================]
 [section Appendices]
 [/=================]
 
 [section:history Appendix A: History]
 
-[section [*Version 0.2.0, Mars 17, 2011] ]
+[section [*Version 0.2.0, Mars 18, 2011] ]
 
 [*New Features:]
 
@@ -896,6 +916,7 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
   * Added underlying_value.
   * Added scoping_type.
   * enum_type renamed native_type
+  * Added is_enum.
 * Added ordinal enums: first, last, red, succ, pos, val, size functions and meta-functions.
 * Added enum containers:
   * enum_type_cons/no_cons and enum_class_cons/no_cons classes.
@@ -904,6 +925,9 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 
 * Added enum_range. a run-time range view of an enumeration
 * Added enum_range_c, a MPL sequence associated to an enumeration.
+
+* Added user namespace aware macros.
+
 
 [endsect]
 [section [*Version 0.1.0, Feb 27, 2011] ]
@@ -1064,16 +1088,18 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 
 * Add enum hash functions for ordinal enums, so they can be used efficiently with unordered associative containers.
 * Make a uniform use of exceptions.
-* Manage with the user namespace in macros.
 * Define the the PP sequence and variadic macros to cope with ordinal enums.  
   * ordinal specializations
   * Conversion to and from strings.
-* Complete the doc with more user land examples 
+* Complete the doc with more user-land examples.
 * Add more tests.
+* Add enum_sub_type.
+* Specialize enum_array, enum_set and enum_range for enum_sub_range.
+* Add the hello world example.
 
 [heading For later releases]
 
-* I don't have any pending ideas :(
+* I don't have other ideas :(
 
 [endsect]
 [endsect]
