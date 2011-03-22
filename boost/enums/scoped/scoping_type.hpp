@@ -25,17 +25,28 @@ namespace boost
 {
   namespace enums
   {
-    /*! meta-function used to get the wrapping class of an enum when emulation
+    namespace meta
+    {
+      /*! meta-function to be specialized for each emulated enum class.
+       */
+      template <typename EC_type>
+      struct scoping_type
+      {
+        //! By default this metafunction defines it as if scoped enums where supported.
+        typedef EC_type type;
+      };    
+    }
+    /*! Get the wrapping class of an enum when emulation
      is used or the enum class itself when available.
-     This meta-function must be specialized for each enum class.
+     
+     @note This meta-function must be specialized for each enum class.
      */
     template <typename EC_type>
-	  struct scoping_type
-	  {
-	    //!  Depending on whethere the compiler supports scoped enums or nor the nested type must be the same type or the emulated one. 
-	    //! By default this metafunction defines it as if scoped enums where supported so the specialization will be needed only when emulation is needed.
-	    typedef EC_type type;
-	  };    
+    struct scoping_type
+    {
+      //! Depending on whethere the compiler supports scoped enums or not the nested type must be the same type or the emulated one. 
+      typedef typename meta::scoping_type<EC_type>::type type;
+    };    
   }
 }
 

@@ -28,17 +28,20 @@ namespace boost {
     namespace meta {
         //! meta-function used to get the number of elements of an enumeration.
         
-        //! \note This meta-function must be specialized for each enumeration.
+        //! @note This meta-function must be specialized for each enumeration.
         template <typename EC>
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
         struct size; 
 #else
         struct size 
         {
+            //! The nested @c value to be defined for each specialization.
             constexpr std::size_t value=<to be defined for each specialization>;
         };    
 #endif
     }
+    //! @return the number of elements of an enumeration @c EC.
+    //! @throw Nothing.
     template <typename EC>
     std::size_t size() 
     {

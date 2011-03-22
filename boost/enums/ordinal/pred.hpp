@@ -32,8 +32,9 @@ namespace boost
   {
     namespace meta
     {
-      //! meta-function that gets the predecessor of an enumeration element
-      //! Pre-condition: the position must be not 0
+      //! meta-function that gets the predecessor of an enumeration element.
+      
+      //! @pre: the position must be not 0.
       template <typename EC, typename native_type<EC>::type V>
       struct pred
       {
@@ -42,9 +43,11 @@ namespace boost
           val<EC,pos<EC,V>::value-1>::value;
       };
     }
+    
+    //! ordinal enum predecesor.
 
-    //! Returns: the predecessor of the enumeration element
-    //! Throws: Invalid parameter if the position is 0
+    //! @return the predecessor of the enumeration element.
+    //! @throw Invalid parameter if the position is 0.
     template <typename EC>
     BOOST_CONSTEXPR EC pred(EC e)
     {

@@ -30,8 +30,11 @@ namespace boost
         BOOST_STATIC_CONSTEXPR typename native_type<EC>::type value = enums::meta::val<EC,0>::value;
       };
     }
-    //! Returns the the first element of an enumeration
-    //! Throws: Nothing
+    
+    //! ordinal enum first.
+
+    //! @return the the first element of an enumeration
+    //! @throw Nothing
     template <typename EC>
     BOOST_CONSTEXPR EC first()
     {

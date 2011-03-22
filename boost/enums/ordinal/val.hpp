@@ -13,8 +13,8 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/val.hpp> declares a class template \c meta::val<> and 
- a function \c val() associating a position to an element of an enumeration.
+ The header @c <boost/enums/val.hpp> declares a class template @c meta::val<> and 
+ a function @c val() associating a position to an element of an enumeration.
  */
 
 #ifndef BOOST_ENUMS_VALUE_HPP
@@ -33,7 +33,7 @@ namespace boost
     {
       //! meta-function used to associate the position to an element of an enumeration.
         
-      //! \note This meta-function must be specialized for each position of the enumeration,
+      //! @note This meta-function must be specialized for each position of the enumeration,
       //! starting from 0 to the predecessor of the size of the enumeration .
       template <typename EC, std::size_t I>
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
@@ -41,16 +41,17 @@ namespace boost
 #else
         struct val
         {
-            constexpr typename native_type<EC>::type value=<to be defined for each specialization>;
+          //! The nested @c value to be defined for each specialization.
+          constexpr typename native_type<EC>::type value=<to be defined for each specialization>;
         };    
 #endif
         
     }
-    //! Value  
+    //! ordinal enum value  
       
-    //! \param p the position
-    //! \returns The enum class element associated to the position \c p.
-    //! \throws std::out_of_range if the position is out of range.
+    //! @param p the position
+    //! @returns The enum class element associated to the position @c p.
+    //! @throws std::out_of_range if the position is out of range.
     template <typename EC>
     EC val(std::size_t p)
     {

@@ -13,8 +13,8 @@
 /*!
  \file
  \brief  
- The header \c <boost/enums/last.hpp> declares a class template \c meta::last<> and 
- a function \c last() returning the last element of an enumeration.
+ The header @c <boost/enums/last.hpp> declares a class template @c meta::last<> and 
+ a function @c last() returning the last element of an enumeration.
  */
 
 #ifndef BOOST_ENUMS_ORDINAL_LAST_HPP
@@ -37,8 +37,11 @@ namespace boost
         BOOST_STATIC_CONSTEXPR typename native_type<EC>::type value = val<EC,size<EC>::value-1>::value;
       };
     }
-    //! Returns the the last element of an enumeration
-    //! Throws: Nothing
+    
+    //! ordinal enum last.
+
+    //! @return the the last element of an enumeration
+    //! @throw Nothing
     template <typename EC>
     BOOST_CONSTEXPR EC last()
     {

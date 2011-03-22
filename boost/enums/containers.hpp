@@ -12,7 +12,7 @@
 /*!
  \file
  \brief  
- Include all the enum eontainers.
+ Include all the enum containers.
  */
 
 #ifndef BOOST_ENUMS_CONTAINERS_HPP

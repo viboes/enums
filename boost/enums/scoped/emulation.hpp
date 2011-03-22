@@ -68,11 +68,13 @@
   #define BOOST_ENUMS_DETAIL_SCOPING_TYPE_SPEC(EC)            \
       namespace boost {                                       \
         namespace enums {                                     \
-          template <>                                         \
-          struct scoping_type<native_type<EC>::type>          \
-          {                                                   \
-            typedef EC type;                                  \
-          };                                                  \
+          namespace meta {                                    \
+            template <>                                       \
+            struct scoping_type<native_type<EC>::type>        \
+            {                                                 \
+              typedef EC type;                                \
+            };                                                \
+          }                                                   \
         }                                                     \
       }
 
@@ -93,11 +95,13 @@
     #define BOOST_ENUMS_DETAIL_UNDERLYING_TYPE_SPEC(EC, UT)   \
       namespace boost {                                       \
         namespace enums {                                     \
-          template <>                                         \
-          struct underlying_type<EC>                          \
-          {                                                   \
-            typedef UT type;                                  \
-          };                                                  \
+          namespace meta {                                    \
+            template <>                                       \
+            struct underlying_type<EC>                        \
+            {                                                 \
+              typedef UT type;                                \
+            };                                                \
+          }                                                   \
         }                                                     \
       }
 
