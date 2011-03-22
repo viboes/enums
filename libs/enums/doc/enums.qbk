@@ -1,3 +1,4 @@
+
 [/
  / Copyright (c) 2010 Vicente J. Botet Escriba
  /
@@ -61,7 +62,7 @@ Finally, you can mentally add the following to any code fragments in this docume
 
 The David E. Miller, Herb Sutter and Bjarne Stroustrup's proposal ([@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1891.pdf [*N1891: Strongly Typed Enums (revision 3)]] includes a clear motivation for "Strongly Typed Enums". On compilers not providing "Strongly Typed Enums" we can make a quite close emulation. This allows to write programs that are portable on compilers providing this feature natively and using the emulation on the others.
 
-Kevlin Henney presents in [@http://www.two-sdg.demon.co.uk/curbralan/papers/FlagWaiving.pdf [*Flag Waiving]] a safe design for enum sets which is based on some the association of an enumeration element and its position on the enumeration itself. This is found also in language as [@http://en.wikipedia.org/wiki/Enumerated_type#Ada [*Ada]], which defines attributes on enumerations like `first`, `last`, `succ`, `value`, `pos`, ... The same mapping can be used to implement arrays having an enumeration as index type and viewing enumerations as a range. This association has constant time complexity most of the times, as usual enumerations follows linear or logarithmic progressions.
+Kevlin Henney presents in [@http://www.two-sdg.demon.co.uk/curbralan/papers/FlagWaiving.pdf [*Flag Waiving]] a safe design for enum sets which is based on the association of an enumeration element and its position on the enumeration itself. This is found also in language as [@http://en.wikipedia.org/wiki/Enumerated_type#Ada [*Ada]], which defines attributes on enumerations like `first`, `last`, `succ`, `value`, `pos`, ... The same mapping can be used to implement arrays having an enumeration as index type and viewing enumerations as a range. This association has constant time complexity most of the times, as usual enumerations follows linear or logarithmic progressions.
 
 A third feature that has been requested for a long time is the ability to convert an enum to an string and vice versa.
 
@@ -134,8 +135,8 @@ The library includes some functions and meta-functions: `first`, `last`, `pred`,
 
 [heading MPL enums]
 
-* `enum_c`, a MPL type constant associated to an enumeration.
-* `enum_range_c`, a MPL sequence associated to an enumeration.
+* `enum_c`, a MPL type constant associated to an scoped enumeration.
+* `enum_range_c`, a MPL sequence associated to an scoped enumeration.
 
 [endsect]
 [endsect]
@@ -551,11 +552,8 @@ An example of specialization follows:
         template <>
         struct size<EC3>
         {
-          //~ BOOST_STATIC_CONSTEXPR
-          static const std::size_t value;
+          BOOST_STATIC_CONSTEXPR std::size_t value=3;
         };
-        //~ BOOST_CONSTEXPR
-        const std::size_t size<EC3>::value = 3;
         template <>
         struct pos<EC3, EC3::Enum0>
         {
@@ -602,8 +600,8 @@ There are two macro forms: one using PP sequences and other with variadic macros
 
   BOOST_ENUM((NS1)(NSB)(Enum), 
     ( (Enum0) (0) )
-    (Enum1)
-    (Enum2)
+    ( (Enum1) )
+    ( (Enum2) )
   )
 
 The PP sequence contains itself a PP sequence that has as mandatory first element, the enum literal, and the second optional element used to give an explicit enum value.
@@ -620,16 +618,16 @@ The preceding macros are applied to C/C++98 enums. As we can be interested in mi
 
   BOOST_ENUM_CLASS(EnumClass, int, 
     ( (Enum0) (0) )
-    (Enum1)
-    (Enum2)
+    ( (Enum1) )
+    ( (Enum2) )
   )
 
 For scoped enum types use `BOOST_ENUM_TYPE()`
 
   BOOST_ENUM_TYPE(EnumType, int, 
     ( (Enum0) (0) )
-    (Enum1)
-    (Enum2)
+    ( (Enum1) )
+    ( (Enum2) )
   )
 
 As you can see these macros have the advantage to avoid the duplication of the enum name and the underlaying type that we had with the scoped enum macros.
@@ -908,7 +906,7 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 
 [section:history Appendix A: History]
 
-[section [*Version 0.2.0, Mars 18, 2011] ]
+[section [*Version 0.2.0, Mars 23, 2011] ]
 
 [*New Features:]
 
@@ -926,7 +924,10 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 * Added enum_range. a run-time range view of an enumeration
 * Added enum_range_c, a MPL sequence associated to an enumeration.
 
-* Added user namespace aware macros.
+* Added more macros
+  * user namespace aware macros.
+  * PP sequence macros to cope with ordinal enums.  
+  * Conversion to and from strings generation.
 
 
 [endsect]
@@ -1086,20 +1087,18 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 
 [heading Tasks to do before review]
 
-* Add enum hash functions for ordinal enums, so they can be used efficiently with unordered associative containers.
-* Make a uniform use of exceptions.
-* Define the the PP sequence and variadic macros to cope with ordinal enums.  
-  * ordinal specializations
-  * Conversion to and from strings.
+* Remove assertions and make a uniform use of exceptions.
 * Complete the doc with more user-land examples.
-* Add more tests.
-* Add enum_sub_type.
-* Specialize enum_array, enum_set and enum_range for enum_sub_range.
 * Add the hello world example.
+* Add more tests.
 
 [heading For later releases]
 
-* I don't have other ideas :(
+* Add enum hash functions for ordinal enums, so they can be used efficiently with unordered associative containers.
+* Specialize enum_array, enum_set and enum_range for enum_sub_range.
+* Define the variadic macros.  
+* Add enum_sub_type.
+* Other ideas?
 
 [endsect]
 [endsect]
