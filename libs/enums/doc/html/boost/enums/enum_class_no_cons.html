@@ -1,0 +1,193 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template enum_class_no_cons</title>
+<link rel="stylesheet" href="../.././boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
+<link rel="home" href="../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.2.0">
+<link rel="up" href="../../index.html#header.boost.enums.scoped.enum_class_no_cons_hpp" title="Header &lt;boost/enums/scoped/enum_class_no_cons.hpp&gt;">
+<link rel="prev" href="enum_class_cons.html" title="Class template enum_class_cons">
+<link rel="next" href="enum_type_cons.html" title="Class template enum_type_cons">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="enum_class_cons.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.scoped.enum_class_no_cons_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="enum_type_cons.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.enums.enum_class_no_cons"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template enum_class_no_cons</span></h2>
+<p>boost::enums::enum_class_no_cons &#8212; scoped enum class without constructors </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../index.html#header.boost.enums.scoped.enum_class_no_cons_hpp" title="Header &lt;boost/enums/scoped/enum_class_no_cons.hpp&gt;">boost/enums/scoped/enum_class_no_cons.hpp</a>&gt;
+
+</span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> ScopedEnum<span class="special">,</span> <span class="keyword">typename</span> UT <span class="special">=</span> <span class="keyword">int</span><span class="special">&gt;</span> 
+<span class="keyword">class</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="comment">// types</span>
+  <span class="keyword">typedef</span> <span class="identifier">ScopedEnum</span><span class="special">::</span><span class="identifier">type</span> <a name="boost.enums.enum_class_no_cons.type"></a><span class="identifier">type</span><span class="special">;</span>             <span class="comment">// c++98 enum type </span>
+  <span class="keyword">typedef</span> <span class="identifier">UT</span>               <a name="boost.enums.enum_class_no_cons.underlying_type"></a><span class="identifier">underlying_type</span><span class="special">;</span>  <span class="comment">// underlying type </span>
+
+  <span class="comment">// <a class="link" href="enum_class_no_cons.html#boost.enums.enum_class_no_consconstruct-copy-destruct">construct/copy/destruct</a></span>
+  enum_class_no_cons&amp; <a class="link" href="enum_class_no_cons.html#id35969675-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  enum_class_no_cons&amp; <a class="link" href="enum_class_no_cons.html#id35969684-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="enum_class_no_cons.html#id35969653-bb">public member functions</a></span>
+  <span class="identifier">type</span> <a class="link" href="enum_class_no_cons.html#id35969656-bb"><span class="identifier">native_value</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">underlying_type</span> <a class="link" href="enum_class_no_cons.html#id35969665-bb"><span class="identifier">underlying_value</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="enum_class_no_cons.html#id35969692-bb">public static functions</a></span>
+  <span class="keyword">static</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <a class="link" href="enum_class_no_cons.html#id35969695-bb"><span class="identifier">default_value</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <a class="link" href="enum_class_no_cons.html#id35969706-bb"><span class="identifier">convert_to</span></a><span class="special">(</span><span class="identifier">underlying_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <a class="link" href="enum_class_no_cons.html#id35969721-bb"><span class="identifier">convert_to</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="enum_class_no_cons.html#id35969735-bb">friend functions</a></span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969738-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969759-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969779-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969800-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969821-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969841-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969861-bb"><span class="keyword">operator</span><span class="special">&lt;=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969883-bb"><span class="keyword">operator</span><span class="special">&lt;=</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969903-bb"><span class="keyword">operator</span><span class="special">&lt;=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969923-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969945-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969965-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35969985-bb"><span class="keyword">operator</span><span class="special">&gt;=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35970006-bb"><span class="keyword">operator</span><span class="special">&gt;=</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35970027-bb"><span class="keyword">operator</span><span class="special">&gt;=</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35970047-bb"><span class="keyword">operator</span><span class="special">&gt;</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35970068-bb"><span class="keyword">operator</span><span class="special">&gt;</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="keyword">bool</span> <a class="link" href="enum_class_no_cons.html#id35970089-bb"><span class="keyword">operator</span><span class="special">&gt;</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> <span class="identifier">type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> 
+  <a class="link" href="enum_class_no_cons.html#id35970109-bb"><span class="identifier">convert_to</span></a><span class="special">(</span><span class="identifier">underlying_type</span><span class="special">,</span> 
+             <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> 
+  <a class="link" href="enum_class_no_cons.html#id35970134-bb"><span class="identifier">convert_to</span></a><span class="special">(</span><span class="identifier">type</span><span class="special">,</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="identifier">underlying_type</span> 
+  <a class="link" href="enum_class_no_cons.html#id35970160-bb"><span class="identifier">convert_to</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> 
+             <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <span class="identifier">underlying_type</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">friend</span> <span class="identifier">type</span> <a class="link" href="enum_class_no_cons.html#id35970181-bb"><span class="identifier">convert_to</span></a><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a><span class="special">,</span> 
+                         <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <span class="identifier">type</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id36358400"></a><h2>Description</h2>
+<p>param <code class="computeroutput">ScopedEnum</code> : Struct scoping the enum.<br>
+ param <code class="computeroutput">UT</code> : the underlaying storage type.<br>
+ pre <code class="computeroutput">ScopedEnum</code> must have a nested C++98 enum <code class="computeroutput">type</code>.<br>
+ </p>
+<div class="refsect2">
+<a name="id36358434"></a><h3>
+<a name="boost.enums.enum_class_no_consconstruct-copy-destruct"></a><code class="computeroutput">enum_class_no_cons</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout">enum_class_no_cons&amp; <a name="id35969675-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>assignment </li>
+<li class="listitem">
+<pre class="literallayout">enum_class_no_cons&amp; <a name="id35969684-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>assignment from enum literals </li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id36358533"></a><h3>
+<a name="id35969653-bb"></a><code class="computeroutput">enum_class_no_cons</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">type</span> <a name="id35969656-bb"></a><span class="identifier">native_value</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>explicit conversion function to enum type </li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">underlying_type</span> <a name="id35969665-bb"></a><span class="identifier">underlying_value</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>explicit conversion function to underlying_type </li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id36358630"></a><h3>
+<a name="id35969692-bb"></a><code class="computeroutput">enum_class_no_cons</code> public static functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">static</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <a name="id35969695-bb"></a><span class="identifier">default_value</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>workaround when there are no constructors </li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">static</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <a name="id35969706-bb"></a><span class="identifier">convert_to</span><span class="special">(</span><span class="identifier">underlying_type</span> v<span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">static</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <a name="id35969721-bb"></a><span class="identifier">convert_to</span><span class="special">(</span><span class="identifier">type</span> v<span class="special">)</span><span class="special">;</span></pre></li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id36358777"></a><h3>
+<a name="id35969735-bb"></a><code class="computeroutput">enum_class_no_cons</code> friend functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969738-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969759-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="identifier">type</span> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969779-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969800-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>not_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969821-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="identifier">type</span> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>not_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969841-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>not_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969861-bb"></a><span class="keyword">operator</span><span class="special">&lt;=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>less_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969883-bb"></a><span class="keyword">operator</span><span class="special">&lt;=</span><span class="special">(</span><span class="identifier">type</span> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>less_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969903-bb"></a><span class="keyword">operator</span><span class="special">&lt;=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>less_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969923-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>less operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969945-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><span class="identifier">type</span> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>less operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969965-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>less operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35969985-bb"></a><span class="keyword">operator</span><span class="special">&gt;=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>greater_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35970006-bb"></a><span class="keyword">operator</span><span class="special">&gt;=</span><span class="special">(</span><span class="identifier">type</span> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>greater_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35970027-bb"></a><span class="keyword">operator</span><span class="special">&gt;=</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>greater_equal operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35970047-bb"></a><span class="keyword">operator</span><span class="special">&gt;</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>greater operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35970068-bb"></a><span class="keyword">operator</span><span class="special">&gt;</span><span class="special">(</span><span class="identifier">type</span> lhs<span class="special">,</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> rhs<span class="special">)</span><span class="special">;</span></pre>greater operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="keyword">bool</span> <a name="id35970089-bb"></a><span class="keyword">operator</span><span class="special">&gt;</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> lhs<span class="special">,</span> <span class="identifier">type</span> rhs<span class="special">)</span><span class="special">;</span></pre>greater operator </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> 
+<a name="id35970109-bb"></a><span class="identifier">convert_to</span><span class="special">(</span><span class="identifier">underlying_type</span> v<span class="special">,</span> 
+           <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> 
+<a name="id35970134-bb"></a><span class="identifier">convert_to</span><span class="special">(</span><span class="identifier">type</span> v<span class="special">,</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>friend conversions from type to enum_type_cons following the Boost.Conversion protocol </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="identifier">underlying_type</span> 
+<a name="id35970160-bb"></a><span class="identifier">convert_to</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> v<span class="special">,</span> 
+           <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <span class="identifier">underlying_type</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol </li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">friend</span> <span class="identifier">type</span> <a name="id35970181-bb"></a><span class="identifier">convert_to</span><span class="special">(</span><a class="link" href="enum_class_no_cons.html" title="Class template enum_class_no_cons">enum_class_no_cons</a> v<span class="special">,</span> 
+                       <span class="identifier">boost</span><span class="special">::</span><span class="identifier">dummy</span><span class="special">::</span><span class="identifier">type_tag</span><span class="special">&lt;</span> <span class="identifier">type</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>conversions from enum_type_cons to type following the Boost.Conversion protocol </li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2010 -2011 Vicente J. Botet Escriba<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="enum_class_cons.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.scoped.enum_class_no_cons_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="enum_type_cons.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

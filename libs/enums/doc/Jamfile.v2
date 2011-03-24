@@ -67,6 +67,32 @@ doxygen top_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+
+	#<doxygen:param>ALIASES=" Params=\"<b>Parameters:</b> <table border="0">\" Param{2}=\"<tr><td><b><tt>\\1</tt></b></td><td>\\2</td></tr>\" EndParams=\"</table>\" Returns=\"<b>Returns:</b>\" Note=\"<b>Note:</b>\" Warning=\"<b>Warning:</b>\" See=\"<b>See:</b>\" RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 TParams=\"<p><b>Template Parameters:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <b><c>\\1</c></b>: \\2.\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Result=\"<p><b>Result:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Pre=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark:</b>\" \\
+                                 Note=\"<p><b>Note:</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
+
         <doxygen:param>SORT_MEMBER_DOCS=NO
         <doxygen:param>SHOW_USED_FILES=YES
 
@@ -118,6 +144,29 @@ doxygen scoped_enums_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 TParams=\"<p><b>Template Parameters:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <b><c>\\1</c></b>: \\2.\" \\
+                                 Result=\"<p><b>Result:</b>\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Requires=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark:</b>\" \\
+                                 Note=\"<p><b>Note:</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
         <doxygen:param>SORT_MEMBER_DOCS=NO
         <doxygen:param>SHOW_USED_FILES=YES
         <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
@@ -162,6 +211,29 @@ doxygen ordinal_enums_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 TParams=\"<p><b>Template Parameters:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <b><c>\\1</c></b>: \\2.\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Result=\"<p><b>Result:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Requires=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark:</b>\" \\
+                                 Note=\"<p><b>Note:</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
         <doxygen:param>SORT_MEMBER_DOCS=NO
         <doxygen:param>SHOW_USED_FILES=YES
 
@@ -199,6 +271,30 @@ doxygen enums_containers_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 TParams=\"<p><b>Template Parameters:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <b><c>\\1</c></b>: \\2.\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Result=\"<p><b>Result:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Requires=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark:</b>\" \\
+                                 Note=\"<p><b>Note:</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
         <doxygen:param>SORT_MEMBER_DOCS=NO
         <doxygen:param>SHOW_USED_FILES=YES
 
@@ -232,6 +328,28 @@ doxygen mpl_enums_ref
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
                                    \"BOOST_CONSTEXPR=constexpr\""
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <c>\\1</c>: \\2.\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Requires=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark:</b>\" \\
+                                 Note=\"<p><b>Note:</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
+
         <doxygen:param>SORT_MEMBER_DOCS=NO
         <doxygen:param>SHOW_USED_FILES=YES
 

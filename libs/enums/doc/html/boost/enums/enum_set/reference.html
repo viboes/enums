@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class reference</title>
+<link rel="stylesheet" href="../../.././boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
+<link rel="home" href="../../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.2.0">
+<link rel="up" href="../enum_set.html#id36381470" title="Description">
+<link rel="prev" href="../enum_set.html" title="Class template enum_set">
+<link rel="next" href="../operator_.html" title="Function template operator&amp;">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td>
+<td align="center"><a href="../../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../enum_set.html"><img src="../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../enum_set.html#id36381470"><img src="../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../operator_.html"><img src="../../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.enums.enum_set.reference"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class reference</span></h2>
+<p>boost::enums::enum_set::reference &#8212; A proxy class that acts as a reference to a single bit. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../../index.html#header.boost.enums.containers.enum_set_hpp" title="Header &lt;boost/enums/containers/enum_set.hpp&gt;">boost/enums/containers/enum_set.hpp</a>&gt;
+
+</span>
+
+<span class="comment">// A proxy class that acts as a reference to a single bit.</span>
+
+<span class="keyword">class</span> <a class="link" href="reference.html" title="Class reference">reference</a> <span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="comment">// <a class="link" href="reference.html#boost.enums.enum_set.referenceconstruct-copy-destruct">construct/copy/destruct</a></span>
+  <a class="link" href="reference.html#id35972820-bb"><span class="identifier">reference</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="reference.html#id35972821-bb"><span class="identifier">reference</span></a><span class="special">(</span><a class="link" href="../enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  reference&amp; <a class="link" href="reference.html#id35972870-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  reference&amp; <a class="link" href="reference.html#id35972879-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="reference.html" title="Class reference">reference</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="reference.html#id35972869-bb"><span class="special">~</span><span class="identifier">reference</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="reference.html#id35972835-bb">public member functions</a></span>
+  <span class="keyword">bool</span> <a class="link" href="reference.html#id35972839-bb"><span class="keyword">operator</span><span class="special">~</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="reference.html#id35972848-bb"><span class="keyword">operator</span> <span class="keyword">bool</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="reference.html" title="Class reference">reference</a> <a class="link" href="reference.html#id35972858-bb"><span class="identifier">flip</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id36384684"></a><h2>Description</h2>
+<p>It contains an assignment operator, a conversion to <code class="computeroutput">bool</code>, an <code class="computeroutput">operator~</code>, and a member function <code class="computeroutput">flip</code>. It exists only as a helper class for <code class="computeroutput">enum_set's</code> <code class="computeroutput">operator</code>[]. </p>
+<div class="refsect2">
+<a name="id36384717"></a><h3>
+<a name="boost.enums.enum_set.referenceconstruct-copy-destruct"></a><code class="computeroutput">reference</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><pre class="literallayout"><a name="id35972820-bb"></a><span class="identifier">reference</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><a name="id35972821-bb"></a><span class="identifier">reference</span><span class="special">(</span><a class="link" href="../enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span> <span class="special">&amp;</span> ref<span class="special">,</span> <span class="identifier">T</span> pos<span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem">
+<pre class="literallayout">reference&amp; <a name="id35972870-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">bool</span> x<span class="special">)</span><span class="special">;</span></pre>assignement from bool </li>
+<li class="listitem">
+<pre class="literallayout">reference&amp; <a name="id35972879-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="reference.html" title="Class reference">reference</a> <span class="special">&amp;</span> x<span class="special">)</span><span class="special">;</span></pre>assignement from another reference </li>
+<li class="listitem"><pre class="literallayout"><a name="id35972869-bb"></a><span class="special">~</span><span class="identifier">reference</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id36384951"></a><h3>
+<a name="id35972835-bb"></a><code class="computeroutput">reference</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35972839-bb"></a><span class="keyword">operator</span><span class="special">~</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>flip the bit </li>
+<li class="listitem">
+<pre class="literallayout"><a name="id35972848-bb"></a><span class="keyword">operator</span> <span class="keyword">bool</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>implicit conversion to bool </li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="reference.html" title="Class reference">reference</a> <a name="id35972858-bb"></a><span class="identifier">flip</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>flip the bit </li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2010 -2011 Vicente J. Botet Escriba<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../enum_set.html"><img src="../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../enum_set.html#id36381470"><img src="../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../operator_.html"><img src="../../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

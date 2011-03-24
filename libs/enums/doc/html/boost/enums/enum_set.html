@@ -1,0 +1,295 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template enum_set</title>
+<link rel="stylesheet" href="../.././boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
+<link rel="home" href="../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.2.0">
+<link rel="up" href="../../index.html#header.boost.enums.containers.enum_set_hpp" title="Header &lt;boost/enums/containers/enum_set.hpp&gt;">
+<link rel="prev" href="make_range_id35972596.html" title="Function template make_range">
+<link rel="next" href="enum_set/reference.html" title="Class reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="make_range_id35972596.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_set_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="enum_set/reference.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.enums.enum_set"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template enum_set</span></h2>
+<p>boost::enums::enum_set</p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../index.html#header.boost.enums.containers.enum_set_hpp" title="Header &lt;boost/enums/containers/enum_set.hpp&gt;">boost/enums/containers/enum_set.hpp</a>&gt;
+
+</span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
+<span class="keyword">class</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="comment">// member classes/structs/unions</span>
+
+  <span class="comment">// A proxy class that acts as a reference to a single bit.</span>
+
+  <span class="keyword">class</span> <a class="link" href="enum_set/reference.html" title="Class reference">reference</a> <span class="special">{</span>
+  <span class="keyword">public</span><span class="special">:</span>
+    <span class="comment">// <a class="link" href="enum_set/reference.html#boost.enums.enum_set.referenceconstruct-copy-destruct">construct/copy/destruct</a></span>
+    <a class="link" href="enum_set/reference.html#id35972820-bb"><span class="identifier">reference</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+    <a class="link" href="enum_set/reference.html#id35972821-bb"><span class="identifier">reference</span></a><span class="special">(</span><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+    reference&amp; <a class="link" href="enum_set/reference.html#id35972870-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+    reference&amp; <a class="link" href="enum_set/reference.html#id35972879-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set/reference.html" title="Class reference">reference</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <a class="link" href="enum_set/reference.html#id35972869-bb"><span class="special">~</span><span class="identifier">reference</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+
+    <span class="comment">// <a class="link" href="enum_set/reference.html#id35972835-bb">public member functions</a></span>
+    <span class="keyword">bool</span> <a class="link" href="enum_set/reference.html#id35972839-bb"><span class="keyword">operator</span><span class="special">~</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+    <a class="link" href="enum_set/reference.html#id35972848-bb"><span class="keyword">operator</span> <span class="keyword">bool</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+    <a class="link" href="enum_set/reference.html" title="Class reference">reference</a> <a class="link" href="enum_set/reference.html#id35972858-bb"><span class="identifier">flip</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="special">}</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="enum_set.html#boost.enums.enum_setconstruct-copy-destruct">construct/copy/destruct</a></span>
+  <a class="link" href="enum_set.html#id35974027-bb"><span class="identifier">enum_set</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">explicit</span> <a class="link" href="enum_set.html#id35974040-bb"><span class="identifier">enum_set</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">explicit</span> <a class="link" href="enum_set.html#id35974048-bb"><span class="identifier">enum_set</span></a><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="enum_set.html#id35972891-bb">public member functions</a></span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35972894-bb"><span class="keyword">operator</span><span class="special">&amp;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35972938-bb"><span class="keyword">operator</span><span class="special">|=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35972982-bb"><span class="keyword">operator</span><span class="special">^=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973025-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973090-bb"><span class="keyword">operator</span><span class="special">&gt;&gt;=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="enum_set.html#id35973154-bb"><span class="identifier">count</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="enum_set.html#id35973173-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">constexpr</span> <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973191-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="enum_set/reference.html" title="Class reference">reference</a> <a class="link" href="enum_set.html#id35973246-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973311-bb"><span class="identifier">set</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973342-bb"><span class="identifier">set</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973417-bb"><span class="identifier">reset</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973448-bb"><span class="identifier">reset</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973511-bb"><span class="identifier">flip</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a class="link" href="enum_set.html#id35973542-bb"><span class="identifier">flip</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">unsigned</span> <span class="keyword">long</span> <a class="link" href="enum_set.html#id35973602-bb"><span class="identifier">to_ulong</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> <a class="link" href="enum_set.html#id35973649-bb"><span class="identifier">to_ullong</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT <span class="special">=</span> <span class="keyword">char</span><span class="special">,</span> <span class="keyword">typename</span> traits <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">char_traits</span><span class="special">&lt;</span><span class="identifier">charT</span><span class="special">&gt;</span><span class="special">,</span> 
+           <span class="keyword">typename</span> Allocator <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">allocator</span><span class="special">&lt;</span><span class="identifier">charT</span><span class="special">&gt;</span> <span class="special">&gt;</span> 
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_string</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> 
+    <a class="link" href="enum_set.html#id35973695-bb"><span class="identifier">to_string</span></a><span class="special">(</span><span class="identifier">charT</span> <span class="special">=</span> <span class="identifier">charT</span><span class="special">(</span><span class="char">'0'</span><span class="special">)</span><span class="special">,</span> <span class="identifier">charT</span> <span class="special">=</span> <span class="identifier">charT</span><span class="special">(</span><span class="char">'1'</span><span class="special">)</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <a class="link" href="enum_set.html#id35973768-bb"><span class="keyword">operator</span><span class="special">~</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973804-bb"><span class="identifier">test</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973856-bb"><span class="identifier">all</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973874-bb"><span class="identifier">any</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973893-bb"><span class="identifier">none</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <a class="link" href="enum_set.html#id35973911-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <a class="link" href="enum_set.html#id35973936-bb"><span class="keyword">operator</span><span class="special">&gt;&gt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973961-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="enum_set.html#id35973992-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">bitset</span><span class="special">&lt;</span> <span class="identifier">enums</span><span class="special">::</span><span class="identifier">meta</span><span class="special">::</span><span class="identifier">size</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span> <span class="special">&gt;</span> <a class="link" href="enum_set.html#id35974020-bb"><span class="identifier">detail_bits</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="enum_set.html#id35974097-bb">private static functions</a></span>
+  <span class="keyword">static</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="enum_set.html#id35974100-bb"><span class="identifier">to_bit</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id36381470"></a><h2>Description</h2>
+<div class="refsect2">
+<a name="id36381473"></a><h3>
+<a name="boost.enums.enum_setconstruct-copy-destruct"></a><code class="computeroutput">enum_set</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><a name="id35974027-bb"></a><span class="identifier">enum_set</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Constructs an object of class <code class="computeroutput">enum_set&lt;&gt;</code>, initializing all enumerations to zero.  </p>
+</li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">explicit</span> <a name="id35974040-bb"></a><span class="identifier">enum_set</span><span class="special">(</span><span class="identifier">T</span> setting<span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">explicit</span> <a name="id35974048-bb"></a><span class="identifier">enum_set</span><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> val<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Constructs an object of class <code class="computeroutput">enum_set&lt;&gt;</code>, initializing the first <code class="computeroutput">M</code> bit positions to the corresponding bit values in <code class="computeroutput">val</code>. <code class="computeroutput">M</code> is the smaller of <code class="computeroutput">N</code> and the number of bits in the value representation of <code class="computeroutput">unsigned</code> <code class="computeroutput">long</code> <code class="computeroutput">long</code>. If <code class="computeroutput">M&lt;N</code>, the remaining bit positions are initialized to zero.  </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id36381676"></a><h3>
+<a name="id35972891-bb"></a><code class="computeroutput">enum_set</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35972894-bb"></a><span class="keyword">operator</span><span class="special">&amp;=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Clears each bit in <code class="computeroutput">*this</code> for which the corresponding bit in <code class="computeroutput">rhs</code> is clear, and leaves all other bits unchanged. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35972938-bb"></a><span class="keyword">operator</span><span class="special">|=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Sets each bit in <code class="computeroutput">*this</code> for which the corresponding bit in <code class="computeroutput">rhs</code> is set, and leaves all other bits unchanged. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35972982-bb"></a><span class="keyword">operator</span><span class="special">^=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Toggles each bit in <code class="computeroutput">*this</code> for which the corresponding bit in <code class="computeroutput">rhs</code> is set, and leaves all other bits unchanged. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973025-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Replaces each bit at position <code class="computeroutput">I</code> in <code class="computeroutput">*this</code> with a value determined as follows:</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>If <code class="computeroutput">I&lt;pos</code>, the new value is zero;</p></li>
+<li class="listitem"><p>If <code class="computeroutput">I&gt;=pos</code>, the new value is the previous value of the bit at position <code class="computeroutput">I-pos</code>. </p></li>
+</ul></div>
+<p>
+</p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973090-bb"></a><span class="keyword">operator</span><span class="special">&gt;&gt;=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Replaces each bit at position <code class="computeroutput">I</code> in <code class="computeroutput">*this</code> with a value determined as follows:</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>If <code class="computeroutput">pos&gt;=N-I</code>, the new value is zero;</p></li>
+<li class="listitem"><p>If <code class="computeroutput">pos&lt;N-I</code>, the new value is the previous value of the bit at position <code class="computeroutput">I+pos</code>. </p></li>
+</ul></div>
+<p>
+</p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="id35973154-bb"></a><span class="identifier">count</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> A count of the number of bits set in <code class="computeroutput">*this</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="id35973173-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">static_size</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">constexpr</span> <span class="keyword">bool</span> <a name="id35973191-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">T</span> e<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">pos</code> shall be valid. </p>
+<p><span class="bold"><strong>Throws:</strong></span> std::invalid_argument if <code class="computeroutput">e</code> does not have a valid position. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">true</code> if the bit at the associated position of <code class="computeroutput">e</code> in <code class="computeroutput">*this</code> has the value one, otherwise <code class="computeroutput">false</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set/reference.html" title="Class reference">reference</a> <a name="id35973246-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">T</span> pos<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">pos</code> shall be valid. </p>
+<p><span class="bold"><strong>Throws:</strong></span> std::invalid_argument if <code class="computeroutput">e</code> does not have a valid position. </p>
+<p><span class="bold"><strong>Returns:</strong></span> An object of type <code class="computeroutput">enum_set&lt;T&gt;::reference</code> such that <code class="computeroutput">(*this)[pos] == this-&gt;test(pos)</code>, and such that <code class="computeroutput">(*this)[pos] = val</code> is equivalent to <code class="computeroutput">this-&gt;set(pos, val)</code>. </p>
+<p><span class="bold"><strong>Note:</strong></span> For the purpose of determining the presence of a data race, any access or update through the resulting reference potentially accesses or modifies, respectively, the entire underlying bitset. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973311-bb"></a><span class="identifier">set</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Sets all bits in <code class="computeroutput">*this</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973342-bb"></a><span class="identifier">set</span><span class="special">(</span><span class="identifier">T</span> setting<span class="special">,</span> <span class="keyword">bool</span> value <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">setting</code> is valid </p>
+<p><span class="bold"><strong>Throws:</strong></span> <code class="computeroutput">std::invalid_argument</code> if <code class="computeroutput">setting</code> does have a invalid bit position. </p>
+<p><span class="bold"><strong>Effects:</strong></span> Stores a new value in the bit at the position associated to <code class="computeroutput">setting</code> in <code class="computeroutput">*this</code>. If <code class="computeroutput">value</code> is nonzero, the stored value is one, otherwise it is zero. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973417-bb"></a><span class="identifier">reset</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Resets all bits in <code class="computeroutput">*this</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973448-bb"></a><span class="identifier">reset</span><span class="special">(</span><span class="identifier">T</span> resetting<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">resetting</code> is valid </p>
+<p><span class="bold"><strong>Throws:</strong></span> <code class="computeroutput">std::invalid_argument</code> if <code class="computeroutput">resetting</code> does not correspond to a valid enum. </p>
+<p><span class="bold"><strong>Effects:</strong></span> Resets the bit at the position associated to <code class="computeroutput">resetting</code> in <code class="computeroutput">*this</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973511-bb"></a><span class="identifier">flip</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Toggles all bits in <code class="computeroutput">*this</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> <a name="id35973542-bb"></a><span class="identifier">flip</span><span class="special">(</span><span class="identifier">T</span> flipping<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">flipping</code> is valid </p>
+<p><span class="bold"><strong>Throws:</strong></span> std::invalid_argument if <code class="computeroutput">flipping</code> does not correspond to a valid enum. </p>
+<p><span class="bold"><strong>Effects:</strong></span> Toggles the bit at position associated to <code class="computeroutput">pos</code> in <code class="computeroutput">*this</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">*this</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">unsigned</span> <span class="keyword">long</span> <a name="id35973602-bb"></a><span class="identifier">to_ulong</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><code class="computeroutput"><code class="computeroutput">unsigned</code> long</code> conversion </p>
+<p><span class="bold"><strong>Throws:</strong></span> <code class="computeroutput">std::overflow_error</code> if the integral value <code class="computeroutput">x</code> corresponding to the bits in <code class="computeroutput">*this</code> cannot be represented as type &lt;<code class="computeroutput">unsigned long</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">x</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> <a name="id35973649-bb"></a><span class="identifier">to_ullong</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><code class="computeroutput"><code class="computeroutput">unsigned</code> long long</code> conversion </p>
+<p><span class="bold"><strong>Throws:</strong></span> <code class="computeroutput">std::overflow_error</code> if the integral value <code class="computeroutput">x</code> corresponding to the bits in <code class="computeroutput">*this</code> cannot be represented as type <code class="computeroutput">unsigned long long</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">x</code>. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT <span class="special">=</span> <span class="keyword">char</span><span class="special">,</span> <span class="keyword">typename</span> traits <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">char_traits</span><span class="special">&lt;</span><span class="identifier">charT</span><span class="special">&gt;</span><span class="special">,</span> 
+         <span class="keyword">typename</span> Allocator <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">allocator</span><span class="special">&lt;</span><span class="identifier">charT</span><span class="special">&gt;</span> <span class="special">&gt;</span> 
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_string</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> 
+  <a name="id35973695-bb"></a><span class="identifier">to_string</span><span class="special">(</span><span class="identifier">charT</span> zero <span class="special">=</span> <span class="identifier">charT</span><span class="special">(</span><span class="char">'0'</span><span class="special">)</span><span class="special">,</span> <span class="identifier">charT</span> one <span class="special">=</span> <span class="identifier">charT</span><span class="special">(</span><span class="char">'1'</span><span class="special">)</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Constructs a string object of the appropriate type and initializes it to a string of length <code class="computeroutput">N</code> characters. Each character is determined by the value of its corresponding bit position in <code class="computeroutput">*this</code>. Character position <code class="computeroutput">N-1</code> corresponds to bit position zero. Subsequent decreasing character positions correspond to increasing bit positions. Bit value zero becomes the character zero, bit value one becomes the character one. </p>
+<p><span class="bold"><strong>Returns:</strong></span> The created object. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <a name="id35973768-bb"></a><span class="keyword">operator</span><span class="special">~</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Effects:</strong></span> Constructs an object <code class="computeroutput">x</code> of class <code class="computeroutput">enum_set&lt;T&gt;</code> and initializes it with <code class="computeroutput">*this</code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">x.flip()</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35973804-bb"></a><span class="identifier">test</span><span class="special">(</span><span class="identifier">T</span> testing<span class="special">)</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">testing</code> is valid </p>
+<p><span class="bold"><strong>Throws:</strong></span> out_of_range if the associated position of <code class="computeroutput">testing</code> does not correspond to a valid bit position. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">true</code> if the bit at position <code class="computeroutput">pos</code> in <code class="computeroutput">*this</code> has the value one. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35973856-bb"></a><span class="identifier">all</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">count() == size()</code>  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35973874-bb"></a><span class="identifier">any</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">count() != 0</code>  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35973893-bb"></a><span class="identifier">none</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">count() == 0</code>  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <a name="id35973911-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> pos<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">enum_set&lt;T&gt;(*this) &lt;&lt;= pos</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <a name="id35973936-bb"></a><span class="keyword">operator</span><span class="special">&gt;&gt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> pos<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">enum_set&lt;T&gt;(*this) &gt;&gt;= pos</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35973961-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> A nonzero value if the value of each bit in <code class="computeroutput">*this</code> equals the value of the corresponding bit in <code class="computeroutput">rhs</code>.  </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id35973992-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p><span class="bold"><strong>Returns:</strong></span> A nonzero value if <code class="computeroutput">!(*this == rhs)</code>.  </p>
+</li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">bitset</span><span class="special">&lt;</span> <span class="identifier">enums</span><span class="special">::</span><span class="identifier">meta</span><span class="special">::</span><span class="identifier">size</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span> <span class="special">&gt;</span> <a name="id35974020-bb"></a><span class="identifier">detail_bits</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id36384242"></a><h3>
+<a name="id35974097-bb"></a><code class="computeroutput">enum_set</code> private static functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">static</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="id35974100-bb"></a><span class="identifier">to_bit</span><span class="special">(</span><span class="identifier">T</span> value<span class="special">)</span><span class="special">;</span></pre></li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2010 -2011 Vicente J. Botet Escriba<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="make_range_id35972596.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_set_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="enum_set/reference.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>
