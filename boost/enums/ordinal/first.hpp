@@ -33,8 +33,8 @@ namespace boost
     
     //! ordinal enum first.
 
-    //! @return the the first element of an enumeration
-    //! @throw Nothing
+    //! @Returns the the first element of an enumeration
+    //! @NoThrow
     template <typename EC>
     BOOST_CONSTEXPR EC first()
     {

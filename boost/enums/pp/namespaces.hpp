@@ -13,26 +13,26 @@
 /** @file
  
  
- @brief NAMESPACES, NAMESPACES_CLASS data types and macros.
+ @brief @c NAMESPACES, @c NAMESPACES_CLASS PP data types and macros.
  
  @details
  
  
- A NAMESPACES is a variable sequence of namespace identifiers.
+ A @c NAMESPACES is a variable sequence of namespace identifiers.
  
- <b>Example</b>:
+ @Example
  @code
  (NS1)(NS2)
  @endcode
 
- A NAMESPACES_CLASS is a variable sequence of namespace identifiers followed by a class identifier.
+ A @c NAMESPACES_CLASS is a variable sequence of namespace identifiers followed by a class identifier.
  
- <b>Example</b>:
+ @Example
  @code
  (NS1)(NS2)(ENUM)
  @endcode
  
- All the operations are named BOOST_ENUMS_NAMESAPCES_ or BOOST_ENUMS_NAMESAPCES_CLASS.
+ All the operations are prefixed by @c BOOST_ENUMS_NAMESAPCES_ or @c BOOST_ENUMS_NAMESAPCES_CLASS.
  
  */ 
 
@@ -49,12 +49,12 @@
 
 /**
  
- @brief Get the NAMESPACES part of a NAMESPACES_CLASS.
+ @brief Get the @c NAMESPACES part of a @c NAMESPACES_CLASS.
  
- <b>Parameters</b>:
- - SEQ: the NAMESPACES_CLASS
+ @Params
+ @Param{SEQ,the @c NAMESPACES_CLASS}
  
- <b>Result</b>: the NAMESPACES part.
+ @Result the @c NAMESPACES part.
  
  */
 
@@ -64,12 +64,12 @@
 
 /**
  
- @brief Get the CLASS part of a NAMESPACES_CLASS.
+ @brief Get the CLASS part of a @c NAMESPACES_CLASS.
  
- <b>Parameters</b>:
- - SEQ: the NAMESPACES_CLASS
+ @Params
+ @Param{SEQ,the @c NAMESPACES_CLASS}
  
- <b>Result</b>: the CLASS part.
+ @Result the @c CLASS part.
  
  */
 
@@ -79,12 +79,12 @@
 
 /**
  
- @brief Generate the opening of the namespaces in NAMESPACES.
+ @brief Generate the opening of the namespaces in @c NAMESPACES.
  
- <b>Parameters</b>:
- - SEQ: the NAMESPACES sequence
+ @Params
+ @Param{SEQ,the @c NAMESPACES sequence}
  
- <b>Result</b>:
+ @Result
  @code
  namespace NS1 { ... namespace NSn {
  @endcode
@@ -100,12 +100,12 @@
 
 /**
  
- @brief Generate the closing of the namespaces in NAMESPACES.
+ @brief Generate the closing of the namespaces in @c NAMESPACES.
  
- <b>Parameters</b>:
- - SEQ: the NAMESPACES sequence
+ @Params
+ @Param{SEQ,the @c NAMESPACES sequence}
  
- <b>Result</b>:
+ @Result
  @code
  } ... }
  @endcode
@@ -128,12 +128,12 @@
 
 /**
  
- @brief the qualified name associated to NAMESPACES_CLASS.
+ @brief the qualified name associated to @c NAMESPACES_CLASS.
  
- <b>Parameters</b>:
- - SEQ: the NAMESPACES_CLASS sequence
+ @Params
+ - SEQ: the @c NAMESPACES_CLASS sequence
  
- <b>Result</b>:
+ @Result
  @code
  NS1::...NSn::ENUM
  @endcode

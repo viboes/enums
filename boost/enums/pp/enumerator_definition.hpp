@@ -23,27 +23,24 @@
 /** @file
 
 
- @brief ENUMERATOR_DEFINITION data type and macros.
+ @brief @c ENUMERATOR_DEFINITION data type and macros.
 
  @details
  
 
- An ENUMERATOR_DEFINITION is a sequence legth 1, 2 or 3 where 
+ An @c ENUMERATOR_DEFINITION is a sequence legth 1, 2 or 3 where 
  - the fist element is a C++ identifier, 
  - the second is a C++ constant-expression and 
  - the 3rd a C++ string literal
 
- <b>Examples</b>:
+ @Example:
  @code
   (Red)
   (Green)(0)
   (Blue)(2)("Azul")
  @endcode
 
- All the operations are named BOOST_ENUMS_ENUMERATOR_DEFINITION_:
- - ID : ED -> first element
- - VAL : ED, DEF -> second element or DEF
- - STR : ED -> third element or "ID"
+ All the operations are named @c BOOST_ENUMS_ENUMERATOR_DEFINITION_:
  
  */ 
 
@@ -51,10 +48,10 @@
 
  @brief This macro is used to get the identifier from a ENUMERATOR_DEFINITION.
  
- <b>Parameters</b>:
- - ED: the ENUMERATOR_DEFINITION
- 
- <b>Result</b>: the first element of @p ED.
+ @Params
+ @Param{ED,the @c ENUMERATOR_DEFINITION}
+
+ @Result the first element of @p ED.
 
  */
 
@@ -75,11 +72,11 @@
  
  @brief This macro is used to get the constant-expression from a ENUMERATOR_DEFINITION.
  
- <b>Parameters</b>:
- - ED: the ENUMERATOR_DEFINITION }
- - DEFAULT: the default value when there is no second element.
+ @Params
+ @Param{ED,the @c ENUMERATOR_DEFINITION}
+ @Param{DEFAULT,the default value when there is no second element}
 
- <b>Result</b>: the second element of the @p ED or @p DEFAULT.
+ @Result the second element of the @p ED or @p DEFAULT.
  
  */
 #define BOOST_ENUMS_ENUMERATOR_DEFINITION_VAL(ED,DEFAULT)             \
@@ -102,10 +99,10 @@
  
  @brief This macro is used to get the string literal from a ENUMERATOR_DEFINITION.
 
- <b>Parameters</b>:
- - ED, the ENUMERATOR_DEFINITION.
+ @Params
+ @Param{ED,the @c ENUMERATOR_DEFINITION}
 
- <b>Result</b>: the third element of @p ED or the string representation of ED'ID.
+ @Result the third element of @p ED or the string representation of ED'ID.
  
  */
 #define BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
@@ -127,11 +124,10 @@
  
  @brief This macro is used to get the constant-expression from a ENUMERATOR_DEFINITION.
  
- <b>Parameters</b>:
- - ED: the ENUMERATOR_DEFINITION }
- - DEFAULT: the default value when there is no second element.
+ @Params
+ @Param{ED,the @c ENUMERATOR_DEFINITION}
  
- <b>Result</b>: the second element of the @p ED or @p DEFAULT.
+ @Result the second element of the @p ED or @p DEFAULT.
  
  */
 #define BOOST_ENUMS_ENUMERATOR_DEFINITION_OPT_ASSIGN_VAL(ED)        \
@@ -146,16 +142,16 @@
  
  @brief generates a enumerator_definition from a ENUMERATOR_DEFINITION.
  
- <b>Parameters</b>:
- - ED, the ENUMERATOR_DEFINITION
- - DEFAULT: the default value when there is no second element.
+ @Params
+ @Param{ED,the @c ENUMERATOR_DEFINITION}
+ @Param{DEFAULT,the default value when there is no second element}
 
- <b>Result</b>: 
+ @Result 
  @code
  ID(ED) [= VAL(ED)]
  @endcode
  
- <b>Note</b>: The optional part is generated if there is a second element.
+ @Note The optional part is generated if there is a second element.
  
  */
 #define BOOST_ENUMS_ENUMERATOR_DEFINITION_CPP_ENUMERATOR_DEFINITION(ED) \

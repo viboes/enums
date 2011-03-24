@@ -40,8 +40,8 @@ namespace boost
     
     //! ordinal enum last.
 
-    //! @return the the last element of an enumeration
-    //! @throw Nothing
+    //! @Returns the the last element of an enumeration
+    //! @NoThrow
     template <typename EC>
     BOOST_CONSTEXPR EC last()
     {

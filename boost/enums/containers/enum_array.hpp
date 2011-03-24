@@ -57,7 +57,7 @@ namespace boost
 
     /*!
     An \c enum_array supports random access iterators. An instance of \c enum_array<T, EC>
-    stores as many elements of type \c T as enum literals are on the enum class \c EC,
+    stores as many elements of type \c T as enum literals are on the ordinal enum \c EC,
     so that <tt>size() == meta::size<EC>::value</tt> is an invariant.
 
     The elements of an \c enum_array are stored contiguously, meaning that if \c a is an
@@ -89,19 +89,19 @@ namespace boost
     
       
 
-    \note The member variable elems is shown for exposition only, to emphasize
+    @Note The member variable elems is shown for exposition only, to emphasize
     that enum_array is a class aggregate. The name elems is not part of
-    enum_array's interface
-     
-     \param T array's element type
-     \param EC array's index enumeration class
+    enum_array's interface.
+    @TParams
+    @Param{T,array's element type}
+    @Param{EC,array's index ordinal enum}
   */
 
     template<class T, typename EC>
     class enum_array {
       public:
-        //! // exposition only
-        T elems[meta::size<EC>::value];    // fixed-size array of elements of type T
+        //! For exposition only
+        T elems[meta::size<EC>::value];    //! fixed-size array of elements of type T
         
       public:
         // type definitions
@@ -119,21 +119,21 @@ namespace boost
         //enum_array() {}
             
         // iterator support
-        //! \returns iterator for the first element
-        //! \throws Nothing
+        //! @Returns iterator for the first element
+        //! @Throws Nothing
         iterator        begin()       { return elems; }
 
-        //! \returns const iterator for the first element
-        //! \throws Nothing
+        //! @Returns const iterator for the first element
+        //! @Throws Nothing
         const_iterator  begin() const { return elems; }
         const_iterator cbegin() const { return elems; }
         
-        //! \returns iterator for position after the last element
-        //! \throws Nothing
+        //! @Returns iterator for position after the last element
+        //! @Throws Nothing
         iterator        end()       { return elems+static_size; }
 
-        //! \returns const iterator for position after the last element
-        //! \throws Nothing
+        //! @Returns const iterator for position after the last element
+        //! @Throws Nothing
         const_iterator  end() const { return elems+static_size; }
         const_iterator cend() const { return elems+static_size; }
 
@@ -158,7 +158,7 @@ namespace boost
         typedef std::reverse_iterator<const_iterator,T> const_reverse_iterator;
 #endif
 
-        //! \returns reverse iterator for the first element of reverse iteration
+        //! @Returns reverse iterator for the first element of reverse iteration
         reverse_iterator rbegin() { 
           return reverse_iterator(end()); 
         }
@@ -169,7 +169,7 @@ namespace boost
             return const_reverse_iterator(end());
         }
 
-        //! \returns reverse iterator for position after the last element in reverse iteration
+        //! @Returns reverse iterator for position after the last element in reverse iteration
         reverse_iterator rend() { 
           return reverse_iterator(begin()); 
         }
@@ -181,9 +181,9 @@ namespace boost
         }
 
         // operator[]
-        //! Requires: k'pos < static_size
-        //! \returns reference to the element with key k
-        //! \throws Nothing.
+        //! @Requires <tt>k'pos < static_size</tt>
+        //! @Returns reference to the element with key @c k
+        //! @Throws Nothing.
         reference operator[](key_type k) 
         { 
             size_type i = pos(k);
@@ -191,9 +191,9 @@ namespace boost
             return elems[i];
         }
         
-        //! Requires: k'pos < static_size
-        //! \returns constant reference to the element with key k
-        //! \throws Nothing.
+        //! @Requires <tt>k'pos < static_size</tt>
+        //! @Returns constant reference to the element with key k
+        //! @Throws Nothing.
         const_reference operator[](key_type k) const 
         {     
             size_type i = pos(k);
@@ -202,8 +202,8 @@ namespace boost
         }
 
         // at() with range check
-        //! \returns element with key k
-        //! \throws std::range_error if i >= static_size
+        //! @Returns element with key k
+        //! @Throws std::range_error if i >= static_size
         reference at(key_type k) 
         {             
           size_type i = rangecheck(k); 
@@ -216,57 +216,57 @@ namespace boost
         }
     
         // front() and back()
-        //! \returns reference to the first element
-        //! \throws Nothing
+        //! @Returns reference to the first element
+        //! @Throws Nothing
         reference front() 
         { 
             return elems[0]; 
         }
         
-        //! \returns const reference to the first element
-        //! \throws Nothing
+        //! @Returns const reference to the first element
+        //! @Throws Nothing
         const_reference front() const 
         {
             return elems[0];
         }
         
-        //! \returns reference to the last element
-        //! \throws Nothing
+        //! @Returns reference to the last element
+        //! @Throws Nothing
         reference back() 
         { 
             return elems[static_size-1];
         }
         
-        //! \returns const reference to the last element
-        //! \throws Nothing
+        //! @Returns const reference to the last element
+        //! @Throws Nothing
         const_reference back() const 
         { 
             return elems[static_size-1];
         }
 
         // size is constant
-        //! \returns linear in meta::size<EC>::value.
+        //! @Returns linear in meta::size<EC>::value.
         BOOST_CONSTEXPR size_type size() 
         { 
           return static_size;
         }
-        //! \returns false
-        //! \throws Nothing
+        //! @Returns false
+        //! @Throws Nothing
         static bool empty() 
         { 
           return false; 
         }
 
-        //! \returns linear in meta::size<EC>::value.
+        //! @Returns linear in meta::size<EC>::value.
         BOOST_CONSTEXPR size_type max_size() 
         { 
           return static_size;
         }
 
 
-        /*! Effects: swap_ranges(begin(), end(), y.begin())
-            \throws Nothing unless one of the element-wise swap calls throws an exception.
-            Note: Unlike the swap function for other containers, enum_array::swap
+        /*! @Effects <tt>swap_ranges(begin(), end(), y.begin())</tt>
+            @Throws Nothing unless one of the element-wise swap calls throws an exception.
+            Note: Unlike the @c swap function for other containers, @c enum_array::swap
             takes linear time, may exit via an exception, and does not cause
             iterators to become associated with the other container.
          */
@@ -276,43 +276,43 @@ namespace boost
                 boost::swap(elems[i],y.elems[i]);
         }
 
-        // direct access to data (read-only)
+        //! direct access to data (read-only)
 
-        //! \returns elems.
+        //! @Returns elems.
         const T* data() const { 
           return elems; 
         }
-        //! \returns elems.
+        //! @Returns elems.
         T* data() { 
           return elems; 
         }
 
-        // use enum_array as C array (direct read/write access to data)
+        //! use @c enum_array as C array (direct read/write access to data)
         T* c_array() { 
           return elems; 
         }
 
-        // assignment with type conversion
+        //! assignment with type conversion
         template <typename T2>
         enum_array<T,EC>& operator= (const enum_array<T2,EC>& rhs) {
             std::copy(rhs.begin(),rhs.end(), begin());
             return *this;
         }
 
-        // A synonym for fill
-        // assign one value to all elements
-        //! Effects: std::fill_n(begin(), static_size, value)
+        //! A synonym for fill
+        //! assign one value to all elements
+        //! @Effects <tt>std::fill_n(begin(), static_size, value)</tt>
         void assign (const T& value) { 
           fill ( value ); 
         }
 
-        //! Effects: fill_n(begin(), static_size, u)
+        //! @Effects <tt>fill_n(begin(), static_size, u)</tt>
         void fill   (const T& value)
         {
             std::fill_n(begin(),size(),value);
         }
 
-        // check range (may be private because it is static)
+        //! check range (may be private because it is static)
         static size_type rangecheck (key_type k) {
             size_type i = enums::pos(k);
             if (i >= static_size) {
@@ -327,40 +327,40 @@ namespace boost
 
 
     // comparisons
-    //! \returns std::equal(x.begin(), x.end(), y.begin())
+    //! @Returns <tt>std::equal(x.begin(), x.end(), y.begin())</tt>
     template<class T, typename EC>
     bool operator== (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return std::equal(x.begin(), x.end(), y.begin());
     }
 
-    //! \returns std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end())
+    //! @Returns <tt>std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end())</tt>
     template<class T, typename EC>
     bool operator< (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return std::lexicographical_compare(x.begin(),x.end(),y.begin(),y.end());
     }
 
-    //! \returns !(x == y)
+    //! @Returns <tt>!(x == y)</tt>
     template<class T, typename EC>
     bool operator!= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return !(x==y);
     }
 
-    //! \returns y < x
+    //! @Returns <tt>y < x</tt>
     template<class T, typename EC>
     bool operator> (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return y<x;
     }
-    //! \returns !(y<x)
+    //! @Returns <tt>!(y<x)</tt>
     template<class T, typename EC>
     bool operator<= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
         return !(y<x);
     }
-    //! \returns !(x<y)
+    //! @Returns <tt>!(x<y)</tt>
     template<class T, typename EC>
     bool operator>= (const enum_array<T,EC>& x, const enum_array<T,EC>& y) 
     {
@@ -369,7 +369,7 @@ namespace boost
 
     //! enum_array's swap
       
-    //! <b>Effects:</b> As
+    //! <b>@Effects</b> As
     //! \code 
     //!  x.swap(y);
     //! \endcode 

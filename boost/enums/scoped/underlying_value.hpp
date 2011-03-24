@@ -19,6 +19,17 @@
 namespace boost {
   namespace enums {
 
+    //!  gets the underlying value.
+    
+    //! This function is useful to when working with scoped enum classes which 
+    //! doens't implicitly convert to the underlying type.
+    //! @TParams
+    //! @Param{EC,the scoped enum type}
+    
+    //! @Params
+    //! @Param{e,the scoped enum}
+    //! @Returns the underlying value.
+    //! @NoThrow
     template <typename EC>
     inline
     typename underlying_type<EC>::type

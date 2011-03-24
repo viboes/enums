@@ -35,15 +35,16 @@ namespace boost
       //! meta-function used to associate an element of an enumeration to
       //! its relative position.
         
-      //! @note This meta-function must be specialized for each element of the enumeration.
+      //! @Note This meta-function must be specialized for each element of the enumeration.
       template <typename EC, typename native_type<EC>::type V>
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
         struct pos; 
 #else
         struct pos
         {
-            //! The nested @c value to be defined for each specialization.
-            constexpr std::size_t value=<to be defined for each specialization>;
+          //! The nested @c value to be defined for each scoped enum 
+          //! specialization.
+          constexpr std::size_t value=<to be defined for each specialization>;
         };    
 #endif
     }
@@ -54,9 +55,10 @@ namespace boost
     //! The @c enum_traits class must be specialized and contain a @c pos function
     //! that returns the relative position of its argument @c e.
       
-    //! @param e the enum literal
-    //! @returns the associated position
-    //! @throws Nothing
+    //! @Params
+    //! @Param{e,the enum literal}
+    //! @Returns the associated position
+    //! @No_Throw
     template <typename EC>
     std::size_t pos(EC e)
     {

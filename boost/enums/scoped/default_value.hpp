@@ -19,8 +19,15 @@ namespace boost {
   namespace enums {
 
     //!  builds a enum class with the default value.
-      
-    //! \return the default value
+    
+    //! This function is usefult to make programs portable when the scoped enum 
+    //! emulation doesn't defines a default constructor.
+    //! @TParams
+    //! @Param{EC,the scoped enum type}
+    
+    //! @Returns the default value as if the default constructor of @c EC was defined.
+    //! @NoThrow
+    //! @Note The use of @c EC() will let the underlying storage uninitialized when constructors are not defined by the emulation.
     template <typename EC>
     inline EC default_value()
     {

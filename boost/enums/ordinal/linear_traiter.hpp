@@ -22,8 +22,8 @@
 #include <boost/conversion/convert_to.hpp>
 
 /*!
- \file
- \brief  
+ @file
+ @brief  
  The header \c <boost/enums/linear_enum_traiter.hpp> declares a class template 
  \c meta::linear_enum_traiter<> which can be used as \c enum_trait<> helper for enumerations having a linear progression.
  */
@@ -31,7 +31,7 @@
 namespace boost {
   namespace enums {
 
-      //! Helper class used as \c enum_trait<> for enumerations having a linear progression.
+    //! Helper class used as \c enum_trait<> for enumerations having a linear progression.
     template <
       typename EC
     >
@@ -50,7 +50,7 @@ namespace boost {
     public:
       //! pos specialization.
         
-      //! \returns the returned value is calculated from the underlying value, 
+      //! @Rreturns the returned value is calculated from the underlying value, 
       //! the \c first_value and the \c step, following this formula \c (ut-first_value)/step
       static std::size_t pos(EC e)
       {
@@ -59,7 +59,7 @@ namespace boost {
       }
         //! val specialization.
         
-        //! \returns the returned value is calculated from the position \c p, 
+        //! @Returns the returned value is calculated from the position \c p, 
         //! the first value and the step, following this formula \c p*step+first_value
       static EC val(std::size_t p)
       {

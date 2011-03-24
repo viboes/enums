@@ -91,13 +91,13 @@
  
  @brief Generates a @c boost::enums::meta::size specialization.
  
- <b>Warning</b>: This macro is presented here for exposition only reasons and is not part of the interface.
+ @Remark This macro is presented here for exposition only reasons and is not part of the interface.
  
- <b>Parameters</b>:
- - NS_EC, the @p NAMESPACES_CLASS sequence
- - EL, the @p ENUMERATOR_LIST sequence
-
- <b>Result</b>: 
+ @Params
+ @Param{NS_EC, the @p NAMESPACES_CLASS sequence}
+ @Param{EL, the @p ENUMERATOR_LIST sequence}
+ 
+ @Result 
  @code
  template <>                                                   
  struct size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>        
@@ -125,15 +125,15 @@
  
  @brief Generates a @c boost::enums::meta::pos/val specialization.
  
- <b>Warning</b>: This macro is presented here for exposition only reasons and is not part of the interface.
+ @Remark This macro is presented here for exposition only reasons and is not part of the interface.
  
- <b>Parameters</b>:
- - P: NOT USED
- - QNAME, the @p NAMESPACES_CLASS qualified name
- - P: the position in the ENUMERATOR_LIST sequence
- - ED, the ENUMERATOR_DEFINITION sequence
+ @Params
+ @Param{P,NOT USED}
+ @Param{QNAME,the @p NAMESPACES_CLASS qualified name}
+ @Param{P,the position in the @c ENUMERATOR_LIST sequence}
+ @Param{ED, the @c ENUMERATOR_DEFINITION sequence}
  
- <b>Result</b>: 
+ @Result 
  @code
  template <>                                               
  struct pos<QNAME, QNAME :: BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)> 
@@ -170,12 +170,13 @@
  
  @brief Generates the enum_trait specialization.
  
- <b>Warning</b>: This macro is presented here for exposition only reasons and is not part of the interface.
+ @Remark This macro is presented here for exposition only reasons and is not part of the interface.
  
- <b>Parameters</b>:
- - NS_EC, the NAMESPACES_CLASS sequence
- - TRAITER: the enum traiter template class 
- <b>Result</b>: 
+ @Params
+ @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
+ @Param{TRAITER,the enum traiter template class}
+ 
+ @Result 
  @code
  template <>                                                   
  struct enum_traits<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)> 
@@ -195,12 +196,12 @@
  
  @brief Generates all the needed specialization associated to an ordinal scoped enum.
  
- <b>Warning</b>: This macro is presented here for exposition only reasons and is not part of the interface.
+ @Remark This macro is presented here for exposition only reasons and is not part of the interface.
  
- <b>Parameters</b>:
- - NS_EC, the NAMESPACES_CLASS sequence
- - TRAITER: the enum traiter template class 
- <b>Result</b>: 
+ @Params
+ @Param{NS_EC,the @c NAMESPACES_CLASS sequence}
+ @Param{TRAITER,the enum traiter template class}
+ @Result 
  @code
   namespace boost {                                                 
     namespace enums {                                               
@@ -238,13 +239,13 @@
  
  @brief Generates all the needed definition associated to an ordinal scoped enum type with string conversions and constructors.
  
- <b>Parameters</b>:
- - NS_EC: the NAMESPACES_CLASS sequence
- - UT: the underlying type
- - EL: the ENUMERATOR_LIST sequence
- - TRAITER: the enum traiter template class 
+ @Params
+ @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
+ @Param{UT,the underlying type}
+ @Param{EL,the @c ENUMERATOR_LIST sequence}
+ @Param{TRAITER,the enum traiter template class}
  
- <b>Result</b>: 
+ @Result 
  @code
  BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               
  {                                                                 
@@ -270,17 +271,17 @@
  
  @brief Generates all the needed definition associated to an ordinal scoped enum type with string conversions and without constructors.
  
- <b>Parameters</b>:
- - NS_EC: the NAMESPACES_CLASS sequence
- - UT: the underlying type
- - EL: the ENUMERATOR_LIST sequence
- - TRAITER: the enum traiter template class 
+ @Params
+ @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
+ @Param{UT,the underlying type}
+ @Param{EL,the @c ENUMERATOR_LIST sequence}
+ @Param{TRAITER,the enum traiter template class}
  
- <b>Result</b>: 
+ @Result 
  @code
  BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               
  {                                                                 
- BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
  }                                                                 
  BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)                            
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
@@ -301,17 +302,17 @@
  
  @brief Generates all the needed definition associated to an ordinal scoped enum class with string conversions and with constructors.
  
- <b>Parameters</b>:
- - NS_EC: the NAMESPACES_CLASS sequence
- - UT: the underlying type
- - EL: the ENUMERATOR_LIST sequence
- - TRAITER: the enum traiter template class 
+ @Params
+ @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
+ @Param{UT,the underlying type}
+ @Param{EL,the @c ENUMERATOR_LIST sequence}
+ @Param{TRAITER,the enum traiter template class}
  
- <b>Result</b>: 
+ @Result 
  @code
  BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                               
  {                                                                 
- BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
  }                                                                 
  BOOST_ENUM_NS_CLASS_CONS_END(NS_EC, UT)                            
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
@@ -333,17 +334,17 @@
  
  @brief Generates all the needed definition associated to an ordinal scoped enum class with string conversions and without constructors.
  
- <b>Parameters</b>:
- - NS_EC: the NAMESPACES_CLASS sequence
- - UT: the underlying type
- - EL: the ENUMERATOR_LIST sequence
- - TRAITER: the enum traiter template class 
+ @Params
+ @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
+ @Param{UT,the underlying type}
+ @Param{EL,the @c ENUMERATOR_LIST sequence}
+ @Param{TRAITER,the enum traiter template class}
  
- <b>Result</b>: 
+ @Result 
  @code
  BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                               
  {                                                                 
- BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
  }                                                                 
  BOOST_ENUM_NS_CLASS_NO_CONS_END(NS_EC, UT)                            
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)

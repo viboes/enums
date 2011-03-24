@@ -11,8 +11,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
 /*!
- \file
- \brief  
+ @file
+ @brief  
  The header \c <boost/enums/succ.hpp> declares a class template \c meta::succ<> and 
  a function \c succ() returning the predecessor of the enumeration element.
  */
@@ -34,7 +34,7 @@ namespace boost
     {
       //! meta-function that gets the successor of an enumeration element.
       
-      //! @pre the position must not be the last one
+      //! @Requires the position must not be the last one
       template <typename EC, typename native_type<EC>::type V>
       struct succ
       {
@@ -46,10 +46,11 @@ namespace boost
 
     
     //! enum succesor.
-      
-    //! param e the enum literal.
-    //! @returns the successor of the enumeration element.
-    //! @throws Invalid parameter if the position is the last one.
+    
+    //! @Params
+    //! @Param{e,the enum literal}
+    //! @Returns the successor of the enumeration element.
+    //! @Throws Invalid parameter if the position is the last one.
     template <typename EC>
     EC succ(EC e)
     {

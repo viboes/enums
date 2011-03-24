@@ -33,7 +33,7 @@ namespace boost
     {
       //! meta-function used to associate the position to an element of an enumeration.
         
-      //! @note This meta-function must be specialized for each position of the enumeration,
+      //! @Note This meta-function must be specialized for each position of the enumeration,
       //! starting from 0 to the predecessor of the size of the enumeration .
       template <typename EC, std::size_t I>
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
@@ -41,7 +41,8 @@ namespace boost
 #else
         struct val
         {
-          //! The nested @c value to be defined for each specialization.
+          //! The nested @c value to be defined for each scoped enum
+          //!  specialization.
           constexpr typename native_type<EC>::type value=<to be defined for each specialization>;
         };    
 #endif
@@ -49,7 +50,8 @@ namespace boost
     }
     //! ordinal enum value  
       
-    //! @param p the position
+    //! @Params
+    //! @Param{p,the position}
     //! @returns The enum class element associated to the position @c p.
     //! @throws std::out_of_range if the position is out of range.
     template <typename EC>

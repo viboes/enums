@@ -19,6 +19,17 @@
 namespace boost {
   namespace enums {
 
+    //!  gets the native enum value.
+    
+    //! This function is useful to make programs portable when the scoped enum 
+    //! emulation can not be use where native enums can.
+    //! @TParams
+    //! @Param{EC,the scoped enum type}
+    
+    //! @Params
+    //! @Param{e,the scoped enum}
+    //! @Returns the native enum value.
+    //! @NoThrow
     template <typename EC>
     inline
     typename native_type<EC>::type native_value(EC e)
