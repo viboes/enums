@@ -29,6 +29,7 @@
 #include <cassert>
 #include <cstring>
 #include <string>
+#include <boost/enums/pp/enum_declaration.hpp>
 
 
 #define CTOR
@@ -47,7 +48,7 @@ struct EnumClassNS {
     Enum1,
     Enum2
   };
-}; 
+};
 typedef  boost::enums::enum_type_cons<EnumClassNS, unsigned char> EnumClass;
 
 #endif

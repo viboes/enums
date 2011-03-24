@@ -18,7 +18,15 @@
 #include <boost/enums/scoped.hpp>
 #include <boost/enums/ordinal.hpp>
 #include <cstddef>
+#include <boost/enums/pp/enum_declaration.hpp>
 
+#if 1
+BOOST_ENUMS_ENUM_TYPE_DCL_CONS((EC3), int,
+                                ( (Enum0) )
+                                ( (Enum1)    )
+                                ( (Enum2)    )
+                                , linear_enum_traiter)
+#else
 #if 0
   BOOST_ENUM_TYPE_START(EC3, int) {
     Enum0,
@@ -33,7 +41,7 @@ struct EC3NS {
     Enum1,
     Enum2
   };
-}; 
+};
 typedef  boost::enums::enum_type_cons<EC3NS, unsigned char> EC3;
 #endif
 BOOST_ENUMS_SPECIALIZATIONS(EC3, int)
@@ -89,4 +97,5 @@ namespace boost {
   }
 }
 
+#endif
 #endif

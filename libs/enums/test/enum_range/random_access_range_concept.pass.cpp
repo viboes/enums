@@ -24,7 +24,7 @@ int main()
 
   BOOST_CONCEPT_ASSERT(( SinglePassRangeConcept < enum_range<EnumClass> > ));
   BOOST_CONCEPT_ASSERT(( ForwardRangeConcept  < enum_range<EnumClass> > ));
-//  BOOST_CONCEPT_ASSERT(( BidirectionalRangeConcept  < iterator_range< range_detail::integer_iterator<int> > > ));
+  //BOOST_CONCEPT_ASSERT(( BidirectionalRangeConcept  < iterator_range< range_detail::integer_iterator<int> > > ));
 
 
 //  BOOST_CONCEPT_ASSERT(( BidirectionalRangeConcept  < enum_range<EnumClass> > ));
