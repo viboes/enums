@@ -25,8 +25,8 @@
 
  @brief enum-declaration associated macros.
 
- 
- */ 
+
+ */
 
 #define BOOST_ENUMS_ENUM_DCL_STR_TO_ID(P, ENUM, ED)                   \
   if (strcmp(                                                         \
@@ -40,12 +40,12 @@
   }
 
 #define BOOST_ENUMS_ENUM_DCL_ID_TO_STR(P, ENUM, ED)                   \
-  case ENUM::ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED) :         \
+  case ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED) :         \
     return(BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED));
 
 
 #define BOOST_ENUMS_DCL_STRING_CONVERSIONS(ENUM, EL)                        \
-  inline friend                                                             \
+  inline                                                              \
   ENUM convert_to(                                                          \
       const char* str,                                                      \
       boost::dummy::type_tag<ENUM> const&                                   \
@@ -60,7 +60,7 @@
       BOOST_PP_STRINGIZE(ENUM);                                             \
   }                                                                         \
                                                                             \
-  inline friend                                                             \
+  inline                                                              \
   ENUM convert_to(                                                          \
     const std::string& str,                                                 \
     boost::dummy::type_tag<ENUM> const&                                     \
@@ -71,7 +71,7 @@
     );                                                                      \
   }                                                                         \
                                                                             \
-  inline friend                                                             \
+  inline                                                              \
   const char* c_str(ENUM e)                                                 \
   {                                                                         \
     switch (boost::enums::native_value(e))                                  \
@@ -88,22 +88,22 @@
   }                                                                         \
 
 /**
- 
+
  @brief Generates a @c boost::enums::meta::size specialization.
- 
+
  @Remark This macro is presented here for exposition only reasons and is not part of the interface.
- 
+
  @Params
  @Param{NS_EC, the @p NAMESPACES_CLASS sequence}
  @Param{EL, the @p ENUMERATOR_LIST sequence}
  
  @Result 
  @code
- template <>                                                   
- struct size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>        
- {                                                             
- static const std::size_t value = BOOST_PP_SEQ_SIZE(EL);                             
- };                                                            
+ template <>
+ struct size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>
+ {
+ static const std::size_t value = BOOST_PP_SEQ_SIZE(EL);
+ };
  @endcode
 
  */
@@ -112,9 +112,11 @@
   template <>                                                   \
   struct size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>        \
   {                                                             \
-    static const std::size_t value=BOOST_PP_SEQ_SIZE(EL);       \
+  enum {value=BOOST_PP_SEQ_SIZE(EL)};\
   };                                                            \
-
+// None of the fiollowing declaration works when we need the size as template parameter ?
+//    BOOST_STATIC_CONSTANT(std::size_t,  value=BOOST_PP_SEQ_SIZE(EL));
+//    static const std::size_t value=BOOST_PP_SEQ_SIZE(EL);
 
 #define BOOST_ENUMS_ENUM_DCL_SIZE_SPE2(NS_EC, EL)                \
   const std::size_t                                             \
@@ -122,34 +124,34 @@
     BOOST_PP_SEQ_SIZE(EL);
 
 /**
- 
+
  @brief Generates a @c boost::enums::meta::pos/val specialization.
- 
+
  @Remark This macro is presented here for exposition only reasons and is not part of the interface.
- 
+
  @Params
  @Param{P,NOT USED}
  @Param{QNAME,the @p NAMESPACES_CLASS qualified name}
  @Param{P,the position in the @c ENUMERATOR_LIST sequence}
  @Param{ED, the @c ENUMERATOR_DEFINITION sequence}
- 
+
  @Result 
  @code
- template <>                                               
- struct pos<QNAME, QNAME :: BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)> 
- {                                                         
-   BOOST_STATIC_CONSTEXPR std::size_t value = P;           
- };                                                        
- template <>                                               
- struct val<QNAME, P>                                       
- {                                                         
-   BOOST_STATIC_CONSTEXPR                                  
-   boost::enums::native_type<QNAME>::type value =           
-     QNAME::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED);     
+ template <>
+ struct pos<QNAME, QNAME :: BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)>
+ {
+   BOOST_STATIC_CONSTEXPR std::size_t value = P;
  };
- 
+ template <>
+ struct val<QNAME, P>
+ {
+   BOOST_STATIC_CONSTEXPR
+   boost::enums::native_type<QNAME>::type value =
+     QNAME::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED);
+ };
+
  @endcode
- 
+
  */
 
 #define BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE(R, QNAME, P, ED)     \
@@ -167,23 +169,23 @@
   };
 
 /**
- 
+
  @brief Generates the enum_trait specialization.
- 
+
  @Remark This macro is presented here for exposition only reasons and is not part of the interface.
- 
+
  @Params
  @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
  @Param{TRAITER,the enum traiter template class}
  
  @Result 
  @code
- template <>                                                   
- struct enum_traits<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)> 
-   : TRAITER<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>        
+ template <>
+ struct enum_traits<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>
+   : TRAITER<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>
  {};
  @endcode
- 
+
  */
 
 #define BOOST_ENUMS_ENUM_DCL_TRAITS_SPE(NS_EC, TRAITER)         \
@@ -193,31 +195,31 @@
   {};
 
 /**
- 
+
  @brief Generates all the needed specialization associated to an ordinal scoped enum.
- 
+
  @Remark This macro is presented here for exposition only reasons and is not part of the interface.
- 
+
  @Params
  @Param{NS_EC,the @c NAMESPACES_CLASS sequence}
  @Param{TRAITER,the enum traiter template class}
  @Result 
  @code
-  namespace boost {                                                 
-    namespace enums {                                               
-      namespace meta {                                              
-        BOOST_ENUMS_ENUM_DCL_SIZE_SPE(NS_EC, EL)                    
-        BOOST_PP_SEQ_FOR_EACH_I(                                      
-          BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE,                         
-          BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC),                
-          EL                                                        
-        )                                                           
-        BOOST_ENUMS_ENUM_DCL_TRAITS_SPE(NS_EC, TRAITER)             
-      }                                                            
-    }                                                               
-  } 
+  namespace boost {
+    namespace enums {
+      namespace meta {
+        BOOST_ENUMS_ENUM_DCL_SIZE_SPE(NS_EC, EL)
+        BOOST_PP_SEQ_FOR_EACH_I(
+          BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE,
+          BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC),
+          EL
+        )
+        BOOST_ENUMS_ENUM_DCL_TRAITS_SPE(NS_EC, TRAITER)
+      }
+    }
+  }
  @endcode
- 
+
  */
 
 #define BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)                \
@@ -236,131 +238,135 @@
   }
 
 /**
- 
+
  @brief Generates all the needed definition associated to an ordinal scoped enum type with string conversions and constructors.
- 
+
  @Params
  @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
  @Param{UT,the underlying type}
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
- 
+
  @Result 
  @code
- BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               
- {                                                                 
-   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
- }                                                                 
- BOOST_ENUM_NS_TYPE_CONS_END(NS_EC, UT)                            
+ BOOST_ENUM_NS_TYPE_START(NS_EC, UT)
+ {
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)
+ }
+ BOOST_ENUM_NS_TYPE_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
  @endcode
- 
+
  */
 
 #define BOOST_ENUMS_ENUM_TYPE_DCL_CONS(NS_EC, UT, EL, TRAITER)      \
   BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  };                                                                \
-  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
-  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
+  }                                                                \
   BOOST_ENUM_NS_TYPE_CONS_END(NS_EC, UT)                            \
-  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
+  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER) \
+  BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))
 
 /**
- 
+
  @brief Generates all the needed definition associated to an ordinal scoped enum type with string conversions and without constructors.
- 
+
  @Params
  @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
  @Param{UT,the underlying type}
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
- 
+
  @Result 
  @code
- BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               
- {                                                                 
+ BOOST_ENUM_NS_TYPE_START(NS_EC, UT)
+ {
    BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
- }                                                                 
- BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)                            
+ }
+ BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
  @endcode
- 
+
  */
 #define BOOST_ENUMS_ENUM_TYPE_DCL_NO_CONS(NS_EC, UT, EL, TRAITER)   \
   BOOST_ENUM_NS_TYPE_START(NS_EC, UT)                               \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  };                                                                \
-  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
-  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
+  }                                                                 \
   BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)                         \
-  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
+   BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER) \
+  BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))
 
 /**
- 
+
  @brief Generates all the needed definition associated to an ordinal scoped enum class with string conversions and with constructors.
- 
+
  @Params
  @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
  @Param{UT,the underlying type}
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
- 
+
  @Result 
  @code
- BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                               
- {                                                                 
+ BOOST_ENUM_NS_CLASS_START(NS_EC, UT)
+ {
    BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
- }                                                                 
- BOOST_ENUM_NS_CLASS_CONS_END(NS_EC, UT)                            
+ }
+ BOOST_ENUM_NS_CLASS_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
  @endcode
- 
+
  */
 
 #define BOOST_ENUMS_ENUM_CLASS_DCL_CONS(NS_EC, UT, EL, TRAITER)     \
   BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                              \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  };                                                                \
-  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
-  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
+  }                                                                \
   BOOST_ENUM_NS_CLASS_CONS_END(NS_EC, UT)                           \
-  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
+  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER) \
+  BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))
 
 /**
- 
+
  @brief Generates all the needed definition associated to an ordinal scoped enum class with string conversions and without constructors.
- 
+
  @Params
  @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
  @Param{UT,the underlying type}
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
- 
+
  @Result 
  @code
- BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                               
- {                                                                 
+ BOOST_ENUM_NS_CLASS_START(NS_EC, UT)
+ {
    BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
- }                                                                 
- BOOST_ENUM_NS_CLASS_NO_CONS_END(NS_EC, UT)                            
+ }
+ BOOST_ENUM_NS_CLASS_NO_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
  @endcode
- 
+
  */
 
 #define BOOST_ENUMS_ENUM_CLASS_DCL_NO_CONS(NS_EC, UT, EL, TRAITER)  \
   BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                              \
   {                                                                 \
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
-  };                                                                \
-  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
-  typedef BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC) this_type       \
+  }                                                                \
   BOOST_ENUM_NS_CLASS_NO_CONS_END(NS_EC, UT)                        \
-  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
+  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER) \
+  BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
+  BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
+  BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))
 
 
 
