@@ -888,12 +888,10 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 
 [xinclude top_ref.xml]
 [xinclude scoped_enums_ref.xml]
-
 [xinclude ordinal_enums_ref.xml]
-
 [xinclude enums_containers_ref.xml]
-
 [xinclude mpl_enums_ref.xml]
+[xinclude macros.xml]
 
 [/xinclude string_enums_conversion_ref.xml]
 
