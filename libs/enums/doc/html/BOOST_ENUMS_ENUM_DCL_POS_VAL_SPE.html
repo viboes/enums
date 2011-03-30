@@ -33,25 +33,25 @@
 
 </span>BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE(R, QNAME, P, ED)</pre></div>
 <div class="refsect1">
-<a name="id36348618"></a><h2>Description</h2>
-<p><span class="bold"><strong>Remark:</strong></span> This macro is presented here for exposition only reasons and is not part of the interface.</p>
+<a name="id36348616"></a><h2>Description</h2>
+<p><span class="bold"><strong>Remark(s):</strong></span> This macro is presented here for exposition only reasons and is not part of the interface.</p>
 <p><span class="bold"><strong>Parameters:</strong></span> </p>
 <p>- <span class="bold"><strong><code class="computeroutput">P</code></strong></span>: NOT USED. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">QNAME</code></strong></span>: the <code class="computeroutput">NAMESPACES_CLASS</code> qualified name. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">P</code></strong></span>: the position in the <code class="computeroutput">ENUMERATOR_LIST</code> sequence. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">ED</code></strong></span>: the <code class="computeroutput">ENUMERATOR_DEFINITION</code> sequence.</p>
 <p><span class="bold"><strong>Result:</strong></span> </p>
-<pre class="programlisting"> <span class="keyword">template</span> <span class="special">&lt;</span><span class="special">&gt;</span>                                               
- <span class="keyword">struct</span> <span class="identifier">pos</span><span class="special">&lt;</span><span class="identifier">QNAME</span><span class="special">,</span> <span class="identifier">QNAME</span> <span class="special">::</span> <span class="identifier">BOOST_ENUMS_ENUMERATOR_DEFINITION_ID</span><span class="special">(</span><span class="identifier">ED</span><span class="special">)</span><span class="special">&gt;</span> 
- <span class="special">{</span>                                                         
-   <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">P</span><span class="special">;</span>           
- <span class="special">}</span><span class="special">;</span>                                                        
- <span class="keyword">template</span> <span class="special">&lt;</span><span class="special">&gt;</span>                                               
- <span class="keyword">struct</span> <span class="identifier">val</span><span class="special">&lt;</span><span class="identifier">QNAME</span><span class="special">,</span> <span class="identifier">P</span><span class="special">&gt;</span>                                       
- <span class="special">{</span>                                                         
-   <span class="identifier">BOOST_STATIC_CONSTEXPR</span>                                  
-   <span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">native_type</span><span class="special">&lt;</span><span class="identifier">QNAME</span><span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span>           
-     <span class="identifier">QNAME</span><span class="special">::</span><span class="identifier">BOOST_ENUMS_ENUMERATOR_DEFINITION_ID</span><span class="special">(</span><span class="identifier">ED</span><span class="special">)</span><span class="special">;</span>     
+<pre class="programlisting"> <span class="keyword">template</span> <span class="special">&lt;</span><span class="special">&gt;</span>
+ <span class="keyword">struct</span> <span class="identifier">pos</span><span class="special">&lt;</span><span class="identifier">QNAME</span><span class="special">,</span> <span class="identifier">QNAME</span> <span class="special">::</span> <span class="identifier">BOOST_ENUMS_ENUMERATOR_DEFINITION_ID</span><span class="special">(</span><span class="identifier">ED</span><span class="special">)</span><span class="special">&gt;</span>
+ <span class="special">{</span>
+   <span class="identifier">BOOST_STATIC_CONSTEXPR</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">P</span><span class="special">;</span>
+ <span class="special">}</span><span class="special">;</span>
+ <span class="keyword">template</span> <span class="special">&lt;</span><span class="special">&gt;</span>
+ <span class="keyword">struct</span> <span class="identifier">val</span><span class="special">&lt;</span><span class="identifier">QNAME</span><span class="special">,</span> <span class="identifier">P</span><span class="special">&gt;</span>
+ <span class="special">{</span>
+   <span class="identifier">BOOST_STATIC_CONSTEXPR</span>
+   <span class="identifier">boost</span><span class="special">::</span><span class="identifier">enums</span><span class="special">::</span><span class="identifier">native_type</span><span class="special">&lt;</span><span class="identifier">QNAME</span><span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> <span class="identifier">value</span> <span class="special">=</span>
+     <span class="identifier">QNAME</span><span class="special">::</span><span class="identifier">BOOST_ENUMS_ENUMERATOR_DEFINITION_ID</span><span class="special">(</span><span class="identifier">ED</span><span class="special">)</span><span class="special">;</span>
  <span class="special">}</span><span class="special">;</span>
 </pre>
 <p> </p>

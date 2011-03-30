@@ -33,25 +33,25 @@
 
 </span>BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)</pre></div>
 <div class="refsect1">
-<a name="id36349170"></a><h2>Description</h2>
-<p><span class="bold"><strong>Remark:</strong></span> This macro is presented here for exposition only reasons and is not part of the interface.</p>
+<a name="id36349168"></a><h2>Description</h2>
+<p><span class="bold"><strong>Remark(s):</strong></span> This macro is presented here for exposition only reasons and is not part of the interface.</p>
 <p><span class="bold"><strong>Parameters:</strong></span> </p>
 <p>- <span class="bold"><strong><code class="computeroutput">NS_EC</code></strong></span>: the <code class="computeroutput">NAMESPACES_CLASS</code> sequence. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">TRAITER</code></strong></span>: the enum traiter template class. </p>
 <p><span class="bold"><strong>Result:</strong></span> </p>
-<pre class="programlisting">  <span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>                                                 
-    <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>                                               
-      <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>                                              
-        <span class="identifier">BOOST_ENUMS_ENUM_DCL_SIZE_SPE</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">,</span> <span class="identifier">EL</span><span class="special">)</span>                    
-        <span class="identifier">BOOST_PP_SEQ_FOR_EACH_I</span><span class="special">(</span>                                      
-          <span class="identifier">BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE</span><span class="special">,</span>                         
-          <span class="identifier">BOOST_ENUMS_NAMESPACES_CLASS_QNAME</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">)</span><span class="special">,</span>                
-          <span class="identifier">EL</span>                                                        
-        <span class="special">)</span>                                                           
-        <span class="identifier">BOOST_ENUMS_ENUM_DCL_TRAITS_SPE</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">,</span> <span class="identifier">TRAITER</span><span class="special">)</span>             
-      <span class="special">}</span>                                                            
-    <span class="special">}</span>                                                               
-  <span class="special">}</span> 
+<pre class="programlisting">  <span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+    <span class="keyword">namespace</span> <span class="identifier">enums</span> <span class="special">{</span>
+      <span class="keyword">namespace</span> <span class="identifier">meta</span> <span class="special">{</span>
+        <span class="identifier">BOOST_ENUMS_ENUM_DCL_SIZE_SPE</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">,</span> <span class="identifier">EL</span><span class="special">)</span>
+        <span class="identifier">BOOST_PP_SEQ_FOR_EACH_I</span><span class="special">(</span>
+          <span class="identifier">BOOST_ENUMS_ENUM_DCL_POS_VAL_SPE</span><span class="special">,</span>
+          <span class="identifier">BOOST_ENUMS_NAMESPACES_CLASS_QNAME</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">)</span><span class="special">,</span>
+          <span class="identifier">EL</span>
+        <span class="special">)</span>
+        <span class="identifier">BOOST_ENUMS_ENUM_DCL_TRAITS_SPE</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">,</span> <span class="identifier">TRAITER</span><span class="special">)</span>
+      <span class="special">}</span>
+    <span class="special">}</span>
+  <span class="special">}</span>
 </pre>
 <p> </p>
 </div>

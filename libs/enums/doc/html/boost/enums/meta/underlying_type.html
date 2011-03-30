@@ -33,25 +33,14 @@
 
 </span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> 
 <span class="keyword">struct</span> <a class="link" href="underlying_type.html" title="Struct template underlying_type">underlying_type</a> <span class="special">{</span>
-  <span class="comment">// <a class="link" href="underlying_type.html#boost.enums.meta.underlying_typetypes">types</a></span>
-  <span class="keyword">typedef</span> <span class="identifier">see_below</span> <a class="link" href="underlying_type.html#boost.enums.meta.underlying_type.type"><span class="identifier">type</span></a><span class="special">;</span>
+  <span class="comment">// types</span>
+  <span class="keyword">typedef</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">underlying_type</span><span class="special">&lt;</span> <span class="identifier">EC</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">type</span> <a name="boost.enums.meta.underlying_type.type"></a><span class="identifier">type</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id36365534"></a><h2>Description</h2>
+<a name="id36367968"></a><h2>Description</h2>
 <p><span class="bold"><strong>Requires</strong></span> <code class="computeroutput">EC</code> must be an enum type or the emulation of a scoped enum.<br>
 <br>
  </p>
-<div class="refsect2">
-<a name="id36365554"></a><h3>
-<a name="boost.enums.meta.underlying_typetypes"></a><code class="computeroutput">underlying_type</code> 
-        public
-       types</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<p>
-<span class="keyword">typedef</span> <span class="identifier">see_below</span> <a name="boost.enums.meta.underlying_type.type"></a><span class="identifier">type</span><span class="special">;</span></p>
-<p>The member typedef <code class="computeroutput">type</code> name the underlying type of <code class="computeroutput">T</code>. When scoped enums are emulated it is defined as <code class="computeroutput">typename</code> <code class="computeroutput">EC::underlying_type</code>. Otherwise is defined as <code class="computeroutput">std::underlying_type&lt;EC&gt;::type</code>. This meta-function must be specialized for the compilers providing scoped enums but don't providing the <code class="computeroutput">std::underlying_type</code> meta-function. </p>
-</li></ol></div>
-</div>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

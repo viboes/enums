@@ -1,4 +1,4 @@
-#  Boost.ENUMS library documentation Jamfile  ---------------------------------
+#  Boost.Enums library documentation Jamfile  ---------------------------------
 #
 #  Copyright Vicente J. Botet Escriba 2009. Use, modification and
 #  distribution is subject to the Boost Software License, Version
@@ -41,12 +41,123 @@ if --enable-index in  [ modules.peek : ARGV ]
         <quickbook-define>enable_index
         
         # <auto-index-verbose>on
+
+	#doxygen common parameters
+        <doxygen:param>"PREDEFINED=\"BOOST_OPAQUE_DOXYGEN_INVOKED=1\" \\
+                                   \"BOOST_STATIC_CONSTEXPR=constexpr\" \\
+                                   \"BOOST_DEDUCED_TYPENAME=typename\" \\
+                                   \"BOOST_EXPLICIT=explicit\" \\
+                                   \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
+                                   \"BOOST_STATIC_ASSERT(cnd)=\" \\
+                                   \"BOOST_CONSTEXPR=constexpr\""
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 TParams=\"<p><b>Template Parameters:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <b><c>\\1</c></b>: \\2.\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Result=\"<p><b>Result:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Pre=\"<p><b>Requires:</b>\" \\
+                                 Requires=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark(s):</b>\" \\
+                                 Note=\"<p><b>Note(s):</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_opaque.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_opaque.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
+
+        <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
+
+        <doxygen:param>SHOW_INCLUDE_FILES=YES
+        <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
+        # It is also wise to to set a warnings logfile like this:
+        <doxygen:param>WARN_LOGFILE=AutoDoxywarnings.log # This may not be empty (usually not a good sign!), depending on options chosen.
+        # Much better to send message to a logfile than the default stderr.
+        # and make sure that there are no Doxygen errors or significant warnings in the log file.
+        <doxygen:param>RECURSIVE=NO # Search recursively down subdirectories.
+        <doxygen:param>EXTRACT_ALL=YES
+        <doxygen:param>ENABLE_PREPROCESSING=YES
+        <doxygen:param>MACRO_EXPANSION=YES
+
+        <doxygen:param>HIDE_UNDOC_MEMBERS=NO
+        <doxygen:param>EXTRACT_PRIVATE=NO
+        <doxygen:param>EXPAND_ONLY_PREDEF=YES
+        #<doxygen:param>EXPAND_STATIC=YES
+        <doxygen:param>SEARCH_INCLUDES=YES
+        <doxygen:param>INCLUDE_PATH=$(BOOST)
         
         ;
 }
 else
 {
    ECHO "Building the Enums docs with automatic index generation disabled. To get an auto-index, try building with --enable-index." ;
+
+   project : requirements
+	#doxygen common parameters
+        <doxygen:param>"PREDEFINED=\"BOOST_OPAQUE_DOXYGEN_INVOKED=1\" \\
+                                   \"BOOST_STATIC_CONSTEXPR=constexpr\" \\
+                                   \"BOOST_DEDUCED_TYPENAME=typename\" \\
+                                   \"BOOST_EXPLICIT=explicit\" \\
+                                   \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
+                                   \"BOOST_STATIC_ASSERT(cnd)=\" \\
+                                   \"BOOST_CONSTEXPR=constexpr\""
+
+        <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
+                                 Example=\"<p><b>Example:</b>\" \\ 
+                                 TParams=\"<p><b>Template Parameters:</b>\" \\ 
+                                 Params=\"<p><b>Parameters:</b>\" \\ 
+                                 Param{2}=\"<p> - <b><c>\\1</c></b>: \\2.\" \\
+                                 Returns=\"<p><b>Returns:</b>\" \\
+                                 Result=\"<p><b>Result:</b>\" \\
+                                 Throws=\"<p><b>Throws:</b>\" \\
+                                 Pre=\"<p><b>Requires:</b>\" \\
+                                 Requires=\"<p><b>Requires:</b>\" \\
+                                 Post=\"<p><b>Post-conditions:</b>\" \\
+                                 Remark=\"<p><b>Remark(s):</b>\" \\
+                                 Note=\"<p><b>Note(s):</b>\" \\
+                                 See=\"<p><b>See:</b>\" \\
+                                 ThreadSafe=\"<p><b>ThreadSafe:</b> Yes.\" \\
+                                 Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
+                                 Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
+                                 NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_opaque.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_opaque.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
+                                 RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
+
+
+        <doxygen:param>SORT_MEMBER_DOCS=NO
+        <doxygen:param>SHOW_USED_FILES=YES
+
+        <doxygen:param>SHOW_INCLUDE_FILES=YES
+        <doxygen:param>WARNINGS=YES # Default NO, but useful to see warnings, especially in a logfile.
+        # It is also wise to to set a warnings logfile like this:
+        <doxygen:param>WARN_LOGFILE=AutoDoxywarnings.log # This may not be empty (usually not a good sign!), depending on options chosen.
+        # Much better to send message to a logfile than the default stderr.
+        # and make sure that there are no Doxygen errors or significant warnings in the log file.
+        <doxygen:param>RECURSIVE=NO # Search recursively down subdirectories.
+        <doxygen:param>EXTRACT_ALL=YES
+        <doxygen:param>ENABLE_PREPROCESSING=YES
+        <doxygen:param>MACRO_EXPANSION=YES
+
+        <doxygen:param>HIDE_UNDOC_MEMBERS=NO
+        <doxygen:param>EXTRACT_PRIVATE=NO
+        <doxygen:param>EXPAND_ONLY_PREDEF=YES
+        #<doxygen:param>EXPAND_STATIC=YES
+        <doxygen:param>SEARCH_INCLUDES=YES
+        <doxygen:param>INCLUDE_PATH=$(BOOST)
+
+        ;
 }
 
 using doxygen ;  # Required if you want to use Doxygen.
@@ -87,8 +198,8 @@ doxygen top_ref
                                  Basic=\"<p><b>Exception Safety:</b> basic guarantee\" \\
                                  Strong=\"<p><b>Exception Safety:</b> strong guarantee\" \\
                                  NoThrow=\"<p><b>Exception Safety:</b> no-throw guarantee\" \\
-                                 RefSect{1}=\"\\xmlonly<link linkend='boost_local.\\1'>\\1</link>\\endxmlonly\" \\
-                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_local.\\1'>\\2</link>\\endxmlonly\" \\
+                                 RefSect{1}=\"\\xmlonly<link linkend='boost_enums.\\1'>\\1</link>\\endxmlonly\" \\
+                                 RefSect2{2}=\"\\xmlonly<link linkend='boost_enums.\\1'>\\2</link>\\endxmlonly\" \\
                                  RefClass{1}=\"\\xmlonly<computeroutput><classname alt='\\1'>\\1</classname></computeroutput>\\endxmlonly\" \\
                                  RefMacro{1}=\"\\xmlonly<computeroutput><macroname alt='\\1'>\\1</macroname></computeroutput>\\endxmlonly\" "
 
