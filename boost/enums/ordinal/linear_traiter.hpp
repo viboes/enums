@@ -64,7 +64,7 @@ namespace boost {
       static EC val(std::size_t p)
       {
         typename underlying_type<EC>::type uv = p*step+first_value;
-        return boost::convert_to<EC>(uv);
+        return boost::conversion::convert_to<EC>(uv);
       }
     };
 
@@ -81,7 +81,7 @@ namespace boost {
 //      static EC val(std::size_t i)
 //      {
 //        typename underlying_type<EC>::type ut = 1<<i;
-//        return boost::convert_to<EC>(ut);
+//        return boost::conversion::convert_to<EC>(ut);
 //      }
 //    };
   }

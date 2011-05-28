@@ -22,6 +22,7 @@
 
 #include <boost/enums/ordinal/traits.hpp>
 #include <boost/enums/ordinal/size.hpp>
+#include <boost/enums/scoped/native_type.hpp>
 #include <boost/assert.hpp>
 #include <cstddef>
 
@@ -43,7 +44,7 @@ namespace boost
         {
           //! The nested @c value to be defined for each scoped enum
           //!  specialization.
-          constexpr typename native_type<EC>::type value=<to be defined for each specialization>;
+          constexpr typename native_type<EC>::type value;
         };    
 #endif
         

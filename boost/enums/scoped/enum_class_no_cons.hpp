@@ -16,8 +16,8 @@
  The header \c <boost/enums/scoped/enum_class_no_cons.hpp> defines the declaration of enum_class_no_cons<> template class.
  */
 
-#ifndef BOOST_ENUMS_SCOPED_ENUM_TYPE_NO_CONS_HPP
-#define BOOST_ENUMS_SCOPED_ENUM_TYPE_NO_CONS_HPP
+#ifndef BOOST_ENUMS_SCOPED_ENUM_CLASS_NO_CONS_HPP
+#define BOOST_ENUMS_SCOPED_ENUM_CLASS_NO_CONS_HPP
 
 #include <boost/config.hpp>
 #include <boost/conversion/convert_to.hpp>
@@ -186,7 +186,7 @@ namespace boost
         return lhs.val_ > rhs;
       }
       
-      //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
+      //! conversions from underlying_type to enum_class_no_cons following the Boost.Conversion protocol
       friend enum_class_no_cons convert_to(underlying_type v, 
                                        boost::dummy::type_tag<enum_class_no_cons> const&)
       {
@@ -195,7 +195,7 @@ namespace boost
         return res;
       }
       
-      //! friend conversions from type to enum_type_cons following the Boost.Conversion protocol
+      //! friend conversions from type to enum_class_no_cons following the Boost.Conversion protocol
       friend enum_class_no_cons convert_to(type v, 
                                        boost::dummy::type_tag<enum_class_no_cons> const&)
       {
@@ -204,14 +204,14 @@ namespace boost
         return res;
       }
       
-      //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
+      //! conversions from enum_class_no_cons to underlying_type following the Boost.Conversion protocol
       friend underlying_type convert_to(enum_class_no_cons v, 
                                         boost::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
       
-      //! conversions from enum_type_cons to type following the Boost.Conversion protocol
+      //! conversions from enum_class_no_cons to type following the Boost.Conversion protocol
       friend type convert_to(enum_class_no_cons v, 
                              boost::dummy::type_tag<type> const&)
       {

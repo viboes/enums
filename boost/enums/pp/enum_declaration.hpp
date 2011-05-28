@@ -34,7 +34,7 @@
         BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
      ) == 0)                                                          \
   {                                                                   \
-    return boost::convert_to<ENUM>(                                   \
+    return boost::conversion::convert_to<ENUM>(                                   \
               ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
             );                                                        \
   }
@@ -66,7 +66,7 @@
     boost::dummy::type_tag<ENUM> const&                                     \
   )                                                                         \
   {                                                                         \
-    return boost::convert_to<ENUM>(                                         \
+    return boost::conversion::convert_to<ENUM>(                                         \
       str.c_str()                                                           \
     );                                                                      \
   }                                                                         \
@@ -281,6 +281,37 @@
  @Param{TRAITER,the enum traiter template class}
 
  @Result 
+ @cond
+ BOOST_ENUMS_ENUM_TYPE_DCL_NO_CONS((NS1)...(NSk)(EC), UT, ((E1))...((En)), TRAITER)
+
+ namespace NS1 {
+ ...
+ namespace NSk {
+
+ class EC {
+ public:
+   enum type { E1, ... En };
+   typedef UT underlying_type;
+  private:
+    underlying_type val_;
+  public:
+    operator type() { return type(val_); }
+    EC& operator =(type rhs) {
+      val_=static_cast<underlying_type>(rhs);
+      return *this;
+    }
+    static EC default_value() {
+      EC res;
+      res.val_=static_cast<underlying_type>(EC::type());
+      return res;
+    }
+    type native_value() const { return type(val_); }
+    underlying_type underlying_value() const { return val_; }
+ };
+ } // NSk
+ ...
+ } // NS1
+ @endcond
  @code
  BOOST_ENUM_NS_TYPE_START(NS_EC, UT)
  {
@@ -297,7 +328,7 @@
     BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                        \
   }                                                                 \
   BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)                         \
-   BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER) \
+  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER) \
   BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
   BOOST_ENUMS_DCL_STRING_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), EL) \
   BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))

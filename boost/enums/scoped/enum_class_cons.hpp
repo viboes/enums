@@ -16,8 +16,8 @@
  The header \c <boost/enums/scoped/enum_class_cons.hpp> defines the declaration of enum_class_cons<> template class.
  */
 
-#ifndef BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP
-#define BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP
+#ifndef BOOST_ENUMS_SCOPED_ENUM_CLASS_CONS_HPP
+#define BOOST_ENUMS_SCOPED_ENUM_CLASS_CONS_HPP
 
 #include <boost/config.hpp>
 #include <boost/conversion/convert_to.hpp>
@@ -235,7 +235,8 @@ namespace boost
       {
         return lhs.val_ > rhs;
       }
-      //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
+      
+      //! conversions from enum_class_cons to underlying_type following the Boost.Conversion protocol
 
       //! @Returns <tt>boost::enums::underlying_value(v)</tt>.
       friend underlying_type convert_to(enum_class_cons v, 
@@ -244,7 +245,7 @@ namespace boost
         return boost::enums::underlying_value(v);
       }
       
-      //! conversions from enum_type_cons to type following the Boost.Conversion protocol
+      //! conversions from enum_class_cons to type following the Boost.Conversion protocol
 
       //! @Returns <tt>boost::enums::native_value(v)</tt>.
       friend type convert_to(enum_class_cons v, 

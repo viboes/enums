@@ -14,7 +14,7 @@
 #define BOOST_ENUMS_SCOPED_UNDERLYING_VALUE_HPP
 
 #include <boost/config.hpp>
-#include <boost/enums/scoped/native_type.hpp>
+#include <boost/enums/scoped/underlying_type.hpp>
 
 namespace boost {
   namespace enums {
