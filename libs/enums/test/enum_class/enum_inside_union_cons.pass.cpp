@@ -144,8 +144,8 @@ BOOST_ENUMS_ENUM_CLASS_DCL_CONS((Ex)(EC_Cons), int,
                     //~ }
                     //~ }
                     //~ namespace Ex {
-                      //~ inline EC_Cons convert_to( const char* str, boost::dummy::type_tag<EC_Cons> const& ) { if (strcmp( str, "E0" ) == 0) { return boost::convert_to<EC_Cons>( EC_Cons::E0 ); } if (strcmp( str, "E1" ) == 0) { return boost::convert_to<EC_Cons>( EC_Cons::E1 ); } if (strcmp( str, "E2" ) == 0) { return boost::convert_to<EC_Cons>( EC_Cons::E2 ); } throw "invalid string for " "EC_Cons"; }
-                        //~ inline EC_Cons convert_to( const std::string& str, boost::dummy::type_tag<EC_Cons> const& ) { return boost::convert_to<EC_Cons>( str.c_str() ); }
+                      //~ inline EC_Cons convert_to( const char* str, boost::dummy::type_tag<EC_Cons> const& ) { if (strcmp( str, "E0" ) == 0) { return boost::conversion::convert_to<EC_Cons>( EC_Cons::E0 ); } if (strcmp( str, "E1" ) == 0) { return boost::conversion::convert_to<EC_Cons>( EC_Cons::E1 ); } if (strcmp( str, "E2" ) == 0) { return boost::conversion::convert_to<EC_Cons>( EC_Cons::E2 ); } throw "invalid string for " "EC_Cons"; }
+                        //~ inline EC_Cons convert_to( const std::string& str, boost::dummy::type_tag<EC_Cons> const& ) { return boost::conversion::convert_to<EC_Cons>( str.c_str() ); }
                         //~ inline const char* c_str(EC_Cons e) {
                           //~ switch (boost::enums::native_value(e)) {
                             //~ case EC_Cons::E0 : return("E0");

@@ -59,9 +59,9 @@ inline EnumClass convert_to(const char* str
   , boost::dummy::type_tag<EnumClass> const&
 )
 {
-    if (strcmp(str, "Default") ==0)  { return boost::convert_to<EnumClass>(EnumClass::Default); }
-    if (strcmp(str, "Enum1") ==0)    { return  boost::convert_to<EnumClass>(EnumClass::Enum1); }
-    if (strcmp(str, "Enum2") ==0)  { return  boost::convert_to<EnumClass>(EnumClass::Enum2); }
+    if (strcmp(str, "Default") ==0)  { return boost::conversion::convert_to<EnumClass>(EnumClass::Default); }
+    if (strcmp(str, "Enum1") ==0)    { return  boost::conversion::convert_to<EnumClass>(EnumClass::Enum1); }
+    if (strcmp(str, "Enum2") ==0)  { return  boost::conversion::convert_to<EnumClass>(EnumClass::Enum2); }
     throw "invalid string for EnumClass";
 }
 
@@ -70,7 +70,7 @@ inline EnumClass convert_to(const std::string& str
   , boost::dummy::type_tag<EnumClass> const&
 )
 {
-    return boost::convert_to<EnumClass>(str.c_str());
+    return boost::conversion::convert_to<EnumClass>(str.c_str());
 }
 
 //!explicit conversion to c-string.

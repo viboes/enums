@@ -25,6 +25,7 @@
 int main() {
 
   using namespace boost;
+  using namespace boost::conversion;
   using namespace boost::enums;
 
   std::cout << __LINE__ << std::endl;
