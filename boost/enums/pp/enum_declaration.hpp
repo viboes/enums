@@ -48,7 +48,7 @@
   inline                                                              \
   ENUM convert_to(                                                          \
       const char* str,                                                      \
-      boost::dummy::type_tag<ENUM> const&                                   \
+      boost::conversion::dummy::type_tag<ENUM> const&                                   \
     )                                                                       \
   {                                                                         \
     BOOST_PP_SEQ_FOR_EACH(                                                  \
@@ -63,7 +63,7 @@
   inline                                                              \
   ENUM convert_to(                                                          \
     const std::string& str,                                                 \
-    boost::dummy::type_tag<ENUM> const&                                     \
+    boost::conversion::dummy::type_tag<ENUM> const&                                     \
   )                                                                         \
   {                                                                         \
     return boost::conversion::convert_to<ENUM>(                                         \

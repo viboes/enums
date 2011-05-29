@@ -240,7 +240,7 @@ namespace boost
 
       //! @Returns <tt>boost::enums::underlying_value(v)</tt>.
       friend underlying_type convert_to(enum_class_cons v, 
-                                        boost::dummy::type_tag<underlying_type> const&)
+                                        boost::conversion::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
@@ -249,7 +249,7 @@ namespace boost
 
       //! @Returns <tt>boost::enums::native_value(v)</tt>.
       friend type convert_to(enum_class_cons v, 
-                             boost::dummy::type_tag<type> const&)
+                             boost::conversion::dummy::type_tag<type> const&)
       {
         return boost::enums::native_value(v);
       }

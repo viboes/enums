@@ -116,19 +116,19 @@
 
   #define BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)                       \
     inline EC convert_to(UT v                                                 \
-      , boost::dummy::type_tag<EC> const&                                     \
+      , boost::conversion::dummy::type_tag<EC> const&                                     \
     )                                                                         \
     {                                                                         \
       return EC(v);                                                           \
     }                                                                         \
     inline EC convert_to(boost::enums::native_type<EC>::type  v                 \
-      , boost::dummy::type_tag<EC> const&                                     \
+      , boost::conversion::dummy::type_tag<EC> const&                                     \
     )                                                                         \
     {                                                                         \
       return v;                                                               \
     }                                                                         \
     inline UT convert_to(EC v                                                 \
-      , boost::dummy::type_tag<UT> const&                                     \
+      , boost::conversion::dummy::type_tag<UT> const&                                     \
     )                                                                         \
     {                                                                         \
       return boost::enums::underlying_value(v);                               \
@@ -156,25 +156,25 @@
 
 #define BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)                       \
   inline EC convert_to(UT v                                          \
-    , boost::dummy::type_tag<EC> const&                                     \
+    , boost::conversion::dummy::type_tag<EC> const&                                     \
   )                                                                         \
   {                                                                         \
     return EC::convert_to(v);                                               \
   }                                                                         \
   inline  EC convert_to(boost::enums::native_type<EC>::type  v          \
-    , boost::dummy::type_tag<EC> const&                                     \
+    , boost::conversion::dummy::type_tag<EC> const&                                     \
   )                                                                         \
   {                                                                         \
     return EC::convert_to(v);                                               \
   }                                                                         \
   inline  UT convert_to(EC v                                          \
-    , boost::dummy::type_tag<UT> const&                                     \
+    , boost::conversion::dummy::type_tag<UT> const&                                     \
   )                                                                         \
   {                                                                         \
     return boost::enums::underlying_value(v);                               \
   }                                                                         \
   inline  boost::enums::native_type<EC>::type convert_to(EC v           \
-    , boost::dummy::type_tag<boost::enums::native_type<EC>::type> const&      \
+    , boost::conversion::dummy::type_tag<boost::enums::native_type<EC>::type> const&      \
   )                                                                         \
   {                                                                         \
     return boost::enums::native_value(v);                                     \

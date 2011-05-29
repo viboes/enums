@@ -121,13 +121,13 @@ namespace boost
 
         //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
       friend underlying_type convert_to(enum_type_cons v, 
-                                        boost::dummy::type_tag<underlying_type> const&)
+                                        boost::conversion::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
       //! conversions from enum_type_cons to type following the Boost.Conversion protocol
       friend type convert_to(enum_type_cons v, 
-                             boost::dummy::type_tag<type> const&)
+                             boost::conversion::dummy::type_tag<type> const&)
       {
         return boost::enums::native_value(v);
       }

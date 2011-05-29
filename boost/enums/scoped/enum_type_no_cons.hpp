@@ -103,7 +103,7 @@ namespace boost
       
       //! conversions from underlying_type to enum_type_cons following the Boost.Conversion protocol
       friend enum_type_no_cons convert_to(underlying_type v, 
-                                       boost::dummy::type_tag<enum_type_no_cons> const&)
+                                       boost::conversion::dummy::type_tag<enum_type_no_cons> const&)
       {
         enum_type_no_cons res;
         res.val_=v;
@@ -112,7 +112,7 @@ namespace boost
       
       //! friend conversions from type to enum_type_cons following the Boost.Conversion protocol
       friend enum_type_no_cons convert_to(type v, 
-                                       boost::dummy::type_tag<enum_type_no_cons> const&)
+                                       boost::conversion::dummy::type_tag<enum_type_no_cons> const&)
       {
         enum_type_no_cons res;
         res.val_=static_cast<underlying_type>(v);
@@ -121,14 +121,14 @@ namespace boost
       
       //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
       friend underlying_type convert_to(enum_type_no_cons v, 
-                                        boost::dummy::type_tag<underlying_type> const&)
+                                        boost::conversion::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
       
       //! conversions from enum_type_cons to type following the Boost.Conversion protocol
       friend type convert_to(enum_type_no_cons v, 
-                             boost::dummy::type_tag<type> const&)
+                             boost::conversion::dummy::type_tag<type> const&)
       {
         return boost::enums::native_value(v);
       }
