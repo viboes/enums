@@ -56,7 +56,7 @@ BOOST_ENUMS_SPECIALIZATIONS(EnumClass, unsigned char)
 
 //!  conversion from c-string.
 inline EnumClass convert_to(const char* str
-  , boost::dummy::type_tag<EnumClass> const&
+  , boost::conversion::dummy::type_tag<EnumClass> const&
 )
 {
     if (strcmp(str, "Default") ==0)  { return boost::conversion::convert_to<EnumClass>(EnumClass::Default); }
@@ -67,7 +67,7 @@ inline EnumClass convert_to(const char* str
 
 //!  conversion from std::string.
 inline EnumClass convert_to(const std::string& str
-  , boost::dummy::type_tag<EnumClass> const&
+  , boost::conversion::dummy::type_tag<EnumClass> const&
 )
 {
     return boost::conversion::convert_to<EnumClass>(str.c_str());
