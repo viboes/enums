@@ -20,7 +20,7 @@
 #define BOOST_ENUMS_SCOPED_ENUM_CLASS_CONS_HPP
 
 #include <boost/config.hpp>
-#include <boost/conversion/convert_to.hpp>
+#include <boost/conversion/explicit_convert_to.hpp>
 #include <boost/enums/scoped/underlying_type.hpp>
 #include <boost/enums/scoped/underlying_value.hpp>
 #include <boost/enums/scoped/native_type.hpp>
@@ -44,7 +44,7 @@ namespace boost
     //!
     //! This class is not implicitly convertible to the underlying type, 
     //! neither to the enum type. Explicit conversion can be done using @c 
-    //! underlying_value<>(e), @c native_value<>(e) or the @c converto_to<>(e).
+    //! underlying_value<>(e), @c native_value<>(e) or the @c explicit_convert_to<>(e).
     //! @Note This class can not be used inside a union with compilers that donesn't support unrestricted unions.
     
     template <typename ScopedEnum, typename UT=int>
@@ -239,7 +239,7 @@ namespace boost
       //! conversions from enum_class_cons to underlying_type following the Boost.Conversion protocol
 
       //! @Returns <tt>boost::enums::underlying_value(v)</tt>.
-      friend underlying_type convert_to(enum_class_cons v, 
+      friend underlying_type explicit_convert_to(enum_class_cons v,
                                         boost::conversion::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
@@ -248,7 +248,7 @@ namespace boost
       //! conversions from enum_class_cons to type following the Boost.Conversion protocol
 
       //! @Returns <tt>boost::enums::native_value(v)</tt>.
-      friend type convert_to(enum_class_cons v, 
+      friend type explicit_convert_to(enum_class_cons v,
                              boost::conversion::dummy::type_tag<type> const&)
       {
         return boost::enums::native_value(v);

@@ -22,7 +22,7 @@
 #include <boost/enums/scoped/native_value.hpp>
 #include <boost/enums/scoped/underlying_value.hpp>
 #include <boost/enums/scoped/is_enum.hpp>
-#include <boost/conversion/convert_to.hpp>
+#include <boost/conversion/explicit_convert_to.hpp>
 #include <boost/enums/pp/namespaces.hpp>
 #include <cstring>
 
@@ -115,19 +115,19 @@
 
 
   #define BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)                       \
-    inline EC convert_to(UT v                                                 \
+    inline EC explicit_convert_to(UT v                                                 \
       , boost::conversion::dummy::type_tag<EC> const&                                     \
     )                                                                         \
     {                                                                         \
       return EC(v);                                                           \
     }                                                                         \
-    inline EC convert_to(boost::enums::native_type<EC>::type  v                 \
+    inline EC explicit_convert_to(boost::enums::native_type<EC>::type  v                 \
       , boost::conversion::dummy::type_tag<EC> const&                                     \
     )                                                                         \
     {                                                                         \
       return v;                                                               \
     }                                                                         \
-    inline UT convert_to(EC v                                                 \
+    inline UT explicit_convert_to(EC v                                                 \
       , boost::conversion::dummy::type_tag<UT> const&                                     \
     )                                                                         \
     {                                                                         \
@@ -155,25 +155,25 @@
 
 
 #define BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(EC, UT)                       \
-  inline EC convert_to(UT v                                          \
+  inline EC explicit_convert_to(UT v                                          \
     , boost::conversion::dummy::type_tag<EC> const&                                     \
   )                                                                         \
   {                                                                         \
-    return EC::convert_to(v);                                               \
+    return EC::explicit_convert_to(v);                                               \
   }                                                                         \
-  inline  EC convert_to(boost::enums::native_type<EC>::type  v          \
+  inline  EC explicit_convert_to(boost::enums::native_type<EC>::type  v          \
     , boost::conversion::dummy::type_tag<EC> const&                                     \
   )                                                                         \
   {                                                                         \
-    return EC::convert_to(v);                                               \
+    return EC::explicit_convert_to(v);                                               \
   }                                                                         \
-  inline  UT convert_to(EC v                                          \
+  inline  UT explicit_convert_to(EC v                                          \
     , boost::conversion::dummy::type_tag<UT> const&                                     \
   )                                                                         \
   {                                                                         \
     return boost::enums::underlying_value(v);                               \
   }                                                                         \
-  inline  boost::enums::native_type<EC>::type convert_to(EC v           \
+  inline  boost::enums::native_type<EC>::type explicit_convert_to(EC v           \
     , boost::conversion::dummy::type_tag<boost::enums::native_type<EC>::type> const&      \
   )                                                                         \
   {                                                                         \
@@ -192,13 +192,13 @@
     res.val_=static_cast<underlying_type>(EC::type());  \
     return res;                                         \
   }                                                     \
-  static EC convert_to(underlying_type v)               \
+  static EC explicit_convert_to(underlying_type v)               \
   {                                                     \
     EC res;                                             \
     res.val_=v;                                         \
     return res;                                         \
   }                                                     \
-  static EC convert_to(type v)                          \
+  static EC explicit_convert_to(type v)                          \
   {                                                     \
     EC res;                                             \
     res.val_=static_cast<underlying_type>(v);           \

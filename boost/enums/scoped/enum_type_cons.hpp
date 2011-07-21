@@ -20,7 +20,7 @@
 #define BOOST_ENUMS_SCOPED_ENUM_TYPE_CONS_HPP
 
 #include <boost/config.hpp>
-#include <boost/conversion/convert_to.hpp>
+#include <boost/conversion/explicit_convert_to.hpp>
 #include <boost/enums/scoped/underlying_type.hpp>
 #include <boost/enums/scoped/underlying_value.hpp>
 #include <boost/enums/scoped/native_type.hpp>
@@ -92,7 +92,7 @@ namespace boost
         return res;  
       }
       
-      static enum_type_cons convert_to(underlying_type v)
+      static enum_type_cons explicit_convert_to(underlying_type v)
       {
         enum_type_cons res;
         res.val_=v;
@@ -100,7 +100,7 @@ namespace boost
         
       }
       
-      static enum_type_cons convert_to(type v)
+      static enum_type_cons explicit_convert_to(type v)
       {
         enum_type_cons res;
         res.val_=static_cast<underlying_type>(v);
@@ -120,13 +120,13 @@ namespace boost
       }
 
         //! conversions from enum_type_cons to underlying_type following the Boost.Conversion protocol
-      friend underlying_type convert_to(enum_type_cons v, 
+      friend underlying_type explicit_convert_to(enum_type_cons v,
                                         boost::conversion::dummy::type_tag<underlying_type> const&)
       {
         return boost::enums::underlying_value(v);
       }
       //! conversions from enum_type_cons to type following the Boost.Conversion protocol
-      friend type convert_to(enum_type_cons v, 
+      friend type explicit_convert_to(enum_type_cons v,
                              boost::conversion::dummy::type_tag<type> const&)
       {
         return boost::enums::native_value(v);

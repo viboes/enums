@@ -34,7 +34,7 @@
         BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
      ) == 0)                                                          \
   {                                                                   \
-    return boost::conversion::convert_to<ENUM>(                                   \
+    return boost::conversion::explicit_convert_to<ENUM>(                                   \
               ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
             );                                                        \
   }
@@ -46,7 +46,7 @@
 
 #define BOOST_ENUMS_DCL_STRING_CONVERSIONS(ENUM, EL)                        \
   inline                                                              \
-  ENUM convert_to(                                                          \
+  ENUM explicit_convert_to(                                                          \
       const char* str,                                                      \
       boost::conversion::dummy::type_tag<ENUM> const&                                   \
     )                                                                       \
@@ -61,12 +61,12 @@
   }                                                                         \
                                                                             \
   inline                                                              \
-  ENUM convert_to(                                                          \
+  ENUM explicit_convert_to(                                                          \
     const std::string& str,                                                 \
     boost::conversion::dummy::type_tag<ENUM> const&                                     \
   )                                                                         \
   {                                                                         \
-    return boost::conversion::convert_to<ENUM>(                                         \
+    return boost::conversion::explicit_convert_to<ENUM>(                                         \
       str.c_str()                                                           \
     );                                                                      \
   }                                                                         \
