@@ -23,7 +23,7 @@
 #include <boost/enums/ordinal/last.hpp>
 #include <boost/enums/ordinal/size.hpp>
 #include <boost/enums/ordinal/traits.hpp>
-#include <boost/conversion/convert_to.hpp>
+#include <boost/conversion/explicit_convert_to.hpp>
 #include <boost/enums/ordinal/linear_traiter.hpp>
 #include <boost/enums/scoped/emulation.hpp>
 #include <cassert>
@@ -55,22 +55,22 @@ typedef  boost::enums::enum_type_cons<EnumClassNS, unsigned char> EnumClass;
 BOOST_ENUMS_SPECIALIZATIONS(EnumClass, unsigned char)
 
 //!  conversion from c-string.
-inline EnumClass convert_to(const char* str
+inline EnumClass explicit_convert_to(const char* str
   , boost::conversion::dummy::type_tag<EnumClass> const&
 )
 {
-    if (strcmp(str, "Default") ==0)  { return boost::conversion::convert_to<EnumClass>(EnumClass::Default); }
-    if (strcmp(str, "Enum1") ==0)    { return  boost::conversion::convert_to<EnumClass>(EnumClass::Enum1); }
-    if (strcmp(str, "Enum2") ==0)  { return  boost::conversion::convert_to<EnumClass>(EnumClass::Enum2); }
+    if (strcmp(str, "Default") ==0)  { return boost::conversion::explicit_convert_to<EnumClass>(EnumClass::Default); }
+    if (strcmp(str, "Enum1") ==0)    { return  boost::conversion::explicit_convert_to<EnumClass>(EnumClass::Enum1); }
+    if (strcmp(str, "Enum2") ==0)  { return  boost::conversion::explicit_convert_to<EnumClass>(EnumClass::Enum2); }
     throw "invalid string for EnumClass";
 }
 
 //!  conversion from std::string.
-inline EnumClass convert_to(const std::string& str
+inline EnumClass explicit_convert_to(const std::string& str
   , boost::conversion::dummy::type_tag<EnumClass> const&
 )
 {
-    return boost::conversion::convert_to<EnumClass>(str.c_str());
+    return boost::conversion::explicit_convert_to<EnumClass>(str.c_str());
 }
 
 //!explicit conversion to c-string.

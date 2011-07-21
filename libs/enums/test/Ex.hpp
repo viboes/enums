@@ -37,9 +37,9 @@ BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EC3), int,
 //~ namespace boost { namespace enums { namespace meta {
   //~ template <> struct underlying_type<EC3> { typedef int type; };
   //~ } } }
-  //~ inline EC3 convert_to(int v , boost::dummy::type_tag<EC3> const& ) { return EC3(v); }
-  //~ inline EC3 convert_to(boost::enums::native_type<EC3>::type v , boost::dummy::type_tag<EC3> const& ) { return v; }
-  //~ inline int convert_to(EC3 v , boost::dummy::type_tag<int> const& ) { return boost::enums::underlying_value(v); }
+  //~ inline EC3 explicit_convert_to(int v , boost::dummy::type_tag<EC3> const& ) { return EC3(v); }
+  //~ inline EC3 explicit_convert_to(boost::enums::native_type<EC3>::type v , boost::dummy::type_tag<EC3> const& ) { return v; }
+  //~ inline int explicit_convert_to(EC3 v , boost::dummy::type_tag<int> const& ) { return boost::enums::underlying_value(v); }
   //~ namespace boost { namespace enums { namespace meta {
     //~ template <> struct size< EC3> { static const std::size_t value=3; };
     //~ template <> struct pos<EC3, EC3 :: Enum0> { static const std::size_t value = 0; };
@@ -50,8 +50,8 @@ BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EC3), int,
     //~ template <> struct val<EC3, 2> { static const boost::enums::native_type<EC3>::type value = EC3::Enum2; };
     //~ template <> struct enum_traits< EC3> : linear_enum_traiter< EC3> {};
       //~ } } }
-    //~ inline EC3 convert_to( const char* str, boost::dummy::type_tag<EC3> const& ) { if (strcmp( str, "Enum0" ) == 0) { return boost::convert_to<EC3>( EC3::Enum0 ); } if (strcmp( str, "Enum1" ) == 0) { return boost::convert_to<EC3>( EC3::Enum1 ); } if (strcmp( str, "Enum2" ) == 0) { return boost::convert_to<EC3>( EC3::Enum2 ); } throw "invalid string for " "EC3"; }
-      //~ inline EC3 convert_to( const std::string& str, boost::dummy::type_tag<EC3> const& ) { return boost::convert_to<EC3>( str.c_str() ); }
+    //~ inline EC3 explicit_convert_to( const char* str, boost::dummy::type_tag<EC3> const& ) { if (strcmp( str, "Enum0" ) == 0) { return boost::explicit_convert_to<EC3>( EC3::Enum0 ); } if (strcmp( str, "Enum1" ) == 0) { return boost::explicit_convert_to<EC3>( EC3::Enum1 ); } if (strcmp( str, "Enum2" ) == 0) { return boost::explicit_convert_to<EC3>( EC3::Enum2 ); } throw "invalid string for " "EC3"; }
+      //~ inline EC3 explicit_convert_to( const std::string& str, boost::dummy::type_tag<EC3> const& ) { return boost::explicit_convert_to<EC3>( str.c_str() ); }
       //~ inline const char* c_str(EC3 e) {
         //~ switch (boost::enums::native_value(e)) { case EC3::Enum0 : return("Enum0"); case EC3::Enum1 : return("Enum1"); case EC3::Enum2 : return("Enum2"); default: throw "invalid value for " "EC3"; } }
 

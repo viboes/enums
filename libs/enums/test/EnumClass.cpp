@@ -31,7 +31,7 @@ int main() {
   std::cout << __LINE__ << std::endl;
 
   { // The wrapper can be constructed from a valid const char* representation
-    EnumClass e = convert_to<EnumClass>("Enum2");
+    EnumClass e = explicit_convert_to<EnumClass>("Enum2");
     BOOST_TEST(e==EnumClass::Enum2);
   }
 #ifdef COMPILE_TIME2
@@ -42,13 +42,13 @@ int main() {
 #endif
 #ifdef RUN_TIME2
   { // The wrapper can not be constructed from an invalid const char* representation
-    EnumClass e = convert_to<EnumClass>("CHASSE");
+    EnumClass e = explicit_convert_to<EnumClass>("CHASSE");
     // ... fail
   }
 #endif
   { // The wrapper can be constructed from a valid std::string representation
     std::string str = "Enum2";
-    EnumClass e = convert_to<EnumClass>(str);
+    EnumClass e = explicit_convert_to<EnumClass>(str);
     BOOST_TEST(e==EnumClass::Enum2);
     BOOST_TEST(strcmp(c_str(e),"Enum2")==0);
   }
@@ -62,14 +62,14 @@ int main() {
 #ifdef RUN_TIME2
   { // The wrapper can not be constructed from an invalid std::string representation
     std::string str = "CHASSE";
-    EnumClass e = convert_to<EnumClass>(str);
+    EnumClass e = explicit_convert_to<EnumClass>(str);
     // ... fail
     BOOST_TEST(e==EnumClass::Enum2);
     BOOST_TEST(strcmp(c_str(e), "CHASSE")==0);
   }
 #endif
   { // Construction of the wrapper with an invalid ints results in run-time error (undefined behavior)
-//    EnumClass e(convert_to<EnumClass>((unsigned char)(6)));
+//    EnumClass e(explicit_convert_to<EnumClass>((unsigned char)(6)));
     BOOST_TEST((unsigned char)(enums::native_type<EnumClass>::type(6))==(unsigned char)(6));
 //    BOOST_TEST(native_value(e)==(unsigned char)(6));
   }

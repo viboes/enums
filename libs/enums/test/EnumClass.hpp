@@ -23,7 +23,7 @@
 #include <boost/enums/ordinal/last.hpp>
 #include <boost/enums/ordinal/size.hpp>
 #include <boost/enums/ordinal/traits.hpp>
-#include <boost/conversion/convert_to.hpp>
+#include <boost/conversion/explicit_convert_to.hpp>
 #include <boost/enums/ordinal/linear_traiter.hpp>
 #include <boost/enums/scoped/emulation.hpp>
 #include <cassert>
@@ -59,22 +59,22 @@ typedef  boost::enums::enum_class_cons<EnumClassNS, unsigned char> EnumClass;
 BOOST_ENUMS_SPECIALIZATIONS(EnumClass, unsigned char)
 
 //!  conversion from c-string.
-inline EnumClass convert_to(const char* str
+inline EnumClass explicit_convert_to(const char* str
   , boost::conversion::dummy::type_tag<EnumClass> const&
 )
 {
-    if (strcmp(str, "Default") ==0)  { return boost::convert_to<EnumClass>(EnumClass::Default); }
-    if (strcmp(str, "Enum1") ==0)    { return  boost::convert_to<EnumClass>(EnumClass::Enum1); }
-    if (strcmp(str, "Enum2") ==0)  { return  boost::convert_to<EnumClass>(EnumClass::Enum2); }
+    if (strcmp(str, "Default") ==0)  { return boost::explicit_convert_to<EnumClass>(EnumClass::Default); }
+    if (strcmp(str, "Enum1") ==0)    { return  boost::explicit_convert_to<EnumClass>(EnumClass::Enum1); }
+    if (strcmp(str, "Enum2") ==0)  { return  boost::explicit_convert_to<EnumClass>(EnumClass::Enum2); }
     throw "invalid string for EnumClass";
 }
 
 //!  conversion from std::string.
-inline EnumClass convert_to(const std::string& str
+inline EnumClass explicit_convert_to(const std::string& str
   , boost::conversion::dummy::type_tag<EnumClass> const&
 )
 {
-    return boost::convert_to<EnumClass>(str.c_str());
+    return boost::explicit_convert_to<EnumClass>(str.c_str());
 }
 
 //!explicit conversion to c-string.
@@ -165,16 +165,16 @@ inline OSTREAM& operator <<(OSTREAM& os, EnumClass v) {
 class EnumClass { 
 public: 
   enum type { Default = 3 , Enum1 , Enum2 }; 
-  inline friend EnumClass convert_to( const char* str, boost::conversion::dummy::type_tag<EnumClass> const& )
+  inline friend EnumClass explicit_convert_to( const char* str, boost::conversion::dummy::type_tag<EnumClass> const& )
   { 
-    if (strcmp( str, "Default" ) == 0) { return boost::convert_to<EnumClass>( EnumClass::Default ); } 
-    if (strcmp( str, "Enum1" ) == 0) { return boost::convert_to<EnumClass>( EnumClass::Enum1 ); } 
-    if (strcmp( str, "Enum2" ) == 0) { return boost::convert_to<EnumClass>( EnumClass::Enum2 ); } 
+    if (strcmp( str, "Default" ) == 0) { return boost::explicit_convert_to<EnumClass>( EnumClass::Default ); }
+    if (strcmp( str, "Enum1" ) == 0) { return boost::explicit_convert_to<EnumClass>( EnumClass::Enum1 ); }
+    if (strcmp( str, "Enum2" ) == 0) { return boost::explicit_convert_to<EnumClass>( EnumClass::Enum2 ); }
     throw "invalid string for " "EnumClass"; 
   } 
-  inline friend EnumClass convert_to( const std::string& str, boost::conversion::dummy::type_tag<EnumClass> const& )
+  inline friend EnumClass explicit_convert_to( const std::string& str, boost::conversion::dummy::type_tag<EnumClass> const& )
   { 
-    return boost::convert_to<EnumClass>( str.c_str() ); 
+    return boost::explicit_convert_to<EnumClass>( str.c_str() );
   } 
   inline friend const char* c_str(EnumClass e) 
   { 
@@ -196,14 +196,14 @@ public:
   explicit EnumClass(underlying_type v) : val_(v) { } 
   EnumClass& operator =(type rhs) { val_=static_cast<underlying_type>(rhs); return *this; } 
   static EnumClass default_value() { EnumClass res; res.val_=static_cast<underlying_type>(EnumClass::type()); return res; } 
-  static EnumClass convert_to(underlying_type v) { EnumClass res; res.val_=v; return res; } 
-  static EnumClass convert_to(type v) { EnumClass res; res.val_=static_cast<underlying_type>(v); return res; } 
+  static EnumClass explicit_convert_to(underlying_type v) { EnumClass res; res.val_=v; return res; }
+  static EnumClass explicit_convert_to(type v) { EnumClass res; res.val_=static_cast<underlying_type>(v); return res; }
   type native_value() const { return type(val_); } 
   underlying_type underlying_value() const { return val_; } 
-  inline friend EnumClass convert_to(int v , boost::conversion::dummy::type_tag<EnumClass> const& ) { return EnumClass::convert_to(v); }
-  inline friend EnumClass convert_to(boost::enums::native_type<EnumClass>::type v , boost::conversion::dummy::type_tag<EnumClass> const& ) { return EnumClass::convert_to(v); }
-  inline friend int convert_to(EnumClass v , boost::conversion::dummy::type_tag<int> const& ) { return boost::enums::underlying_value(v); }
-  inline friend boost::enums::native_type<EnumClass>::type convert_to(EnumClass v , boost::conversion::dummy::type_tag<boost::enums::native_type<EnumClass>::type> const& ) {
+  inline friend EnumClass explicit_convert_to(int v , boost::conversion::dummy::type_tag<EnumClass> const& ) { return EnumClass::explicit_convert_to(v); }
+  inline friend EnumClass explicit_convert_to(boost::enums::native_type<EnumClass>::type v , boost::conversion::dummy::type_tag<EnumClass> const& ) { return EnumClass::explicit_convert_to(v); }
+  inline friend int explicit_convert_to(EnumClass v , boost::conversion::dummy::type_tag<int> const& ) { return boost::enums::underlying_value(v); }
+  inline friend boost::enums::native_type<EnumClass>::type explicit_convert_to(EnumClass v , boost::conversion::dummy::type_tag<boost::enums::native_type<EnumClass>::type> const& ) {
     return boost::enums::native_value(v); 
   } 
   friend inline bool operator ==(EnumClass lhs, EnumClass rhs) { return lhs.native_value() == rhs.native_value(); } 
