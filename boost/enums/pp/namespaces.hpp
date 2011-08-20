@@ -96,8 +96,17 @@
 #define BOOST_ENUMS_NAMESPACES_OPEN_(r, data, elem) namespace elem {
 #endif
 
-#define BOOST_ENUMS_NAMESPACES_OPEN(SEQ) \
+#define BOOST_ENUMS_NAMESPACES_OPEN_NOT_EMPTY(SEQ) \
   BOOST_PP_SEQ_FOR_EACH(BOOST_ENUMS_NAMESPACES_OPEN_, ~, SEQ)
+
+#define BOOST_ENUMS_NAMESPACES_OPEN_EMPTY(SEQ) \
+
+#define BOOST_ENUMS_NAMESPACES_OPEN(SEQ) \
+  BOOST_PP_IIF(                                                       \
+    BOOST_PP_EQUAL(BOOST_PP_SEQ_SIZE(SEQ),0)  \
+    , BOOST_ENUMS_NAMESPACES_OPEN_EMPTY                 \
+    , BOOST_ENUMS_NAMESPACES_OPEN_NOT_EMPTY                 \
+  )(SEQ)
 
 /**
 
@@ -113,8 +122,17 @@
  */
 
 #define BOOST_ENUMS_NAMESPACES_CLOSE_(r, data, elem) }
-#define BOOST_ENUMS_NAMESPACES_CLOSE(SEQ) \
+#define BOOST_ENUMS_NAMESPACES_CLOSE_EMPTY(SEQ)
+
+#define BOOST_ENUMS_NAMESPACES_CLOSE_NOT_EMPTY(SEQ) \
   BOOST_PP_SEQ_FOR_EACH(BOOST_ENUMS_NAMESPACES_CLOSE_, ~, SEQ)
+
+#define BOOST_ENUMS_NAMESPACES_CLOSE(SEQ) \
+  BOOST_PP_IIF(                                                       \
+    BOOST_PP_EQUAL(BOOST_PP_SEQ_SIZE(SEQ),0)  \
+    , BOOST_ENUMS_NAMESPACES_CLOSE_EMPTY                 \
+    , BOOST_ENUMS_NAMESPACES_CLOSE_NOT_EMPTY                 \
+  )(SEQ)
 
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
 // (NS1) ... (NSn)
