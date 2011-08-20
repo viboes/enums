@@ -18,6 +18,8 @@
 #include "./f.hpp"
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/enums/enum_subrange_traiter.hpp>
+#include <boost/conversion/is_extrinsically_explicitly_convertible.hpp>
+#include <boost/static_assert.hpp>
 
 #define RUN_TIME
 #define COMPILE_TIME
@@ -29,10 +31,15 @@ int main() {
   using namespace boost::enums;
 
   std::cout << __LINE__ << std::endl;
+  BOOST_STATIC_ASSERT(( boost::conversion::is_extrinsically_explicitly_convertible< const char*, EnumClass >::value));
+  BOOST_STATIC_ASSERT(( boost::conversion::is_extrinsically_explicitly_convertible< std::string, EnumClass >::value));
 
   { // The wrapper can be constructed from a valid const char* representation
-    EnumClass e = explicit_convert_to<EnumClass>("Enum2");
+    std::string str="Enum2";
+    EnumClass e = boost::conversion::explicit_convert_to<EnumClass>(str);
     BOOST_TEST(e==EnumClass::Enum2);
+    EnumClass e2 = boost::conversion::explicit_convert_to<EnumClass>("Enum2");
+    BOOST_TEST(e2==EnumClass::Enum2);
   }
 #ifdef COMPILE_TIME2
   { // Construction of the wrapper from const char * compile fails
