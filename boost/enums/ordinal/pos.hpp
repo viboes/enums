@@ -36,7 +36,12 @@ namespace boost
       //! its relative position.
         
       //! @Note This meta-function must be specialized for each element of the enumeration.
+#ifdef BOOST_NO_SCOPED_ENUMS
       template <typename EC, typename native_type<EC>::type V>
+#else
+      template <typename EC, EC V>
+#endif
+
 #ifndef BOOST_ENUMS_DOXYGEN_INVOKED
         struct pos; 
 #else
