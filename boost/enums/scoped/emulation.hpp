@@ -133,6 +133,32 @@
     {                                                                         \
       return boost::enums::underlying_value(v);                               \
     }
+
+  #define BOOST_ENUMS_DETAIL_CONVERSIONS_SPECIALIZATIONS(EC, UT)              \
+    namespace boost {                                                         \
+      namespace conversion {                                                  \
+        template <>                                                           \
+        struct explicit_converter_cp<EC,UT> : true_type {                     \
+          EC operator()(UT const &v) {                                        \
+            return EC(v);                                                     \
+          }                                                                   \
+        };                                                                    \
+        template <>                                                           \
+        struct explicit_converter_cp<UT,EC> : true_type {                     \
+          UT operator()(EC const &v) {                                        \
+            return boost::enums::underlying_value(v);                         \
+          }                                                                   \
+        };                                                                    \
+        template <>                                                           \
+        struct explicit_converter_cp<EC,boost::enums::native_type<EC>::type>  \
+          : true_type {                                                       \
+          EC operator()(boost::enums::native_type<EC>::type const &v) {       \
+            return v;                                                         \
+          }                                                                   \
+        };                                                                    \
+      }                                                                       \
+    }                                                                         \
+
 #else
 
 #define BOOST_ENUMS_DETAIL_CONSTRUCTORS(EC, UT)             \
@@ -180,6 +206,37 @@
     return boost::enums::native_value(v);                                     \
   }
 
+  #define BOOST_ENUMS_DETAIL_CONVERSIONS_SPECIALIZATIONS(EC, UT)              \
+    namespace boost {                                                         \
+      namespace conversion {                                                  \
+        template <>                                                           \
+        struct explicit_converter_cp<EC,UT> : true_type {                     \
+          EC operator()(UT const &v) {                                        \
+            return EC::explicit_convert_to(v);                                \
+          }                                                                   \
+        };                                                                    \
+        template <>                                                           \
+        struct explicit_converter_cp<UT,EC> : true_type {                     \
+          UT operator()(EC const &v) {                                        \
+            return boost::enums::underlying_value(v);                         \
+          }                                                                   \
+        };                                                                    \
+        template <>                                                           \
+        struct explicit_converter_cp<EC,boost::enums::native_type<EC>::type>  \
+          : true_type {                                                       \
+          EC operator()(boost::enums::native_type<EC>::type const &v) {       \
+            return EC::explicit_convert_to(v);                                \
+          }                                                                   \
+        };                                                                    \
+        template <>                                                           \
+        struct explicit_converter_cp<boost::enums::native_type<EC>::type, EC> \
+          : true_type {                                                       \
+          boost::enums::native_type<EC>::type operator()(EC const &v) {       \
+            return boost::enums::native_value(v);                             \
+          }                                                                   \
+        };                                                                    \
+      }                                                                       \
+    }                                                                         \
 
 #define BOOST_ENUMS_DETAIL_END_2(EC, UT)                  \
   EC& operator =(type rhs) {                            \
@@ -257,9 +314,13 @@
 
   #define BOOST_ENUMS_OUT(NS_EC, UT)       \
   BOOST_ENUMS_SPECIALIZATIONS(BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC), UT) \
+  BOOST_ENUMS_DETAIL_CONVERSIONS_SPECIALIZATIONS(BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC),UT)
+
+#if 0
   BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
   BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), UT)   \
   BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))
+#endif
 
 #else // BOOST_NO_SCOPED_ENUMS
 
@@ -321,9 +382,14 @@
 
   #define BOOST_ENUMS_OUT(NS_EC, UT)       \
   BOOST_ENUMS_SPECIALIZATIONS(BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC), UT) \
+  BOOST_ENUMS_DETAIL_CONVERSIONS_SPECIALIZATIONS(BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC),UT)
+
+#if 0
   BOOST_ENUMS_NAMESPACES_OPEN(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC)) \
   BOOST_ENUMS_DETAIL_FRIEND_CONVERSIONS(BOOST_ENUMS_NAMESPACES_CLASS_ENUM(NS_EC), UT)   \
   BOOST_ENUMS_NAMESPACES_CLOSE(BOOST_ENUMS_NAMESPACES_CLASS_NS(NS_EC))
+#endif
+
 
 #endif
 #define BOOST_ENUM_NS_CLASS_START(NS_EC, UT)                \
