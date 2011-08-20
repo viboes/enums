@@ -33,6 +33,14 @@
 
 
 #define CTOR
+
+#if 1
+BOOST_ENUMS_ENUM_TYPE_DCL_CONS((EnumClass), unsigned char,
+                                ( (Default)(3) )
+                                ( (Enum1)    )
+                                ( (Enum2)    )
+                                , linear_enum_traiter)
+#else
 #if 1
 
 BOOST_ENUM_TYPE_START(EnumClass, unsigned char) {
@@ -135,7 +143,7 @@ namespace boost {
   }
 }
 
-
+#endif
 
 //! OSTRREAM overloading
 template <typename OSTREAM>
