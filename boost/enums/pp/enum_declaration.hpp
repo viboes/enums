@@ -18,7 +18,7 @@
 #include <boost/enums/pp/namespaces.hpp>
 
 #include <boost/preprocessor/seq.hpp>
-#include <string>
+#include <boost/enums/ordinal.hpp>
 
 /** @file
 
