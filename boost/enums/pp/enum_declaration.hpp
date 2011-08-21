@@ -18,7 +18,7 @@
 #include <boost/enums/pp/namespaces.hpp>
 
 #include <boost/preprocessor/seq.hpp>
-//#include <boost/preprocessor.hpp>
+#include <string>
 
 /** @file
 
@@ -27,12 +27,21 @@
 
 
  */
-
-#define BOOST_ENUMS_ENUM_DCL_STR_TO_ID(P, ENUM, ED)                   \
+#define BOOST_ENUMS_ENUM_DCL_STR_TO_ID2(P, ENUM, ED)                   \
   if (strcmp(                                                         \
         str,                                                          \
         BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
      ) == 0)                                                          \
+  {                                                                   \
+    return boost::conversion::explicit_convert_to<ENUM>(                                   \
+              ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
+            );                                                        \
+  }
+
+#define BOOST_ENUMS_ENUM_DCL_STR_TO_ID(P, ENUM, ED)                   \
+  if (std::string(str)==                                                         \
+        BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
+     )                                                          \
   {                                                                   \
     return boost::conversion::explicit_convert_to<ENUM>(                                   \
               ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
