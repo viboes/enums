@@ -29,115 +29,198 @@
 #include <cassert>
 #include <cstring>
 #include <string>
-#include <boost/enums/scoped/enum_class_cons.hpp>
-#include <boost/enums/scoped/enum_class_no_cons.hpp>
-#include <boost/enums/scoped/enum_type_cons.hpp>
-#include <boost/enums/scoped/enum_type_no_cons.hpp>
+//#include <boost/enums/scoped/enum_class_cons.hpp>
+//#include <boost/enums/scoped/enum_class_no_cons.hpp>
+//#include <boost/enums/scoped/enum_type_cons.hpp>
+//#include <boost/enums/scoped/enum_type_no_cons.hpp>
 #include <boost/enums/pp/enum_declaration.hpp>
 
 #define CTOR
 #if 0
-#if 0
 
-BOOST_ENUM_CLASS_START(EnumClass, unsigned char) {
-  Default = 3,
-  Enum1,
-  Enum2
-} BOOST_ENUM_CLASS_CONS_END(EnumClass, unsigned char)
-#else
+  enum class EnumClass : unsigned char
+  {
+    Default
+  = 3
+  , Enum1
+   , Enum2
 
-struct EnumClassNS {
-  enum type {
-    Default = 3,
-    Enum1,
-    Enum2
+  }
+  ;
+    inline  bool operator ==(EnumClass lhs, EnumClass rhs) {
+        return (unsigned char)(lhs)
+        ==
+        (unsigned char)(rhs);
+      }
+      inline  bool operator !=(EnumClass lhs, EnumClass rhs) {
+        return (unsigned char)(lhs)
+        !=
+        (unsigned char)(rhs);
+      }
+      inline  bool operator <(EnumClass lhs, EnumClass rhs) {
+        return (unsigned char)(lhs)
+        <
+        (unsigned char)(rhs);
+      }
+      inline  bool operator <=(EnumClass lhs, EnumClass rhs) {
+        return (unsigned char)(lhs)
+        <=
+        (unsigned char)(rhs);
+      }
+      inline  bool operator >(EnumClass lhs, EnumClass rhs) {
+        return (unsigned char)(lhs)
+        >
+        (unsigned char)(rhs);
+      }
+      inline  bool operator >=(EnumClass lhs, EnumClass rhs) {
+        return (unsigned char)(lhs)
+        >=
+        (unsigned char)(rhs);
+      }
+
+  namespace boost {
+        namespace enums {
+          namespace meta {
+            template <>
+            struct underlying_type<EnumClass>
+            {
+              typedef unsigned char type;
+            };
+          }
+        }
+      }
+  namespace boost {
+      namespace conversion {
+        template <>
+        struct explicit_converter_cp<EnumClass,unsigned char> : true_type {
+          EnumClass operator()(unsigned char const &v) {
+            return EnumClass(v);
+          }
+        };
+        template <>
+        struct explicit_converter_cp<unsigned char,EnumClass> : true_type {
+          unsigned char operator()(EnumClass const &v) {
+            return boost::enums::underlying_value(v);
+          }
+        };
+        template <>
+        struct explicit_converter_cp<EnumClass,boost::enums::native_type<EnumClass>::type>
+          : true_type {
+          EnumClass operator()(boost::enums::native_type<EnumClass>::type const &v) {
+            return v;
+          }
+        };
+      }
+    }
+  namespace boost {
+    namespace enums {
+      namespace meta {
+        template <>
+  struct size<EnumClass>
+  {
+  enum {value=3};
   };
-}; 
-typedef  boost::enums::enum_class_cons<EnumClassNS, unsigned char> EnumClass;
+        template <>
+  struct pos<EnumClass, EnumClass :: Default>
+  {
+    static const std::size_t value = 0;
+  };
+  template <>
+  struct val<EnumClass, 0>
+  {
+    static const
+    boost::enums::native_type<EnumClass>::type value =
+      EnumClass::Default;
+  }; template <>
+  struct pos<EnumClass, EnumClass :: Enum1>
+  {
+    static const std::size_t value = 1;
+  };
+  BOOST_STATIC_ASSERT((::boost::enums::meta::pos<EnumClass, EnumClass::Enum1>::value == 1));
 
-#endif
-BOOST_ENUMS_SPECIALIZATIONS(EnumClass, unsigned char)
-
-//!  conversion from c-string.
-inline EnumClass explicit_convert_to(const char* str
-  , boost::conversion::dummy::type_tag<EnumClass> const&
-)
-{
-    if (strcmp(str, "Default") ==0)  { return boost::explicit_convert_to<EnumClass>(EnumClass::Default); }
-    if (strcmp(str, "Enum1") ==0)    { return  boost::explicit_convert_to<EnumClass>(EnumClass::Enum1); }
-    if (strcmp(str, "Enum2") ==0)  { return  boost::explicit_convert_to<EnumClass>(EnumClass::Enum2); }
-    throw "invalid string for EnumClass";
-}
-
-//!  conversion from std::string.
-inline EnumClass explicit_convert_to(const std::string& str
-  , boost::conversion::dummy::type_tag<EnumClass> const&
-)
-{
-    return boost::explicit_convert_to<EnumClass>(str.c_str());
-}
-
-//!explicit conversion to c-string.
-inline const char* c_str(EnumClass e)
-{
+  template <>
+  struct val<EnumClass, 1>
+  {
+    static const
+    boost::enums::native_type<EnumClass>::type value =
+      EnumClass::Enum1;
+  }; template <>
+  struct pos<EnumClass, EnumClass :: Enum2>
+  {
+    static const std::size_t value = 2;
+  };
+  template <>
+  struct val<EnumClass, 2>
+  {
+    static const
+    boost::enums::native_type<EnumClass>::type value =
+      EnumClass::Enum2;
+  };
+        template <>
+  struct enum_traits<EnumClass>
+    : linear_enum_traiter<EnumClass>
+  {};
+      }
+    }
+  }
+  namespace boost {
+      namespace conversion {
+        template <>
+        struct explicit_converter_cp<EnumClass,const char*> : true_type {
+          EnumClass operator()(const char* str) {
+            if (strcmp(
+        str,
+        "Default"
+     ) == 0)
+  {
+    return boost::conversion::explicit_convert_to<EnumClass>(
+              EnumClass::Default
+            );
+  } if (strcmp(
+        str,
+        "Enum1"
+     ) == 0)
+  {
+    return boost::conversion::explicit_convert_to<EnumClass>(
+              EnumClass::Enum1
+            );
+  } if (strcmp(
+        str,
+        "Enum2"
+     ) == 0)
+  {
+    return boost::conversion::explicit_convert_to<EnumClass>(
+              EnumClass::Enum2
+            );
+  }
+            throw "invalid string for "
+                "EnumClass";
+          }
+        };
+        template <>
+        struct explicit_converter_cp<EnumClass,std::string> : true_type {
+          EnumClass operator()(std::string const& str) {
+            return boost::conversion::explicit_convert_to<EnumClass>(
+              str.c_str()
+            );
+          }
+        };
+      }
+    }
+  inline
+  const char* c_str(EnumClass e)
+  {
     switch (boost::enums::native_value(e))
     {
-    case EnumClass::Default : return("EnumClass::Default");
-    case EnumClass::Enum1:    return("EnumClass::Enum1");
-    case EnumClass::Enum2 :   return("EnumClass::Enum2");
-    default:
-      return("EnumClass::???");
+      case EnumClass::Default :
+    return("Default"); case EnumClass::Enum1 :
+    return("Enum1"); case EnumClass::Enum2 :
+    return("Enum2");
+      default:
+        throw "invalid value for "
+          "EnumClass";
     }
-}
-
-namespace boost {
-  namespace enums {
-    namespace meta {
-
-    template <>
-    struct size<EnumClass>
-    {
-      BOOST_STATIC_CONSTEXPR std::size_t value = 3;
-    };
-    template <>
-    struct pos<EnumClass, EnumClass::Default>
-    {
-      BOOST_STATIC_CONSTEXPR std::size_t value = 0;
-    };
-    template <>
-    struct pos<EnumClass, EnumClass::Enum1>
-    {
-      BOOST_STATIC_CONSTEXPR std::size_t value = 1;
-    };
-    template <>
-    struct pos<EnumClass, EnumClass::Enum2>
-    {
-      BOOST_STATIC_CONSTEXPR std::size_t value = 2;
-    };
-
-    template <>
-    struct val<EnumClass, 0>
-    {
-      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EnumClass>::type value = EnumClass::Default;
-    };
-    template <>
-    struct val<EnumClass, 1>
-    {
-      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EnumClass>::type value = EnumClass::Enum1;
-    };
-    template <>
-    struct val<EnumClass, 2>
-    {
-      BOOST_STATIC_CONSTEXPR boost::enums::native_type<EnumClass>::type value = EnumClass::Enum2;
-    };
-    template <>
-    struct enum_traits<EnumClass>
-    : linear_enum_traiter<EnumClass>
-    {
-    };
-    } // namespace meta
   }
-}
 #else
 
 

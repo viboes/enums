@@ -13,7 +13,7 @@
 #ifndef EXTYPE_HPP
 #define EXTYPE_HPP
 
-#include <boost/enums/scoped/enum_type_cons.hpp>
+//#include <boost/enums/scoped/enum_type_cons.hpp>
 
 #include <boost/enums/scoped.hpp>
 #include <boost/enums/ordinal.hpp>

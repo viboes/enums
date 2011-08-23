@@ -18,7 +18,9 @@
 #include "./f.hpp"
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/enums/enum_subrange_traiter.hpp>
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
 #include <boost/conversion/is_extrinsically_explicitly_convertible.hpp>
+#endif
 #include <boost/static_assert.hpp>
 
 #define RUN_TIME
@@ -31,9 +33,9 @@ int main() {
   using namespace boost::enums;
 
   std::cout << __LINE__ << std::endl;
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
   BOOST_STATIC_ASSERT(( boost::conversion::is_extrinsically_explicitly_convertible< const char*, EnumClass >::value));
   BOOST_STATIC_ASSERT(( boost::conversion::is_extrinsically_explicitly_convertible< std::string, EnumClass >::value));
-
   { // The wrapper can be constructed from a valid const char* representation
     std::string str="Enum2";
     EnumClass e = boost::conversion::explicit_convert_to<EnumClass>(str);
@@ -41,6 +43,7 @@ int main() {
     EnumClass e2 = boost::conversion::explicit_convert_to<EnumClass>("Enum2");
     BOOST_TEST(e2==EnumClass::Enum2);
   }
+#endif
 #ifdef COMPILE_TIME2
   { // Construction of the wrapper from const char * compile fails
     const char* ptr = 0;
@@ -53,12 +56,14 @@ int main() {
     // ... fail
   }
 #endif
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
   { // The wrapper can be constructed from a valid std::string representation
     std::string str = "Enum2";
     EnumClass e = explicit_convert_to<EnumClass>(str);
     BOOST_TEST(e==EnumClass::Enum2);
     BOOST_TEST(strcmp(c_str(e),"Enum2")==0);
   }
+#endif
   std::cout << __LINE__ << std::endl;
 #ifdef COMPILE_TIME2
   { // Construction of the wrapper from const char * compile fails
