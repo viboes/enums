@@ -33,7 +33,7 @@
         BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
      ) == 0)                                                          \
   {                                                                   \
-    return boost::conversion::explicit_convert_to<ENUM>(                                   \
+    return ENUM(                                   \
               ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
             );                                                        \
   }
@@ -43,7 +43,7 @@
         BOOST_ENUMS_ENUMERATOR_DEFINITION_STR(ED)                     \
      )                                                          \
   {                                                                   \
-    return boost::conversion::explicit_convert_to<ENUM>(                                   \
+    return ENUM(                                   \
               ENUM::BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)          \
             );                                                        \
   }
@@ -96,6 +96,8 @@
     }                                                                       \
   }                                                                         \
 
+
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
 #define BOOST_ENUMS_DCL_STRING_CONVERSIONS_SPECIALIZATIONS(ENUM, EL)        \
     namespace boost {                                                       \
       namespace conversion {                                                \
@@ -137,6 +139,24 @@
     }                                                                       \
   }                                                                         \
 
+#else
+#define BOOST_ENUMS_DCL_STRING_CONVERSIONS_SPECIALIZATIONS(ENUM, EL)        \
+  inline                                                                    \
+  const char* c_str(ENUM e)                                                 \
+  {                                                                         \
+    switch (boost::enums::native_value(e))                                  \
+    {                                                                       \
+      BOOST_PP_SEQ_FOR_EACH(                                                \
+        BOOST_ENUMS_ENUM_DCL_ID_TO_STR,                                     \
+        ENUM,                                                               \
+        EL                                                                  \
+      )                                                                     \
+      default:                                                              \
+        throw "invalid value for "                                          \
+          BOOST_PP_STRINGIZE(ENUM);                                         \
+    }                                                                       \
+  }
+#endif
 
 /**
 

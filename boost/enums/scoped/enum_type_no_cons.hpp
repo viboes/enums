@@ -15,6 +15,7 @@
  \brief  
  The header \c <boost/enums/scoped/enum_type_no_cons.hpp> defines the declaration of enum_type_no_cons<> template class.
  */
+#error
 
 #ifndef BOOST_ENUMS_SCOPED_ENUM_TYPE_NO_CONS_HPP
 #define BOOST_ENUMS_SCOPED_ENUM_TYPE_NO_CONS_HPP

@@ -20,10 +20,10 @@
 #define BOOST_ENUMS_SCOPED_HPP
 
 #include <boost/enums/scoped/emulation.hpp>
-#include <boost/enums/scoped/enum_class_cons.hpp>
-#include <boost/enums/scoped/enum_class_no_cons.hpp>
-#include <boost/enums/scoped/enum_type_cons.hpp>
-#include <boost/enums/scoped/enum_type_no_cons.hpp>
+//#include <boost/enums/scoped/enum_class_cons.hpp>
+//#include <boost/enums/scoped/enum_class_no_cons.hpp>
+//#include <boost/enums/scoped/enum_type_cons.hpp>
+//#include <boost/enums/scoped/enum_type_no_cons.hpp>
 #include <boost/enums/scoped/scoping_type.hpp>
 #include <boost/enums/scoped/native_type.hpp>
 #include <boost/enums/scoped/underlying_type.hpp>

@@ -19,8 +19,9 @@
 #include <boost/enums/ordinal/pos.hpp>
 #include <boost/enums/ordinal/first.hpp>
 #include <boost/enums/ordinal/last.hpp>
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
 #include <boost/conversion/explicit_convert_to.hpp>
-
+#endif
 /*!
  @file
  @brief  
@@ -64,7 +65,7 @@ namespace boost {
       static EC val(std::size_t p)
       {
         typename underlying_type<EC>::type uv = p*step+first_value;
-        return boost::conversion::explicit_convert_to<EC>(uv);
+        return EC(uv);
       }
     };
 
@@ -81,7 +82,7 @@ namespace boost {
 //      static EC val(std::size_t i)
 //      {
 //        typename underlying_type<EC>::type ut = 1<<i;
-//        return boost::conversion::explicit_convert_to<EC>(ut);
+//        return EC(ut);
 //      }
 //    };
   }
