@@ -21,15 +21,13 @@ void pass() {
   using namespace boost::enums;
 
   {
-    BOOST_STATIC_ASSERT((mpl::equal_to<
-      mpl::enum_c<EnumClass, meta::pred<EnumClass,EnumClass::Enum1>::value>,
-      mpl::enum_c<EnumClass, EnumClass::Default>
-    >::value));
+    BOOST_STATIC_ASSERT((
+      int(meta::pred<EnumClass,EnumClass::Enum1>::value) == int(EnumClass::Default)
+    ));
 
-    BOOST_STATIC_ASSERT((mpl::equal_to<
-      mpl::enum_c<EnumClass, meta::pred<EnumClass,EnumClass::Enum2>::value>,
-      mpl::enum_c<EnumClass, EnumClass::Enum1>
-    >::value));
+    BOOST_STATIC_ASSERT((
+      int(meta::pred<EnumClass,EnumClass::Enum2>::value) == int(EnumClass::Enum1)
+    ));
   }
 
 }

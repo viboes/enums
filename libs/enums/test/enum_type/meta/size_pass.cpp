@@ -16,7 +16,7 @@
 void pass() {
   using namespace boost::enums;
 
-  { // has the same size as the underlying type
+  {
     BOOST_STATIC_ASSERT(meta::size<EnumClass>::value == 3);
   }
 

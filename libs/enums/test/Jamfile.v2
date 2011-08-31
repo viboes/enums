@@ -37,7 +37,7 @@ project
         <toolset>gcc-mingw-4.5.0:<cxxflags>-Wno-missing-field-initializers
         <toolset>gcc-mingw-4.5.0:<cxxflags>-fdiagnostics-show-option
         <toolset>msvc:<cxxflags>/wd4127
-	<define>BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
+	#<define>BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
     ;
 
    test-suite "enum_class"

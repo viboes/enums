@@ -19,11 +19,10 @@ void pass() {
   using namespace boost;
   using namespace boost::enums;
 
-  { // has the same size as the underlying type
-    BOOST_STATIC_ASSERT((mpl::equal_to<
-      mpl::enum_c<EnumClass, meta::last<EnumClass>::value>,
-      mpl::enum_c<EnumClass, EnumClass::Enum2>
-    >::value));
+  {
+    BOOST_STATIC_ASSERT((
+      int(meta::last<EnumClass>::value) == int(EnumClass::Enum2)
+    ));
   }
 
 }

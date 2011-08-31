@@ -16,7 +16,7 @@
 void fail() {
   using namespace boost::enums;
 
-  { // has the same size as the underlying type
+  {
     native_type<EnumClass>::type e= meta::val<EnumClass,3>::value;
     (void)(e);
   }
