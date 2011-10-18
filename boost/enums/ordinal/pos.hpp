@@ -37,7 +37,8 @@ namespace boost
         
       //! @Note This meta-function must be specialized for each element of the enumeration.
 #ifdef BOOST_NO_SCOPED_ENUMS
-      template <typename EC, typename native_type<EC>::type V>
+      //template <typename EC, typename native_type<EC>::type V>
+      template <typename EC, int V>
 #else
       template <typename EC, EC V>
 #endif
@@ -65,7 +66,7 @@ namespace boost
     //! @Returns the associated position
     //! @No_Throw
     template <typename EC>
-    std::size_t pos(EC e)
+    BOOST_CONSTEXPR std::size_t pos(EC e)
     {
       return meta::enum_traits<EC>::pos(e);
     }

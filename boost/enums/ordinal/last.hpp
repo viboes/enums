@@ -30,7 +30,7 @@ namespace boost
   {
     namespace meta
     {
-      //! meta-function: first element of an enumeration
+      //! meta-function: last element of an enumeration
       template <typename EC>
       struct last
       {

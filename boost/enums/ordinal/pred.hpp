@@ -51,7 +51,7 @@ namespace boost
     template <typename EC>
     BOOST_CONSTEXPR EC pred(EC e)
     {
-      BOOSt_ASSERT(pos(e)!=0);
+      BOOST_ASSERT(pos(e)!=0);
       return val<EC>(pos(e)-1);
     }
   }

@@ -54,7 +54,7 @@ namespace boost
     template <typename EC>
     EC succ(EC e)
     {
-      BOOSt_ASSERT(pos(e)!=(meta::size<EC>::value-1));
+      BOOST_ASSERT(pos(e)!=(meta::size<EC>::value-1));
       return val<EC>(pos(e)+1);
     }
   }

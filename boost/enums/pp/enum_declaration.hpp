@@ -14,6 +14,7 @@
 #define BOOST_ENUMS_PP_ENUM_DECLARATION_HPP
 
 
+#include <boost/enums/config.hpp>
 #include <boost/enums/pp/enumerator_list.hpp>
 #include <boost/enums/pp/namespaces.hpp>
 
