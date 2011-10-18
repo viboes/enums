@@ -13,7 +13,6 @@
 #ifndef ENUMTYPE_HPP
 #define ENUMTYPE_HPP
 
-
 #include <boost/enums/scoped/underlying_type.hpp>
 #include <boost/enums/scoped/native_type.hpp>
 #include <boost/enums/scoped/default_value.hpp>
@@ -94,6 +93,7 @@ inline const char* c_str(EnumClass e)
     }
 }
 
+#error
 namespace boost {
   namespace enums {
     namespace meta {

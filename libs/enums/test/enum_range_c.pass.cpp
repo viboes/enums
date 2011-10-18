@@ -20,9 +20,9 @@
 #include <boost/mpl/size.hpp>
 #include <boost/mpl/front.hpp>
 #include <boost/mpl/back.hpp>
-#include <boost/mpl/aux_/test.hpp>
 #include "./Ex.hpp"
 #include <boost/enums/mpl/enum_c.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 MPL_TEST_CASE()
 {

@@ -131,7 +131,8 @@
     static const
     boost::enums::native_type<EnumClass>::type value =
       EnumClass::Default;
-  }; template <>
+  };
+  template <>
   struct pos<EnumClass, EnumClass :: Enum1>
   {
     static const std::size_t value = 1;
@@ -223,14 +224,11 @@
   }
 #else
 
-
-BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EnumClass), unsigned char,                  
+BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EnumClass), unsigned char,
                                 ( (Default)(3) )
                                 ( (Enum1)    )
                                 ( (Enum2)    )
                                 , linear_enum_traiter)
-
-
 
 
 #endif

@@ -15,10 +15,10 @@
 
 #include <boost/enums/mpl/enum_range_c.hpp>
 #include <boost/mpl/front.hpp>
-#include <boost/mpl/aux_/test.hpp>
 #include "./Ex.hpp"
 #include <boost/enums/mpl/enum_c.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 MPL_TEST_CASE()
 {

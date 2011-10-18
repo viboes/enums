@@ -11,12 +11,10 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "./EnumType.hpp"
+
 #include <boost/static_assert.hpp>
-//~ #include <boost/enums/mpl/enum_c.hpp>
-//~ #include <boost/mpl/equal_to.hpp>
 
 void pass() {
-  //~ using namespace boost;
   using namespace boost::enums;
 
   {

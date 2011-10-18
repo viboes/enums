@@ -16,8 +16,8 @@
 #include <boost/enums/mpl/enum_range_c.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
-#include <boost/mpl/aux_/test.hpp>
 #include "./Ex.hpp"
+#include <boost/mpl/aux_/test.hpp>
 
 MPL_TEST_CASE()
 {

@@ -17,8 +17,8 @@
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/advance.hpp>
-#include <boost/mpl/aux_/test.hpp>
 #include "./Ex.hpp"
+#include <boost/mpl/aux_/test.hpp>
 
 
 

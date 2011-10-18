@@ -11,16 +11,31 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include <boost/enums/scoped/emulation.hpp>
+#include <boost/enums/pp/enum_declaration.hpp>
 
-BOOST_ENUM_CLASS_START(Color, int) 
-{ Red, Orange, Yellow, Green, Blue, Violet }
-BOOST_ENUM_CLASS_END(Color, int)
-BOOST_ENUMS_SPECIALIZATIONS(Color, int)
+BOOST_ENUMS_ENUM_CLASS_DCL_CONS((Color), int,
+                                ( (Red) )
+                                ( (Orange)    )
+                                ( (Yellow)    )
+                                ( (Green)    )
+                                ( (Blue)    )
+                                ( (Violet)    )
+                                , linear_enum_traiter)
+//BOOST_ENUM_CLASS_START(Color, int)
+//{ Red, Orange, Yellow, Green, Blue, Violet }
+//BOOST_ENUM_CLASS_END(Color, int)
+//BOOST_ENUMS_SPECIALIZATIONS(Color, int)
 
-BOOST_ENUM_CLASS_START(Alert, int) 
-{ Green, Yellow, Red }
-BOOST_ENUM_CLASS_END(Alert, int)
-BOOST_ENUMS_SPECIALIZATIONS(Alert, int)
+
+BOOST_ENUMS_ENUM_CLASS_DCL_CONS((Alert), int,
+                                ( (Green) )
+                                ( (Yellow)    )
+                                ( (Red)    )
+                                , linear_enum_traiter)
+//BOOST_ENUM_CLASS_START(Alert, int)
+//{ Green, Yellow, Red }
+//BOOST_ENUM_CLASS_END(Alert, int)
+//BOOST_ENUMS_SPECIALIZATIONS(Alert, int)
 
 void compile_fail() { 
   Alert a = Alert::Green; 

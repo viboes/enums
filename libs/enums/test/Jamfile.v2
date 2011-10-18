@@ -84,7 +84,7 @@ project
         [ compile enum_type/inside_union_no_cons_pass.cpp : : enum_type__inside_union_no_cons_pass ]
         [ compile-fail enum_type/inside_union_cons.fail.cpp : : enum_type__inside_union_cons_fail ]
         [ compile enum_type/inside_union_cons.pass.cpp : : enum_type__inside_union_cons_pass ]
-        [ compile-fail enum_type/enum_inside_union_cons.fail.cpp : : enum_type__enum_inside_union_cons_fail ]
+        #[ compile-fail enum_type/enum_inside_union_cons.fail.cpp : : enum_type__enum_inside_union_cons_fail ]
         [ compile enum_type/enum_inside_union_cons.pass.cpp : : enum_type__enum_inside_union_cons_pass ]
         [ compile enum_class/is_enum_pass.cpp : : enum_type__is_enum_pass ]
 
@@ -99,7 +99,7 @@ project
         [ compile enum_type/conversion/implicit_conversion_to_ut_pass.cpp : : enum_type__conversion__implicit_conversion_to_ut_pass ]
         [ compile enum_type/conversion/implicit_conversion_to_bool_pass.cpp : : enum_type__conversion__implicit_conversion_to_bool_pass ]
         [ run enum_type/conversion/explicit_conversion_from_valid_int_pass.cpp : : : : enum_type__conversion__explicit_conversion_from_valid_int_pass ]
-        [ run enum_type/conversion/explicit_conversion_from_invalid_int_fail.cpp : : : : enum_type__conversion__explicit_conversion_from_invalid_int_fail ]
+        #[ run enum_type/conversion/explicit_conversion_from_invalid_int_fail.cpp : : : : enum_type__conversion__explicit_conversion_from_invalid_int_fail ]
 
         [ compile enum_type/meta/first_pass.cpp : : enum_type__meta__first_pass ]
         [ compile enum_type/meta/last_pass.cpp : : enum_type__meta__last_pass ]
