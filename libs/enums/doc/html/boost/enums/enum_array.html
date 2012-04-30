@@ -6,7 +6,7 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
 <link rel="home" href="../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.3.0">
 <link rel="up" href="../../index.html#header.boost.enums.containers.enum_array_hpp" title="Header &lt;boost/enums/containers/enum_array.hpp&gt;">
-<link rel="prev" href="val_idp14964960.html" title="Function template val">
+<link rel="prev" href="val_idp14926112.html" title="Function template val">
 <link rel="next" href="operator__.html" title="Function template operator==">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -20,7 +20,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="val_idp14964960.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_array_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator__.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="val_idp14926112.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_array_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator__.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.enums.enum_array"></a><div class="titlepage"></div>
@@ -49,48 +49,48 @@
   <span class="keyword">typedef</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">reverse_iterator</span><span class="special">&lt;</span> <span class="identifier">const_iterator</span> <span class="special">&gt;</span> <a name="boost.enums.enum_array.const_reverse_iterator"></a><span class="identifier">const_reverse_iterator</span><span class="special">;</span>
 
   <span class="comment">// <a class="link" href="enum_array.html#boost.enums.enum_arrayconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T2<span class="special">&gt;</span> enum_array&amp; <a class="link" href="enum_array.html#idp15783376-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T2</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T2<span class="special">&gt;</span> enum_array&amp; <a class="link" href="enum_array.html#idp15780736-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T2</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="enum_array.html#idp15718304-bb">public member functions</a></span>
-  <span class="identifier">iterator</span> <a class="link" href="enum_array.html#idp15718688-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15721296-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15723904-bb"><span class="identifier">cbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="enum_array.html#idp15724784-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15727392-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15730016-bb"><span class="identifier">cend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reverse_iterator</span> <a class="link" href="enum_array.html#idp15730896-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15732752-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15733648-bb"><span class="identifier">crbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reverse_iterator</span> <a class="link" href="enum_array.html#idp15734544-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15736416-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15737312-bb"><span class="identifier">crend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15738208-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15743088-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15747552-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15750816-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15752336-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15754944-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15757552-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15760144-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a class="link" href="enum_array.html#idp15762752-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a class="link" href="enum_array.html#idp15764592-bb"><span class="identifier">max_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="enum_array.html#idp15766432-bb"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="enum_array.html#idp15771440-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="enum_array.html#idp15773536-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="enum_array.html#idp15775328-bb"><span class="identifier">c_array</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="enum_array.html#idp15777312-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="enum_array.html#idp15780512-bb"><span class="identifier">fill</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="enum_array.html#idp15715664-bb">public member functions</a></span>
+  <span class="identifier">iterator</span> <a class="link" href="enum_array.html#idp15716048-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15718656-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15721264-bb"><span class="identifier">cbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="enum_array.html#idp15722144-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15724752-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="enum_array.html#idp15727376-bb"><span class="identifier">cend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reverse_iterator</span> <a class="link" href="enum_array.html#idp15728256-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15730112-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15731008-bb"><span class="identifier">crbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reverse_iterator</span> <a class="link" href="enum_array.html#idp15731904-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15733776-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="enum_array.html#idp15734672-bb"><span class="identifier">crend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15735568-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15740448-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15744912-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15748176-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15749696-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15752304-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="enum_array.html#idp15754912-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="enum_array.html#idp15757504-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a class="link" href="enum_array.html#idp15760112-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a class="link" href="enum_array.html#idp15761952-bb"><span class="identifier">max_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="enum_array.html#idp15763792-bb"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="enum_array.html#idp15768800-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="enum_array.html#idp15770896-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="enum_array.html#idp15772688-bb"><span class="identifier">c_array</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="enum_array.html#idp15774672-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="enum_array.html#idp15777872-bb"><span class="identifier">fill</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="enum_array.html#idp15785648-bb">public static functions</a></span>
-  <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="enum_array.html#idp15786032-bb"><span class="identifier">empty</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">static</span> <span class="identifier">size_type</span> <a class="link" href="enum_array.html#idp15788608-bb"><span class="identifier">rangecheck</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="enum_array.html#idp15783008-bb">public static functions</a></span>
+  <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="enum_array.html#idp15783392-bb"><span class="identifier">empty</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <span class="identifier">size_type</span> <a class="link" href="enum_array.html#idp15785968-bb"><span class="identifier">rangecheck</span></a><span class="special">(</span><span class="identifier">key_type</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="identifier">T</span> <span class="identifier">elems</span><span class="special">;</span>  <span class="comment">// For exposition only. </span>
   <span class="keyword">static</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">static_size</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idp17299568"></a><h2>Description</h2>
+<a name="idp17285904"></a><h2>Description</h2>
 <p>An <code class="computeroutput"><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a></code> supports random access iterators. An instance of <code class="computeroutput">enum_array&lt;T, EC&gt;</code> stores as many elements of type <code class="computeroutput">T</code> as enum literals are on the ordinal enum <code class="computeroutput">EC</code>, so that <code class="computeroutput">size() == meta::size&lt;EC&gt;::value</code> is an invariant.</p>
 <p>The elements of an <code class="computeroutput"><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a></code> are stored contiguously, meaning that if <code class="computeroutput">a</code> is an <code class="computeroutput">enum_array&lt;T, EC&gt;</code>, then it obeys the identity</p>
 <pre class="programlisting">     <span class="special">&amp;</span><span class="identifier">a</span><span class="special">[</span><span class="identifier">n</span><span class="special">]</span> <span class="special">==</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">[</span><span class="number">0</span><span class="special">]</span> <span class="special">+</span> <span class="identifier">n</span> <span class="keyword">for</span> <span class="identifier">all</span> <span class="number">0</span> <span class="special">&lt;=</span> <span class="identifier">n</span> <span class="special">&lt;</span>  <span class="identifier">meta</span><span class="special">::</span><span class="identifier">size</span><span class="special">&lt;</span><span class="identifier">EC</span><span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">.</span>
@@ -106,133 +106,133 @@
 <p>- <span class="bold"><strong><code class="computeroutput">T</code></strong></span>: array's element type. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">EC</code></strong></span>: array's index ordinal enum. </p>
 <div class="refsect2">
-<a name="idp17345312"></a><h3>
+<a name="idp17331648"></a><h3>
 <a name="boost.enums.enum_arrayconstruct-copy-destruct"></a><code class="computeroutput">enum_array</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T2<span class="special">&gt;</span> enum_array&amp; <a name="idp15783376-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T2</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>assignment with type conversion </li></ol></div>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T2<span class="special">&gt;</span> enum_array&amp; <a name="idp15780736-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T2</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>assignment with type conversion </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="idp17358704"></a><h3>
-<a name="idp15718304-bb"></a><code class="computeroutput">enum_array</code> public member functions</h3>
+<a name="idp17345040"></a><h3>
+<a name="idp15715664-bb"></a><code class="computeroutput">enum_array</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idp15718688-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idp15716048-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> iterator for the first element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15721296-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15718656-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> const iterator for the first element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15723904-bb"></a><span class="identifier">cbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15721264-bb"></a><span class="identifier">cbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idp15724784-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idp15722144-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> iterator for position after the last element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15727392-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15724752-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> const iterator for position after the last element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15730016-bb"></a><span class="identifier">cend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idp15727376-bb"></a><span class="identifier">cend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idp15730896-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idp15728256-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> reverse iterator for the first element of reverse iteration </p>
 </li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15732752-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15733648-bb"></a><span class="identifier">crbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15730112-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15731008-bb"></a><span class="identifier">crbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idp15734544-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idp15731904-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> reverse iterator for position after the last element in reverse iteration </p>
 </li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15736416-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15737312-bb"></a><span class="identifier">crend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15733776-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idp15734672-bb"></a><span class="identifier">crend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15738208-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15735568-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">k'pos &lt; static_size</code> </p>
 <p><span class="bold"><strong>Returns:</strong></span> reference to the element with key <code class="computeroutput">k</code> </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15743088-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15740448-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Requires:</strong></span> <code class="computeroutput">k'pos &lt; static_size</code> </p>
 <p><span class="bold"><strong>Returns:</strong></span> constant reference to the element with key k </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15747552-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15744912-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> element with key k </p>
 <p><span class="bold"><strong>Throws:</strong></span> std::range_error if i &gt;= static_size </p>
 </li>
-<li class="listitem"><pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15750816-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15748176-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15752336-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15749696-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> reference to the first element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15754944-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15752304-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> const reference to the first element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15757552-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idp15754912-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> reference to the last element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15760144-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idp15757504-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> const reference to the last element </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a name="idp15762752-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a name="idp15760112-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> linear in meta::size&lt;EC&gt;::value. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a name="idp15764592-bb"></a><span class="identifier">max_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">constexpr</span> <span class="identifier">size_type</span> <a name="idp15761952-bb"></a><span class="identifier">max_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> linear in meta::size&lt;EC&gt;::value. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idp15766432-bb"></a><span class="identifier">swap</span><span class="special">(</span><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idp15763792-bb"></a><span class="identifier">swap</span><span class="special">(</span><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">EC</span> <span class="special">&gt;</span> <span class="special">&amp;</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Effects:</strong></span> <code class="computeroutput">swap_ranges(begin(), end(), y.begin())</code> </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing unless one of the element-wise swap calls throws an exception. Note: Unlike the <code class="computeroutput">swap</code> function for other containers, <code class="computeroutput">enum_array::swap</code> takes linear time, may exit via an exception, and does not cause iterators to become associated with the other container. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a name="idp15771440-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>direct access to data (read-only) <p><span class="bold"><strong>Returns:</strong></span> elems. </p>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a name="idp15768800-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>direct access to data (read-only) <p><span class="bold"><strong>Returns:</strong></span> elems. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">T</span> <span class="special">*</span> <a name="idp15773536-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">T</span> <span class="special">*</span> <a name="idp15770896-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> elems. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">T</span> <span class="special">*</span> <a name="idp15775328-bb"></a><span class="identifier">c_array</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>use <code class="computeroutput"><code class="computeroutput"><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a></code></code> as C array (direct read/write access to data) </li>
+<pre class="literallayout"><span class="identifier">T</span> <span class="special">*</span> <a name="idp15772688-bb"></a><span class="identifier">c_array</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>use <code class="computeroutput"><code class="computeroutput"><a class="link" href="enum_array.html" title="Class template enum_array">enum_array</a></code></code> as C array (direct read/write access to data) </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idp15777312-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idp15774672-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>
 <p>A synonym for fill assign one value to all elements </p>
 <p><span class="bold"><strong>Effects:</strong></span> <code class="computeroutput">std::fill_n(begin(), static_size, value)</code> </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idp15780512-bb"></a><span class="identifier">fill</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idp15777872-bb"></a><span class="identifier">fill</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Effects:</strong></span> <code class="computeroutput">fill_n(begin(), static_size, u)</code> </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="idp17531632"></a><h3>
-<a name="idp15785648-bb"></a><code class="computeroutput">enum_array</code> public static functions</h3>
+<a name="idp17517872"></a><h3>
+<a name="idp15783008-bb"></a><code class="computeroutput">enum_array</code> public static functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">bool</span> <a name="idp15786032-bb"></a><span class="identifier">empty</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">bool</span> <a name="idp15783392-bb"></a><span class="identifier">empty</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p><span class="bold"><strong>Returns:</strong></span> false </p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">size_type</span> <a name="idp15788608-bb"></a><span class="identifier">rangecheck</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span><span class="special">;</span></pre>check range (may be private because it is static) </li>
+<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">size_type</span> <a name="idp15785968-bb"></a><span class="identifier">rangecheck</span><span class="special">(</span><span class="identifier">key_type</span> k<span class="special">)</span><span class="special">;</span></pre>check range (may be private because it is static) </li>
 </ol></div>
 </div>
 </div>
@@ -247,7 +247,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="val_idp14964960.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_array_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator__.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="val_idp14926112.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_array_hpp"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator__.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>
