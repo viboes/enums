@@ -8,13 +8,13 @@
 
 [library Toward Boost.Enums
     [quickbook 1.5]
-    [version 0.2.0]
+    [version 0.3.0]
     [authors [Botet Escriba, Vicente J.]]
     [copyright 2010-2011 Vicente J. Botet Escriba]
     [category Utilities]
     [id boost.enums]
     [dirname enums]
-    [purpose C++0x scoped enums emulation]
+    [purpose C++11 scoped enums emulation]
     [license
         Distributed under the Boost Software License, Version 1.0.
         (See accompanying file LICENSE_1_0.txt or copy at
@@ -69,10 +69,10 @@ A third feature that has been requested for a long time is the ability to conver
 Examples of libraries that have tried to cope with some of these aspects are:
 
 
-* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=enum_rev4.6.zip&directory=& [@Boost.Enum]] by Frank Laub, takes care of scoping, underlying type, iteration and string conversions, but doesn't take care of avoiding implicit conversion and portability to C++0x scoped enums.
+* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=enum_rev4.6.zip&directory=& [@Boost.Enum]] by Frank Laub, takes care of scoping, underlying type, iteration and string conversions, but doesn't take care of avoiding implicit conversion and portability to C++11 scoped enums.
 * This thread [@http://boost.2283326.n4.nabble.com/Smart-enum-td2604736.html Smart enums] and this one [@http://boost.2283326.n4.nabble.com/safe-assign-of-int-to-enum-td2556392.html#a2556400 safe assign of int to enum] are quite interesting. Unfortunately there were no concrete proposal.
-* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=benum_v1.zip&directory=&  [@Boost.SmartEnums]] has complex design to take care of iteration.
-* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=benum_v1.zip&directory=&  [@BEnum]].
+* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=benum_v1.zip&directory=&  [*Boost.SmartEnums]] has complex design to take care of iteration.
+* [@http://www.boostpro.com/vault/index.php?action=downloadfile&filename=benum_v1.zip&directory=&  [*BEnum]].
 
 
 There is also a lot of papers about these simple problems, well, not so simple to get it right. Just type on your preferred search engine a combination of the following words: C++, enum, strong, scoped, smart and safe and you will see. Next follows some I have read:
@@ -105,35 +105,35 @@ There are also some lint tools that help in this concern.
 * String <-> Enum conversions
 
 [heading Scoped enums]
+[/===================]
 
 The main features of scoped enums are 
 * enumerators are in the scope of their enum
 * enums have a defined underlying type
-
-In addition scoped enum classes satisfies:
-
 * enumerators and enums do not implicitly convert to int
 
 The library includes:
 
 * Some meta-functions and functions helping to write portable programs using scoped enum classes under compilers supporting them natively or by an emulation on the others.
-* scoped enum classes with/without implicit conversion to the underlying type and with/without constructors.
+* scoped enum classes with/without constructors.
 * Some language-like macros helping to define scoped enums.
 
-
 [heading Ordinal enums]
+[/====================]
 
 Ordinal enums are discrete types for which the enumerators have an associated position.
 
 The library includes some functions and meta-functions: `first`, `last`, `pred`, `succ`, `pos`, `val`, `size`.
 
 [heading Enum containers]
+[/======================]
 
 * `enum_array` indexed by an enumeration.
 * `enum_set` using a bit for each element of an enumeration. 
 * `enum_range` a run-time range view of an enumeration
 
 [heading MPL enums]
+[/================]
 
 * `enum_c`, a MPL type constant associated to an scoped enumeration.
 * `enum_range_c`, a MPL sequence associated to an scoped enumeration.
@@ -217,22 +217,38 @@ MinGW with
 
 * GCC 4.4.0
 * GCC 4.5.0
-* GCC 4.5.0 C++0x
+* GCC 4.5.0 C++11
 * GCC 4.6.0
-* GCC 4.6.0 C++0x
+* GCC 4.6.0 C++11
+* GCC 4.6.3
+* GCC 4.6.3 C++11
+* GCC 4.7.0
+* GCC 4.7.0 C++11
 
-Ubuntu 10.10
+Ubuntu 11.10
 
-* GCC 4.4.5
-* GCC 4.4.5 -std=c++0x
-* GCC 4.5.1
-* GCC 4.5.1 -std=c++0x
-* clang 2.8
+* clang 2.9
+* clang 2.9 C++11
+* GCC 4.4.6
+* GCC 4.4.6 C++11
+* GCC 4.5.4
+* GCC 4.5.4 C++11
+* intel 12.1.3
+* intel 12.1.3 C++11
 
 Darwin 10 - Snow Leopard 
 
 * clang 1.6 
+* clang 2.8
+* clang 2.9
+* clang 2.9 C++11
+* clang 3.0
+* clang 3.0 C++11
 * GCC 4.2.1
+* GCC 4.6.2
+* GCC 4.6.2 -std=C++11
+* GCC 4.7.0
+* GCC 4.7.0 -std=C++11
 
 [note Please let us know how this works on other platforms/compilers.]
 
@@ -249,9 +265,12 @@ Darwin 10 - Snow Leopard
 [endsect]
 
 [section:tutorial Tutorial]
+[/========================]
 [section:scoped Scoped Enums]
+[/==========================]
 
 [section How to declare a scoped enum class?]
+[/==========================================]
 
 You can define the equivalent of 
 
@@ -274,9 +293,10 @@ using the provided macros as follows
 Simple, isn't it?
 
 [endsect]
-[section How to use scoped enum and the associated literals?]
+[section How to use scoped enums and the associated literals?]
+[/===========================================================]
 
-Scoped enums and the associated literals can be used as the C++0x counterparts in almost all the situations. There are some exception that will need some help from your part. We will see these cases later.
+Scoped enums and the associated literals can be used as the C++11 counterparts in almost all the situations. There are some exceptions that will need some help from your part. We will see these cases later.
 
 
   EnumClass e;
@@ -284,22 +304,24 @@ Scoped enums and the associated literals can be used as the C++0x counterparts i
  
 [endsect]
 [section Are scoped enum classes convertible to the underlying type?]
+[/==================================================================]
 
 Scoped enums classes are strong types and the conversion to the underlying type is not implicit. 
 
   unsigned char c = EnumClass::Enum0; // ERROR
 
-
-If the compiler support Scoped Enums you can do it using explicit conversion.
+If the compiler supports Scoped Enums or explicit conversion operators you can do it using explicit conversion.
 
   unsigned char c = (unsigned char)(e);
 
-When the compiler doesn't support scoped enums you will need to use the `enums::underlying_value()` function to get explicitly the value. Of course the same function works as well when the compiler support Scoped Enums, for portability reasons you should use this function
+When the compiler doesn't supports scoped enums or explicit conversion operators you will need to use the `enums::underlying_value()` function to get explicitly the value. Of course the same function works as well when the compiler support Scoped Enums. For portability reasons you should use this function
 
   EnumClass e = EnumClass::Enum2;
   unsigned char c = enums::underlying_value(e);
 
 [endsect]
+
+[/ ////////////////////////////////////////
 [section How to define a scoped enum type?]
 
 If you need an implicit conversion to the underlying type you could to use scoped enum types. Scoped enum types add implicit conversion to the underlying type. On compiler supporting Scoped enums they can be defined as follows
@@ -324,12 +346,15 @@ Using the library macros this can be defined as follows:
   int i = e; //OK
 
 [endsect]
+] [/ ////////////////////////////////]
 
 [section Can these scoped enums be used inside unions?]
+[/====================================================]
 
 All this depends on your compiler. If the compiler support unrestricted unions, there is no problem. But in the opposite case, you will need to inhibit the constructor.
 
 [section How to inhibit the constructors generation?]
+[/==================================================]
 
 You will need to use the `BOOST_ENUM_XXX_NO_CONS_END` macros to inhibit the constructor generation 
 
@@ -343,6 +368,7 @@ The problem with removing the constructors is that we are unable to have default
 
 [endsect]
 [section How to replace the default constructor?]
+[/==============================================]
 
 The following compiles but the enum value is undefined
 
@@ -350,22 +376,25 @@ The following compiles but the enum value is undefined
     EnumClass e ;
   }
 
-You need to state explicitly that you want the default value, which is 0.
+You need to state explicitly that you want a specific value.
 
-  { // defaults to 0
-    EnumClass e = EnumClass();
+  { 
+    EnumClass e = EnumClass::Enum0;
     BOOST_TEST(e==EnumClass::Enum0);
   }
 
+[/ //////////////////////////////////
 If you have inhibited the constructors, the preceding code could fail as the default constructor doesn't set the value to 0 when emulation is used. The library provides a function that creates scoped enums instances initialized with the default value, i.e., 0.
 
   { // defaults to the enum default
     EnumClass e = default_value<EnumClass>();
     BOOST_TEST(e==EnumClass::Enum0);
   }
+] [/ ////////////////////////////////]
 
 [endsect]
 [section How to replace the copy constructor?]
+[/===========================================]
 
 The following fails to compile if the emulation doesn't adds the needed constructors:
 
@@ -380,29 +409,42 @@ The library provides an assignment operator that allows to have the equivalent a
     BOOST_TEST(e==EnumClass::Enum2);
   }
 
-
 [endsect]
 
 [endsect]
 [section How to use scoped enums in switch statements?]
+[/====================================================]
 
-With scoped enum types the following works as there is an implicit conversion from the emulation to the enum type.
+With C++03 enum types the following works
 
-The following fails to compile as implicit conversion to the enum type is not define:
- 
-  const char* c_str(EnumType e)
+
+  const char* c_str(CXX03EnumType e)
   {
-      switch (e) // conversion from EnumType to native_type<EnumType>::type
+      switch (e) 
       {
-      case EnumType::Enum0 :   return("EnumType::Enum0");
-      case EnumType::Enum1:    return("EnumType::Enum1");
-      case EnumType::Enum2 :   return("EnumType::Enum2");
+      case CXX03EnumType_Enum0 :   return("CXX03EnumType_Enum0");
+      case CXX03EnumType_Enum1:    return("CXX03EnumType_Enum1");
+      case CXX03EnumType_Enum2 :   return("CXX03EnumType_Enum2");
       default:
         return("EnumClass::???");
       }
   }
 
-However, with scoped enum classes the following fails to compile as implicit conversion to the enum type is not define:
+If the compiler supports scoped enums this works as well
+
+  const char* c_str(EnumClass e)
+  {
+      switch (e)
+      {
+      case EnumClass::Enum0 :   return("EnumClass::Enum0");
+      case EnumClass::Enum1:    return("EnumClass::Enum1");
+      case EnumClass::Enum2 :   return("EnumClass::Enum2");
+      default:
+        return("EnumClass::???");
+      }
+  }
+
+However, with emulated scoped enum classes the following fails to compile as a UDT can not be used in a switch:
  
   const char* c_str(EnumClass e)
   {
@@ -432,13 +474,14 @@ The library provides a function `native_value()` that makes this conversion expl
 
 [endsect]
 [section How to use scoped enums as non type template parameters?]
+[/===============================================================]
 
 The following fails to compile as the emulation is not a built-in type:
  
   template <EnumClass e>
   struct ex;
 
-The library provides a meta-function `native_type<>` that return the native enum type in a portable way.
+The library provides a meta-function `native_type<>` that returns the native enum type in a portable way.
 
   template <enums::native_type<EnumClass>::type e>
   struct ex;
@@ -447,6 +490,7 @@ The library provides a meta-function `native_type<>` that return the native enum
 
 
 [section Can scoped enums be used in bitfields?]
+[/=============================================]
 
 The C++ scoped enums can be used in bitfields declarations
 
@@ -465,16 +509,17 @@ As the emulation is not a built-in type this cannot compile in a portable way. [
 
 [endsect]
 [section Where the macro can be placed?]
+[/=====================================]
 
 The macro need to define the scoped enum type on the user namespace, so it seems natural to do the following
 
   namespace UNS
   {
-    BOOST_ENUM_TYPE_START(EnumType, int) {
+    BOOST_ENUM_CLASS_START(EnumType, int) {
       Enum0 = 0,
       Enum1,
       Enum2
-    } BOOST_ENUM_TYPE_END(EnumType, int)
+    } BOOST_ENUM_CLASS_END(EnumType, int)
   }
 
 The problem is that the macro needs to generate some specializations on the `boost::enums` namespace. There are two solutions to this problem:
@@ -502,7 +547,7 @@ The problem is that the macro needs to generate some specializations on the `boo
 
 The option retained by the library is the second one, as you will see when taking in account the ordinal enums, the duplication will be no limited to the enum type and underlying type, but also to the enum literals as well.
 
-Fortunately, when the user doesn't needs to define the scoped enum inside a specific namespace the use of the PP sequence is not needed and 
+Fortunately, when the user doesn't need to define the scoped enum inside a specific namespace the use of the PP sequence is not needed and 
 
     BOOST_ENUM_TYPE_START(EnumType, int) {
       Enum0 = 0,
@@ -516,10 +561,12 @@ works as well.
 [endsect]
 
 [section:ordinal Ordinal Enums]
+[/============================]
 
-While C++0x provides scoped enums, the standard doesn't see an enum as an ordinal type. Language as Pascal and Ada had defined since the beginning attributes that allows to map an enumeration to a continuous range `0..N-1`, so it can be used in for statements and as index of an array.
+While C++11 provides scoped enums, the standard doesn't see an enum as an ordinal type. Language as Pascal and Ada had defined since the beginning attributes that allows to map an enumeration to a continuous range `0..N-1`, so it can be used in for statements and as index of an array.
 
 [section:meta Size, Position and Value]
+[/====================================]
 
 The needed informations are 
 
@@ -539,7 +586,7 @@ The library provides the declaration of the meta-function that will need to be s
 
 and a uniform run-time interface.
 
-  boost::enums::size<EC>(e);
+  boost::enums::size(e);
   boost::enums::pos(e);
   boost::enums::val<EC>(p);
 
@@ -634,6 +681,7 @@ As you can see these macros have the advantage to avoid the duplication of the e
 
 [endsect]
 [section:aux First, Last, Succ and Pred]
+[/=====================================]
 
 Once these meta-informations are given, the user can retrieve in a uniform way the first, last, successor and predecessor.
 
@@ -653,7 +701,9 @@ and a uniform run-time interface.
 [endsect]
 [endsect]
 [section:cont Enum Containers]
+[/===========================]
 [section:set Enum Set]
+[/===========================]
 
 One of the major motivations for the preceding functions and meta-fuction was to be able to define a generic enum set class based on the work of Kevlin Henney.
 
@@ -663,13 +713,13 @@ The `enum_set<EC>` class has as parameter an enum, enum class or enum type and p
 [endsect]
 
 [section:array Enum Arrays]
+[/========================]
 
 As we are able to map the enum to a range `0..N-1` we can define an enum array class based on the `std::array<T,N>` class that use instead an enum as index, `enum_array<T,E>`.
 
 [endsect]
-
-
 [section:range Enum Range]
+[/=======================]
 
 We will not stop here. We can view the enumeration as a range, so we can iterate over all the elements of an enumeration. The class `enum_range<E>` provides this view, so for example we can do
 
@@ -680,21 +730,23 @@ We will not stop here. We can view the enumeration as a range, so we can iterate
 [endsect]
 
 [section:mpl MPL Enums]
+[/====================]
 [section:enum_c MPL constants]
+[/===========================]
 
 Boost.MPL provides integral constants, but we cannot use them with enums as the successor and predecessor have different semantics.
 
-We have created a new MPL tag enum_tag_c and an enumeration constant enum_c so we can specialize the specific behavior of MPL sequences for static enumerations.
+We have created a new MPL tag `enum_tag_c` and an enumeration constant `enum_c` so we can specialize the specific behavior of MPL sequences for static enumerations.
 
 [endsect]
-
 [section:range_c MPL Enum sequences]
+[/=================================]
 
 We can view an enumeration as an MPL sequence. Based on the `integer_range_c<>` class, the `enum_range_c<EC>` allows to visit at compile time all the elements of an enumeration.
 
 [endsect]
-
 [section:sub_type What about reducing the literals of an enumeration?]
+[/===================================================================]
 
 The typical example of enumeration sub-typing is the days of the week and the working days. In Ada we can do
 
@@ -710,22 +762,20 @@ we can define the sub-type `Working_Day` using the `enum_sub_range<>` template c
 
   typedef enums::enum_sub_range<Day_Of_Week, Monday, Friday> Working_Day;
 
-`Working_Day` is implicitly convertible to `Day_Of_Week` and is explicitly constructible from vDay_Of_Week` with a run-time checking of course.
+`Working_Day` is implicitly convertible to `Day_Of_Week` and is explicitly constructible from `Day_Of_Week` with a run-time checking of course.
 
 When the sub-type enumeration literals are not consecutive we need a generic way to state whether it belongs or not. A predicate seems to be the good compromise. Note that this is quite related to the constraint library.
 
   typedef enums::enum_sub_type<Day_Of_Week, P> Working_Day;
 
 These enumeration sub-types `enum_sub_range<>` and `enum_sub_type<>` can be used as well as index of `enum_array<>` and as type of `enum_set<>` and `enum_range<>`.
-
  
 
 [endsect]
-
-
 [endsect]
 
 [section:str String conversions]
+[/=============================]
 
 One of the more requested features to enumerations is to be able to convert to a string in a uniform way.
 
@@ -767,17 +817,14 @@ When the 3rd token is empty or missing, the macro use the enum literal as string
 
   BOOST_ENUMS_CLASS_VM(RGB, int, Red, Green, Blue);
 
-
-
-
-
 [endsect]
-
 [endsect]
 
 [section:examples Examples]
+[/========================]
 
 [section:color Implicit conversion to an integer]
+[/==============================================]
 
 This show the example in [@http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2347.pdf [*N2347: Strongly Typed Enums (revision 3)]] section 2.1. Implicit conversion to an integer.
 
@@ -826,9 +873,9 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
   #include <boost/enums/emulation.hpp>
   #include <iostream>
 
-  BOOST_ENUM_TYPE_START(E, unsigned long) 
+  BOOST_ENUM_CLASS_START(E, unsigned long) 
   {  E1 = 1, E2 = 2, Ebig = 0xFFFFFFF0U }
-  BOOST_ENUM_TYPE_END(E, unsigned long)
+  BOOST_ENUM_CLASS_END(E, unsigned long)
   BOOST_ENUMS_SPECIALIZATIONS(E, unsigned long)
 
 
@@ -878,6 +925,15 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
     [Dan Saks]
 ]
 
+[
+    [[@http://www.two-sdg.demon.co.uk/curbralan/papers/FlagWaiving.pdf [*Flag Waiving]]]
+    [Kevlin Henney]
+]
+[
+    [[@http://en.wikipedia.org/wiki/Enumerated_type#Ada [*Ada]]]
+    []
+]
+
 ]
 
 [endsect]
@@ -903,7 +959,13 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 [/=================]
 
 [section:history Appendix A: History]
+[section [*Version 0.3.0, June 1, 2012] ]
 
+[*Removed Features:]
+
+* Scoped enum types have been removed as C++11 don't provide scoped enums implicitly convertible to the underlying type.
+
+[endsect]
 [section [*Version 0.2.0, Mars 23, 2011] ]
 
 [*New Features:]
@@ -988,8 +1050,7 @@ Nest follows the skeleton of the emulation class
 
 [heading What about using nested static constants instead of enum literals?]
 
-
-
+TBC.
 
 [heading Why an alternative design for the SCOPED ENUM macros?]
 
@@ -1040,12 +1101,15 @@ For compilers that support scoped enums but that doesn't define the underlying_t
 
 [heading Performance comparison between the use of the emulated enums and direct use of ints]
 
+TBC.
+
 [endsect]
 [section:acknowledgements Appendix D: Acknowledgements]
 
 Thanks to Beman Dawes for opening the initial discussion. Daniel James for giving the idea of the alternative implementation and to Matt Calabrese for his insightful comments on the ML. This library will never be created without the exchanges they made on the ML (see [@http://boost.2283326.n4.nabble.com/Boost-Dev-f2600599.html here]).
 
 [endsect]
+[/ ///////////////////////////////
 [section:tests  Appendix E: Tests]
 
 [section scoped_enum_class]
@@ -1078,6 +1142,7 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 [endsect]
 
 [endsect]
+][/ ///////////////////////////////]
 
 [/=====================================]
 [section:todo  Appendix F: Future plans]
@@ -1101,6 +1166,7 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 [endsect]
 [endsect]
 
+[/ //////////////////////
 [section:indexes Indexes]
 
 [? enable_index
@@ -1121,5 +1187,6 @@ Thanks to Beman Dawes for opening the initial discussion. Daniel James for givin
 '''
 ]
 [endsect] [/section:indexes Indexes]
+][/ ///////////////////////////////]
 
 

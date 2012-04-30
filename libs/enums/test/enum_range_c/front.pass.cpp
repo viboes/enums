@@ -22,10 +22,11 @@
 
 MPL_TEST_CASE()
 {
-    typedef enum_range_c<EC3,0,1> range1;
+  typedef enum_range_c<EC3,0,1> range1;
+  typedef enum_c<EC3,EC3::Enum0> v;
 
-//    MPL_ASSERT_RELATION( front<range1>::type::value, ==, EC3::Enum0 );
-//    MPL_ASSERT_RELATION( front<range3>::type::value, ==, EC3::Enum0 );
+  //MPL_ASSERT_RELATION( v::value, ==, EC3::Enum0 );
+    //MPL_ASSERT_RELATION( front<range1>::type::value, ==, EC3::Enum0 );
     MPL_ASSERT(( is_same<enum_c<EC3,front<range1>::type::value>,
         enum_c<EC3,EC3::Enum0> > ));
     MPL_ASSERT(( is_same< enum_c<EC3,front<range1>::type::value>,

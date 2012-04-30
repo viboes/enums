@@ -12,7 +12,7 @@
 
 /*!
  \file
- \brief  
+ \brief
  This header defines the is_enum meta-function that replace std::is_enum when we want to take care of the scoped enum emulation.
  */
 
@@ -33,19 +33,19 @@ namespace boost
     template <typename T>
       struct is_emulated_enum : mpl::false_
       {
-        //! the result of this meta-function is false by default. 
-        //! is_emulated_enum must be specialized for each emulated enum. 
+        //! the result of this meta-function is false by default.
+        //! is_emulated_enum must be specialized for each emulated enum.
       };
 
-    /*! meta-function checking if his parameter is a builtin or emulated enum, that is can be used as an emulated enum.
+    /*! meta-function checking if his parameter is a built-in or emulated enum, that is can be used as an emulated enum.
      */
     template <typename T>
 	  struct is_enum
 #ifdef BOOST_ENUMS_DOXYGEN_INVOKED
-      //! The member \c value states whether \c T can be used as an enum. 
-      //! When scoped enums are not supported it is defined as \c std::is_enum<T>::value or \c is_emulated_enum<T>::value. 
+      //! The member \c value states whether \c T can be used as an enum.
+      //! When scoped enums are not supported it is defined as \c std::is_enum<T>::value or \c is_emulated_enum<T>::value.
       //! Otherwise is defined as \c std::is_enum<T>::value.
-      : bool_type 
+      : bool_type
 #else
   #ifdef BOOST_NO_SCOPED_ENUMS
       : mpl::or_<boost::is_enum<T>, is_emulated_enum<T> >
@@ -54,8 +54,8 @@ namespace boost
   #endif
 #endif
     {
-      
-	  };    
+
+	  };
   }
 }
 

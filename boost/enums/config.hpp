@@ -25,28 +25,26 @@
 #else
 #endif
 
-#if defined(__GNUC__)
-  #if defined(__GXX_EXPERIMENTAL_CXX0X__)
+#if defined __clang__
+
+#if !__has_feature(cxx_unrestricted_unions)
+#  define BOOST_NO_UNRESTRICTED_UNION
+#endif
+
+#elif defined __GNUC__
+
+  #if defined __GXX_EXPERIMENTAL_CXX0X__
     #if ((__GNUC__ < 4) || (__GNUC__ == 4 && __GNUC_MINOR__ < 6))
       #define BOOST_NO_UNRESTRICTED_UNION
     #endif
   #else
     #define BOOST_NO_UNRESTRICTED_UNION
   #endif
-#else
-  #define BOOST_NO_UNRESTRICTED_UNION
-#endif
 
-#if defined(__GNUC__)
-  #if defined(__GXX_EXPERIMENTAL_CXX0X__)
-    #if ((__GNUC__ < 4) || (__GNUC__ == 4 && __GNUC_MINOR__ < 5))
-      #define BOOST_NO_ENUM_UNRESTRICTED_UNION
-    #endif
-  #else
-    #define BOOST_NO_ENUM_UNRESTRICTED_UNION
-  #endif
 #else
-  #define BOOST_NO_ENUM_UNRESTRICTED_UNION
+
+  #define BOOST_NO_UNRESTRICTED_UNION
+
 #endif
 
 #endif // BOOST_ENUMS_CONFIG_HPP

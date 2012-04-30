@@ -12,7 +12,7 @@
 
 /*!
  \file
- \brief  
+ \brief
  The header \c <boost/enums/scoped/scoping_type.hpp> defines the declaration of scoping_type<> meta-function.
  */
 
@@ -28,30 +28,30 @@ namespace boost
     namespace meta
     {
       //! meta-function to be specialized for each emulated enum class.
-       
+
       //! <b>Requires</b> \c EC must be an enum type or the emulation of a scoped enum.\n\n
       template <typename EC_type>
       struct scoping_type
       {
-        
-        //! By default this metafunction defines it as if scoped enums where 
+
+        //! By default this metafunction defines it as if scoped enums where
         //! supported.
         typedef EC_type type;
-      };    
+      };
     }
     //! Get the wrapping class of an enum when emulation
     //!  is used or the enum class itself when available.
-    //!  
+    //!
     //! @Note This meta-function must be specialized for each enum class.
     //! @Requires \c EC must be an enum type or the emulation of a scoped enum.\n\n
     template <typename EC_type>
     struct scoping_type
     {
 
-      //! Depending on whethere the compiler supports scoped enums or not the 
-      //!  nested type must be the same type or the emulated one. 
+      //! Depending on whether the compiler supports scoped enums or not the
+      //!  nested type must be the same type or the emulated one.
       typedef typename meta::scoping_type<EC_type>::type type;
-    };    
+    };
   }
 }
 

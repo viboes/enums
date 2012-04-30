@@ -18,6 +18,7 @@
 
 #include <boost/mpl/empty_fwd.hpp>
 #include <boost/mpl/equal_to.hpp>
+#include <boost/mpl/begin_end.hpp>
 #include <boost/enums/mpl/aux_/enum_range_c/tag.hpp>
 
 namespace boost { namespace mpl {
@@ -27,8 +28,8 @@ struct empty_impl< aux::half_open_enum_range_tag >
 {
     template< typename Range > struct apply
         : equal_to<
-              typename Range::begin::position
-            , typename Range::end::position
+              typename begin<Range>::type::position
+            , typename end<Range>::type::position
             >
     {
     };

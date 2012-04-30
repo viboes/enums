@@ -10,12 +10,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+#include <boost/enums/config.hpp>
 #include <boost/enums/scoped.hpp>
 
 struct C
 {
   int i;
-  C() : i(){};
+  C() : i(0){};
 };
 
 #if !defined(BOOST_NO_UNRESTRICTED_UNION)
@@ -26,5 +27,7 @@ union U {
   C c;
   int i;
 };
+
+U u;
 #endif
 

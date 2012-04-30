@@ -4,7 +4,7 @@
 <title>Macro BOOST_ENUMS_ENUM_TYPE_DCL_NO_CONS</title>
 <link rel="stylesheet" href="./boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
-<link rel="home" href="index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.2.0">
+<link rel="home" href="index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.3.0">
 <link rel="up" href="index.html#header.boost.enums.pp.enum_declaration_hpp" title="Header &lt;boost/enums/pp/enum_declaration.hpp&gt;">
 <link rel="prev" href="BOOST_ENUMS_ENUM_TYPE_DCL_CONS.html" title="Macro BOOST_ENUMS_ENUM_TYPE_DCL_CONS">
 <link rel="next" href="BOOST_ENUMS_ENUM_CLASS_DCL_CONS.html" title="Macro BOOST_ENUMS_ENUM_CLASS_DCL_CONS">
@@ -33,13 +33,15 @@
 
 </span>BOOST_ENUMS_ENUM_TYPE_DCL_NO_CONS(NS_EC, UT, EL, TRAITER)</pre></div>
 <div class="refsect1">
-<a name="id36389349"></a><h2>Description</h2>
+<a name="idp19615056"></a><h2>Description</h2>
 <p><span class="bold"><strong>Parameters:</strong></span> </p>
 <p>- <span class="bold"><strong><code class="computeroutput">NS_EC</code></strong></span>: the <code class="computeroutput">NAMESPACES_CLASS</code> sequence. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">UT</code></strong></span>: the underlying type. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">EL</code></strong></span>: the <code class="computeroutput">ENUMERATOR_LIST</code> sequence. </p>
 <p>- <span class="bold"><strong><code class="computeroutput">TRAITER</code></strong></span>: the enum traiter template class.</p>
-<p><span class="bold"><strong>Result:</strong></span> </p>
+<p><span class="bold"><strong>Result:</strong></span> @ BOOST_ENUMS_ENUM_TYPE_DCL_NO_CONS((NS1)...(NSk)(EC), UT, ((E1))...((En)), TRAITER)</p>
+<p>namespace NS1 { ... namespace NSk {</p>
+<p>class EC { public: enum type { E1, ... En }; typedef UT underlying_type; private: underlying_type val_; public: operator type() { return type(val_); } EC&amp; operator =(type rhs) { val_=static_cast&lt;underlying_type&gt;(rhs); return *this; } static EC default_value() { EC res; res.val_=static_cast&lt;underlying_type&gt;(EC::type()); return res; } type native_value() const { return type(val_); } underlying_type underlying_value() const { return val_; } }; } // NSk ... } // NS1</p>
 <pre class="programlisting"> <span class="identifier">BOOST_ENUM_NS_TYPE_START</span><span class="special">(</span><span class="identifier">NS_EC</span><span class="special">,</span> <span class="identifier">UT</span><span class="special">)</span>
  <span class="special">{</span>
    <span class="identifier">BOOST_ENUMS_ENUMERATOR_LIST_GENERATE</span><span class="special">(</span><span class="identifier">EL</span><span class="special">)</span>                       

@@ -20,16 +20,16 @@
 
 namespace boost {
   namespace mpl {
-    //template <typename EC, typename enums::native_type<EC>::type V>
-      template <typename EC, int V>
+      template <typename EC, typename enums::native_type<EC>::type V>
+      //template <typename EC, int V>
       struct enum_c {
         typedef enum_c_tag tag;
         typedef typename enums::native_type<EC>::type native_type;
-        BOOST_STATIC_CONSTEXPR typename enums::native_type<EC>::type value = native_type(V);
+        BOOST_STATIC_CONSTEXPR typename enums::native_type<EC>::type value = V;
         typedef enum_c type;
         typedef typename enums::native_type<EC>::type value_type;
         typedef typename enums::underlying_type<EC>::type underlying_type;
-        operator value_type() const { return this->value; }
+        operator EC() const { return EC(V); }
       };
 
   }

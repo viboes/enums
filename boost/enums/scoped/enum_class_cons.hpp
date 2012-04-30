@@ -12,7 +12,7 @@
 
 /*!
  @file
- @brief  
+ @brief
  The header \c <boost/enums/scoped/enum_class_cons.hpp> defines the declaration of enum_class_cons<> template class.
  */
 #error
@@ -37,42 +37,42 @@ namespace boost
     //! @Param{UT,the underlaying storage type}
     //! @Requires @c ScopedEnum must have a nested C++98 enum @c type.
     //!
-    //! @c enum_class_cons wraps the underlying type @c UT providing only the 
-    //! needed constructors, explicit conversion operations and comparison operators. 
-    //! The inheritance to a scoping struct @ScopedEnum mak available the scoped 
+    //! @c enum_class_cons wraps the underlying type @c UT providing only the
+    //! needed constructors, explicit conversion operations and comparison operators.
+    //! The inheritance to a scoping struct @ScopedEnum mak available the scoped
     //! enumerators as if they where defined here.
     //!
-    //! This class is not implicitly convertible to the underlying type, 
-    //! neither to the enum type. Explicit conversion can be done using @c 
+    //! This class is not implicitly convertible to the underlying type,
+    //! neither to the enum type. Explicit conversion can be done using @c
     //! underlying_value<>(e), @c native_value<>(e) or the @c explicit_convert_to<>(e).
     //! @Note This class can not be used inside a union with compilers that donesn't support unrestricted unions.
-    
+
     template <typename ScopedEnum, typename UT=int>
-    class enum_class_cons : public ScopedEnum 
-    {                    
-    public:     
+    class enum_class_cons : public ScopedEnum
+    {
+    public:
       //! c++98 native enum type
       typedef typename ScopedEnum::type type;
       //! underlying type
-      typedef UT underlying_type;                   
+      typedef UT underlying_type;
     private:
       //! storage for exposition only
-      underlying_type val_;                         
+      underlying_type val_;
     public:
-      //! default construct 
-      
+      //! default construct
+
       //! @Effects As if it was initialized using the default constructor of the native enum type.
       //! @Post type(this->val_) == type()
       enum_class_cons()
       : val_(static_cast<underlying_type>(type()))
       {
       }
-      //! explicit constructor from underlying type
-      //! @Post val_ == v
-      explicit enum_class_cons(underlying_type v)
-      : val_(v)
-      {
-      }
+//      //! explicit constructor from underlying type
+//      //! @Post val_ == v
+//      explicit enum_class_cons(underlying_type v)
+//      : val_(v)
+//      {
+//      }
       //! constructor from enum type
       //! @Post type(val_) == v
       enum_class_cons(type v)
@@ -95,7 +95,7 @@ namespace boost
         val_=static_cast<underlying_type>(rhs);
         return *this;
       }
-      
+
       //! default_value builder
       //!
       //! This function is provided to be uniform with scoped enums with no constructors.
@@ -104,24 +104,24 @@ namespace boost
       {
         enum_class_cons res;
         res.val_=static_cast<underlying_type>(type());
-        return res;  
+        return res;
       }
-      
-      //! explicit conversion function to enum type        
+
+      //! explicit conversion function to enum type
 
       //! @Returns @c type(val_).
       type native_value() const
       {
         return type(val_);
       }
-      //! explicit conversion function to underlying_type        
+      //! explicit conversion function to underlying_type
 
       //! @Returns @c val_.
       underlying_type underlying_value() const
       {
         return val_;
       }
-      
+
       //! equal operator
 
       //! @Returns <tt>lhs.val_ == rhs.val_</tt>.
@@ -136,15 +136,15 @@ namespace boost
         return lhs == rhs.val_;
       }
       //! equal operator
-      
-      //! @Returns <tt>lhs.val_ == rhs</tt>.      
+
+      //! @Returns <tt>lhs.val_ == rhs</tt>.
       friend bool operator==(enum_class_cons lhs, type rhs)
       {
         return lhs.val_ == rhs;
       }
       //! not_equal operator
       //! @Returns <tt>lhs.val_ != rhs.val_</tt>.
-      
+
       friend bool operator!=(enum_class_cons lhs, enum_class_cons rhs)
       {
         return lhs.val_ != rhs.val_;
@@ -157,8 +157,8 @@ namespace boost
         return lhs != rhs.val_;
       }
       //! not_equal operator
-      
-      //! @Returns <tt>lhs.val_ != rhs</tt>.      
+
+      //! @Returns <tt>lhs.val_ != rhs</tt>.
       friend bool operator!=(enum_class_cons lhs, type rhs)
       {
         return lhs.val_ != rhs;
@@ -182,7 +182,7 @@ namespace boost
         return lhs.val_ <= rhs;
       }
       //! less operator
-      //! @Returns <tt>lhs.val_ < rhs.val_</tt>.     
+      //! @Returns <tt>lhs.val_ < rhs.val_</tt>.
       friend bool operator<(enum_class_cons lhs, enum_class_cons rhs)
       {
         return lhs.val_ < rhs.val_;
@@ -235,7 +235,7 @@ namespace boost
       {
         return lhs.val_ > rhs;
       }
-      
+
       //! conversions from enum_class_cons to underlying_type following the Boost.Conversion protocol
 
       //! @Returns <tt>boost::enums::underlying_value(v)</tt>.
@@ -244,7 +244,7 @@ namespace boost
       {
         return boost::enums::underlying_value(v);
       }
-      
+
       //! conversions from enum_class_cons to type following the Boost.Conversion protocol
 
       //! @Returns <tt>boost::enums::native_value(v)</tt>.
@@ -253,7 +253,7 @@ namespace boost
       {
         return boost::enums::native_value(v);
       }
-    };    
+    };
   }
 }
 

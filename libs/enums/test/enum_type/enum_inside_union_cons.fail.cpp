@@ -29,5 +29,11 @@ union U {
   Ex::EC_Cons e;
   int i;
 };
+void pass() {
+
+  U u;
+  u.e = EC_Cons::E1;
+
+}
 #endif
 

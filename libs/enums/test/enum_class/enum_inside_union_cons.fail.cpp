@@ -34,7 +34,8 @@ BOOST_ENUM_NS_CLASS_START((Ex)(EC_Cons), int) {
 
 #endif
 
-#if !defined(BOOST_NO_ENUM_UNRESTRICTED_UNION) || !defined(BOOST_NO_SCOPED_ENUMS)
+#if !defined(BOOST_NO_ENUM_UNRESTRICTED_UNION)
+//|| !defined(BOOST_NO_SCOPED_ENUMS)
 #error "force error as not applicable as unrestricted union available"
 #else
 // The ENUM can NOT be used as member of a union as it is the case of the underlying enum.

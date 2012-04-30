@@ -16,9 +16,13 @@
 int main() {
   using namespace boost::enums;
 #ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
-
   { // Explicit conversion from valid int works
     EnumClass e(boost::conversion::explicit_convert_to<EnumClass>((unsigned char)(4)));
+    BOOST_TEST(e==EnumClass::Enum1);
+  }
+#else
+  { // Explicit conversion from valid int works
+    EnumClass e(4);
     BOOST_TEST(e==EnumClass::Enum1);
   }
 #endif

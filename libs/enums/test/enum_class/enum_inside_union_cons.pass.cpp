@@ -163,7 +163,7 @@ BOOST_ENUMS_ENUM_CLASS_DCL_CONS((Ex)(EC_Cons), int,
 #if defined(BOOST_NO_ENUM_UNRESTRICTED_UNION)
 //#warning "not applicable as unrestricted union not available"
 #else
-// The ENUM can NOT be used as member of a union as it is the case of the underlying enum.
+// The ENUM can be used as member of a union as it is the case of the underlying enum.
 union U {
   Ex::EC_Cons e;
   int i;
