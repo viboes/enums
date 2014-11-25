@@ -1,0 +1,4 @@
+enums
+=====
+
+C++ Enums library
