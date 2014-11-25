@@ -7,18 +7,26 @@
 
 # See library home page at http://www.boost.org/libs/opaque
 
+import testing ;  # Bring in rules for testing
 
 if ! $(BOOST_ROOT)
 {
     BOOST_ROOT = [ modules.peek : BOOST_ROOT ] ;
 }
 
+if ! $(CONVERSION_ROOT)
+{
+    CONVERSION_ROOT = [ modules.peek : CONVERSION_ROOT ] ;
+}
+
 project
     : requirements
 
-        # uncomment the line above if you build outside a Boost release
-        #<include>$(BOOST_ROOT)
         <include>.
+        <include>../../..
+        # uncomment the line above if you build outside a Boost release
+        <include>$(CONVERSION_ROOT)
+        <include>$(BOOST_ROOT)
 
         <define>BOOST_ENABLE_WARNINGS
         <warnings>all
