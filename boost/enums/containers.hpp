@@ -11,15 +11,15 @@
 //////////////////////////////////////////////////////////////////////////////
 /*!
  \file
- \brief  
+ \brief
  Include all the enum containers.
  */
 
 #ifndef BOOST_ENUMS_CONTAINERS_HPP
 #define BOOST_ENUMS_CONTAINERS_HPP
 
-#include <boost/enums/containers/range.hpp>
-#include <boost/enums/containers/set.hpp>
-#include <boost/enums/containers/array.hpp>
-   
+#include <boost/enums/containers/enum_range.hpp>
+#include <boost/enums/containers/enum_set.hpp>
+#include <boost/enums/containers/enum_array.hpp>
+
 #endif // BOOST_ENUMS_CONTAINERS_HPP
