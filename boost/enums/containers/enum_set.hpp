@@ -434,6 +434,7 @@ namespace boost {
 
     public:
 
+      std::bitset<enums::meta::size<T>::value> detail_bits() { return bits; }
       std::bitset<enums::meta::size<T>::value> detail_bits() const { return bits; }
     };
 
