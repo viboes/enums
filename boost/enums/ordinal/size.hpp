@@ -43,7 +43,7 @@ namespace boost {
     //! @Returns the number of elements of an enumeration @c EC.
     //! @NoThrow
     template <typename EC>
-    std::size_t size()
+    BOOST_CONSTEXPR std::size_t size()
     {
         return meta::size<EC>();
     }

@@ -14,7 +14,7 @@
 
 /*!
  \file
- \brief  
+ \brief
  The header \c <boost/enums/containers/enum_set.hpp> defines a class template \c enum_set<T> for managing sets of enumeration and several
  //! related functions for representing and manipulating sets of enums. We can say that
  \c enum_set is the counterpart of \c std::bitset when the index are enums.
@@ -39,24 +39,24 @@
 namespace boost {
   namespace enums {
 
-    /** 
+    /**
       @TParams
       @Param{T,set's element ordinal enum}
       @Requires @c T must be a model of <em>OrdinalEnum</em>.
-     
-     The class template @c enum_set<T> describes an object that can store a sequence 
+
+     The class template @c enum_set<T> describes an object that can store a sequence
      consisting of a fixed number of bits, given by @c enums::meta::size<T>::value.
-     
-     Each bit represents either the value zero (reset) or one (set). To toggle 
-     a bit is to change the value zero to one, or the value one to zero. Each 
-     bit has a non-negative position pos. When converting between an object of 
-     class enum_set<T> and a value of some integral type, bit position pos 
-     corresponds to the bit value 1<<pos. The integral value corresponding to 
+
+     Each bit represents either the value zero (reset) or one (set). To toggle
+     a bit is to change the value zero to one, or the value one to zero. Each
+     bit has a non-negative position pos. When converting between an object of
+     class enum_set<T> and a value of some integral type, bit position pos
+     corresponds to the bit value 1<<pos. The integral value corresponding to
      two or more bits is the sum of their bit values.
-     The functions described in this section can report three kinds of errors, 
+     The functions described in this section can report three kinds of errors,
      each associated with a distinct exception:
-     - an invalid-argument error is associated with exceptions of type @c std::invalid_argument; 
-     - an out-of-range error is associated with exceptions of type @c std::out_of_range; 
+     - an invalid-argument error is associated with exceptions of type @c std::invalid_argument;
+     - an out-of-range error is associated with exceptions of type @c std::out_of_range;
      - an overflow error is associated with exceptions of type @c std::overflow_error.
 
      */
@@ -68,51 +68,51 @@ namespace boost {
     {
     public:
       //! @brief A proxy class that acts as a reference to a single bit.
-      
-      //! It contains an assignment operator, a conversion to @c bool, 
-      //! an @c operator~, and a member function @c flip. 
-      //! It exists only as a helper class for @c enum_set's @c operator[]. 
+
+      //! It contains an assignment operator, a conversion to @c bool,
+      //! an @c operator~, and a member function @c flip.
+      //! It exists only as a helper class for @c enum_set's @c operator[].
       class reference {
         friend class enum_set<T>;
         enum_set<T>& ref_;
         T pos_;
         reference();
-        reference(enum_set<T>& ref, T pos) 
+        reference(enum_set<T>& ref, T pos)
         : ref_(ref), pos_(pos)
-        { }        
+        { }
       public:
-        ~reference() 
-        { }        
-        
+        ~reference()
+        { }
+
         //! assignement from bool
-        reference& operator=(bool x) 
-        { 
+        reference& operator=(bool x)
+        {
           ref_.set(pos_,x);
           return *this;
         }
-        
+
         //! assignement from another reference
-        reference& operator=(const reference& x) 
-        { 
+        reference& operator=(const reference& x)
+        {
           ref_.set(pos_,x);
           return *this;
         }
-        
-        //! flip the bit 
-        bool operator~() const  
-        { 
+
+        //! flip the bit
+        bool operator~() const
+        {
           return ref_.flip(pos_);
         }
-        
+
         //! implicit conversion to bool
-        operator bool() const  
-        { 
+        operator bool() const
+        {
           return ref_.test(pos_);
         }
-        
+
         //! flip the bit
-        reference flip() const  
-        { 
+        reference flip() const
+        {
           return ref_.flip(pos_);
         }
       };
@@ -375,7 +375,7 @@ namespace boost {
       {
         return bits.test(to_bit(testing));
       }
-      
+
       //! @Returns <tt>count() == size()</tt>
       //! @NoExcept
       bool all() const
@@ -434,13 +434,14 @@ namespace boost {
 
     public:
 
-      std::bitset<enums::meta::size<T>::value> detail_bits() { return bits; }
+      std::bitset<enums::meta::size<T>::value> const& detail_bits() const { return bits; }
+      std::bitset<enums::meta::size<T>::value>& detail_bits() { return bits; }
     };
 
     // enum_set operators:
 
     //! Intersection
-      
+
     //! @Returns <tt>enum_set<T>(lhs) &= rhs</tt>.
     //! @NoExcept
     template <typename T>
@@ -452,7 +453,7 @@ namespace boost {
     }
 
     //! Union
-      
+
     //! @Returns <tt>enum_set<T>>(lhs) |= rhs</tt>.
     //! @NoExcept
     template <typename T >
@@ -476,7 +477,7 @@ namespace boost {
     }
 
     //! A formatted input function.
-      
+
       //! @Effects Extracts up to \c N characters from is. Stores these characters
     //! in a temporary object \c str of type <tt>basic_string<charT, traits></tt>, then
     //! evaluates the expression <tt>x = enum_set<T>(str)</tt>. Characters are extracted
@@ -491,7 +492,7 @@ namespace boost {
     //! @Param{is, the input stream}
     //! @Param{x, the \c enum_set}
     //! @Returns \c is.
-      
+
     template <class charT, class traits, typename T >
     std::basic_istream<charT, traits>&
     operator>>(std::basic_istream<charT, traits>& is, enum_set<T>& x)
@@ -522,7 +523,7 @@ namespace boost {
   } /* namespace enums */
 
   //! enum_set hash template specialization
-    
+
   template <typename T >
   struct hash<enums::enum_set<T> >
   : public std::unary_function<enums::enum_set<T>, std::size_t>

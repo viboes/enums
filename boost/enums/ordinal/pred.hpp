@@ -12,8 +12,8 @@
 
 /*!
  \file
- \brief  
- The header \c <boost/enums/pred.hpp> declares a class template \c meta::pred<> and 
+ \brief
+ The header \c <boost/enums/pred.hpp> declares a class template \c meta::pred<> and
  a function \c pred() returning the predecessor of the enumeration element.
  */
 
@@ -33,7 +33,7 @@ namespace boost
     namespace meta
     {
       //! meta-function that gets the predecessor of an enumeration element.
-      
+
       //! @Requires the position must be not 0.
       template <typename EC, typename native_type<EC>::type V>
       struct pred
@@ -43,7 +43,7 @@ namespace boost
           val<EC,pos<EC,V>::value-1>::value;
       };
     }
-    
+
     //! ordinal enum predecesor.
 
     //! @Returns the predecessor of the enumeration element.
@@ -51,7 +51,8 @@ namespace boost
     template <typename EC>
     BOOST_CONSTEXPR EC pred(EC e)
     {
-      BOOST_ASSERT(pos(e)!=0);
+      // todo uncomment this only for C++14
+      //BOOST_ASSERT(pos(e)!=0);
       return val<EC>(pos(e)-1);
     }
   }
