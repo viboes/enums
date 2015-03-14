@@ -45,7 +45,7 @@ namespace boost {
     template <typename EC>
     BOOST_CONSTEXPR std::size_t size()
     {
-        return meta::size<EC>();
+        return meta::size<EC>::value;
     }
 
   }

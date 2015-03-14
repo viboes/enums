@@ -28,8 +28,8 @@ namespace boost {
     struct enum_subrange
     {
       typedef typename scoping_type<EC_type>::type EC;
-      static const std::size_t first_index = enums::meta::pos<EC,First>::value;
-      static const std::size_t last_index = enums::meta::pos<EC,Last>::value;
+      BOOST_STATIC_CONSTEXPR std::size_t first_index = enums::meta::pos<EC,First>::value;
+      BOOST_STATIC_CONSTEXPR std::size_t last_index = enums::meta::pos<EC,Last>::value;
 
     };
   }

@@ -12,8 +12,8 @@
 
 /*!
  @file
- @brief  
- The header \c <boost/enums/succ.hpp> declares a class template \c meta::succ<> and 
+ @brief
+ The header \c <boost/enums/succ.hpp> declares a class template \c meta::succ<> and
  a function \c succ() returning the predecessor of the enumeration element.
  */
 
@@ -33,28 +33,29 @@ namespace boost
     namespace meta
     {
       //! meta-function that gets the successor of an enumeration element.
-      
+
       //! @Requires the position must not be the last one
       template <typename EC, typename native_type<EC>::type V>
       struct succ
       {
         BOOST_STATIC_ASSERT((pos<EC,V>::value!=(size<EC>::value-1)));
-        static const typename native_type<EC>::type value =
+        BOOST_STATIC_CONSTEXPR typename native_type<EC>::type value =
           val<EC,pos<EC,V>::value+1>::value;
       };
     }
 
-    
+
     //! enum succesor.
-    
+
     //! @Params
     //! @Param{e,the enum literal}
     //! @Returns the successor of the enumeration element.
     //! @Throws Invalid parameter if the position is the last one.
     template <typename EC>
-    EC succ(EC e)
+    BOOST_CONSTEXPR EC succ(EC e)
     {
-      BOOST_ASSERT(pos(e)!=(meta::size<EC>::value-1));
+      // todo uncomment this only for C++14
+      //BOOST_ASSERT(pos(e)!=(meta::size<EC>::value-1));
       return val<EC>(pos(e)+1);
     }
   }
