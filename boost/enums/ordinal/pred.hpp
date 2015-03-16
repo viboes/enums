@@ -49,7 +49,7 @@ namespace boost
     //! @Returns the predecessor of the enumeration element.
     //! @Throw Invalid parameter if the position is 0.
     template <typename EC>
-    BOOST_CONSTEXPR EC pred(EC e)
+    EC pred(EC e)
     {
       // todo uncomment this only for C++14
       //BOOST_ASSERT(pos(e)!=0);
