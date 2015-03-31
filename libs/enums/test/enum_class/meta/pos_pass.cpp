@@ -17,7 +17,7 @@ void pass() {
   using namespace boost::enums;
 
   {
-    BOOST_STATIC_ASSERT((meta::pos<EnumClass, EnumClass::Enum1>::value == 1));
+    BOOST_STATIC_ASSERT((meta::pos<Ex::EnumClass, Ex::EnumClass::Enum1>::value == 1));
   }
 
 }

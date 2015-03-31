@@ -16,20 +16,20 @@
 int main() {
   // is less than comparable
   {
-    EnumClass e;
-    e= EnumClass::Default;
-    BOOST_TEST(e < EnumClass::Enum2);
+    Ex::EnumClass e;
+    e= Ex::EnumClass::Default;
+    BOOST_TEST(e < Ex::EnumClass::Enum2);
   }
   {
-    EnumClass e;
-    e= EnumClass::Enum2;
-    BOOST_TEST(EnumClass::Enum1<e);
+    Ex::EnumClass e;
+    e= Ex::EnumClass::Enum2;
+    BOOST_TEST(Ex::EnumClass::Enum1<e);
   }
   {
-    EnumClass e0;
-    e0= EnumClass::Default;
-    EnumClass e1;
-    e1= EnumClass::Enum2;
+    Ex::EnumClass e0;
+    e0= Ex::EnumClass::Default;
+    Ex::EnumClass e1;
+    e1= Ex::EnumClass::Enum2;
     BOOST_TEST(e0 < e1);
   }
   return boost::report_errors();

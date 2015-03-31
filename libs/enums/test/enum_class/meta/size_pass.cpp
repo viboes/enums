@@ -17,7 +17,7 @@ void pass() {
   using namespace boost::enums;
 
   {
-    BOOST_STATIC_ASSERT(meta::size<EnumClass>::value == 3);
+    BOOST_STATIC_ASSERT(meta::size<Ex::EnumClass>::value == 3);
   }
 
 }

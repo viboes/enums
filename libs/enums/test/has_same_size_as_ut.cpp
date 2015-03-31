@@ -17,7 +17,7 @@ void pass() {
   using namespace boost::enums;
 
   { // has the same size as the underlying type
-    BOOST_STATIC_ASSERT(sizeof(EnumClass)==sizeof(underlying_type<EnumClass>::type));
+    BOOST_STATIC_ASSERT(sizeof(Ex::EnumClass)==sizeof(underlying_type<Ex::EnumClass>::type));
   }
 
 }

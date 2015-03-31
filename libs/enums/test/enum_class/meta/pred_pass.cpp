@@ -22,11 +22,11 @@ void pass() {
 
   {
     BOOST_STATIC_ASSERT((
-      int(meta::pred<EnumClass,EnumClass::Enum1>::value) == int(EnumClass::Default)
+      int(meta::pred<Ex::EnumClass,Ex::EnumClass::Enum1>::value) == int(Ex::EnumClass::Default)
     ));
 
     BOOST_STATIC_ASSERT((
-      int(meta::pred<EnumClass,EnumClass::Enum2>::value) == int(EnumClass::Enum1)
+      int(meta::pred<Ex::EnumClass,Ex::EnumClass::Enum2>::value) == int(Ex::EnumClass::Enum1)
     ));
   }
 

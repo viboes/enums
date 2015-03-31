@@ -225,7 +225,7 @@
   }
 #else
 
-BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EnumClass), unsigned char,
+BOOST_ENUMS_ENUM_CLASS_DCL_CONS((Ex)(EnumClass), unsigned char,
                                 ( (Default)(3) )
                                 ( (Enum1)    )
                                 ( (Enum2)    )
@@ -237,7 +237,7 @@ BOOST_ENUMS_ENUM_CLASS_DCL_CONS((EnumClass), unsigned char,
 
 //! OSTRREAM overloading
 template <typename OSTREAM>
-inline OSTREAM& operator <<(OSTREAM& os, EnumClass v) {
+inline OSTREAM& operator <<(OSTREAM& os, Ex::EnumClass v) {
   os << int(boost::enums::native_value(v));
   return os;
 }

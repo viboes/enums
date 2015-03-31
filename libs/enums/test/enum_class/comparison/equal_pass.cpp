@@ -18,19 +18,19 @@ int main() {
 
   // equal comparable
   {
-    EnumClass e;
-    e = EnumClass::Enum2;
-    BOOST_TEST(e==EnumClass::Enum2);
+    Ex::EnumClass e;
+    e = Ex::EnumClass::Enum2;
+    BOOST_TEST(e==Ex::EnumClass::Enum2);
   }
   {
-    EnumClass e;
-    e = EnumClass::Enum2;
-    BOOST_TEST(EnumClass::Enum2==e);
+    Ex::EnumClass e;
+    e = Ex::EnumClass::Enum2;
+    BOOST_TEST(Ex::EnumClass::Enum2==e);
   }
   {
-    EnumClass e1, e2;
-    e1 = EnumClass::Enum2;
-    e2 = EnumClass::Enum2;
+    Ex::EnumClass e1, e2;
+    e1 = Ex::EnumClass::Enum2;
+    e2 = Ex::EnumClass::Enum2;
     BOOST_TEST(e1==e2);
   }
 

@@ -13,11 +13,11 @@
 #include "./EnumClass.hpp"
 #include <boost/detail/lightweight_test.hpp>
 #include <boost/enums/containers/enum_range.hpp>
-#include <boost/range/algorithm/for_each.hpp> 
+#include <boost/range/algorithm/for_each.hpp>
 #include <cstddef>
 
 static std::size_t cnt=0;
-void p(EnumClass ) 
+void p(Ex::EnumClass )
 {
   cnt++;
 }
@@ -29,8 +29,8 @@ int main() {
 
 
   {
-    for_each(enum_range<EnumClass>(),p);
-    BOOST_TEST(cnt==enums::meta::size<EnumClass>::value);
+    for_each(enum_range<Ex::EnumClass>(),p);
+    BOOST_TEST(cnt==enums::meta::size<Ex::EnumClass>::value);
   }
   return boost::report_errors();
 }

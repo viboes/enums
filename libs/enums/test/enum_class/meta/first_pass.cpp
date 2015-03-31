@@ -24,7 +24,7 @@ void pass() {
       0 == 1-1
     ));
     BOOST_STATIC_ASSERT((
-      int(meta::first<EnumClass>::value) == int(EnumClass::Default)
+      int(meta::first<Ex::EnumClass>::value) == int(Ex::EnumClass::Default)
     ));
   }
 

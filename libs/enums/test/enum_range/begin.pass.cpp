@@ -22,18 +22,18 @@ int main() {
   using namespace boost;
   using namespace boost::enums;
 
-  BOOST_CONCEPT_ASSERT(( SinglePassRangeConcept < enum_range<EnumClass> > ));
-  BOOST_CONCEPT_ASSERT(( ForwardRangeConcept  < enum_range<EnumClass> > ));
+  BOOST_CONCEPT_ASSERT(( SinglePassRangeConcept < enum_range<Ex::EnumClass> > ));
+  BOOST_CONCEPT_ASSERT(( ForwardRangeConcept  < enum_range<Ex::EnumClass> > ));
 //  BOOST_CONCEPT_ASSERT(( BidirectionalRangeConcept  < iterator_range< range_detail::integer_iterator<int> > > ));
 
 
-//  BOOST_CONCEPT_ASSERT(( BidirectionalRangeConcept  < enum_range<EnumClass> > ));
-//  BOOST_CONCEPT_ASSERT(( RandomAccessRangeConcept  < enum_range<EnumClass> > ));
+//  BOOST_CONCEPT_ASSERT(( BidirectionalRangeConcept  < enum_range<Ex::EnumClass> > ));
+//  BOOST_CONCEPT_ASSERT(( RandomAccessRangeConcept  < enum_range<Ex::EnumClass> > ));
 
   {
-    enum_range<EnumClass> er;
-    EnumClass e = *boost::begin(er);
-    BOOST_TEST(e==EnumClass::Default);
+    enum_range<Ex::EnumClass> er;
+    Ex::EnumClass e = *boost::begin(er);
+    BOOST_TEST(e==Ex::EnumClass::Default);
   }
   return boost::report_errors();
 }

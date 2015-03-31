@@ -21,7 +21,7 @@ void pass() {
 
   {
     BOOST_STATIC_ASSERT((
-      int(meta::last<EnumClass>::value) == int(EnumClass::Enum2)
+      int(meta::last<Ex::EnumClass>::value) == int(Ex::EnumClass::Enum2)
     ));
   }
 
