@@ -20,6 +20,7 @@
 
 #include <boost/preprocessor/seq.hpp>
 #include <boost/enums/ordinal.hpp>
+#include <boost/enums/scoped.hpp>
 
 /** @file
 
