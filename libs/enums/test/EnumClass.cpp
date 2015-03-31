@@ -26,11 +26,19 @@
 #define RUN_TIME
 #define COMPILE_TIME
 
+template <typename EnumType>
+const char* EnumName(EnumType value)
+{
+    return c_str(value); // error: ‘c_str’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation
+}
+
 int main() {
 
   using namespace boost;
   using namespace boost::conversion;
   using namespace boost::enums;
+
+  BOOST_TEST_EQ( EnumName(Ex::EnumClass::Default), std::string("Default") );
 
   std::cout << __LINE__ << std::endl;
 #ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
