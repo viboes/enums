@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //
-// (C) Copyright Vicente J. Botet Escriba 2011.
+// (C) Copyright Vicente J. Botet Escriba 2011,2015.
 // Distributed under the Boost
 // Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt or

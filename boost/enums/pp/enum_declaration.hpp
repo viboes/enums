@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //
-// (C) Copyright Vicente J. Botet Escriba 2011.
+// (C) Copyright Vicente J. Botet Escriba 2011,2015.
 // Distributed under the Boost
 // Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt or
@@ -169,8 +169,8 @@
  @Params
  @Param{NS_EC, the @p NAMESPACES_CLASS sequence}
  @Param{EL, the @p ENUMERATOR_LIST sequence}
- 
- @Result 
+
+ @Result
  @code
  template <>
  struct size<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>
@@ -208,7 +208,7 @@
  @Param{P,the position in the @c ENUMERATOR_LIST sequence}
  @Param{ED, the @c ENUMERATOR_DEFINITION sequence}
 
- @Result 
+ @Result
  @code
  template <>
  struct pos<QNAME, QNAME :: BOOST_ENUMS_ENUMERATOR_DEFINITION_ID(ED)>
@@ -250,8 +250,8 @@
  @Params
  @Param{NS_EC, the @c NAMESPACES_CLASS sequence}
  @Param{TRAITER,the enum traiter template class}
- 
- @Result 
+
+ @Result
  @code
  template <>
  struct enum_traits<BOOST_ENUMS_NAMESPACES_CLASS_QNAME(NS_EC)>
@@ -276,7 +276,7 @@
  @Params
  @Param{NS_EC,the @c NAMESPACES_CLASS sequence}
  @Param{TRAITER,the enum traiter template class}
- @Result 
+ @Result
  @code
   namespace boost {
     namespace enums {
@@ -320,7 +320,7 @@
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
 
- @Result 
+ @Result
  @code
  BOOST_ENUM_NS_TYPE_START(NS_EC, UT)
  {
@@ -357,7 +357,7 @@
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
 
- @Result 
+ @Result
  @cond
  BOOST_ENUMS_ENUM_TYPE_DCL_NO_CONS((NS1)...(NSk)(EC), UT, ((E1))...((En)), TRAITER)
 
@@ -392,7 +392,7 @@
  @code
  BOOST_ENUM_NS_TYPE_START(NS_EC, UT)
  {
-   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)
  }
  BOOST_ENUM_NS_TYPE_NO_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
@@ -424,11 +424,11 @@
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
 
- @Result 
+ @Result
  @code
  BOOST_ENUM_NS_CLASS_START(NS_EC, UT)
  {
-   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)
  }
  BOOST_ENUM_NS_CLASS_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)
@@ -461,11 +461,11 @@
  @Param{EL,the @c ENUMERATOR_LIST sequence}
  @Param{TRAITER,the enum traiter template class}
 
- @Result 
+ @Result
  @code
  BOOST_ENUM_NS_CLASS_START(NS_EC, UT)
  {
-   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)                       
+   BOOST_ENUMS_ENUMERATOR_LIST_GENERATE(EL)
  }
  BOOST_ENUM_NS_CLASS_NO_CONS_END(NS_EC, UT)
  BOOST_ENUMS_ENUM_DCL_SPE(NS_EC, EL, TRAITER)

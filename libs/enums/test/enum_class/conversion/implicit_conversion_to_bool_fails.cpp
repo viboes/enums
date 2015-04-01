@@ -15,7 +15,7 @@
 void fail() {
 
   { // The wrapper can be used on a if (is not convertible to bool)
-    EnumClass e;
+    Ex::EnumClass e;
     bool b = e; // error
     if (e) // error
         b=false;

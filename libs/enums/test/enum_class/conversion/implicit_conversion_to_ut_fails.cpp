@@ -18,7 +18,7 @@ void f(int ) {
 void fail() {
 
   { // The wrapper is not implicit convertible to underlying int
-    EnumClass e ;
+    Ex::EnumClass e ;
     f(e); // error
     int i = e; // error
     (void)i;

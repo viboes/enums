@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //
-// (C) Copyright Vicente J. Botet Escriba 2011.
+// (C) Copyright Vicente J. Botet Escriba 2011,2015.
 // Distributed under the Boost
 // Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt or
@@ -53,7 +53,7 @@ namespace boost {
 
       //! @Rreturns the returned value is calculated from the underlying value,
       //! the \c first_value and the \c step, following this formula \c (ut-first_value)/step
-      BOOST_STATIC_CONSTEXPR std::size_t pos(EC e)
+      static BOOST_CONSTEXPR std::size_t pos(EC e)
       {
 //        typename underlying_type<EC>::type uv = underlying_value(e);
 //        return (uv-first_value)/step;
@@ -64,7 +64,7 @@ namespace boost {
 
         //! @Returns the returned value is calculated from the position \c p,
         //! the first value and the step, following this formula \c p*step+first_value
-      BOOST_STATIC_CONSTEXPR EC val(std::size_t p)
+      static BOOST_CONSTEXPR EC val(std::size_t p)
       {
 //        typename underlying_type<EC>::type uv = p*step+first_value;
 //        return EC(uv);

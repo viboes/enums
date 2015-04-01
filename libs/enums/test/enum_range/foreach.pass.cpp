@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //
-// (C) Copyright Vicente J. Botet Escriba 2011.
+// (C) Copyright Vicente J. Botet Escriba 2011,2015.
 // Distributed under the Boost
 // Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt or
@@ -15,6 +15,7 @@
 #include <boost/enums/containers/enum_range.hpp>
 #include <boost/foreach.hpp>
 #include <cstddef>
+#include <iostream>
 
 static std::size_t cnt=0;
 void p(Ex::EnumClass )
@@ -34,6 +35,7 @@ int main() {
     //BOOST_FOREACH(Ex::EnumClass e, enum_range<Ex::EnumClass>())
     BOOST_ENUMS_FOREACH(Ex::EnumClass, e)
     {
+      std::cout << e;
         cnt++;
     }
     BOOST_TEST(cnt==enums::meta::size<Ex::EnumClass>::value);
