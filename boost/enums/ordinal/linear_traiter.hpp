@@ -14,6 +14,7 @@
 #define BOOST_ENUMS_ORDINAL_LINEAR_TRAITER_HPP
 
 #include <boost/enums/scoped/underlying_type.hpp>
+#include <boost/enums/scoped/underlying_value.hpp>
 #include <boost/enums/ordinal/size.hpp>
 #include <boost/enums/ordinal/val.hpp>
 #include <boost/enums/ordinal/pos.hpp>
