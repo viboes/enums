@@ -14,6 +14,18 @@
 #include <string>
 #include <iostream>
 
+
+template <typename EnumType>
+const char* EnumName(EnumType value)
+{
+    return c_str(value); // error: ‘c_str’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation
+}
+
+//template <typename T>
+//const char * c_str(T val) {
+//  return "";
+//}
+
 #include "./EnumClass.hpp"
 #include "./f.hpp"
 #include <boost/detail/lightweight_test.hpp>
@@ -26,11 +38,6 @@
 #define RUN_TIME
 #define COMPILE_TIME
 
-template <typename EnumType>
-const char* EnumName(EnumType value)
-{
-    return c_str(value); // error: ‘c_str’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation
-}
 
 int main() {
 
