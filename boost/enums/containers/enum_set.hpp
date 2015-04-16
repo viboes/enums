@@ -371,7 +371,7 @@ namespace boost {
       //! @Requires \c testing is valid
       //! @Throws out_of_range if the associated position of \c testing does not correspond to a valid bit position.
       //! @Returns \c true if the bit at position \c pos in \c *this has the value one.
-      bool test(T testing)
+      bool test(T testing) const
       {
         return bits.test(to_bit(testing));
       }
