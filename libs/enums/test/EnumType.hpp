@@ -22,7 +22,9 @@
 #include <boost/enums/ordinal/last.hpp>
 #include <boost/enums/ordinal/size.hpp>
 #include <boost/enums/ordinal/traits.hpp>
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
 #include <boost/conversion/explicit_convert_to.hpp>
+#endif
 #include <boost/enums/ordinal/linear_traiter.hpp>
 #include <boost/enums/scoped/emulation.hpp>
 #include <cassert>

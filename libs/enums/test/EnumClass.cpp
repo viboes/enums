@@ -18,7 +18,7 @@
 template <typename EnumType>
 const char* EnumName(EnumType value)
 {
-    return c_str(value); // error: ‘c_str’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation
+    return c_str(value); // error: c_str was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation
 }
 
 //template <typename T>
@@ -42,7 +42,9 @@ const char* EnumName(EnumType value)
 int main() {
 
   using namespace boost;
+#ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
   using namespace boost::conversion;
+#endif
   using namespace boost::enums;
 
   BOOST_TEST_EQ( EnumName(Ex::EnumClass::Default), std::string("Default") );

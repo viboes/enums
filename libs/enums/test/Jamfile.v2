@@ -25,7 +25,7 @@ project
         <include>.
         <include>../../..
         # uncomment the line above if you build outside a Boost release
-        <include>$(CONVERSION_ROOT)
+        #<include>$(CONVERSION_ROOT)
         <include>$(BOOST_ROOT)
 
         <define>BOOST_ENABLE_WARNINGS
@@ -47,7 +47,6 @@ project
         <toolset>msvc:<cxxflags>/wd4127
 	<define>BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
     ;
-
    test-suite "enum_class"
         :
         [ compile enum_class/has_same_size_as_ut_pass.cpp ]
