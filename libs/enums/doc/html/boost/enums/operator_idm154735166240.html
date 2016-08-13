@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Function template operator&gt;&gt;</title>
+<link rel="stylesheet" href="../.././boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
+<link rel="home" href="../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.4.0">
+<link rel="up" href="../../index.html#header.boost.enums.containers.enum_set_hpp" title="Header &lt;boost/enums/containers/enum_set.hpp&gt;">
+<link rel="prev" href="operator%5E.html" title="Function template operator^">
+<link rel="next" href="operator_idm154735149584.html" title="Function template operator&lt;&lt;">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="spirit-nav">
+<a accesskey="p" href="operator%5E.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_set_hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="operator_idm154735149584.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.enums.operator_idm154735166240"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function template operator&gt;&gt;</span></h2>
+<p>boost::enums::operator&gt;&gt; &#8212; A formatted input function. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../index.html#header.boost.enums.containers.enum_set_hpp" title="Header &lt;boost/enums/containers/enum_set.hpp&gt;">boost/enums/containers/enum_set.hpp</a>&gt;
+
+</span>
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT<span class="special">,</span> <span class="keyword">typename</span> traits<span class="special">,</span> <span class="keyword">typename</span> T<span class="special">&gt;</span> 
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_istream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> 
+  <span class="keyword">operator</span><span class="special">&gt;&gt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_istream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> is<span class="special">,</span> <a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span> <span class="special">&amp;</span> x<span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="idm296958234448"></a><h2>Description</h2>
+<p><span class="bold"><strong>Effects:</strong></span> Extracts up to <code class="computeroutput">N</code> characters from is. Stores these characters in a temporary object <code class="computeroutput">str</code> of type <code class="computeroutput">basic_string&lt;charT, traits&gt;</code>, then evaluates the expression <code class="computeroutput">x = enum_set&lt;T&gt;(str)</code>. Characters are extracted and stored until any of the following occurs:</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p><code class="computeroutput">N</code> characters have been extracted and stored;</p></li>
+<li class="listitem"><p>end-of-file occurs on the input sequence;</p></li>
+<li class="listitem"><p>the next input character is neither <code class="computeroutput">is.widen</code>('0') nor <code class="computeroutput">is.widen</code>('1') (in which case the input character is not extracted).<br>
+If no characters are stored in <code class="computeroutput">str</code>, calls <code class="computeroutput">is.setstate(ios_base::failbit)</code> (which may throw <code class="computeroutput">ios_- base::failure</code>). </p></li>
+</ul></div>
+<p>
+</p>
+<p><span class="bold"><strong>Parameters:</strong></span> </p>
+<p>- <span class="bold"><strong><code class="computeroutput">is</code></strong></span>: the input stream. </p>
+<p>- <span class="bold"><strong><code class="computeroutput">x</code></strong></span>: the <code class="computeroutput"><code class="computeroutput"><a class="link" href="enum_set.html" title="Class template enum_set">enum_set</a></code></code>. </p>
+<p><span class="bold"><strong>Returns:</strong></span> <code class="computeroutput">is</code>. </p>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2010, 2011, 2016 Vicente J. Botet
+      Escriba<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="operator%5E.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.containers.enum_set_hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="operator_idm154735149584.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

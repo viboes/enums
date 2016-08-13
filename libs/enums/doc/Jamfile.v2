@@ -8,6 +8,10 @@
 #  See http://www.boost.org for updates, documentation, and revision history.
 
 #import quickbook ;
+using doxygen ;  # Required if you want to use Doxygen.
+using quickbook ;
+
+
 path-constant nav_images :  html/images/ ; # png and svg images for home, next, note, tip...
 path-constant images_location : html ; # location of SVG and PNG images referenced by Quickbook.
 
@@ -49,7 +53,8 @@ if --enable-index in  [ modules.peek : ARGV ]
                                    \"BOOST_EXPLICIT=explicit\" \\
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
-                                   \"BOOST_CONSTEXPR=constexpr\""
+                                   \"BOOST_ENUMS_CXX14_CONSTEXPR_NO_CONST=constexpr\" \\
+                                   \"BOOST_CONSTEXPR=constexpr\"" 
 
         <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
                                  Example=\"<p><b>Example:</b>\" \\ 
@@ -110,7 +115,8 @@ else
                                    \"BOOST_EXPLICIT=explicit\" \\
                                    \"BOOST_STATIC_CONSTANT(x,y)=static x const y\" \\
                                    \"BOOST_STATIC_ASSERT(cnd)=\" \\
-                                   \"BOOST_CONSTEXPR=constexpr\""
+                                   \"BOOST_ENUMS_CXX14_CONSTEXPR_NO_CONST=constexpr\" \\
+                                   \"BOOST_CONSTEXPR=constexpr\"" 
 
         <doxygen:param>ALIASES=" Effects=\"<p><b>Effects:</b>\" \\ 
                                  Example=\"<p><b>Example:</b>\" \\ 
@@ -160,8 +166,6 @@ else
         ;
 }
 
-using doxygen ;  # Required if you want to use Doxygen.
-using quickbook ;
 
 doxygen top_ref
    :

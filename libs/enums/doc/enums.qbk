@@ -8,13 +8,13 @@
 
 [library Toward Boost.Enums
     [quickbook 1.5]
-    [version 0.3.0]
+    [version 0.4.0]
     [authors [Botet Escriba, Vicente J.]]
-    [copyright 2010-2011 Vicente J. Botet Escriba]
+    [copyright 2010-2011,2016 Vicente J. Botet Escriba]
     [category Utilities]
     [id boost.enums]
     [dirname enums]
-    [purpose C++11 scoped enums emulation]
+    [purpose C++11 scoped enums emulation, ordinal types and ordinal specific containes]
     [license
         Distributed under the Boost Software License, Version 1.0.
         (See accompanying file LICENSE_1_0.txt or copy at
