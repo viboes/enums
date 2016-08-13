@@ -29,7 +29,7 @@ const char* EnumName(EnumType value)
 #include "./EnumClass.hpp"
 #include "./f.hpp"
 #include <boost/detail/lightweight_test.hpp>
-#include <boost/enums/enum_subrange_traiter.hpp>
+//#include <boost/enums/enum_subrange_traiter.hpp>
 #ifndef BOOST_ENUMS_NOT_DEPENDS_ON_CONVERSION
 #include <boost/conversion/is_extrinsically_explicitly_convertible.hpp>
 #endif
