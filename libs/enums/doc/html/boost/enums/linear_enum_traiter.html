@@ -6,12 +6,12 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.76.0">
 <link rel="home" href="../../index.html" title="Chapter&#160;1.&#160;Toward Boost.Enums 0.4.0">
 <link rel="up" href="../../index.html#header.boost.enums.ordinal.linear_traiter_hpp" title="Header &lt;boost/enums/ordinal/linear_traiter.hpp&gt;">
-<link rel="prev" href="last_idm154739435120.html" title="Function template last">
+<link rel="prev" href="last_idm258881521136.html" title="Function template last">
 <link rel="next" href="meta/pos.html" title="Struct template pos">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <div class="spirit-nav">
-<a accesskey="p" href="last_idm154739435120.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.ordinal.linear_traiter_hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="meta/pos.html"><img src="../../images/next.png" alt="Next"></a>
+<a accesskey="p" href="last_idm258881521136.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.ordinal.linear_traiter_hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="meta/pos.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.enums.linear_enum_traiter"></a><div class="titlepage"></div>
@@ -25,21 +25,21 @@
 </span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> EC<span class="special">&gt;</span> 
 <span class="keyword">struct</span> <a class="link" href="linear_enum_traiter.html" title="Struct template linear_enum_traiter">linear_enum_traiter</a> <span class="special">{</span>
 
-  <span class="comment">// <a class="link" href="linear_enum_traiter.html#idm154739427696-bb">public static functions</a></span>
-  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="linear_enum_traiter.html#idm154739427312-bb"><span class="identifier">pos</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">EC</span> <a class="link" href="linear_enum_traiter.html#idm154739424368-bb"><span class="identifier">val</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="linear_enum_traiter.html#idm258881511968-bb">public static functions</a></span>
+  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="linear_enum_traiter.html#idm258881511440-bb"><span class="identifier">pos</span></a><span class="special">(</span><span class="identifier">EC</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">EC</span> <a class="link" href="linear_enum_traiter.html#idm258881507872-bb"><span class="identifier">val</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm296963355648"></a><h2>Description</h2>
+<a name="idm243794148176"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="idm296963355264"></a><h3>
-<a name="idm154739427696-bb"></a><code class="computeroutput">linear_enum_traiter</code> public static functions</h3>
+<a name="idm243794147776"></a><h3>
+<a name="idm258881511968-bb"></a><code class="computeroutput">linear_enum_traiter</code> public static functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="idm154739427312-bb"></a><span class="identifier">pos</span><span class="special">(</span><span class="identifier">EC</span> e<span class="special">)</span><span class="special">;</span></pre>pos specialization. <p>the returned value is calculated from the underlying value, the <code class="computeroutput">first_value</code> and the <code class="computeroutput">step</code>, following this formula <code class="computeroutput"></code>(ut-first_value)/step </p>
+<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a name="idm258881511440-bb"></a><span class="identifier">pos</span><span class="special">(</span><span class="identifier">EC</span> e<span class="special">)</span><span class="special">;</span></pre>pos specialization. <p>the returned value is calculated from the underlying value, the <code class="computeroutput">first_value</code> and the <code class="computeroutput">step</code>, following this formula <code class="computeroutput"></code>(ut-first_value)/step </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">EC</span> <a name="idm154739424368-bb"></a><span class="identifier">val</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> p<span class="special">)</span><span class="special">;</span></pre>val specialization. <p><span class="bold"><strong>Returns:</strong></span> the returned value is calculated from the position <code class="computeroutput">p</code>, the first value and the step, following this formula <code class="computeroutput">p*step+first_value</code> </p>
+<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="identifier">EC</span> <a name="idm258881507872-bb"></a><span class="identifier">val</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> p<span class="special">)</span><span class="special">;</span></pre>val specialization. <p><span class="bold"><strong>Returns:</strong></span> the returned value is calculated from the position <code class="computeroutput">p</code>, the first value and the step, following this formula <code class="computeroutput">p*step+first_value</code> </p>
 </li>
 </ol></div>
 </div>
@@ -56,7 +56,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="last_idm154739435120.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.ordinal.linear_traiter_hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="meta/pos.html"><img src="../../images/next.png" alt="Next"></a>
+<a accesskey="p" href="last_idm258881521136.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../index.html#header.boost.enums.ordinal.linear_traiter_hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="meta/pos.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>
