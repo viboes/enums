@@ -959,11 +959,16 @@ Unfortunately the emulation can not take care of issue with the enumerators sign
 [/=================]
 
 [section:history Appendix A: History]
+[section [*Version 0.4.0, August 15, 2016] ]
+
+* make use of constexpr and noexcept where appropriated in enums_array and enums_set.
+
+[endsect]
 [section [*Version 0.3.0, June 1, 2012] ]
 
 [*Removed Features:]
 
-* Scoped enum types have been removed as C++11 don't provide scoped enums implicitly convertible to the underlying type.
+* Scoped enum types are no more implicitly convertible to the underlying type as ofr C++11.
 
 [endsect]
 [section [*Version 0.2.0, Mars 23, 2011] ]
