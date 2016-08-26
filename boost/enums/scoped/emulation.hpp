@@ -86,7 +86,7 @@
       namespace boost {                                       \
         namespace enums {                                     \
           template <>                                         \
-          struct is_enum<EC> : mpl::true_                     \
+          struct is_emulated_enum<EC> : mpl::true_                     \
           {                                                   \
           };                                                  \
         }                                                     \
