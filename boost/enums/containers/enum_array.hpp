@@ -24,6 +24,7 @@ We can say that
 #ifndef BOOST_ENUMS_CONTAINER_ENUM_ARRAY_HPP
 #define BOOST_ENUMS_CONTAINER_ENUM_ARRAY_HPP
 
+#include <boost/enums/config.hpp>
 #include <boost/detail/workaround.hpp>
 
 #if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
@@ -121,21 +122,21 @@ namespace boost
         // iterator support
         //! @Returns iterator for the first element
         //! @Throws Nothing
-        iterator        begin()       { return elems; }
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR iterator        begin() BOOST_NOEXCEPT     { return elems; }
 
         //! @Returns const iterator for the first element
         //! @Throws Nothing
-        const_iterator  begin() const { return elems; }
-        const_iterator cbegin() const { return elems; }
+        BOOST_CONSTEXPR const_iterator  begin() const BOOST_NOEXCEPT { return elems; }
+        BOOST_CONSTEXPR const_iterator cbegin() const BOOST_NOEXCEPT { return elems; }
 
         //! @Returns iterator for position after the last element
         //! @Throws Nothing
-        iterator        end()       { return elems+static_size; }
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR iterator        end() BOOST_NOEXCEPT      { return elems+static_size; }
 
         //! @Returns const iterator for position after the last element
         //! @Throws Nothing
-        const_iterator  end() const { return elems+static_size; }
-        const_iterator cend() const { return elems+static_size; }
+        BOOST_CONSTEXPR const_iterator  end() const BOOST_NOEXCEPT { return elems+static_size; }
+        BOOST_CONSTEXPR const_iterator cend() const BOOST_NOEXCEPT { return elems+static_size; }
 
         // reverse iterator support
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_MSVC_STD_ITERATOR) && !defined(BOOST_NO_STD_ITERATOR_TRAITS)
@@ -159,24 +160,24 @@ namespace boost
 #endif
 
         //! @Returns reverse iterator for the first element of reverse iteration
-        reverse_iterator rbegin() {
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR reverse_iterator rbegin() BOOST_NOEXCEPT {
           return reverse_iterator(end());
         }
-        const_reverse_iterator rbegin() const {
+        BOOST_CONSTEXPR const_reverse_iterator rbegin() const BOOST_NOEXCEPT {
             return const_reverse_iterator(end());
         }
-        const_reverse_iterator crbegin() const {
+        BOOST_CONSTEXPR const_reverse_iterator crbegin() const BOOST_NOEXCEPT {
             return const_reverse_iterator(end());
         }
 
         //! @Returns reverse iterator for position after the last element in reverse iteration
-        reverse_iterator rend() {
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR reverse_iterator rend() BOOST_NOEXCEPT {
           return reverse_iterator(begin());
         }
-        const_reverse_iterator rend() const {
+        BOOST_CONSTEXPR const_reverse_iterator rend() const BOOST_NOEXCEPT {
             return const_reverse_iterator(begin());
         }
-        const_reverse_iterator crend() const {
+        BOOST_CONSTEXPR const_reverse_iterator crend() const BOOST_NOEXCEPT {
             return const_reverse_iterator(begin());
         }
 
@@ -184,7 +185,7 @@ namespace boost
         //! @Requires <tt>k'pos < static_size</tt>
         //! @Returns reference to the element with key @c k
         //! @Throws Nothing.
-        reference operator[](key_type k)
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR reference operator[](key_type k)
         {
             size_type i = pos(k);
             BOOST_ASSERT( i < static_size && "out of range" );
@@ -194,71 +195,70 @@ namespace boost
         //! @Requires <tt>k'pos < static_size</tt>
         //! @Returns constant reference to the element with key k
         //! @Throws Nothing.
-        const_reference operator[](key_type k) const
+        BOOST_CONSTEXPR const_reference operator[](key_type k) const
         {
-            size_type i = pos(k);
-            BOOST_ASSERT( i < static_size && "out of range" );
-            return elems[i];
+#if  ! defined BOOST_NO_CXX14_CONSTEXPR
+            BOOST_ASSERT( pos(k) < static_size && "out of range" );
+#endif
+            return elems[pos(k)];
         }
 
         // at() with range check
         //! @Returns element with key k
         //! @Throws std::range_error if i >= static_size
-        reference at(key_type k)
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR reference at(key_type k)
         {
-          size_type i = rangecheck(k);
-          return elems[i];
+          return elems[rangecheck(k)];
         }
-        const_reference at(key_type k) const
+        BOOST_CONSTEXPR const_reference at(key_type k) const
         {
-          size_type i = rangecheck(k);
-          return elems[i];
+          return elems[rangecheck(k)];
         }
 
         // front() and back()
         //! @Returns reference to the first element
         //! @Throws Nothing
-        reference front()
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR reference front() BOOST_NOEXCEPT
         {
             return elems[0];
         }
 
         //! @Returns const reference to the first element
         //! @Throws Nothing
-        const_reference front() const
+        BOOST_CONSTEXPR const_reference front() const BOOST_NOEXCEPT
         {
             return elems[0];
         }
 
         //! @Returns reference to the last element
         //! @Throws Nothing
-        reference back()
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR reference back() BOOST_NOEXCEPT
         {
             return elems[static_size-1];
         }
 
         //! @Returns const reference to the last element
         //! @Throws Nothing
-        const_reference back() const
+        BOOST_CONSTEXPR const_reference back() const BOOST_NOEXCEPT
         {
             return elems[static_size-1];
         }
 
         // size is constant
         //! @Returns linear in meta::size<EC>::value.
-        BOOST_CONSTEXPR size_type size() const
+        BOOST_CONSTEXPR size_type size() const BOOST_NOEXCEPT
         {
           return static_size;
         }
         //! @Returns false
         //! @Throws Nothing
-        static bool empty()
+        BOOST_CONSTEXPR  bool empty() const BOOST_NOEXCEPT
         {
           return false;
         }
 
         //! @Returns linear in meta::size<EC>::value.
-        BOOST_CONSTEXPR size_type max_size() const
+        BOOST_CONSTEXPR size_type max_size() const BOOST_NOEXCEPT
         {
           return static_size;
         }
@@ -270,7 +270,7 @@ namespace boost
             takes linear time, may exit via an exception, and does not cause
             iterators to become associated with the other container.
          */
-        void swap (enum_array<T,EC>& y)
+        void swap (enum_array<T,EC>& y) // BOOST_NOEXCEPT_IF(std::is_nothrow_swappable_v<T>)
         {
             for (size_type i = 0; i < static_size; ++i)
                 boost::swap(elems[i],y.elems[i]);
@@ -279,11 +279,11 @@ namespace boost
         //! direct access to data (read-only)
 
         //! @Returns elems.
-        const T* data() const {
+        BOOST_CONSTEXPR const T* data() const {
           return elems;
         }
         //! @Returns elems.
-        T* data() {
+        BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR T* data() {
           return elems;
         }
 

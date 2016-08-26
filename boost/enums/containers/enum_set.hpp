@@ -23,6 +23,7 @@
 #ifndef BOOST_ENUMS_CONTAINERS_ENUM_SET_HPP
 #define BOOST_ENUMS_CONTAINERS_ENUM_SET_HPP
 
+#include <boost/enums/config.hpp>
 #include <boost/enums/ordinal/pos.hpp>
 #include <boost/enums/ordinal/size.hpp>
 #include <bitset>
@@ -76,42 +77,42 @@ namespace boost {
         friend class enum_set<T>;
         enum_set<T>& ref_;
         T pos_;
-        reference();
+        reference() BOOST_NOEXCEPT;
         reference(enum_set<T>& ref, T pos)
         : ref_(ref), pos_(pos)
         { }
       public:
-        ~reference()
+        ~reference() BOOST_NOEXCEPT
         { }
 
         //! assignement from bool
-        reference& operator=(bool x)
+        reference& operator=(bool x) BOOST_NOEXCEPT
         {
           ref_.set(pos_,x);
           return *this;
         }
 
         //! assignement from another reference
-        reference& operator=(const reference& x)
+        reference& operator=(const reference& x) BOOST_NOEXCEPT
         {
           ref_.set(pos_,x);
           return *this;
         }
 
         //! flip the bit
-        bool operator~() const
+        bool operator~() const BOOST_NOEXCEPT
         {
           return ref_.flip(pos_);
         }
 
         //! implicit conversion to bool
-        operator bool() const
+        operator bool() const BOOST_NOEXCEPT
         {
           return ref_.test(pos_);
         }
 
         //! flip the bit
-        reference flip() const
+        reference flip() const BOOST_NOEXCEPT
         {
           return ref_.flip(pos_);
         }
@@ -119,7 +120,7 @@ namespace boost {
       //! @Effects Constructs an object of class \c enum_set<>, initializing all
       //! enumerations to zero.
       //! @NoExcept
-      BOOST_CONSTEXPR enum_set()
+      BOOST_CONSTEXPR enum_set() BOOST_NOEXCEPT
       {
       }
       // BOOST_CONSTEXPR
@@ -137,7 +138,7 @@ namespace boost {
       //! positions are initialized to zero.
       //! @NoExcept
 
-      BOOST_CONSTEXPR explicit enum_set(unsigned long long val)
+      BOOST_CONSTEXPR explicit enum_set(unsigned long long val) BOOST_NOEXCEPT
         : bits(val)
       {
       }
@@ -184,7 +185,7 @@ namespace boost {
       //! \c rhs is clear, and leaves all other bits unchanged.
       //! @Returns \c *this.
       //! @NoExcept
-      enum_set &operator&=(const enum_set &rhs)
+      enum_set &operator&=(const enum_set &rhs) BOOST_NOEXCEPT
       {
         bits &= rhs.bits;
         return *this;
@@ -194,7 +195,7 @@ namespace boost {
       //! \c rhs is set, and leaves all other bits unchanged.
       //! @Returns \c *this.
       //! @NoExcept
-      enum_set &operator|=(const enum_set &rhs)
+      enum_set &operator|=(const enum_set &rhs) BOOST_NOEXCEPT
       {
         bits |= rhs.bits;
         return *this;
@@ -204,7 +205,7 @@ namespace boost {
       //! \c rhs is set, and leaves all other bits unchanged.
       //! @Returns \c *this.
       //! @NoExcept
-      enum_set &operator^=(const enum_set &rhs)
+      enum_set &operator^=(const enum_set &rhs) BOOST_NOEXCEPT
       {
         bits ^= rhs.bits;
         return *this;
@@ -215,7 +216,7 @@ namespace boost {
       //! - If \c I>=pos, the new value is the previous value of the bit at position \c I-pos.
       //! @Returns \c *this.
       //! @NoExcept
-      enum_set &operator<<=(const enum_set &rhs)
+      enum_set &operator<<=(const enum_set &rhs) BOOST_NOEXCEPT
       {
         bits <<= rhs.bits;
         return *this;
@@ -227,20 +228,20 @@ namespace boost {
       //! @Returns \c *this.
       //! @NoExcept
 
-      enum_set &operator>>=(const enum_set &rhs)
+      enum_set &operator>>=(const enum_set &rhs) BOOST_NOEXCEPT
       {
         bits >>= rhs.bits;
         return *this;
       }
 
       //! @Returns A count of the number of bits set in \c *this.
-      std::size_t count() const
+      std::size_t count() const BOOST_NOEXCEPT
       {
         return bits.count();
       }
 
       //! @Returns \c static_size.
-      BOOST_CONSTEXPR std::size_t size() const
+      BOOST_CONSTEXPR std::size_t size() const BOOST_NOEXCEPT
       {
         return bits.size();
       }
@@ -249,7 +250,7 @@ namespace boost {
       //! @Throws std::invalid_argument if @c e does not have a valid position.
       //! @Returns \c true if the bit at the associated position of \c e in \c *this has the value one,
       //! otherwise \c false.
-      BOOST_CONSTEXPR bool operator[](T e) const
+      BOOST_CONSTEXPR bool operator[](T e) const BOOST_NOEXCEPT
       {
         return bits.test(to_bit(e));
       }
@@ -262,7 +263,9 @@ namespace boost {
       //! @Note For the purpose of determining the presence of a data race,
       //! any access or update through the resulting reference potentially
       //! accesses or modifies, respectively, the entire underlying  bitset.
-      reference operator[](T pos)
+
+      //BOOST_ENUMS_CXX14_MUTABLE_CONSTEXPR
+      reference operator[](T pos) BOOST_NOEXCEPT
       {
         return reference(*this,pos);
       }
@@ -270,7 +273,7 @@ namespace boost {
       //! @Returns \c *this.
       //! @NoExcept
 
-      enum_set &set()
+      enum_set &set() BOOST_NOEXCEPT
       {
         bits.set();
         return *this;
@@ -290,7 +293,7 @@ namespace boost {
       //! @Effects Resets all bits in \c *this.
       //! @Returns \c *this.
       //! @NoExcept
-      enum_set &reset()
+      enum_set &reset() BOOST_NOEXCEPT
       {
         bits.reset();
         return *this;
@@ -310,7 +313,7 @@ namespace boost {
       //! @Effects Toggles all bits in \c *this.
       //! @Returns \c *this.
       //! @NoExcept
-      enum_set &flip()
+      enum_set &flip() BOOST_NOEXCEPT
       {
         bits.flip();
         return *this;
@@ -363,7 +366,7 @@ namespace boost {
       //! @Effects Constructs an object @c x of class @c enum_set<T> and initializes it with @c *this.
       //! @Returns \c x.flip().
       //! @NoExcept
-      enum_set operator~() const
+      enum_set operator~() const BOOST_NOEXCEPT
       {
         return enum_set(*this).flip();
       }
@@ -378,28 +381,28 @@ namespace boost {
 
       //! @Returns <tt>count() == size()</tt>
       //! @NoExcept
-      bool all() const
+      bool all() const BOOST_NOEXCEPT
       {
         return bits.all();
       }
 
       //! @Returns <tt>count() != 0</tt>
       //! @NoExcept
-      bool any() const
+      bool any() const BOOST_NOEXCEPT
       {
         return bits.any();
       }
 
       //! @Returns <tt>count() == 0</tt>
       //! @NoExcept
-      bool none() const
+      bool none() const BOOST_NOEXCEPT
       {
         return bits.none();
       }
 
       //! @Returns <tt>enum_set<T>(*this) <<= pos</tt>.
       //! @NoExcept
-      enum_set operator<<(std::size_t pos) const
+      enum_set operator<<(std::size_t pos) const BOOST_NOEXCEPT
       {
         enum_set r = *this;
         r <<= pos;
@@ -408,7 +411,7 @@ namespace boost {
 
       //! @Returns <tt>enum_set<T>(*this) >>= pos</tt>.
       //! @NoExcept
-      enum_set operator>>(std::size_t pos) const
+      enum_set operator>>(std::size_t pos) const BOOST_NOEXCEPT
       {
         enum_set r = *this;
         r >>= pos;
@@ -418,14 +421,20 @@ namespace boost {
       //! @Returns A nonzero value if the value of each bit in \c *this equals the
       //! value of the corresponding bit in \c rhs.
       //! @NoExcept
-      bool operator==(const enum_set& rhs) const;
+      bool operator==(const enum_set& rhs) const BOOST_NOEXCEPT
+      {
+        return bits == rhs.bits;
+      }
 
       //! @Returns A nonzero value if <tt>!(*this == rhs)</tt>.
       //! @NoExcept
-      bool operator!=(const enum_set& rhs) const;
+      bool operator!=(const enum_set& rhs) const BOOST_NOEXCEPT
+      {
+        return bits != rhs.bits;
+      }
     private:
 
-      static std::size_t to_bit(T value)
+      static std::size_t to_bit(T value) BOOST_NOEXCEPT
       {
         return enums::pos(value);
       }
@@ -434,8 +443,8 @@ namespace boost {
 
     public:
 
-      std::bitset<enums::meta::size<T>::value> const& detail_bits() const { return bits; }
-      std::bitset<enums::meta::size<T>::value>& detail_bits() { return bits; }
+      std::bitset<enums::meta::size<T>::value> const& detail_bits() const  BOOST_NOEXCEPT { return bits; }
+      std::bitset<enums::meta::size<T>::value>& detail_bits()  BOOST_NOEXCEPT { return bits; }
     };
 
     // enum_set operators:
@@ -539,6 +548,5 @@ namespace boost {
   };
 
 } /* namespace boost */
-
 
 #endif /*BOOST_ENUMS_ENUM_SET_HPP*/

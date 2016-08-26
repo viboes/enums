@@ -12,7 +12,7 @@
 
 /*!
  \file
- \brief  
+ \brief
  The header \c <boost/enums/container/enum_range.hpp> defines a class template \c enum_range for viewing an enumerations as a range.
  */
 
@@ -39,7 +39,7 @@ namespace boost {
         // function.
         //
         // @Note
-        // This use of this iterator and enum_range<E>() is appreciably less
+        // The use of this iterator and enum_range<E>() is appreciably less
         // performant than the corresponding hand-written integer
         // loop on many compilers.
 
@@ -102,20 +102,20 @@ namespace boost {
 
             friend class ::boost::iterator_core_access;
             int index_;
-        };  
+        };
     } // namespace enums_detail
     #endif
-    
-    
-    /** 
+
+
+    /**
      @TParams
      @Param{T,set's element ordinal enum}
-     
+
      @Requires @c T must be a model of <em>OrdinalEnum</em>.
-     
+
      \c enum_range is a model of the <em>RandomAccessRange</em> Concept associated to the enumeration \c T.
      */
-      
+
     template<typename T/* , typename Traits=enum_range_traits<T> */ >
     class enum_range
         : public iterator_range< enums_detail::enum_iterator<T/*, Traits*/> >
@@ -123,24 +123,24 @@ namespace boost {
         typedef enums_detail::enum_iterator<T/*, Traits*/> iterator_t;
         typedef iterator_range<iterator_t> base_t;
     public:
-        //! builds a enum range 
+        //! builds a enum range
         enum_range()
             : base_t(iterator_t(0), iterator_t(enums::meta::size<T>::value))
         {
         }
-        
-        //! builds a enum sub-range 
+
+        //! builds a enum sub-range
         enum_range(T first, T last)
             : base_t(iterator_t(enums::pos(first)),
                      iterator_t(enums::pos(last)+1))
         {
         }
     };
-            
+
     //! function to generate an enum range.
 
     //! \c make_range allows treating enums as a model of the \e RandomAccessRange Concept.
-      
+
     //! @Requires \c T is a model of the \e Enumeration Concept.
     //! @Returns an enum range from @c T'first to @c T'last inclusive.
     template<typename T /*, typename Traits*/ >
@@ -149,10 +149,10 @@ namespace boost {
     {
         return enum_range<T/*,Traits*/>();
     }
-    
+
       //! function to generate an enum sub-range.
-      
-      //! \c make_range allows treating enums as a model of the \e RandomAccessRange Concept.      
+
+      //! \c make_range allows treating enums as a model of the \e RandomAccessRange Concept.
       //! It should be noted that the first and last parameters denoted a closed range.
       //! @Requires \c T is a model of the \e Enumeration Concept.
       //! @Params
